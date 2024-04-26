@@ -1,0 +1,85 @@
+\newpage
+\subsection{MILP function for supply side}
+Appendix B.5 contains the details for the implementation of MATLAB function named "MILP\_2nd\_fun.m" which is called in main file. Please save this file in the same folder as main file. Step by step guidelines are provided in \textit{readme.txt} file.\par
+
+\begin{linenumbers}
+\begin{lstlisting}
+
+function [generator_ut,RES_ut,ESS_ut,EV_ut,grid_ut,grid_ut_2,total_hourly_RES,EV_charging] = MILP_2nd_fun(re_wind_new,rg_new_pv,milp_load,EP,EV,ESS)
+
+stor=0;
+
+total_hourly_RES=re_wind_new+rg_new_pv; %   hourly generation from wind and PV
+sum_total=sum(total_hourly_RES); % total generation from wind and PV
+
+
+generator=2;    % When generator is ON generates 2kw electricity else 0
+
+\end{lstlisting}
+\hypertarget{ev1_code}{}
+\hyperlink{ev1_text}{EV integration code}
+\begin{lstlisting}
+
+for houur=1:24
+    load_hourly=milp_load(1,houur);% check hourly load and decide supply which is used to fulfill this load
+    RES_hourly=total_hourly_RES(1,houur); %check generation for specific hour and decide to utilize or store
+
+    ESS1=ESS-0.30;   % Utilize ESS max 90 % for battery safety,so deduct 10%
+    if houur<12 && (ESS1<0 || EP(houur)<9)
+        ESS1=0;
+    end
+
+    EV1=EV-1;    % Reserve 33 % for EV driving
+
+f=[10*2 2 3 4 8]; % 1:generator,2:RES,3:ESS,4:EV,5:grid (per unit cost assumed according to priorities)
+% 10*2 means when generator is ON it must generate 2kw energy, means our
+% system use energy from generator 2kw or Zero 0.
+[lb,ub,Aeq,beq,intcon,grid_ut_2]=uperLowerBound(load_hourly,RES_hourly,ESS1,EV1,houur);% constraints for
+
+[x,fval] = intlinprog(f,intcon,[],[],Aeq,beq,lb,ub); % MILP function
+
+generator_ut(houur)=x(1,1); % hourly contribution of generatr to fulfill load
+RES_ut(houur)=x(2,1);   % hourly contribution of RES to fulfill load
+ESS_ut(houur)=x(3,1);   % hourly contribution of ESS to fulfill load
+EV_ut(houur)=x(4,1);    % hourly contribution of EV to fulfill load
+grid_ut(houur)=x(5,1);  % hourly contribution of grid to fulfill load
+
+
+%   Res conditions
+remaining_electricity=RES_hourly-x(2,1);
+if remaining_electricity>0
+    stor=stor+remaining_electricity;
+end %       if ends
+
+
+%           ESS conditions
+remaining_ESS=ESS-x(3,1);
+if remaining_ESS<=3
+ESS=remaining_ESS+remaining_electricity; % remaining_electricity from RES
+end
+
+
+%       EV charging and discharging
+remaining_EV=EV-x(4,1);
+if remaining_ESS>=3 % at this time ev is not using bkoz res is extra
+EV=remaining_EV+remaining_electricity;
+    EV_charging(houur)=remaining_electricity; % storing charging hour
+evq(houur)=remaining_electricity;
+
+else
+    EV=EV-x(4,1);
+    if houur==1 %consider ev 3kw at the time of begining
+EV_charging(houur)=3;
+else
+    EV_charging(houur)=0;% storing not charging hour
+    end %if end for initializing
+end
+
+
+end %   for loop ends
+
+generator_ut=generator_ut*2;% multiply with 2, becoz when generatr ON it must generate 2kW
+
+end   % function ends
+\end{lstlisting}
+\end{linenumbers} 

@@ -1,0 +1,60 @@
+\newpage
+
+\subsection{Smart Contract Code for Subproblem 2}
+Appendix B.3 contains the details for the implementation of the smart contract code "UserRep.sol" which is called in main file. This code should be deployed on a local blockchain by using \href{https://www.trufflesuite.com/ganache}{Ganache} and an online IDE called \href{http://remix.ethereum.org/}{Remix}.\par
+
+\begin{linenumbers}
+\begin{lstlisting}
+
+\end{lstlisting}
+\hypertarget{milp_code}{}
+\hyperlink{milp_text}{SmartContract2.sol}
+\begin{lstlisting}
+pragma solidity 0.8.0;
+contract UserRep {
+    mapping(uint256 => User) users;
+    uint256[] userIDList;
+    struct User {
+        uint256 id;
+        //other attributes
+       // string[] data;
+        bool isMalicious;
+        uint256 rep_value;
+    }
+    // Create a new user.
+    function newUser(uint256 _id) public {
+        // In a mapping, all elements are defined. They're just empty by default
+        // So, just setting the id will create a new user;
+        users[_id].id = _id;
+        users[_id].rep_value = 50;
+        userIDList.push(users[_id].id);
+    }
+    // Add reputation value of a user
+    function increaseReputation(uint256 _id, uint256 _addRep) public {
+        users[_id].rep_value = users[_id].rep_value + _addRep; 
+    }
+    // Decrease the reputation value of a vehicle
+    function decreaseReputation (uint256 _id, uint256 _decRep) public{
+        if (users[_id].rep_value < 10){
+            users[_id].isMalicious = true;
+        }
+        users[_id].rep_value = users[_id].rep_value - _decRep;
+    }
+    function getUserReputation(uint256 _id) public view returns (uint256){
+        return users[_id].rep_value;
+    }
+    function isUserMal(uint256 _id) public view returns (bool){
+        if (users[_id].rep_value < 10){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    function getAllUserIDs() public view returns  (uint256[] memory){
+        return userIDList;
+    }
+    function noOfUsers() public view returns  (uint256){
+        return userIDList.length;}}
+\end{lstlisting}
+\end{linenumbers} 

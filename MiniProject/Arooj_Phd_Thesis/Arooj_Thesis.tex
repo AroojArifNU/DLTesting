@@ -1,0 +1,147 @@
+\documentclass[12pt, a4paper, oneside]{CIITThesissV1}
+\usepackage{placeins}
+\usepackage{multirow}
+\usepackage{sectsty}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage[table]{xcolor}
+\usepackage{lscape}
+\usepackage[autostyle]{csquotes}
+\usepackage{amsfonts}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage[english]{babel}
+\usepackage{parskip}
+\usepackage[export]{adjustbox}
+\usepackage{pbox}
+
+
+\usepackage{threeparttable}  
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{bm}
+
+
+\usepackage{hhline}%%%
+\usepackage{pdfpages}
+\usepackage{rotating}
+\usepackage{epsfig}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{url}
+\usepackage{nomencl}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{color, colortbl}
+\usepackage{lipsum}
+\usepackage{setspace}
+\usepackage{afterpage}
+\usepackage{pdflscape}
+\usepackage{pstricks}
+%\usepackage{subfigure}
+\usepackage{titlesec}
+\usepackage{cases}
+\usepackage{tocloft}
+\usepackage[numbers]{natbib}
+\usepackage{amsmath}
+\usepackage[hypcap=false]{caption}
+\usepackage{authblk}
+\usepackage{rotating}
+\usepackage{pifont}
+\usepackage{url}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{bookmark}
+\usepackage{arydshln}
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb,amsfonts}
+%\usepackage[ruled,linesnumbered]{algorithm2e}
+%The following line is added to support the algorithms.
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{hyperref}
+%\usepackage{longtable}
+\usepackage[toc,page]{appendix}
+\usepackage{matlab}
+\usepackage{listings}
+\lstset{breaklines=true}
+\usepackage{lineno}
+\usepackage{mfirstuc}
+
+
+\usepackage{pdflscape} % For landscape orientation
+\usepackage{xltabular} % Extended tabular with auto page break and X columns
+\usepackage{booktabs} % For better table formatting
+\usepackage[table]{xcolor} % For cell coloring
+\usepackage{makecell} % For line breaks within cells
+\usepackage{listings} % For including code-like listings
+\usepackage{xcolor} % For color definitions in listings
+
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\graphicspath{{figures/}}
+\makeatother
+
+\renewcommand\cftchapfont{\textbf\normalfont}
+\renewcommand\cftchappagefont{{\normalfont}}
+\AtBeginDocument{\renewcommand\contentsname{TABLE OF CONTENTS}}
+%\AtBeginDocument{\renewcommand\contentsname{\leftline{LIST OF FIGURES}}}
+\titleformat{\chapter}[display]
+{\bfseries\Large}
+{\vspace{4cm}\centering\bigskip \Large\bfseries{Chapter \thechapter}}
+{1ex}
+{\bfseries\Large\centering}
+
+\begin{document}
+\pagenumbering{roman}
+\include{cover1}
+\include{cover2}
+\include{cover3}
+\include{cover4}
+\include{cover5}
+\include{cover6_certificate}
+\include{cover7_dedication}
+\include{cover8_acknoledgment}
+\include{cover9_abstract}
+% \include{journal_papers}
+\include{conference_papers}
+\include{contents}
+\include{figures}
+\include{tables}
+\include{algos}
+\include{cover10}
+\pagenumbering{arabic}
+%----------------------------------
+
+\pagestyle{fancy}
+\fancyhead[LO]{\slshape \leftmark}
+%\fancyhead[RO]{\slshape }
+%\fancyhead[L]{\fontsize{8}{10}}
+%\fancyfoot[C]{\thepage}
+%\rfoot{\emph{Thesis by: Muhammad Usman Khalid}}
+\rfoot{\emph{Thesis by: Arooj Arif}}
+
+\include{chap1}
+\include{chap2}
+\include{chap3}
+\include{chap4}
+%\include{chap5}
+\include{chap6}
+\include{chap7}
+
+ %\appendix
+%  \begin{appendices}
+%  \begin{subappendices}
+%  \include{Appendix_A}
+%  \include{Appendix_B}
+%  \include{Appendix_B1}
+
+%  \include{Appendix_C}
+%  \include{Appendix_C1}
+
+%  \end{subappendices}
+%  \end{appendices}
+\include{conference_papers}
+\end{document} 

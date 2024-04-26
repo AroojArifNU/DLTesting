@@ -1,0 +1,72 @@
+\newpage
+\subsection{IV curve function}
+\label{iv1}
+Appendix B.4 contains the details for the implementation of MATLAB function named "IV\_curve.m" which is called in main file. Please save this file in the same folder as main file. Step by step guidelines are provided in \textit{readme.txt} file.\par
+
+\begin{linenumbers}
+\begin{lstlisting}
+
+\end{lstlisting}
+\hypertarget{iv_code}{}
+\hyperlink{iv_text}{I-V curve integration code}
+\begin{lstlisting}
+function [current1 current2 current3 voltage1 voltage2 voltage3] =IV_curve
+light_current=[4.4 5.7 3.9];
+for light_cur_loop=1:length(light_current)
+
+voltage_arr1=[0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 45.886];
+voltage_arr2=[0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46.294];
+voltage_arr3=[0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45.69];
+if light_cur_loop==1
+        voltage_arr=voltage_arr1;
+    elseif light_cur_loop==2
+        voltage_arr=voltage_arr2;
+    else
+        voltage_arr=voltage_arr3;
+end
+
+for volt_loop=1:length(voltage_arr)
+ %acha1=voltage_arr(volt_loop);
+
+IL=light_current(light_cur_loop);%4.4 ; %light current
+Is=.000000000001; % situration current
+Rs=0; % series resistance
+Rsh=10000; % shunt resistence
+T=310;  %  temprature kalvin
+e=2.71828; %exponential value
+q= 1.6022*10^-19; %% electron charge
+k=1.380710*10^-23; %Boltmanz constants
+Ns=59; % number of cells of pV
+a=q/(Ns*k*T); %alpha value
+Ish=0;
+Ipv=0;
+Isc=8; %Short circuit current
+Voc=30; %% Open circuit current
+Vpv=voltage_arr(volt_loop); %Vpv=45.8857
+%for PV=0:50
+%IL=Is(e^(a*(Vpv+Rs*Ipv))-1)+Ipv     %%%% orignal eq #1 in my base paper
+%Vpv=((log((IL-Ipv)/Is)+1)/a)-(Ipv*Rs); %%% equation for voltage to current
+
+%Ipv=IL-(Is*(e^((Isc*Rs)/a)-1))-((Isc*Rs)/Rsh); % for short circuit current
+%Ipv=Rsh*(IL-(Is*(e^(Voc/a)-1))); % for open circuit current
+
+Id=Is*(e^(a*Vpv)-1);
+Ipv=IL-Id-Ish;
+
+if IL==4.4
+current1(volt_loop,:)=Ipv;
+voltage1(volt_loop,:)=Vpv;
+elseif IL==5.7
+    current2(volt_loop,:)=Ipv;
+    voltage2(volt_loop,:)=Vpv;
+else
+    current3(volt_loop,:)=Ipv;
+    voltage3(volt_loop,:)=Vpv;
+end % if loop end
+
+end  %% internal loop for voltage end
+
+end %%% external loop for IL end
+
+\end{lstlisting}
+\end{linenumbers} 

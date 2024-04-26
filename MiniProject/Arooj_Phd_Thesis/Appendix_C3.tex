@@ -1,0 +1,475 @@
+\newpage
+\subsection{Cuckoo search algorithm function}
+Appendix C.3 contains the details for the implementation of MATLAB function named "cuckoo\_search.m" which is called in main file. Please save this file in the same folder as main file. Step by step guidelines are provided in \textit{readme.txt} file.\par
+
+\begin{linenumbers}
+\begin{lstlisting}
+
+
+% -----------------------------------------------------------------
+% Cuckoo Search (CS) algorithm by Xin-She Yang and Suash Deb      %
+% Programmed by Xin-She Yang at Cambridge University              %
+% Programming dates: Nov 2008 to June 2009                        %
+% Last revised: Dec  2009   (simplified version for demo only)    %
+% -----------------------------------------------------------------
+% Papers -- Citation Details:
+% 1) X.-S. Yang, S. Deb, Cuckoo search via Levy flights,
+% in: Proc. of World Congress on Nature & Biologically Inspired
+% Computing (NaBIC 2009), December 2009, India,
+% IEEE Publications, USA,  pp. 210-214 (2009).
+% http://arxiv.org/PS_cache/arxiv/pdf/1003/1003.1594v1.pdf
+% 2) X.-S. Yang, S. Deb, Engineering optimization by cuckoo search,
+% Int. J. Mathematical Modelling and Numerical Optimisation,
+% Vol. 1, No. 4, 330-343 (2010).
+% http://arxiv.org/PS_cache/arxiv/pdf/1005/1005.2908v2.pdf
+% ----------------------------------------------------------------%
+% This demo program only implements a standard version of         %
+% Cuckoo Search (CS), as the Levy flights and generation of       %
+% new solutions may use slightly different methods.               %
+% The pseudo code was given sequentially (select a cuckoo etc),   %
+% but the implementation here uses Matlab's vector capability,    %
+% which results in neater/better codes and shorter running time.  %
+% This implementation is different and more efficient than the    %
+% the demo code provided in the book by
+%    "Yang X. S., Nature-Inspired Metaheuristic Algoirthms,       %
+%     2nd Edition, Luniver Press, (2010).                 "       %
+% --------------------------------------------------------------- %
+
+% =============================================================== %
+% Notes:                                                          %
+% Different implementations may lead to slightly different        %
+% behavour and/or results, but there is nothing wrong with it,    %
+% as this is the nature of random walks and all metaheuristics.   %
+% -----------------------------------------------------------------
+\end{lstlisting}
+\hypertarget{CSA_code}{}
+\hyperlink{CSA_text}{CSA algorithm}
+\begin{lstlisting}
+
+function [bestnest,fmin, nest, D,pa]=cuckoo_search(p,EP,hour,C_time_slots,unscheduledload, app_Sch_C,sheri)
+% Number of nests (or different solutions)
+n=50;
+%Nn=50;
+D=12;
+%%%%%%%%%%%%%%%
+% Discovery rate of alien eggs/solutions
+pa=0.25;
+
+%% Change this if you want to get better results
+% Tolerance
+Tol=40;
+%% Simple bounds of the search domain
+% Lower bounds
+nd=D;
+Lb=-5*ones(1,nd);
+% Upper bounds
+Ub=5*ones(1,nd);
+
+% Random initial solutions
+for i=1:n,
+nest(i,:)=Lb+(Ub-Lb).*rand(size(Lb));
+end
+
+% Get the current best
+fitness=10^10*ones(n,1); % intialize a vector to save the fitness value of nests
+[fmin,bestnest,nest,fitness]=get_best_nest(nest,nest,fitness, p,D,EP,hour,C_time_slots,unscheduledload, app_Sch_C,sheri);
+
+N_iter=0;
+%% Starting iterations
+count =1;
+while (count<=Tol),
+
+    % Generate new solutions (but keep the current best)
+     new_nest=get_cuckoos(nest,bestnest,Lb,Ub);
+     [fnew,best,nest,fitness]=get_best_nest(nest,new_nest,fitness, p,D,EP,hour,C_time_slots,unscheduledload, app_Sch_C,sheri);
+    % Update the counter
+      N_iter=N_iter+n;
+    % Discovery and randomization
+      new_nest=empty_nests(nest,Lb,Ub,pa) ;
+
+    % Evaluate this set of solutions
+      [fnew,best,nest,fitness]=get_best_nest(nest,new_nest,fitness, p,D,EP,hour,C_time_slots,unscheduledload, app_Sch_C,sheri);
+    % Update the counter again
+      N_iter=N_iter+n;
+    % Find the best objective so far
+    if fnew<fmin,
+        fmin=fnew;
+        bestnest=best;
+    end
+    count=count+1;
+end %% End of iterations
+
+%% Post-optimization processing
+%% Display all the nests
+% disp(strcat('Total number of iterations=',num2str(N_iter)));
+fmin;
+bestnest;
+
+%% --------------- All subfunctions are list below ------------------
+%% Get cuckoos by ramdom walk
+function nest=get_cuckoos(nest,best,Lb,Ub)
+% Levy flights
+n=size(nest,1);
+% Levy exponent and coefficient
+% For details, see equation (2.21), Page 16 (chapter 2) of the book
+% X. S. Yang, Nature-Inspired Metaheuristic Algorithms, 2nd Edition, Luniver Press, (2010).
+beta=3/2;
+sigma=(gamma(1+beta)*sin(pi*beta/2)/(gamma((1+beta)/2)*beta*2^((beta-1)/2)))^(1/beta);
+
+for j=1:n,
+    s=nest(j,:);
+    % This is a simple way of implementing Levy flights
+    % For standard random walks, use step=1;
+    %% Levy flights by Mantegna's algorithm
+    u=randn(size(s))*sigma;
+    v=randn(size(s));
+    step=u./abs(v).^(1/beta);
+
+    % In the next equation, the difference factor (s-best) means that
+    % when the solution is the best solution, it remains unchanged.
+    stepsize=0.01*step.*(s-best);
+    % Here the factor 0.01 comes from the fact that L/100 should the typical
+    % step size of walks/flights where L is the typical lenghtscale;
+    % otherwise, Levy flights may become too aggresive/efficient,
+    % which makes new solutions (even) jump out side of the design domain
+    % (and thus wasting evaluations).
+    % Now the actual random walks or flights
+    s=s+stepsize.*randn(size(s));
+   % Apply simple bounds/limits
+   nest(j,:)=simplebounds(s,Lb,Ub);
+end
+
+%% Find the current best nest
+function [fmin,best,nest,fitness]=get_best_nest(nest,newnest,fitness,p,D,EP,hour,C_time_slots,unscheduledload, app_Sch_C,sheri)
+% Evaluating all new solutions
+% Here we will use our defined fitness function
+
+% for j=1:size(nest,1),
+%     fnew=fobj(newnest(j,:));
+%     if fnew<=fitness(j),
+%        fitness(j)=fnew;
+%        nest(j,:)=newnest(j,:);
+%     end
+% end
+ for j=1:size(nest,1)	
+    for i=1:D		
+         if nest(j,i)>0.5  %You can change this accordingly 		
+             nest(j,i)=1;		
+         else		
+             nest(j,i)=0;		
+         end		
+    end		
+ end
+  for j=1:size(nest,1)	
+    for i=1:D		
+         if newnest(j,i)>0.5  %You can change this accordingly 		
+             newnest(j,i)=1;		
+         else		
+             newnest(j,i)=0;		
+         end		
+    end		
+ end
+
+electricity_cost=EP(hour)*p; % Possible pirce for each appliance		
+%%                       %%%% Non intruptible appliance: working in series %%%%				
+ lhour=25-hour;		
+ Nn=50;
+% if lhour<=(C_time_slots(1,5)+C_time_slots(1,6))		
+%             if C_time_slots(1,5)<=0		
+%                nest(:,6)=1;		
+%             elseif C_time_slots(1,5)>0		
+%                nest(:,6)=0;
+%                nest(:,5)=1;
+%             end				
+% elseif hour>1				
+%     if app_Sch_C(hour-1,5)==1		
+%                 nest(:,5)=1;		
+%     end		
+%     if C_time_slots(1,5)>0		
+%              nest(:,6)=0;		
+%     end		
+%     if C_time_slots(1,5)<=0		
+%              nest(:,6)=1;				
+%     end		
+% end		
+% if C_time_slots(1,5)>0		
+%       nest(:,6)=0;		
+%  end			
+%%condition for the appliance number 4 must run between 18 n 24
+a4=11;
+b4=16;
+if hour<a4 || hour>b4
+    for a=1:Nn
+        newnest(a,4)=0;
+    end
+else
+    for a=1:Nn
+        if newnest(a,4)==0
+            newnest(a,4)=1;
+        end
+    end
+end
+%%%%%%%%%% End condition for appliance number 4
+
+%%%%%%%%%%%for appliance number 1
+a1=2;
+b1=12;
+if hour<a1 || hour>b1
+    for a=1:Nn
+        newnest(a,1)=0;
+    end
+elseif C_time_slots(1,1)>=0	&& (hour >=(b1-sheri(:,1)))
+    for a=1:Nn
+              newnest(a,1)=1;
+    end
+
+end
+%%%%%%%%%%%%end of 1st appliance condition
+
+%%%%%%%%%%%for appliance number 2 washing machine
+a2=2;
+b2=7;
+if hour<a2 || hour>b2
+    for a=1:Nn
+        newnest(a,2)=0;
+    end
+    elseif C_time_slots(1,2)>=0	&& (hour >=(b2-sheri(:,2)))
+        for a=1:Nn
+              newnest(a,2)=1;
+        end
+end
+%%%%%%%%%end of 2nd appliance condition
+
+%%%%%%%%%%%for appliance number 3
+a3=6;
+b3=13;
+if hour<a3 || hour>b3
+    for a=1:Nn
+        newnest(a,3)=0;
+    end
+    elseif C_time_slots(1,3)>=0	&& (hour >=(b3-sheri(:,3)))
+              newnest(a,3)=1;
+end
+%%%%%%%%%end of 3rd appliance condition
+
+%%%%%%%%%%%for appliance number 6
+a6=1;
+b6=6;
+if hour<a6 || hour>b6
+    for a=1:Nn
+        newnest(a,6)=0;
+    end
+        elseif C_time_slots(1,6)>=0	&& (hour >=(b6-sheri(:,6)))
+              newnest(a,6)=1;
+end
+%%%%%%%%%end of 6th appliance condition
+
+%%%%%%%%%%%for appliance number 7
+a7=11;
+b7=16;
+if hour<a7 || hour>b7
+    for a=1:Nn
+        newnest(a,7)=0;
+    end
+        elseif C_time_slots(1,7)>=0	&& (hour >=(b7-sheri(:,7)))
+            for a=1:Nn
+              if newnest(a,7)==0
+                  newnest(a,7)=1;
+              end
+            end
+end
+%%%%%%%%%end of 7th appliance condition
+
+%%%%%%%%%%%for appliance number 8
+a8=1;
+b8=7;
+if hour<a8 || hour>b8
+    for a=1:Nn
+        newnest(a,8)=0;
+    end
+     elseif C_time_slots(1,8)>=0	&& (hour>=(b8-sheri(:,8)))
+            for a=1:Nn
+              if newnest(a,8)==0
+                  newnest(a,8)=1;
+              end
+            end
+end
+%%%%%%%%%end of 8th appliance condition
+
+%%%%%%%%%%%for appliance number 9
+a9=9;
+b9=16;
+if hour<a9 || hour>b9
+    for a=1:Nn
+        newnest(a,9)=0;
+    end
+     elseif C_time_slots(1,9)>=0 && (hour >=(b9-sheri(:,9)))
+            for a=1:Nn
+              if newnest(a,9)==0
+                  newnest(a,9)=1;
+              end
+            end
+end
+%%%%%%%%%end of 9th appliance condition
+
+%%%%%%%%%%%for appliance number 10
+a10=7;
+b10=16;
+if hour<a10 || hour>b10
+    for a=1:Nn
+        newnest(a,10)=0;
+    end
+     elseif C_time_slots(1,10)>=0	&& (hour >= b10-sheri(:,10))
+            for a=1:Nn
+              if newnest(a,10)==0
+                  newnest(a,10)=1;
+              end
+            end
+end
+%%%%%%%%%end of 10th appliance condition
+
+%%%%%%%%%%%for appliance number 11
+a11=2;
+b11=11;
+if hour<a11 || hour>b11
+    for a=1:Nn
+        newnest(a,11)=0;
+    end
+     elseif C_time_slots(1,11)>=0	&& (hour >=(b11-sheri(:,11)))
+            for a=1:Nn
+              if newnest(a,11)==0
+                  newnest(a,11)=1;
+              end
+            end
+end
+%%%%%%%%%%%%end of 11th appliance condition
+
+%%%%%%%%%%%%%%%%start the appliance 12 condition
+a12=11;
+if hour<a12
+    for a=1:Nn
+        newnest(a,12)=0;
+    end
+
+end
+%%%%%%%%%%%%%%%end of 12th condition
+
+
+
+
+        for b=1:D		
+            if C_time_slots(1,b)<=0		
+                newnest(:,b)=0;		
+            elseif (lhour<=C_time_slots(1,b)&& C_time_slots(1,b)>0)		
+               newnest(:,b)=1;		
+            end		
+        end				
+       		
+                            %% Selection and Calculation %%	
+		% Objective function defineation
+c_electricity_cost=-p;
+F1=(electricity_cost*nest');						
+error=c_electricity_cost*nest';		
+F1=F1+1000*abs(error);
+for j=1:size(nest,1)
+    if F1(j)<=fitness(j),
+       fitness(j)=F1(j);
+       nest(j,:)=newnest(j,:);
+    end
+end
+Load=p*nest';		
+gbest=inf;		
+Lbest=inf;
+D11=inf;
+D_EP=mean(EP);
+load_(1:length(unscheduledload))=(unscheduledload(1:length(unscheduledload))-min(unscheduledload))/(max(unscheduledload)-min(unscheduledload));
+t_load=sum(load_);
+            if EP(hour)<=D_EP		
+                 for i = 1:size(nest,1)		
+                    if (F1(1,i)<D11)&& Load(1,i)>= t_load-std(unscheduledload)%normalize_load- mean(unscheduledload)+ std(unscheduledload)%(mean(unscheduledload) +std(unscheduledload) + min(unscheduledload)) %&& Load(1,i) <max(unscheduledload) %min(unscheduledload) && Load(1,i)<=mean(unscheduledload)		
+                        D11 = F1(1,i); %mean(unscheduledload)		
+                        Lbest = nest(i,:); % gbest position achieved here.    		
+                    end		
+                 end		
+            end		
+            if EP(hour)>D_EP		
+                for i = 1:size(nest,1)		
+                    if (F1(1,i)<D11 && Load(1,i)> (std(unscheduledload)+2*(min(unscheduledload))))&&(Load(1,i)< mean(unscheduledload)-min(unscheduledload)) %&& Load(1,i)<mean(unscheduledload) %clc&& Load(1,i)<(max(unscheduledload)-min(unscheduledload))&& Load(1,i)>(mean(unscheduledload)-min(unscheduledload))% && Load(1,i)<= mean(unscheduledload))% && load(1,i) >= min(EP)) % Compare fitness value with D11.		
+                             D11 = F1(1,i);		
+                             Lbest = nest(i,:); % gbest position achieved here.    	
+                    end		
+                end		
+            end
+                if EP(hour)<=D_EP && D11==inf
+
+                    for i = 1:size(nest,1)
+                        if (F1(1,i)<D11 && Load(1,i)>min(unscheduledload))		
+                             D11 = F1(1,i); %mean(unscheduledload)		
+                        Lbest = nest(i,:); % gbest position achieved here.    		
+                        end
+                            if (F1(1,i)>D11 && Load(1,i)>min(unscheduledload))		
+                        D11 = F1(1,i); %mean(unscheduledload)		
+                        Lbest = nest(i,:); % gbest position achieved here.    	
+                            end	
+                    end
+                 end	
+                if D11==inf		
+                    for i = 1:size(nest,1)		
+                            if (F1(1,i)<D11 && Load(1,i)>min(unscheduledload))		
+                              D11 = F1(1,i);		
+                             Lbest = nest(i,:); % gbest position achieved here.    		
+                            end		
+                    end		
+                end
+                if D11==inf		
+                    for i = 1:size(nest,1)		
+                            if (F1(1,i)<D11)% && Load(1,i)>min(unscheduledload))		
+                              D11 = F1(1,i);		
+                             Lbest = nest(i,:); % gbest position achieved here.    		
+                            end		
+                    end		
+                 end
+% Find the current best
+fmin=D11;
+best=Lbest;
+
+%% Replace some nests by constructing new solutions/nests
+function new_nest=empty_nests(nest,Lb,Ub,pa)
+% A fraction of worse nests are discovered with a probability pa
+n=size(nest,1);
+% Discovered or not -- a status vector
+K=rand(size(nest))>pa;
+
+% In the real world, if a cuckoo's egg is very similar to a host's eggs, then
+% this cuckoo's egg is less likely to be discovered, thus the fitness should
+% be related to the difference in solutions.  Therefore, it is a good idea
+% to do a random walk in a biased way with some random step sizes.
+%% New solution by biased/selective random walks
+stepsize=rand*(nest(randperm(n),:)-nest(randperm(n),:));
+new_nest=nest+stepsize.*K;
+for j=1:size(new_nest,1)
+    s=new_nest(j,:);
+  new_nest(j,:)=simplebounds(s,Lb,Ub);
+end
+
+% Application of simple constraints
+function s=simplebounds(s,Lb,Ub)
+  % Apply the lower bound
+  ns_tmp=s;
+  I=ns_tmp<Lb;
+  ns_tmp(I)=Lb(I);
+
+  % Apply the upper bounds
+  J=ns_tmp>Ub;
+  ns_tmp(J)=Ub(J);
+  % Update this new move
+  s=ns_tmp;
+
+%% You can replace the following by your own functions
+% A d-dimensional objective function
+function z=fobj(u)
+%% d-dimensional sphere function sum_j=1^d (u_j-1)^2.
+%  with a minimum at (1,1, ...., 1);
+z=sum((u-1).^2);
+\end{lstlisting}
+\end{linenumbers} 

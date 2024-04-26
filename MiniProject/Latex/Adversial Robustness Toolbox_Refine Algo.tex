@@ -1,0 +1,156 @@
+\documentclass[11pt,onside]{article}
+\usepackage[a4paper]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{lipsum}
+\usepackage{bm}
+\usepackage{upgreek}
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{graphicx} % Required for including images
+
+\usepackage{algpseudocode}
+% mathtools for: Aboxed (put box on last equation in align envirenment)
+\usepackage{microtype} %improves the spacing between words and letters
+
+%% COLOR DEFINITIONS
+
+\usepackage[svgnames]{xcolor} % Enabling mixing colors and color's call by 'svgnames'
+
+\definecolor{MyColor1}{rgb}{0.2,0.4,0.6} %mix personal color
+\newcommand{\textb}{\color{Black} \usefont{OT1}{lmss}{m}{n}}
+\newcommand{\blue}{\color{MyColor1} \usefont{OT1}{lmss}{m}{n}}
+\newcommand{\blueb}{\color{MyColor1} \usefont{OT1}{lmss}{b}{n}}
+\newcommand{\red}{\color{LightCoral} \usefont{OT1}{lmss}{m}{n}}
+\newcommand{\green}{\color{Turquoise} \usefont{OT1}{lmss}{m}{n}}
+
+\DeclareMathOperator{\trace}{trace}
+\DeclareMathOperator{\diag}{diag}
+
+%% FONTS AND COLORS
+
+%    SECTIONS
+
+\usepackage{titlesec}
+\usepackage{sectsty}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%set section/subsections HEADINGS font and color
+\sectionfont{\color{MyColor1}}  % sets colour of sections
+\subsectionfont{\color{MyColor1}}  % sets colour of sections
+
+%set section enumerator to arabic number (see footnotes markings alternatives)
+\renewcommand\thesection{\arabic{section}.} %define sections numbering
+\renewcommand\thesubsection{\thesection\arabic{subsection}} %subsec.num.
+
+%define new section style
+\newcommand{\mysection}{
+\titleformat{\section} [runin] {\usefont{OT1}{lmss}{b}{n}\color{MyColor1}} 
+{\thesection} {3pt} {} } 
+
+
+%	CAPTIONS
+\usepackage{caption}
+\usepackage{subcaption}
+%%%%%%%%%%%%%%%%%%%%%%%%
+\captionsetup[figure*]{labelfont={color=Turquoise}}
+
+
+%		!!!EQUATION (ARRAY) --> USING ALIGN INSTEAD
+%using amsmath package to redefine eq. numeration (1.1, 1.2, ...) 
+\renewcommand{\theequation}{\thesection\arabic{equation}}
+
+
+
+\makeatletter
+\let\reftagform@=\tagform@
+\def\tagform@#1{\maketag@@@{(\ignorespaces\textcolor{red}{#1}\unskip\@@italiccorr)}}
+\renewcommand{\eqref}[1]{\textup{\reftagform@{\ref{#1}}}}
+\makeatother
+\usepackage{hyperref}
+\hypersetup{colorlinks=true}
+
+% For labeling top of page on every page but first one:
+\usepackage{fancyhdr}
+
+% PREPARE TITLE:
+\title{\blue Adversarial Robustness-toolbox \\
+\blueb Generate Counter Examples}
+
+
+\renewcommand{\rmdefault}{phv} % Arial Font
+\renewcommand{\sfdefault}{phv} % Arial Font
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[CO,CE]{{\small{{\bf{Adversarial Robustness-toolbox}} - Counter Examples}}}
+ 
+
+\begin{document}
+\maketitle
+
+
+\section{Save Correct Examples and Labels}
+
+\begin{algorithm}[H]
+\caption{Evaluate and Save Correctly Classified MNIST Examples}
+\begin{algorithmic}[1]
+
+\State \textbf{Initialization:}
+\State $model \gets \text{LoadModel}(\text{`/path/to/mnist\_model.h5'})$
+\State $(X_{\text{train}}, Y_{\text{train}}), (X_{\text{test}}, Y_{\text{test}}) \gets \text{LoadMNISTData()}$
+\State $X_{\text{train}} \gets \text{Reshape}(X_{\text{train}}, 60000, 28, 28, 1)$
+\State $X_{\text{test}} \gets \text{Reshape}(X_{\text{test}}, 10000, 28, 28, 1)$
+\State $X_{\text{train}} \gets X_{\text{train}} / 255$
+\State $X_{\text{test}} \gets X_{\text{test}} / 255$
+\State $Y_{\text{train}} \gets \text{OneHot}(Y_{\text{train}}, 10)$
+\State $Y_{\text{test}} \gets \text{OneHot}(Y_{\text{test}}, 10)$
+
+\State \textbf{Model Prediction and Evaluation:}
+\State $P \gets \text{Predict}(model, X_{\text{test}})$
+\State $Y_{\text{pred}} \gets \text{ArgMax}(P, \text{axis}=1)$
+
+\State \textbf{Save Correct Examples:}
+\State $I_{\text{correct}} \gets (Y_{\text{pred}} == Y_{\text{test}})$
+\State $X_{\text{correct}} \gets X_{\text{test}}[I_{\text{correct}}]$
+\State $Y_{\text{correct}} \gets Y_{\text{test}}[I_{\text{correct}}]$
+\State $\text{Save}(``/path/to/correct\_examples.npy'', X_{\text{correct}})$
+\State $\text{Save}(``/path/to/correct\_labels.npy'', Y_{\text{correct}})$
+
+\end{algorithmic}
+\end{algorithm}
+
+\section{FastGradientMethod-Eps range = [0.01, 0.02, 0.03, 0.04, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6]}
+
+\begin{algorithm}[H]
+\caption{Evaluation of Pre-Trained Model on Adversarial Examples}
+\begin{algorithmic}[1]
+
+\State \textbf{Initialization:}
+\State $model \gets \text{LoadModel}(\text{`/path/to/mnist\_model.h5'})$
+\State $X_{\text{adv}} \gets \text{Load}(\text{`/path/to/correct\_examples.npy'})$
+\State $Y_{\text{adv}} \gets \text{Load}(\text{`/path/to/correct\_labels.npy'})$
+
+\State \textbf{Prepare Classifier:}
+\State $classifier \gets \text{KerasClassifier}(model, \text{clip\_values}=(0, 1))$
+
+
+\State \textbf{Adversarial Attack Generation:}
+\For{$\epsilon$ in $[0.01, 0.02, \dots, 0.6]$}
+    \State $attack \gets \text{FastGradientMethod}(classifier, \epsilon)$
+    \State $X_{\text{adv\_examples}} \gets \text{Generate}(attack, X_{\text{adv}},Y_{\text{adv}})
+
+    \State $Y_{\text{adv\_pred}} \gets \text{ArgMax}(\text{Predict}(classifier, X_{\text{adv\_examples}}))$
+    \State $accuracy_{\text{adv}} \gets \text{Sum}(Y_{\text{adv\_pred}} == Y_{\text{adv}}) / \text{Length}(Y_{\text{adv}})$
+    
+    \State \textbf{Generate and Save Confusion Matrix:}
+    \State $cm \gets \text{ConfusionMatrix}(Y_{\text{adv}}, Y_{\text{adv\_pred}})$
+
+\EndFor
+
+
+\end{algorithmic}
+\end{algorithm}
+
+\end{document}

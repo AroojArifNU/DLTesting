@@ -1,0 +1,47 @@
+\newpage
+\subsection{Uper lower bound function}
+Appendix B.3 contains the details for the implementation of MATLAB function named "uperLowerBound.m" which is called in main file. Please save this file in the same folder as main file. Step by step guidelines are provided in \textit{readme.txt} file.\par
+
+\begin{linenumbers}
+\begin{lstlisting}
+
+\end{lstlisting}
+\hypertarget{ev_code}{}
+\hyperlink{ev_text}{EV integration code}
+\begin{lstlisting}
+function [lb,ub,Aeq,beq,intcon,grid_ut_2]=uperLowerBound(load_hourly,RES_hourly,ESS1,EV1,houur)
+
+for opt=1:1
+
+    Aeq=[2 1 1 1 1];%   Equality constraint, our system must take elctricity from all sources equal
+                %   to the total hourly electricity consumption which is different in each hour
+beq=[load_hourly]; % Equaility const, purchase elec or use RES according to the hourly requirement.
+intcon=1;
+
+%       Lower and Uper bounds for each electricity source
+lb = zeros(5,1);    % min limit for every electricity source
+%   When peak creates generator must ON and generates 2kw Electricity
+if load_hourly>4
+lb(1)=1;
+end
+
+ub = [1 RES_hourly ESS1 EV1 inf]; %  limit for every electricity source
+
+if houur>6 && houur<11  % driving time, EV is not available at home
+    ub(4)=0;
+elseif houur<7 || houur>10
+    ub(4)=1;
+    if EV1<1
+        ub(4)=EV1;
+    end
+end
+
+end
+grid_ut_2=[0 0 2.4014 1.1737 0.6379 0.7878 2.6957 0 0 0 0 0 0 0 0 0 1.0685 2.2345...
+    3.2191 2.6793 3.8622 3.8622 3.8794 2.9081];% these values are taken, when EV is consider not
+%dischargable.for this change the uper bound of Ev to 0...so we want with
+%and without dischargeable EV, therfore once run and store these values for
+%not dischargable
+end
+\end{lstlisting}
+\end{linenumbers} 

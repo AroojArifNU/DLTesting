@@ -1,0 +1,20 @@
+\newpage
+\subsection{Crossover function}
+Appendix C.4 contains the details for the implementation of MATLAB function named "crossover.m" which is called in main file. Please save this file in the same folder as main file. Step by step guidelines are provided in \textit{readme.txt} file.\par
+
+\begin{linenumbers}
+\begin{lstlisting}
+
+ %----------- Crossover operator ---------------%
+        function [c,d]=crossover(a,b)
+         nn=length(a);
+         %generating random crossover point
+         cpoint=floor(nn*rand);
+         if cpoint==0
+            cpoint=randi(6,1,1);
+         end
+         c=[a(1:cpoint) b(cpoint+1:end)];
+         d=[b(1:cpoint) a(cpoint+1:end)];
+        %------------ Crossover ends ------------------%
+\end{lstlisting}
+\end{linenumbers} 

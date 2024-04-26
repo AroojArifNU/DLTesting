@@ -1,0 +1,2053 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.8.27)  30 AUG 2021 00:40
+entering extended mode
+**./Abid_Thesis.tex
+(Abid_Thesis.tex
+LaTeX2e <2021-06-01>
+L3 programming layer <2021-06-01> (CIITThesissV1.cls
+
+LaTeX Warning: You have requested document class `CIITThesissV1',
+               but the document class provides `CIITThesis'.
+
+Document Class: CIITThesis 2007/22/02 v1.0 LaTeX document class
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/base\book.cls
+Document Class: book 2021/02/12 v1.4n Standard LaTeX document class
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/base\bk12.clo
+File: bk12.clo 2021/02/12 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count182
+\c@chapter=\count183
+\c@section=\count184
+\c@subsection=\count185
+\c@subsubsection=\count186
+\c@paragraph=\count187
+\c@subparagraph=\count188
+\c@figure=\count189
+\c@table=\count190
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/setspace\setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+) (C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/vmargin\vmargin.sty
+Package: vmargin 2004/07/15 V2.5 set document margins (VK)
+
+Package: vmargin 2004/07/15 V2.5 set document margins (VK)
+\PaperWidth=\dimen139
+\PaperHeight=\dimen140
+) (C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks16
+\inpenc@posthook=\toks17
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
+Package: fancyhdr 2021/01/28 v4.0.1 Extensive control of page headers and foote
+rs
+\f@nch@headwidth=\skip49
+\f@nch@O@elh=\skip50
+\f@nch@O@erh=\skip51
+\f@nch@O@olh=\skip52
+\f@nch@O@orh=\skip53
+\f@nch@O@elf=\skip54
+\f@nch@O@erf=\skip55
+\f@nch@O@olf=\skip56
+\f@nch@O@orf=\skip57
+) (C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+Package: amsmath 2021/04/20 v2.17j AMS math features
+\@mathmargin=\skip58
+
+For additional information on amsmath, use the `?' option.
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks18
+\ex@=\dimen141
+))
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen142
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count191
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count192
+\leftroot@=\count193
+LaTeX Info: Redefining \overline on input line 399.
+\classnum@=\count194
+\DOTSCASE@=\count195
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box50
+\strutbox@=\box51
+\big@size=\dimen143
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count196
+\c@MaxMatrixCols=\count197
+\dotsspace@=\muskip16
+\c@parentequation=\count198
+\dspbrk@lvl=\count199
+\tag@help=\toks19
+\row@=\count266
+\column@=\count267
+\maxfields@=\count268
+\andhelp@=\toks20
+\eqnshift@=\dimen144
+\alignsep@=\dimen145
+\tagshift@=\dimen146
+\tagwidth@=\dimen147
+\totwidth@=\dimen148
+\lineht@=\dimen149
+\@envbody=\toks21
+\multlinegap=\skip59
+\multlinetaggap=\skip60
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2923.
+LaTeX Info: Redefining \] on input line 2924.
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+) (C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+) (C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amscd.sty
+Package: amscd 2017/04/14 v2.1 AMS Commutative Diagrams
+\athelp@=\toks23
+\minaw@=\dimen150
+\bigaw@=\dimen151
+\minCDarrowwidth=\dimen152
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/amscls\amsthm.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks24
+\thm@bodyfont=\toks25
+\thm@headfont=\toks26
+\thm@notefont=\toks27
+\thm@headpunct=\toks28
+\thm@preskip=\skip61
+\thm@postskip=\skip62
+\thm@headsep=\skip63
+\dth@everypar=\toks29
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/tools\xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+\c@example=\count269
+\c@theorem=\count270
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2020/10/26 v3.5g Customizing captions (AR)
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+Package: caption3 2020/10/21 v2.2e caption3 kernel (AR)
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks30
+)
+\captionmargin=\dimen153
+\captionmargin@=\dimen154
+\captionwidth=\dimen155
+\caption@tempdima=\dimen156
+\caption@indent=\dimen157
+\caption@parindent=\dimen158
+\caption@hangindent=\dimen159
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count271
+\c@continuedfloat=\count272
+) (C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.st
+y
+Package: graphicx 2020/12/05 v1.2c Enhanced LaTeX Graphics (DPC,SPQR)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.
+cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.de
+f
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen160
+\Gin@req@width=\dimen161
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf.
+sty
+Package: epstopdf 2020-01-24 v2.11 Conversion with epstopdf on the fly (HO)
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.
+sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+) (C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/grfext\grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefin
+ekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+))
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.st
+y
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/kvsetkeys\kvsetkeys.
+sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+))
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmd
+s.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-
+base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 504.
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.
+cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+)))
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen162
+\lightrulewidth=\dimen163
+\cmidrulewidth=\dimen164
+\belowrulesep=\dimen165
+\belowbottomsep=\dimen166
+\aboverulesep=\dimen167
+\abovetopsep=\dimen168
+\cmidrulesep=\dimen169
+\cmidrulekern=\dimen170
+\defaultaddspace=\dimen171
+\@cmidla=\count273
+\@cmidlb=\count274
+\@aboverulesep=\dimen172
+\@belowrulesep=\dimen173
+\@thisruleclass=\count275
+\@lastruleclass=\count276
+\@thisrulewidth=\dimen174
+) (C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/graphics\rotating.st
+y
+Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@r@tfl@t=\count277
+\rotFPtop=\skip64
+\rotFPbot=\skip65
+\rot@float@box=\box52
+\rot@mess@toks=\toks31
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
+\lst@mode=\count278
+\lst@gtempboxa=\box53
+\lst@token=\toks32
+\lst@length=\count279
+\lst@currlwidth=\dimen175
+\lst@column=\count280
+\lst@pos=\count281
+\lst@lostspace=\dimen176
+\lst@width=\dimen177
+\lst@newlines=\count282
+\lst@lineno=\count283
+\lst@maxwidth=\dimen178
+
+(lstpatch.sty
+File: lstpatch.sty 2002/10/13 1.0i (Carsten Heinz)
+
+
+***
+*** This is a patch for `listings.sty' version 1.0, but
+*** you're using version 1.8d.
+***
+*** Patch file not loaded.
+***
+
+) (C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+\c@lstnumber=\count284
+\lst@skipnumbers=\count285
+\lst@framebox=\box54
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
+File: listings.cfg 2020/03/24 1.8d listings configuration
+))
+Package: listings 2020/03/24 1.8d (Carsten Heinz)
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+Package: hyperref 2021-06-05 v7.00l Hypertext links for LaTeX
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.
+sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/letltxmacro\letltxmacr
+o.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+\@linkdim=\dimen179
+\Hy@linkcounter=\count286
+\Hy@pagecounter=\count287
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+File: pd1enc.def 2021-06-05 v7.00l Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref-lang
+patches.def
+File: hyperref-langpatches.def 2021-06-05 v7.00l Hyperref: patches for babel la
+nguages
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/etexcmds\etexcmds.st
+y
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count288
+ (C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
+File: puenc.def 2021-06-05 v7.00l Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Option `bookmarks' set `true' on input line 4073.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 4073.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 4073
+.
+Package hyperref Info: Option `hypertexnames' set `false' on input line 4073.
+Package hyperref Info: Option `colorlinks' set `true' on input line 4073.
+Package hyperref Info: Option `unicode' set `true' on input line 4073.
+Package hyperref Info: Option `breaklinks' set `true' on input line 4073.
+Package hyperref Info: Hyper figures OFF on input line 4192.
+Package hyperref Info: Link nesting OFF on input line 4197.
+Package hyperref Info: Hyper index ON on input line 4200.
+Package hyperref Info: Plain pages OFF on input line 4207.
+Package hyperref Info: Backreferencing OFF on input line 4212.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4445.
+\c@Hy@tempcnt=\count289
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4804.
+\XeTeXLinkMargin=\dimen180
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcal
+c.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count290
+\Field@Width=\dimen181
+\Fld@charsize=\dimen182
+Package hyperref Info: Hyper figures OFF on input line 6076.
+Package hyperref Info: Link nesting OFF on input line 6081.
+Package hyperref Info: Hyper index ON on input line 6084.
+Package hyperref Info: backreferencing OFF on input line 6091.
+Package hyperref Info: Link coloring ON on input line 6094.
+Package hyperref Info: Link coloring with OCG OFF on input line 6101.
+Package hyperref Info: PDF/A mode OFF on input line 6106.
+LaTeX Info: Redefining \ref on input line 6146.
+LaTeX Info: Redefining \pageref on input line 6150.
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count291
+\c@Item=\count292
+\c@Hfootnote=\count293
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+ (C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+File: hpdftex.def 2021-06-05 v7.00l Hyperref driver for pdfTeX
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery packag
+e
+with kernel methods
+)
+\Fld@listcount=\count294
+\c@bookmark@seq@number=\count295
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfi
+lecheck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\unique
+counter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+86.
+)
+\Hy@SectionHShift=\skip66
+)
+\c@dummy=\count296
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
+Package: longtable 2021-05-07 v4.16 Multi-page Table package (DPC)
+\LTleft=\skip67
+\LTright=\skip68
+\LTpre=\skip69
+\LTpost=\skip70
+\LTchunksize=\count297
+\LTcapwidth=\dimen183
+\LT@head=\box55
+\LT@firsthead=\box56
+\LT@foot=\box57
+\LT@lastfoot=\box58
+\LT@gbox=\box59
+\LT@cols=\count298
+\LT@rows=\count299
+\c@LT@tables=\count300
+\c@LT@chunks=\count301
+\LT@p@ftn=\toks33
+))
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/placeins\placeins.sty
+Package: placeins 2005/04/18  v 2.2
+) (C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.st
+y
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip71
+\multirow@cntb=\count302
+\multirow@dima=\skip72
+\bigstrutjot=\dimen184
+) (C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/sectsty\sectsty.sty
+Package: sectsty 2002/02/25 v2.0.2 Commands to change all sectional heading sty
+les
+
+
+LaTeX Warning: Command \underbar  has changed.
+               Check if current package is valid.
+
+
+LaTeX Warning: Command \underline  has changed.
+               Check if current package is valid.
+
+) (C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/colortbl\colortbl.sty
+Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+Package: array 2021/04/20 v2.5e Tabular extension package (FMi)
+\col@sep=\dimen185
+\ar@mcellbox=\box60
+\extrarowheight=\dimen186
+\NC@list=\toks34
+\extratabsurround=\skip73
+\backup@length=\skip74
+\ar@cellbox=\box61
+)
+\everycr=\toks35
+\minrowclearance=\skip75
+)
+\rownum=\count303
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/graphics\lscape.sty
+Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.sty
+Package: csquotes 2021-02-22 v5.2l context-sensitive quotations (JAW)
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count304
+)
+\csq@reset=\count305
+\csq@gtype=\count306
+\csq@glevel=\count307
+\csq@qlevel=\count308
+\csq@maxlvl=\count309
+\csq@tshold=\count310
+\csq@ltx@everypar=\toks36
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.def
+File: csquotes.def 2021-02-22 v5.2l csquotes generic definitions (JAW)
+)
+Package csquotes Info: Trying to load configuration file 'csquotes.cfg'...
+Package csquotes Info: ... configuration file loaded successfully.
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.cfg
+File: csquotes.cfg 
+)
+Package csquotes Info: Enabling multilingual quotes.
+) (C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+Package: babel 2021/06/02 3.60 The Babel package
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.def
+File: babel.def 2021/06/02 3.60 Babel common definitions
+\babel@savecnt=\count311
+\U@D=\dimen187
+\l@unhyphenated=\language79
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+\bbl@readstream=\read2
+)
+\bbl@dirlevel=\count312
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/babel-english\english.
+ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+Package babel Info: Hyphen rules for 'canadian' set to \l@english
+(babel)             (\language0). Reported on input line 102.
+Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
+(babel)             (\language73). Reported on input line 105.
+Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
+(babel)             (\language73). Reported on input line 108.
+))
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/parskip\parskip.sty
+Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\adjustbox.st
+y
+Package: adjustbox 2020/08/19 v1.3 Adjusting TeX boxes (trim, clip, ...)
+ (C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
+\XKV@toks=\toks37
+\XKV@tempa@toks=\toks38
+)
+\XKV@depth=\count313
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\adjcalc.sty
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back
+-ends (calc, etex, pgfmath)
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\trimclip.sty
+Package: trimclip 2020/08/19 v1.2 Trim and clip general TeX material
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/collectbox\collectbox.
+sty
+Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
+\collectedbox=\box62
+)
+\tc@llx=\dimen188
+\tc@lly=\dimen189
+\tc@urx=\dimen190
+\tc@ury=\dimen191
+Package trimclip Info: Using driver 'tc-pdftex.def'.
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\tc-pdftex.de
+f
+File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
+))
+\adjbox@Width=\dimen192
+\adjbox@Height=\dimen193
+\adjbox@Depth=\dimen194
+\adjbox@Totalheight=\dimen195
+\adjbox@pwidth=\dimen196
+\adjbox@pheight=\dimen197
+\adjbox@pdepth=\dimen198
+\adjbox@ptotalheight=\dimen199
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/ifoddpage\ifoddpage.st
+y
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count314
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/varwidth\varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box63
+\sift@deathcycles=\count315
+\@vwid@loff=\dimen256
+\@vwid@roff=\dimen257
+)) (C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/pbox\pbox.sty
+Package: pbox 2011/12/07 v1.2 Dynamic parboxes
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count316
+\calc@Bcount=\count317
+\calc@Adimen=\dimen258
+\calc@Bdimen=\dimen259
+\calc@Askip=\skip76
+\calc@Bskip=\skip77
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count318
+\calc@Cskip=\skip78
+)
+\pb@xlen=\skip79
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/threeparttable\threepa
+rttable.sty
+Package: threeparttable 2003/06/13  v 3.0
+\@tempboxb=\box64
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/tools\bm.sty
+Package: bm 2021/04/25 v1.2e Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup6
+\symboldletters=\mathgroup7
+\symboldsymbols=\mathgroup8
+Package bm Info: No bold for \OMX/cmex/m/n, using \pmb.
+Package bm Info: No bold for \U/msa/m/n, using \pmb.
+Package bm Info: No bold for \U/msb/m/n, using \pmb.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/tools\hhline.sty
+Package: hhline 2020/01/04 v2.04 Table rule package (DPC)
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/pdfpages\pdfpages.sty
+Package: pdfpages 2021/03/06 v0.5t Insert pages of external PDF documents (AM)
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/eso-pic\eso-pic.sty
+Package: eso-pic 2020/10/14 v3.0a eso-pic (RN)
+\ESO@tempdima=\dimen260
+\ESO@tempdimb=\dimen261
+)
+\AM@pagewidth=\dimen262
+\AM@pageheight=\dimen263
+\AM@fboxrule=\dimen264
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/pdfpages\pppdftex.def
+File: pppdftex.def 2021/03/06 v0.5t Pdfpages driver for pdfTeX (AM)
+)
+\pdfpages@includegraphics@status=\count319
+\AM@pagebox=\box65
+\AM@global@opts=\toks39
+\AM@pagecnt=\count320
+\AM@toc@title=\toks40
+\c@AM@survey=\count321
+\AM@templatesizebox=\box66
+) (C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/graphics\epsfig.sty
+Package: epsfig 2017/06/25 v1.7b (e)psfig emulation (SPQR)
+\epsfxsize=\dimen265
+\epsfysize=\dimen266
+) (C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count322
+\float@exts=\toks41
+\float@box=\box67
+\@float@everytoks=\toks42
+\@floatcapt=\box68
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/nomencl\nomencl.sty
+Package: nomencl 2020/12/29 v5.5 Nomenclature package
+
+(tocbasic.sty
+Package: tocbasic 2012/04/04 v3.10b KOMA-Script package (handling toc-files)
+)
+Package tocbasic Info: setting babel extension for `nlo' on input line 187.
+Package tocbasic Info: setting babel extension for `nls' on input line 188.
+\nomlabelwidth=\dimen267
+\nom@tempdim=\dimen268
+\nomitemsep=\skip80
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.sty
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/l3keys2e\l3
+keys2e.sty
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+Package: expl3 2021-06-01 L3 programming layer (loader) 
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pd
+ftex.def
+File: l3backend-pdftex.def 2021-05-07 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count323
+\l__pdf_internal_box=\box69
+))
+Package: l3keys2e 2021-06-01 LaTeX2e option processing using LaTeX3 keys
+)
+Package: lipsum 2021-08-01 v2.5 150 paragraphs of Lorem Ipsum dummy text
+\g__lipsum_par_int=\count324
+\l__lipsum_a_int=\count325
+\l__lipsum_b_int=\count326
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.ltd.tex)
+) (C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/tools\afterpage.sty
+Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
+\AP@output=\toks43
+\AP@partial=\box70
+\AP@footins=\box71
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape.st
+y
+Package: pdflscape 2019/12/05 v0.12 Display of landscape pages in PDF (HO)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/pstricks\pstricks.sty
+Package: pstricks 2021/08/23 v0.71 LaTeX wrapper for `PSTricks' (RN,HV)
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\pst-xkey.tex
+File: pst-xkey.tex 2005/11/25 v1.6 PSTricks specialization of xkeyval (HA)
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pstricks\pstricks.te
+x
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pstricks\pst-fp.tex
+`pst-fp' v0.06, 2020/11/20 (hv)
+\pstFP@xs=\count327
+\pstFP@xia=\count328
+\pstFP@xib=\count329
+\pstFP@xfa=\count330
+\pstFP@xfb=\count331
+\pstFP@rega=\count332
+\pstFP@regb=\count333
+\pstFP@regs=\count334
+\pstFP@times=\count335
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfuti
+l-common.tex
+\pgfutil@everybye=\toks44
+\pgfutil@tempdima=\dimen269
+\pgfutil@tempdimb=\dimen270
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfuti
+l-common-lists.tex))
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkey
+s.code.tex
+\pgfkeys@pathtoks=\toks45
+\pgfkeys@temptoks=\toks46
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkey
+sfiltered.code.tex
+\pgfkeys@tmptoks=\toks47
+))
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgffor
+.code.tex
+Loading pgffor.code.tex
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.cod
+e.tex
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc
+.code.tex
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil
+.code.tex
+\pgf@x=\dimen271
+\pgf@xa=\dimen272
+\pgf@xb=\dimen273
+\pgf@xc=\dimen274
+\pgf@y=\dimen275
+\pgf@ya=\dimen276
+\pgf@yb=\dimen277
+\pgf@yc=\dimen278
+\c@pgf@counta=\count336
+\c@pgf@countb=\count337
+\c@pgf@countc=\count338
+\c@pgf@countd=\count339
+\pgfutil@tempcnta=\count340
+\pgfutil@tempcntb=\count341
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathpars
+er.code.tex
+\pgfmath@dimen=\dimen279
+\pgfmath@count=\count342
+\pgfmath@box=\box72
+\pgfmath@toks=\toks48
+\pgfmath@stack@operand=\toks49
+\pgfmath@stack@operation=\toks50
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunc
+tions.code.tex
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunc
+tions.basic.code.tex)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunc
+tions.trigonometric.code.tex)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunc
+tions.random.code.tex)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunc
+tions.comparison.code.tex)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunc
+tions.base.code.tex)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunc
+tions.round.code.tex)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunc
+tions.misc.code.tex)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunc
+tions.integerarithmetics.code.tex)))
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloa
+t.code.tex
+\c@pgfmathroundto@lastzeros=\count343
+))
+\pgffor@iter=\dimen280
+\pgffor@skip=\dimen281
+\pgffor@stack=\toks51
+\pgffor@toks=\toks52
+)
+\psLoopIndex=\count344
+
+`PSTricks' v3.06  <2021/08/27> (tvz,hv)
+\pst@dima=\dimen282
+\pst@dimb=\dimen283
+\pst@dimc=\dimen284
+\pst@dimd=\dimen285
+\pst@dimg=\dimen286
+\pst@dimh=\dimen287
+\pst@dimm=\dimen288
+\pst@dimn=\dimen289
+\pst@dimo=\dimen290
+\pst@dimp=\dimen291
+\pst@hbox=\box73
+\pst@ibox=\box74
+\pst@boxg=\box75
+\pst@cnta=\count345
+\pst@cntb=\count346
+\pst@cntc=\count347
+\pst@cntd=\count348
+\pst@cntg=\count349
+\pst@cnth=\count350
+\pst@cntm=\count351
+\pst@cntn=\count352
+\pst@cnto=\count353
+\pst@cntp=\count354
+\@zero=\count355
+\pst@toks=\toks53
+--- We are running latex or xelatex ---
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pstricks\pstricks.co
+n)
+\psunit=\dimen292
+\psxunit=\dimen293
+\psyunit=\dimen294
+\pst@C@@rType=\count356
+\pslinewidth=\dimen295
+\psk@startLW=\dimen296
+\psk@endLW=\dimen297
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pstricks\pstricks-ar
+rows.tex
+\pshooklength=\dimen298
+\pshookwidth=\dimen299
+)
+\pst@customdefs=\toks54
+\pslinearc=\dimen300
+\pst@symbolStep=\dimen301
+\pst@symbolWidth=\dimen302
+\pst@symbolLinewidth=\dimen303
+
+Test lualatex
+Test false
+\everypsbox=\toks55
+\psframesep=\dimen304
+\pslabelsep=\dimen305
+\sh@wgridXunit=\dimen306
+\sh@wgridYunit=\dimen307
+\pst@shift=\dimen308
+)
+File: pstricks.tex 2021/08/27 v3.06 `PSTricks' (tvz,hv)
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/pstricks\pst-fp.tex
+`pst-fp' v0.06, 2020/11/20 (hv))
+File: pst-fp.tex 2020/11/20 v0.06 `PST-fp' (hv)
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\titlesec.sty
+Package: titlesec 2021/07/05 v2.14 Sectioning titles
+\ttl@box=\box76
+\beforetitleunit=\skip81
+\aftertitleunit=\skip82
+\ttl@plus=\dimen309
+\ttl@minus=\dimen310
+\ttl@toksa=\toks56
+\titlewidth=\dimen311
+\titlewidthlast=\dimen312
+\titlewidthfirst=\dimen313
+) (cases.sty
+Package: cases 2002/05/02 ver 2.5 
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/tocloft\tocloft.sty
+Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
+Package tocloft Info: The document has chapter divisions on input line 51.
+\cftparskip=\skip83
+\cftbeforetoctitleskip=\skip84
+\cftaftertoctitleskip=\skip85
+\cftbeforepartskip=\skip86
+\cftpartnumwidth=\skip87
+\cftpartindent=\skip88
+\cftbeforechapskip=\skip89
+\cftchapindent=\skip90
+\cftchapnumwidth=\skip91
+\cftbeforesecskip=\skip92
+\cftsecindent=\skip93
+\cftsecnumwidth=\skip94
+\cftbeforesubsecskip=\skip95
+\cftsubsecindent=\skip96
+\cftsubsecnumwidth=\skip97
+\cftbeforesubsubsecskip=\skip98
+\cftsubsubsecindent=\skip99
+\cftsubsubsecnumwidth=\skip100
+\cftbeforeparaskip=\skip101
+\cftparaindent=\skip102
+\cftparanumwidth=\skip103
+\cftbeforesubparaskip=\skip104
+\cftsubparaindent=\skip105
+\cftsubparanumwidth=\skip106
+\cftbeforeloftitleskip=\skip107
+\cftafterloftitleskip=\skip108
+\cftbeforefigskip=\skip109
+\cftfigindent=\skip110
+\cftfignumwidth=\skip111
+\c@lofdepth=\count357
+\c@lotdepth=\count358
+\cftbeforelottitleskip=\skip112
+\cftafterlottitleskip=\skip113
+\cftbeforetabskip=\skip114
+\cfttabindent=\skip115
+\cfttabnumwidth=\skip116
+
+
+Package tocloft Warning: \@starttoc has already been redefined; tocloft bailing
+ out. on input line 1156.
+
+) (C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip117
+\bibsep=\skip118
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count359
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/preprint\authblk.sty
+Package: authblk 2001/02/27 1.3 (PWD)
+\affilsep=\skip119
+\@affilsep=\skip120
+\c@Maxaffil=\count360
+\c@authors=\count361
+\c@affil=\count362
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\pifont.sty
+Package: pifont 2020/03/25 PSNFSS-v9.3 Pi font support (SPQR) 
+LaTeX Font Info:    Trying to load font information for U+pzd on input line 63.
+
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\upzd.fd
+File: upzd.fd 2001/06/04 font definitions for U/pzd.
+)
+LaTeX Font Info:    Trying to load font information for U+psy on input line 64.
+
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\upsy.fd
+File: upsy.fd 2001/06/04 font definitions for U/psy.
+))
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\labelindent=\skip121
+\enit@outerparindent=\dimen314
+\enit@toks=\toks57
+\enit@inbox=\box77
+\enit@count@id=\count363
+\enitdp@description=\count364
+) (C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bookmark.st
+y
+Package: bookmark 2020-11-06 v1.29 PDF bookmarks (HO)
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bkm-pdftex.de
+f
+File: bkm-pdftex.def 2020-11-06 v1.29 bookmark driver for pdfTeX (HO)
+\BKM@id=\count365
+))
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/arydshln\arydshln.sty
+Package: arydshln 2019/02/21 v1.76 
+\dashlinedash=\dimen315
+\dashlinegap=\dimen316
+\adl@box=\box78
+\adl@height=\dimen317
+\adl@heightsave=\dimen318
+\adl@depth=\dimen319
+\adl@depthsave=\dimen320
+\adl@finaldepth=\dimen321
+\adl@columns=\count366
+\adl@ncol=\count367
+\adl@currentcolumn=\count368
+\adl@currentcolumnsave=\count369
+\adl@totalheight=\count370
+\adl@totalheightsave=\count371
+\adl@dash=\count372
+\adl@gap=\count373
+\adl@cla=\count374
+\adl@clb=\count375
+\adl@everyvbox=\toks58
+\adl@LTpagetotal=\dimen322
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/algorithm2e\algorithm2
+e.sty
+Package: algorithm2e 2017/07/18 v5.2 algorithms environments
+\c@AlgoLine=\count376
+\algocf@hangindent=\skip122
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/relsize\relsize.sty
+Package: relsize 2013/03/29 ver 4.1
+)
+\skiptotal=\skip123
+\skiplinenumber=\skip124
+\skiprule=\skip125
+\skiphlne=\skip126
+\skiptext=\skip127
+\skiplength=\skip128
+\algomargin=\skip129
+\skipalgocfslide=\skip130
+\algowidth=\dimen323
+\inoutsize=\dimen324
+\inoutindent=\dimen325
+\interspacetitleruled=\dimen326
+\interspacealgoruled=\dimen327
+\interspacetitleboxruled=\dimen328
+\algocf@ruledwidth=\skip131
+\algocf@inoutbox=\box79
+\algocf@inputbox=\box80
+\AlCapSkip=\skip132
+\AlCapHSkip=\skip133
+\algoskipindent=\skip134
+\algocf@nlbox=\box81
+\algocf@hangingbox=\box82
+\algocf@untilbox=\box83
+\algocf@skipuntil=\skip135
+\algocf@capbox=\box84
+\algocf@lcaptionbox=\skip136
+\algoheightruledefault=\skip137
+\algoheightrule=\skip138
+\algotitleheightruledefault=\skip139
+\algotitleheightrule=\skip140
+\c@algocfline=\count377
+\c@algocfproc=\count378
+\c@algocf=\count379
+\algocf@algoframe=\box85
+\algocf@algobox=\box86
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/caption\subcaption.sty
+Package: subcaption 2020/10/07 v1.3j Sub-captions (AR)
+\c@subfigure=\count380
+\c@subtable=\count381
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/appendix\appendix.sty
+Package: appendix 2020/02/08 v1.2c extra appendix facilities
+\c@@pps=\count382
+\c@@ppsavesec=\count383
+\c@@ppsaveapp=\count384
+) (matlab.sty
+Package: matlab 2006/03/04 Gerald Recktenwald's style for typesetting MATLAB co
+de
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/base\alltt.sty
+Package: alltt 2021/01/29 v2.0g defines alltt environment
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/boxedminipage\boxedmin
+ipage.sty
+Package: boxedminipage 2020/04/19 v1.1 Boxed LaTeX2e minipages
+\bmp@box=\box87
+\bmp@width=\skip141
+\bmp@height=\skip142
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/fancyvrb\fancyvrb.sty
+Package: fancyvrb 2021/08/12 v3.8 verbatim text (tvz,hv)
+\FV@CodeLineNo=\count385
+\FV@InFile=\read3
+\FV@TabBox=\box88
+\c@FancyVerbLine=\count386
+\FV@StepNumber=\count387
+\FV@OutFile=\write3
+)
+\@float@every@Listing=\toks59
+\c@Listing=\count388
+) (C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/lineno\lineno.sty
+Package: lineno 2005/11/02 line numbers on paragraphs v4.41
+\linenopenalty=\count389
+\output=\toks60
+\linenoprevgraf=\count390
+\linenumbersep=\dimen329
+\linenumberwidth=\dimen330
+\c@linenumber=\count391
+\c@pagewiselinenumber=\count392
+\c@LN@truepage=\count393
+\c@internallinenumber=\count394
+\c@internallinenumbers=\count395
+\quotelinenumbersep=\dimen331
+\bframerule=\dimen332
+\bframesep=\dimen333
+\bframebox=\box89
+
+
+LaTeX Warning: Command \@parboxrestore  has changed.
+               Check if current package is valid.
+
+LaTeX Info: Redefining \\ on input line 3056.
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/mfirstuc\mfirstuc.sty
+Package: mfirstuc 2017/11/14 v2.06 (NLCT)
+\@glsmfirst=\toks61
+\@glsmrest=\toks62
+)
+Package csquotes Info: Checking for multilingual support...
+Package csquotes Info: ... found 'babel' package.
+(Abid_Thesis.aux (cover1.aux) (cover2.aux) (cover3.aux) (cover4.aux)
+(cover5.aux) (cover6_certificate.aux) (cover7_dedication.aux)
+(cover8_acknoledgment.aux) (cover9_abstract.aux) (conference_papers.aux)
+(contents.aux) (figures.aux) (tables.aux) (algos.aux) (cover10.aux) (chap1.aux)
+(chap2.aux) (chap3.aux) (chap4.aux
+
+LaTeX Warning: Label `tab2' multiply defined.
+
+
+LaTeX Warning: Label `tab1' multiply defined.
+
+) (chap6.aux) (chap7.aux) (Appendix_A.aux) (Appendix_B.aux) (Appendix_B1.aux)
+(Appendix_C.aux) (Appendix_C1.aux))
+\openout1 = `Abid_Thesis.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: longtable package is loaded.
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty
+Package: ltcaption 2020/05/30 v1.4b longtable captions (AR)
+)
+Package caption Info: rotating package is loaded.
+Package caption Info: threeparttable package is loaded.
+Package caption Info: End \AtBeginDocument code.
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.m
+kii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count396
+\scratchdimen=\dimen334
+\scratchbox=\box90
+\nofMPsegments=\count397
+\nofMParguments=\count398
+\everyMPshowfont=\toks63
+\MPscratchCnt=\count399
+\MPscratchDim=\dimen335
+\MPnumerator=\count400
+\makeMPintoPDFobject=\count401
+\everyMPtoPDFconversion=\toks64
+)
+\c@lstlisting=\count402
+Package hyperref Info: Link coloring ON on input line 87.
+ (C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\getti
+tlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count403
+)
+LaTeX Info: Redefining \ref on input line 87.
+LaTeX Info: Redefining \pageref on input line 87.
+LaTeX Info: Redefining \nameref on input line 87.
+\openout2 = `cover1.aux'.
+
+ (cover1.tex
+<ciitlogo.jpg, id=3, 772.8875pt x 771.88374pt>
+File: ciitlogo.jpg Graphic file (type jpg)
+<use ciitlogo.jpg>
+Package pdftex.def Info: ciitlogo.jpg  used on input line 10.
+(pdftex.def)             Requested size: 170.71652pt x 170.48628pt.
+) [1
+Non-PDF special ignored!
+<special> header=pstricks.pro
+Non-PDF special ignored!
+<special> header=pst-algparser.pro
+Non-PDF special ignored!
+<special> header=pst-tools.pro
+Non-PDF special ignored!
+<special> header=pst-dots.pro
+
+Non-PDF special ignored!
+<special> ps: /pssetRGBcolor /setrgbcolor load def /pssetCMYKcolor /setcmyk...
+Non-PDF special ignored!
+<special> ps:tx@Dict begin  gsave STV CP T /ps@rot 0 def grestore  end
+Non-PDF special ignored!
+<special> ps:tx@Dict begin  gsave STV CP T /ps@refangle 0.  def grestore  e...
+
+{C:/Users/Nexgen/AppData/Local/MiKTeX/pdftex/config/pdftex.map} <./ciitlogo.jpg
+>]
+\openout2 = `cover2.aux'.
+
+ (cover2.tex
+File: ciitlogo.jpg Graphic file (type jpg)
+<use ciitlogo.jpg>
+Package pdftex.def Info: ciitlogo.jpg  used on input line 3.
+(pdftex.def)             Requested size: 28.45274pt x 28.4085pt.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 4.
+
+(C:\Users\Nexgen\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+))
+[2
+
+
+
+]
+\openout2 = `cover3.aux'.
+
+ (cover3.tex
+Overfull \hbox (23.54465pt too wide) in paragraph at lines 7--8
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+
+ []
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <16> not available
+(Font)              size <17.28> substituted on input line 19.
+
+) [3
+
+
+
+]
+\openout2 = `cover4.aux'.
+
+ (cover4.tex
+Overfull \hbox (23.54465pt too wide) in paragraph at lines 6--7
+[] 
+ []
+
+) [4
+
+
+
+]
+\openout2 = `cover5.aux'.
+
+ (cover5.tex [5
+
+
+
+])
+\openout2 = `cover6_certificate.aux'.
+
+ (cover6_certificate.tex
+Overfull \hbox (60.70607pt too wide) in paragraph at lines 18--48
+ [][] 
+ []
+
+[6
+
+
+
+
+
+])
+\openout2 = `cover7_dedication.aux'.
+
+ (cover7_dedication.tex
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <16> not available
+(Font)              size <17.28> substituted on input line 7.
+
+[7
+
+
+
+
+])
+\openout2 = `cover8_acknoledgment.aux'.
+
+ (cover8_acknoledgment.tex [8
+
+
+
+
+])
+\openout2 = `cover9_abstract.aux'.
+
+ (cover9_abstract.tex [9
+
+
+
+
+])
+\openout2 = `conference_papers.aux'.
+
+
+(conference_papers.tex [10
+
+
+
+
+])
+\openout2 = `contents.aux'.
+
+ (contents.tex (Abid_Thesis.toc [11
+
+
+
+
+] [12])
+\tf@toc=\write4
+\openout4 = `Abid_Thesis.toc'.
+
+ [13])
+\openout2 = `figures.aux'.
+
+
+(figures.tex (Abid_Thesis.lof)
+\tf@lof=\write5
+\openout5 = `Abid_Thesis.lof'.
+
+ [14
+
+
+
+])
+\openout2 = `tables.aux'.
+
+ (tables.tex (Abid_Thesis.lot)
+\tf@lot=\write6
+\openout6 = `Abid_Thesis.lot'.
+
+ [15
+
+
+
+
+])
+\openout2 = `algos.aux'.
+
+
+(algos.tex (Abid_Thesis.loa)
+\tf@loa=\write7
+\openout7 = `Abid_Thesis.loa'.
+
+ [16
+
+
+
+
+
+])
+\openout2 = `cover10.aux'.
+
+ (cover10.tex [17
+
+
+
+
+
+] [18])
+
+Package fancyhdr Warning: \fancyhead's `E' option without twoside option is use
+less on input line 110.
+
+\openout2 = `chap1.aux'.
+
+(chap1.tex
+Chapter 1.
+------------------------------------------------------------------------------
+ 1 
+------------------------------------------------------------------------------
+[1
+
+
+
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 19--23
+
+ []
+
+[2]
+Overfull \hbox (1.40591pt too wide) in paragraph at lines 27--28
+[]\OT1/cmr/m/n/12 In this sec-tion of the-sis, the back-ground and mo-ti-va-tio
+n, in-tro-duc-tion of [][]blockchain[][],
+ []
+
+[3] [4] [5] [6])
+\openout2 = `chap2.aux'.
+
+ (chap2.tex
+Chapter 2.
+------------------------------------------------------------------------------
+ 2 
+------------------------------------------------------------------------------
+[7
+
+
+
+
+
+] [8] [9] [10]) [11] [12]
+\openout2 = `chap3.aux'.
+
+ (chap3.tex
+Chapter 3.
+------------------------------------------------------------------------------
+ 3 
+------------------------------------------------------------------------------
+[13
+
+
+
+
+]
+<figures/SystemModel_C1.pdf, id=453, 503.14674pt x 568.64447pt>
+File: figures/SystemModel_C1.pdf Graphic file (type pdf)
+<use figures/SystemModel_C1.pdf>
+Package pdftex.def Info: figures/SystemModel_C1.pdf  used on input line 12.
+(pdftex.def)             Requested size: 417.47307pt x 471.83597pt.
+ [14] [15 <./figures/SystemModel_C1.pdf>] [16] [17]
+<figures/System_Model_J2_C.pdf, id=522, 395.96733pt x 465.43488pt>
+File: figures/System_Model_J2_C.pdf Graphic file (type pdf)
+<use figures/System_Model_J2_C.pdf>
+Package pdftex.def Info: figures/System_Model_J2_C.pdf  used on input line 68.
+(pdftex.def)             Requested size: 292.22987pt x 343.52156pt.
+ [18] [19 <./figures/System_Model_J2_C.pdf>] [20]
+Underfull \hbox (badness 10000) in paragraph at lines 110--112
+
+ []
+
+[21]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[22]) [23] [24]
+\openout2 = `chap4.aux'.
+
+ (chap4.tex
+Chapter 4.
+------------------------------------------------------------------------------
+ 4 
+------------------------------------------------------------------------------
+[25
+
+
+
+
+]
+Package epstopdf Info: Source file: <figures/My_paper_Plots_CombinedFinal.eps>
+(epstopdf)                    date: 2021-07-13 00:57:04
+(epstopdf)                    size: 55907 bytes
+(epstopdf)             Output file: <figures/My_paper_Plots_CombinedFinal-eps-c
+onverted-to.pdf>
+(epstopdf)                    date: 2021-08-16 21:20:10
+(epstopdf)                    size: 33307 bytes
+(epstopdf)             Command: <miktex-epstopdf --outfile=figures/My_paper_Plo
+ts_CombinedFinal-eps-converted-to.pdf figures/My_paper_Plots_CombinedFinal.eps>
+
+(epstopdf)             \includegraphics on input line 12.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex.exe (file ./figures/My_paper_Plots_CombinedFinal-eps-c
+onverted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <
+1.5> allowed
+<figures/My_paper_Plots_CombinedFinal-eps-converted-to.pdf, id=624, 433.62pt x 
+289.08pt>
+File: figures/My_paper_Plots_CombinedFinal-eps-converted-to.pdf Graphic file (t
+ype pdf)
+<use figures/My_paper_Plots_CombinedFinal-eps-converted-to.pdf>
+Package pdftex.def Info: figures/My_paper_Plots_CombinedFinal-eps-converted-to.
+pdf  used on input line 12.
+(pdftex.def)             Requested size: 417.47307pt x 278.32967pt.
+Package epstopdf Info: Source file: <figures/Solidity_plotFinal.eps>
+(epstopdf)                    date: 2021-07-13 00:57:06
+(epstopdf)                    size: 38309 bytes
+(epstopdf)             Output file: <figures/Solidity_plotFinal-eps-converted-t
+o.pdf>
+(epstopdf)                    date: 2021-08-16 21:20:13
+(epstopdf)                    size: 28827 bytes
+(epstopdf)             Command: <miktex-epstopdf --outfile=figures/Solidity_plo
+tFinal-eps-converted-to.pdf figures/Solidity_plotFinal.eps>
+(epstopdf)             \includegraphics on input line 20.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex.exe (file ./figures/Solidity_plotFinal-eps-converted-t
+o.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allow
+ed
+<figures/Solidity_plotFinal-eps-converted-to.pdf, id=625, 433.62pt x 289.08pt>
+File: figures/Solidity_plotFinal-eps-converted-to.pdf Graphic file (type pdf)
+<use figures/Solidity_plotFinal-eps-converted-to.pdf>
+Package pdftex.def Info: figures/Solidity_plotFinal-eps-converted-to.pdf  used 
+on input line 20.
+(pdftex.def)             Requested size: 417.47307pt x 278.32967pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+Package epstopdf Info: Source file: <figures/BatchVerificationResults1.eps>
+(epstopdf)                    date: 2021-08-19 22:49:01
+(epstopdf)                    size: 72410 bytes
+(epstopdf)             Output file: <figures/BatchVerificationResults1-eps-conv
+erted-to.pdf>
+(epstopdf)                    date: 2021-08-19 22:51:23
+(epstopdf)                    size: 20225 bytes
+(epstopdf)             Command: <miktex-epstopdf --outfile=figures/BatchVerific
+ationResults1-eps-converted-to.pdf figures/BatchVerificationResults1.eps>
+(epstopdf)             \includegraphics on input line 27.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex.exe (file ./figures/BatchVerificationResults1-eps-conv
+erted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5
+> allowed
+<figures/BatchVerificationResults1-eps-converted-to.pdf, id=626, 421.575pt x 31
+6.18124pt>
+File: figures/BatchVerificationResults1-eps-converted-to.pdf Graphic file (type
+ pdf)
+<use figures/BatchVerificationResults1-eps-converted-to.pdf>
+Package pdftex.def Info: figures/BatchVerificationResults1-eps-converted-to.pdf
+  used on input line 27.
+(pdftex.def)             Requested size: 417.47307pt x 313.11206pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 1360) in paragraph at lines 42--42
+\OT1/cmr/m/n/12 is com-pu-ta-tion-ally ex-pen-
+ []
+
+
+Underfull \hbox (badness 1939) in paragraph at lines 42--42
+[]|\OT1/cmr/m/n/12 S1: To re-duce the cost
+ []
+
+
+Underfull \hbox (badness 2799) in paragraph at lines 42--42
+\OT1/cmr/m/n/12 based pseudonym mech-a-
+ []
+
+
+Underfull \hbox (badness 2582) in paragraph at lines 44--44
+\OT1/cmr/m/n/12 quen-tial mes-sage ver-i-fi-ca-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--44
+[]|\OT1/cmr/m/n/12 S3: Batch ver-i-fi-ca-tion
+ []
+
+
+Underfull \hbox (badness 2680) in paragraph at lines 44--44
+\OT1/cmr/m/n/12 duce the time taken by
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--44
+\OT1/cmr/m/n/12 sig-na-ture ver-i-fi-ca-tion of
+ []
+
+
+Underfull \hbox (badness 7433) in paragraph at lines 44--45
+\OT1/cmr/m/n/12 com-par-i-son be-tween sin-
+ []
+
+
+Overfull \hbox (46.91824pt too wide) in paragraph at lines 38--49
+ [][] 
+ []
+
+[26 <./figures/My_paper_Plots_CombinedFinal-eps-converted-to.pdf>] [27 <./figur
+es/Solidity_plotFinal-eps-converted-to.pdf>]
+Overfull \hbox (2.55667pt too wide) in paragraph at lines 57--57
+|[]\OT1/cmr/bx/n/17.28 Blockchain en-abled Se-cure and Ef-fi-cient Rep-
+ []
+
+
+Underfull \hbox (badness 1762) in paragraph at lines 70--70
+\OT1/cmr/m/n/12 de-tected by check-ing the
+ []
+
+
+Underfull \hbox (badness 7814) in paragraph at lines 71--71
+\OT1/cmr/m/n/12 tive in-cen-tive/pun-ish-ment
+ []
+
+
+Underfull \hbox (badness 2111) in paragraph at lines 72--72
+\OT1/cmr/m/n/12 age over-head of the BC
+ []
+
+
+Underfull \hbox (badness 1960) in paragraph at lines 72--73
+\OT1/cmr/m/n/12 IPFS vs BC. Fig-ure [][]4.9[][]
+ []
+
+
+Underfull \hbox (badness 1052) in paragraph at lines 72--73
+\OT1/cmr/m/n/12 shows the ex-e-cu-tion time
+ []
+
+
+Underfull \hbox (badness 3250) in paragraph at lines 72--73
+\OT1/cmr/m/n/12 shows the prob-a-bil-ity of
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--75
+[]|\OT1/cmr/m/n/12 S4: ECDSA based
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--75
+\OT1/cmr/m/n/12 pseudonym mech-a-nism
+ []
+
+
+Underfull \hbox (badness 1694) in paragraph at lines 77--77
+\OT1/cmr/m/n/12 is en-abled by cre-at-ing a
+ []
+
+
+Underfull \hbox (badness 2221) in paragraph at lines 78--78
+[]|\OT1/cmr/m/n/12 S6: Shamir se-cret shar-
+ []
+
+
+Overfull \hbox (46.91824pt too wide) in paragraph at lines 66--82
+ [][] 
+ []
+
+[28 <./figures/BatchVerificationResults1-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <figures/GroupVsOTAvsECDSA.eps>
+(epstopdf)                    date: 2021-08-19 23:10:10
+(epstopdf)                    size: 38196 bytes
+(epstopdf)             Output file: <figures/GroupVsOTAvsECDSA-eps-converted-to
+.pdf>
+(epstopdf)                    date: 2021-08-19 23:10:30
+(epstopdf)                    size: 14882 bytes
+(epstopdf)             Command: <miktex-epstopdf --outfile=figures/GroupVsOTAvs
+ECDSA-eps-converted-to.pdf figures/GroupVsOTAvsECDSA.eps>
+(epstopdf)             \includegraphics on input line 94.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex.exe (file ./figures/GroupVsOTAvsECDSA-eps-converted-to
+.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowe
+d
+<figures/GroupVsOTAvsECDSA-eps-converted-to.pdf, id=761, 462.72874pt x 347.2975
+pt>
+File: figures/GroupVsOTAvsECDSA-eps-converted-to.pdf Graphic file (type pdf)
+<use figures/GroupVsOTAvsECDSA-eps-converted-to.pdf>
+Package pdftex.def Info: figures/GroupVsOTAvsECDSA-eps-converted-to.pdf  used o
+n input line 94.
+(pdftex.def)             Requested size: 417.47307pt x 313.33325pt.
+[29]
+<figures/GroupvsECDSAKeyGenTime.png, id=766, 462.528pt x 346.896pt>
+File: figures/GroupvsECDSAKeyGenTime.png Graphic file (type png)
+<use figures/GroupvsECDSAKeyGenTime.png>
+Package pdftex.def Info: figures/GroupvsECDSAKeyGenTime.png  used on input line
+ 100.
+(pdftex.def)             Requested size: 417.47307pt x 313.11923pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+Package epstopdf Info: Source file: <figures/SSS_results.eps>
+(epstopdf)                    date: 2021-08-19 23:28:45
+(epstopdf)                    size: 51790 bytes
+(epstopdf)             Output file: <figures/SSS_results-eps-converted-to.pdf>
+(epstopdf)                    date: 2021-08-19 23:29:03
+(epstopdf)                    size: 18998 bytes
+(epstopdf)             Command: <miktex-epstopdf --outfile=figures/SSS_results-
+eps-converted-to.pdf figures/SSS_results.eps>
+(epstopdf)             \includegraphics on input line 107.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex.exe (file ./figures/SSS_results-eps-converted-to.pdf):
+ PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<figures/SSS_results-eps-converted-to.pdf, id=768, 418.56375pt x 272.01625pt>
+File: figures/SSS_results-eps-converted-to.pdf Graphic file (type pdf)
+<use figures/SSS_results-eps-converted-to.pdf>
+Package pdftex.def Info: figures/SSS_results-eps-converted-to.pdf  used on inpu
+t line 107.
+(pdftex.def)             Requested size: 417.47307pt x 271.30582pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[30 <./figures/GroupVsOTAvsECDSA-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <figures/MalVehDetWithRespTime.eps>
+(epstopdf)                    date: 2021-08-20 00:01:41
+(epstopdf)                    size: 53587 bytes
+(epstopdf)             Output file: <figures/MalVehDetWithRespTime-eps-converte
+d-to.pdf>
+(epstopdf)                    date: 2021-08-20 00:02:17
+(epstopdf)                    size: 29176 bytes
+(epstopdf)             Command: <miktex-epstopdf --outfile=figures/MalVehDetWit
+hRespTime-eps-converted-to.pdf figures/MalVehDetWithRespTime.eps>
+(epstopdf)             \includegraphics on input line 123.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex.exe (file ./figures/MalVehDetWithRespTime-eps-converte
+d-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> al
+lowed
+<figures/MalVehDetWithRespTime-eps-converted-to.pdf, id=784, 462.72874pt x 347.
+2975pt>
+File: figures/MalVehDetWithRespTime-eps-converted-to.pdf Graphic file (type pdf
+)
+<use figures/MalVehDetWithRespTime-eps-converted-to.pdf>
+Package pdftex.def Info: figures/MalVehDetWithRespTime-eps-converted-to.pdf  us
+ed on input line 123.
+(pdftex.def)             Requested size: 417.47307pt x 313.33325pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+Package epstopdf Info: Source file: <figures/51percentAttack.eps>
+(epstopdf)                    date: 2021-08-20 00:16:27
+(epstopdf)                    size: 80809 bytes
+(epstopdf)             Output file: <figures/51percentAttack-eps-converted-to.p
+df>
+(epstopdf)                    date: 2021-08-20 00:16:52
+(epstopdf)                    size: 29139 bytes
+(epstopdf)             Command: <miktex-epstopdf --outfile=figures/51percentAtt
+ack-eps-converted-to.pdf figures/51percentAttack.eps>
+(epstopdf)             \includegraphics on input line 129.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex.exe (file ./figures/51percentAttack-eps-converted-to.p
+df): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<figures/51percentAttack-eps-converted-to.pdf, id=785, 619.31375pt x 433.62pt>
+File: figures/51percentAttack-eps-converted-to.pdf Graphic file (type pdf)
+<use figures/51percentAttack-eps-converted-to.pdf>
+Package pdftex.def Info: figures/51percentAttack-eps-converted-to.pdf  used on 
+input line 129.
+(pdftex.def)             Requested size: 417.47307pt x 292.31035pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[31 <./figures/GroupvsECDSAKeyGenTime.png>]
+<figures/StorageRetrieval_BCvsIPFS.pdf, id=795, 462.52802pt x 346.89601pt>
+File: figures/StorageRetrieval_BCvsIPFS.pdf Graphic file (type pdf)
+<use figures/StorageRetrieval_BCvsIPFS.pdf>
+Package pdftex.def Info: figures/StorageRetrieval_BCvsIPFS.pdf  used on input l
+ine 160.
+(pdftex.def)             Requested size: 417.47307pt x 313.11925pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+Package epstopdf Info: Source file: <figures/Storage_ComparisonIPFSvsData.eps>
+(epstopdf)                    date: 2021-08-20 00:45:59
+(epstopdf)                    size: 56062 bytes
+(epstopdf)             Output file: <figures/Storage_ComparisonIPFSvsData-eps-c
+onverted-to.pdf>
+(epstopdf)                    date: 2021-08-20 00:46:34
+(epstopdf)                    size: 18072 bytes
+(epstopdf)             Command: <miktex-epstopdf --outfile=figures/Storage_Comp
+arisonIPFSvsData-eps-converted-to.pdf figures/Storage_ComparisonIPFSvsData.eps>
+
+(epstopdf)             \includegraphics on input line 167.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex.exe (file ./figures/Storage_ComparisonIPFSvsData-eps-c
+onverted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <
+1.5> allowed
+<figures/Storage_ComparisonIPFSvsData-eps-converted-to.pdf, id=796, 462.72874pt
+ x 347.2975pt>
+File: figures/Storage_ComparisonIPFSvsData-eps-converted-to.pdf Graphic file (t
+ype pdf)
+<use figures/Storage_ComparisonIPFSvsData-eps-converted-to.pdf>
+Package pdftex.def Info: figures/Storage_ComparisonIPFSvsData-eps-converted-to.
+pdf  used on input line 167.
+(pdftex.def)             Requested size: 417.47307pt x 313.33325pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[32 <./figures/SSS_results-eps-converted-to.pdf>] [33 <./figures/MalVehDetWithR
+espTime-eps-converted-to.pdf>] [34 <./figures/51percentAttack-eps-converted-to.
+pdf>] [35 <./figures/StorageRetrieval_BCvsIPFS.pdf>] [36 <./figures/Storage_Com
+parisonIPFSvsData-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <figures/Attack_barPlot_sec.eps>
+(epstopdf)                    date: 2021-08-20 21:27:08
+(epstopdf)                    size: 56883 bytes
+(epstopdf)             Output file: <figures/Attack_barPlot_sec-eps-converted-t
+o.pdf>
+(epstopdf)                    date: 2021-08-20 21:27:23
+(epstopdf)                    size: 20398 bytes
+(epstopdf)             Command: <miktex-epstopdf --outfile=figures/Attack_barPl
+ot_sec-eps-converted-to.pdf figures/Attack_barPlot_sec.eps>
+(epstopdf)             \includegraphics on input line 224.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex.exe (file ./figures/Attack_barPlot_sec-eps-converted-t
+o.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allow
+ed
+<figures/Attack_barPlot_sec-eps-converted-to.pdf, id=884, 574.145pt x 403.5075p
+t>
+File: figures/Attack_barPlot_sec-eps-converted-to.pdf Graphic file (type pdf)
+<use figures/Attack_barPlot_sec-eps-converted-to.pdf>
+Package pdftex.def Info: figures/Attack_barPlot_sec-eps-converted-to.pdf  used 
+on input line 224.
+(pdftex.def)             Requested size: 417.47307pt x 293.40666pt.
+Package epstopdf Info: Source file: <figures/Replay_solution_J2.eps>
+(epstopdf)                    date: 2021-08-20 21:37:31
+(epstopdf)                    size: 58113 bytes
+(epstopdf)             Output file: <figures/Replay_solution_J2-eps-converted-t
+o.pdf>
+(epstopdf)                    date: 2021-08-20 21:37:56
+(epstopdf)                    size: 20764 bytes
+(epstopdf)             Command: <miktex-epstopdf --outfile=figures/Replay_solut
+ion_J2-eps-converted-to.pdf figures/Replay_solution_J2.eps>
+(epstopdf)             \includegraphics on input line 231.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex.exe (file ./figures/Replay_solution_J2-eps-converted-t
+o.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allow
+ed
+<figures/Replay_solution_J2-eps-converted-to.pdf, id=885, 548.0475pt x 390.4587
+6pt>
+File: figures/Replay_solution_J2-eps-converted-to.pdf Graphic file (type pdf)
+<use figures/Replay_solution_J2-eps-converted-to.pdf>
+Package pdftex.def Info: figures/Replay_solution_J2-eps-converted-to.pdf  used 
+on input line 231.
+(pdftex.def)             Requested size: 417.47307pt x 297.43689pt.
+[37 <./figures/Attack_barPlot_sec-eps-converted-to.pdf>]
+<figures/oyenteJ2.png, id=900, 593.21625pt x 217.5628pt>
+File: figures/oyenteJ2.png Graphic file (type png)
+<use figures/oyenteJ2.png>
+Package pdftex.def Info: figures/oyenteJ2.png  used on input line 254.
+(pdftex.def)             Requested size: 375.7232pt x 137.80226pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[38 <./figures/Replay_solution_J2-eps-converted-to.pdf>]) [39 <./figures/oyente
+J2.png>]
+\openout2 = `chap6.aux'.
+
+ (chap6.tex
+Chapter 5.
+------------------------------------------------------------------------------
+ 5 
+------------------------------------------------------------------------------
+[40
+
+
+
+
+]) [41]
+\openout2 = `chap7.aux'.
+
+ (chap7.tex
+Chapter 6.
+------------------------------------------------------------------------------
+ 6 
+------------------------------------------------------------------------------
+[42
+
+
+
+
+] [43
+
+]
+Underfull \hbox (badness 1248) in paragraph at lines 44--45
+[]\OT1/cmr/m/n/12 Ali, Ikram, Mwi-tende Ger-vais, Em-manuel Ahene, and Fa-gen L
+i. "A
+ []
+
+[44] [45] [46]) [47] [48
+
+
+
+
+]
+\openout2 = `Appendix_A.aux'.
+
+ (Appendix_A.tex) [49
+
+]
+\openout2 = `Appendix_B.aux'.
+
+ (Appendix_B.tex [50
+
+
+
+] [51]
+[52] [53] [54]pdfTeX warning (ext4): destination with the same identifier (name
+{milp_code}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.306 \hypertarget{milp_code}{}
+                                [55]) [56]
+\openout2 = `Appendix_B1.aux'.
+
+ (Appendix_B1.texpdfTeX warning (ext4): destination with the same identifier (n
+ame{milp_code}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.9 \hypertarget{milp_code}{}
+                              [57
+
+
+
+] [58]) [59]
+\openout2 = `Appendix_C.aux'.
+
+ (Appendix_C.texpdfTeX warning (ext4): destination with the same identifier (na
+me{milp_code}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.13 \hypertarget{milp_code}{}
+                               [60
+
+
+
+] [61] [62]pdfTeX warning (ext4): destination with the same identifier (name{mi
+lp_code}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.219 \hypertarget{milp_code}{}
+                                [63] [64] [65]pdfTeX warning (ext4): destinatio
+n with the same identifier (name{milp_code}) has been already used, duplicate i
+gnored
+<to be read again> 
+                   \relax 
+l.353 \hypertarget{milp_code}{}
+                                [66]pdfTeX warning (ext4): destination with the
+ same identifier (name{milp_code}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.416 \hypertarget{milp_code}{}
+                                [67]) [68]
+\openout2 = `Appendix_C1.aux'.
+
+ (Appendix_C1.texpdfTeX warning (ext4): destination with the same identifier (n
+ame{milp_code}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.10 \hypertarget{milp_code}{}
+                               [69
+
+
+
+]) [70] (Abid_Thesis.aux (cover1.aux)
+(cover2.aux) (cover3.aux) (cover4.aux) (cover5.aux) (cover6_certificate.aux)
+(cover7_dedication.aux) (cover8_acknoledgment.aux) (cover9_abstract.aux)
+(conference_papers.aux) (contents.aux) (figures.aux) (tables.aux) (algos.aux)
+(cover10.aux) (chap1.aux) (chap2.aux) (chap3.aux) (chap4.aux) (chap6.aux)
+(chap7.aux) (Appendix_A.aux) (Appendix_B.aux) (Appendix_B1.aux) (Appendix_C.aux
+) (Appendix_C1.aux))
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 1.28pt have occurred.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 30370 strings out of 478864
+ 508490 string characters out of 2848186
+ 1523641 words of memory out of 3000000
+ 46383 multiletter control sequences out of 15000+600000
+ 421989 words of font info for 93 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 75i,14n,81p,2053b,2149s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{milp_text} has been referenced but does not exist
+, replaced by a fixed one
+
+ <C:\Users\Nexgen\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1
+200.pk><C:/Users/Nexgen/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmbx12.pfb><C:/Users/Nexgen/AppData/Local/Programs/MiKTeX/fonts/type1/pub
+lic/amsfonts/cm/cmcsc10.pfb><C:/Users/Nexgen/AppData/Local/Programs/MiKTeX/font
+s/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Nexgen/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Nexgen/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Nexgen/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Nexg
+en/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/U
+sers/Nexgen/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.
+pfb><C:/Users/Nexgen/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmr8.pfb><C:/Users/Nexgen/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmsl12.pfb><C:/Users/Nexgen/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmss8.pfb><C:/Users/Nexgen/AppData/Local/Programs/MiKTeX/f
+onts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Nexgen/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Nexgen/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Nexgen/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on Abid_Thesis.pdf (88 pages, 2005060 bytes).
+PDF statistics:
+ 2546 PDF objects out of 2984 (max. 8388607)
+ 1177 named destinations out of 1200 (max. 500000)
+ 665 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -1,0 +1,355 @@
+\newpage
+\section{Implementation of proposed solution 1:}\label{implementation_1}
+This code is developed by {\href{https://sites.google.com/view/abidjamal/home?authuser=2}{\textbf{Abid Jamal}}} under the supervision of {\href{www.njavaid.com}{\textbf{Dr. Nadeem Javaid}}}.
+Appendix B contains the details for the implementation of Python code for the problem 1 (see section \ref{prob1}). The details of this scheme is discussed in \ref{System Model1}. Save this main file name as "main.py". Step by step guidelines are provided in \textit{readme.txt} file. Furthermore, if you want the .py files, please mail on this ID "abid.jamal.turi@gmail.com".\par
+
+\begin{linenumbers}
+\resetlinenumber[1]
+
+\hypertarget{milp_code}{}
+\hyperlink{milp_text}{main.py}
+
+\begin{lstlisting}
+% This Code is written by Abid Jamal (MS student) against the research paper
+% "Conditional Anonymity enabled Blockchain-based Ad Dissemination in %Vehicular Ad-hoc Network"
+% 
+from ecdsa import SigningKey
+import hashlib
+import mtree
+import time
+
+registration_time_Advertiser = []
+registration_time_Vehicle= []
+ad_publication_time = []
+ad_Broadcast_time = []
+ad_Response_time = []
+reward_Sender_time = []
+reward_Receiver_time = []
+reward_TimeArray = []
+#The arrays above store the time that it takes for each process
+
+start_time  = time.time()
+class Registration_Authority(object):
+    def register(self, node):
+        if node.__class__.__name__=='Advertiser':
+            #privKey = SigningKey.generate() # uses NIST192p
+            adverpubKey = node.privKey.verifying_key
+            print('Advertiser Registered 1')
+        elif node.__class__.__name__=='Vehicle':
+            #print('vehicle registered')
+            pubKeyVeh = 'Vehicle Registered 1'
+            print(pubKeyVeh)
+
+class Vehicle(object):
+
+    def __init__(self, name, id, privKey):
+        self.name = name
+        self.id = id
+        self.privKey = privKey
+        self.mesglist = list()
+        self.sourceNode = list()
+        self.rsuAdsList = list()
+        self.sourcePubKey = list()
+        self.megSig = list()
+        self.poarList =list()
+        self.walletAddr = list()
+
+        r = Registration_Authority()
+        r.register(self)
+
+    def calculate_zkpok(self, mesg, sig):
+        mesg = mesg
+        zkpok = True
+        print('zkpok is calculatied')
+        return zkpok
+        
+    def verify_zkpok(self , zkpok):  
+        print('verification successful')
+        return True
+
+    def random_index_gen(self , srcAddr , l_fragments):
+        self.srcAddr = srcAddr
+        self.ad_fragments = l_fragments
+        self.b_List = 'list of hashed fragments'
+        self.random_Index = self.srcAddr+self.b_List+str(self.ad_fragments)
+
+        return self.random_Index
+
+class Advertiser(object):
+
+    def __init__(self, name, id, ad):
+        self.name = name
+        self.id = id
+        self.ad = ad
+        self.merkle_Root = None
+        self.plain_chunks = list()
+        self.hashed_chunks = list()
+        self.proofFromRSU = list()
+
+        n = 3
+        chunks = [self.ad[i:i+n] for i in range(0, len(self.ad), n)]
+        
+        for i in chunks:
+            self.plain_chunks.append(i)
+            self.hashed_chunks.append(hashlib.sha256(i.encode()).hexdigest())
+        
+        self.merkle_Root = mtree.create_tree(self.ad)
+      #  print(self.merkle_Root)
+      #  print(self.plain_chunks)
+      #  print('Length of the hashed chunks list: ',len(self.hashed_chunks))
+
+        r = Registration_Authority()
+        r.register(self)
+
+        self.privKey = SigningKey.generate() # uses NIST192p
+        self.pubKey = self.privKey.verifying_key
+        
+        self.signature = self.privKey.sign(bytes(self.ad, encoding= 'utf-8'))
+        
+        assert self.pubKey.verify(self.signature,(bytes(self.ad, encoding= 'utf-8')))
+      #  print(self.pubKey.verify(self.signature,(bytes(self.ad, encoding= 'utf-8'))))
+
+        #Now we will calculate merkle Root and  merkle hash tree
+
+class RSU(object):
+
+    def __init__(self,name):
+        self.name = name
+        self.adsList = list()
+        self.poarfromVehList = list()
+        self.advertPubKeyList = list()
+        self.adSig = list()
+        self.advertSrc= list()
+        self.poarSourceList = list()
+        self.walletAddr = list()
+
+    def calculate_zkpok(self, mesg, sig):
+        mesg = mesg
+        zkpok = True
+        print('zkpok is calculatied')
+        time.sleep(0.2)
+        return zkpok
+
+    def verify_zkpok(self , zkpok): 
+        print('verification successful')
+        time.sleep(0.2)
+        return True
+
+def sendMesg( src, dest, mesg):
+
+    if src.__class__.__name__=='Vehicle': 
+        dest.mesglist.append(mesg)
+        dest.sourceNode.append(src.name) 
+        time.sleep(0.02)
+        dest.zkpok = src.calculate_zkpok(mesg, src.name) #this will calculate zkpok and store it in zkpok
+    else:
+        print('source not Vehicle')
+
+def fromAdvertToRSU( src, dest, ad, pubKey, sigAdvert):
+
+    dest.adsList.append(ad)
+    dest.advertSrc.append(src.name)
+    dest.advertPubKeyList.append(pubKey)
+    dest.adSig.append(sigAdvert)
+    time.sleep(0.1)
+
+def sendAdFromAdvert( src, dest, mesg, pubKey, sigAdvert):
+    dest.mesglist.append(mesg)
+    dest.sourceNode.append(src.name)
+    dest.sourcePubKey.append(pubKey.to_string())
+    dest.megSig.append(sigAdvert)
+    src.pubKey = pubKey
+    src.sig = sigAdvert
+
+def fromRSUToVehicles( src, dest, mesg, pubKey, sigAdvert):
+    if src.advertPubKeyList[0].verify(src.adSig[0],bytes(src.adsList[0],encoding= 'utf-8' )) ==True:
+        dest.rsuAdsList.append(mesg)
+        dest.sourceNode.append(src.name)
+        
+        dest.sourcePubKey.append(pubKey.to_string())
+        dest.megSig.append(sigAdvert)
+        src.pubKey = pubKey
+        src.sig = sigAdvert
+
+def reply_poar(replier , orgSender):
+    # send message to org sender with poar
+    poar = True
+    time.sleep(0.2) # addding a bit of delay 
+    randIndex = replier.random_index_gen(orgSender.name,10)
+    orgSender.poarList.append(poar)
+
+def transaction_for_reward(srcVeh, destRSU, poarMesg):
+    destRSU.poarfromVehList.append(poarMesg) # These transactions will be done on solidiity. the results will be obtained through web3.py.
+    destRSU.poarSourceList.append(srcVeh.name)
+    time.sleep(0.2)
+
+def reward_request_from_advertiser(rsu, advert, proof):
+    advert.proofFromRSU.append(proof)
+    if advert.proofFromRSU[0]==True:
+        rsu.walletAddr.append('20')
+        time.sleep(0.2)
+def give_reward_to_vehicle(rsu , senderVeh, receiverVeh):
+    if rsu.poarfromVehList[0]==True and rsu.poarSourceList[0]==senderVeh.name and receiverVeh.sourceNode[0]==senderVeh.name:
+        senderVehRewardSTime = time.time()
+        senderVeh.walletAddr.append('10')
+        senderVehRewardCTime = time.time()-senderVehRewardSTime
+        reward_Sender_time.append(senderVehRewardCTime)
+        receiverVehRewardSTime = time.time()
+        receiverVeh.walletAddr.append('5')
+        receiverVehRewardCTime = time.time()-receiverVehRewardSTime
+        reward_Receiver_time.append(receiverVehRewardCTime)
+i = 0
+while i != 10:
+
+    if __name__ == "__main__":
+        register1 = Registration_Authority() # created an instance of registration authority
+        vehi1 = Vehicle('veh1','3','2222') # created first instance of vehicle
+        vehiRegister_Stime = time.time()
+        vehi2 = Vehicle('veh2','4','3333') # created 2nd instance of vehicle
+        vehiRegister_Ctime = time.time()-vehiRegister_Stime
+        print("Vehicle Registration Time : ",vehiRegister_Ctime)
+        registration_time_Vehicle.append(round(vehiRegister_Ctime,3))
+        rsu1 = RSU('senderRSU') # created instance of RSU
+
+        print ('------- BEFORE AD IS SENT TO OTHER VEHICLES ------')
+
+        print('RSU1 ads List  : ',rsu1.adsList)
+        print('Vehi1 mesg (ads from other vehicles) List : ',vehi1.mesglist)
+        print('Vehi1 rsuAds list : ', vehi1.rsuAdsList)
+
+        print('Vehi2 rsu ads list : ',vehi2.rsuAdsList)
+        print('Vehi2 Source List : ', vehi2.sourceNode)
+        print ('Vehi2 mesg (ads from other vehicles) List : ', vehi2.mesglist)
+        advertReg_Stime = time.time()
+        advert1 = Advertiser('advertiser1','id1','ADVERTISEMENT FROM THE ADVERTISER') # created instance of Advertiser
+        advertReg_Ctime =time.time()-advertReg_Stime
+        print('Advertiser Registration time : ',advertReg_Ctime)
+        registration_time_Advertiser.append(round(advertReg_Ctime,3))
+        #register1.register(advert1)
+        adPublish_STime = time.time()
+        fromAdvertToRSU(advert1, rsu1, advert1.ad, advert1.pubKey, advert1.signature) # Here, advertiser sent signed ad to RSU 
+        adPublish_CTime = time.time()-adPublish_STime
+        rsuToVeh_Starttime = time.time()
+        fromRSUToVehicles(rsu1, vehi1, rsu1.adsList[0],rsu1.advertPubKeyList[0],rsu1.adSig[0]) # RSU sends ad to vehicle 1
+        rsuToVeh_complTime = time.time()-rsuToVeh_Starttime
+        combinedTimeRSUAdverttoVeh = rsuToVeh_complTime+adPublish_CTime # Because ad publication includes both of the times, from advertiser to RSU and from RSU to Vehicles. Hence both of the times are added
+        ad_publication_time.append(round(combinedTimeRSUAdverttoVeh,3))
+        print('RSU to veh  time : ', rsuToVeh_complTime)
+   
+    # The following line is sending the ad which is in the ads list of the veh 2
+        broadcastMesg_STime=time.time()
+        sendMesg(vehi1, vehi2, vehi1.rsuAdsList[0]) # The vehicle1 disseminated ad to vehicle 2
+        broadcastMesg_CTime=time.time()-broadcastMesg_STime
+        ad_Broadcast_time.append(round(broadcastMesg_CTime,3))
+    # sendMesg(vehi1, vehi2, 'Hello') vehicles can send any kind of message to each other, which can possibly include fake ads
+
+        print ('------- AFTER AD IS SENT TO OTHER VEHICLES ------')
+
+        print('RSU1 ads List  : ',rsu1.adsList)
+        print('Vehi1 mesg List : ',vehi1.mesglist)
+        print('Vehi1 rsuAds list : ', vehi1.rsuAdsList)
+        print('Vehi2 rsu ads list : ',vehi2.rsuAdsList)
+        print('Vehi2 Source List : ', vehi2.sourceNode)
+        print ('Vehi2 msg List means ads from other vehicles : ', vehi2.mesglist)
+        #This next line shows a successful signature verification. The signature was sent from advertiser to rsu. And rsu verified it.
+        sigVerTimeStart = time.time()
+        print('Signature verification of advertiser = ',rsu1.advertPubKeyList[0].verify(rsu1.adSig[0],bytes(rsu1.adsList[0],encoding= 'utf-8' )))
+        sigVerTimeComp = time.time()-sigVerTimeStart
+        print('Signature verificatition Time : ', sigVerTimeComp)
+        print('-----Before PAYMENT-------')
+        print('Wallet  of RSU 1 : ', rsu1.walletAddr)
+        print ('Wallet of veh1 before transaction' , vehi1.walletAddr)
+        print ('Wallet of veh2 before transaction' , vehi2.walletAddr)
+        if vehi2.mesglist!=None:
+            verify_zkpok_Stime = time.time()
+            rsu1.verify_zkpok('true') # this will verift that zkpok of sender is indeed true, we will pass mesg in it as param
+            verify_zkpok_Ctime = time.time()-verify_zkpok_Stime
+            print('verify ZKpok time = ',verify_zkpok_Ctime)
+            verify_poar_Stime = time.time()
+            reply_poar(vehi2,vehi1) # after verifying zkpok, the receiver veh2 will reply with poar to original sender veh1
+            verify_poar_Ctime = time.time()-verify_poar_Stime
+            print('verify POAR time = ',verify_poar_Ctime)
+            ad_Response_time.append(round(verify_poar_Ctime,3))
+            transactionReward_Stime = time.time()
+            transaction_for_reward(vehi1,rsu1,vehi1.poarList[0]) # This will forward the poar from veh1 to rsu1 for gaining reward
+            transactionReward_Ctime = time.time()-transactionReward_Stime
+            print('Transaction Reward Time : ',transactionReward_Ctime)
+            rewardRequest_Stime = time.time()
+            reward_request_from_advertiser(rsu1,advert1,rsu1.poarfromVehList[0]) # This function will be performed in soliditiy, the proofs will be sent from python code through web3.py
+            rewardRequest_Ctime = time.time()-rewardRequest_Stime
+            print('RSU obtaining rewards from Advertiser Time : ',rewardRequest_Ctime)
+            reward_STime = time.time()
+            give_reward_to_vehicle(rsu1, vehi1, vehi2) # The rewards will also be added directly to the BC addresses of the vehicle
+            reward_CTime = time.time()-reward_STime
+            reward_TimeArray.append(reward_CTime)
+        print('-----AFTER PAYMENT-------')
+        print('Wallet  of RSU 1 : ', rsu1.walletAddr)
+        print ('Wallet of veh1 after transaction' , vehi1.walletAddr)
+        print ('Wallet of veh2 after transaction' , vehi2.walletAddr)
+        print('Time taken : ' , time.time()- start_time)
+        print('Registration of advert time array', registration_time_Advertiser)
+        print ('Registration of vehicle time array', registration_time_Vehicle)
+        print('Ad publication time array',ad_publication_time)
+        print('Ad broadcast time array', ad_Broadcast_time)
+        print('Response Message Time array : ', ad_Response_time)
+        print('Ad Sender reward obtaining Time array', reward_Sender_time)
+        print('Ad Receiver reward obtaining Time array', reward_Receiver_time)
+        print('Overall reward obtaining time both sender and receiver',reward_TimeArray)
+        i = i+1
+
+
+\end{lstlisting}
+\end{linenumbers} 
+
+\begin{linenumbers}
+\resetlinenumber[1]
+\hypertarget{milp_code}{}
+\hyperlink{milp_text}{mtree.py}
+
+\begin{lstlisting}
+
+import hashlib
+
+def double_hash(hash_string):
+    first_hash = hashlib.sha256(hash_string.encode()).hexdigest()
+    return hashlib.sha256(first_hash.encode()).hexdigest()
+
+def turn_into_hash(hash_list):  # This is here just in case your example is like mine and you need to hash them first
+    hashed_hashlist = []
+    for item in hash_list:
+        item = double_hash(item)
+        hashed_hashlist.append(item)
+
+    return hashed_hashlist
+
+
+def create_tree(hash_list):
+    child_hash_list = []
+    # Starting at the first entry, through each entry in the hash list, grouping every 2 entries
+    for index in range(0, len(hash_list)-1, 2):
+
+        # If the length of the item isn't 64 (the length of a sha256 hash), turn it into a sha256 hash
+        if len(list(hash_list[index])) != 64:
+            hash_list = turn_into_hash(hash_list)
+
+        left = hash_list[index]
+        right = hash_list[index + 1]
+
+        child_hash_list.append(double_hash(left + right))  # Group the hashes
+
+    if len(hash_list) % 2 == 1:  # If there is an odd number of items in the list, keep hashing the last item to itself
+        child_hash_list.append(hash_list[-1])  # Append the last element
+
+    if len(hash_list) == 1:  # If the Merkle root has been reached, stop calling the function & return the root hash
+        print("Merkle root:")
+        return hash_list[0]
+   
+    return create_tree(child_hash_list)  # Recursively call this function until the hash list length is 1
+
+
+
+
+
+
+\end{lstlisting}
+\end{linenumbers} 

@@ -1,0 +1,29 @@
+\newpage
+\subsection{Mutate function}
+Appendix C.5 contains the details for the implementation of MATLAB function named "mutate.m" which is called in main file. Please save this file in the same folder as main file. Step by step guidelines are provided in \textit{readme.txt} file.\par
+
+\begin{linenumbers}
+\begin{lstlisting}
+
+
+%----- Mutatation operator ------%
+function  anew=mutate(a,insite)
+    nn=length(a);
+    for i=1:insite
+    j=floor(rand*nn);
+        if j==0
+            j=randi(nn,1,1);
+        end
+    k=a(j);
+    if k==1
+        a(j)=0;
+    else
+       if k==0
+        a(j)=1;
+       end
+    end
+    anew=a;
+   end
+%-------****************-------%
+\end{lstlisting}
+\end{linenumbers} 

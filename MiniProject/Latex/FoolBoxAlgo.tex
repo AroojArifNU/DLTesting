@@ -1,0 +1,856 @@
+\documentclass[11pt,onside]{article}
+\usepackage[a4paper]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{lipsum}
+\usepackage{bm}
+\usepackage{upgreek}
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{graphicx} % Required for including images
+
+\usepackage{algpseudocode}
+
+\begin{document}
+\maketitle
+
+
+\begin{algorithm}[H]
+\caption{Adversarial Attack Analysis}
+\begin{algorithmic}
+
+\State \textbf{Require:} Pre-trained model file path, dataset file paths
+\State \textbf{Output:} Accuracy on clean and adversarial data, confusion matrices
+
+\Procedure{LoadModel}{$model\_path$}
+    \State $model \gets \text{load\_model}(model\_path)$
+    \State \Return $model$
+\EndProcedure
+
+\Procedure{LoadData}{$data\_path, labels\_path$}
+    \State $data \gets \text{np.load}(data\_path)$
+    \State $labels \gets \text{np.load}(labels\_path)$
+    \State \Return $data, labels$
+\EndProcedure
+
+\Procedure{CreateFoolboxModel}{$model$}
+    \State $fmodel \gets \text{fb.TensorFlowModel}(model, \text{bounds}=(0, 1))$
+    \State \Return $fmodel$
+\EndProcedure
+
+\Procedure{EvaluateCleanData}{$model, data, labels$}
+    \State $predictions \gets \text{model.predict}(data).argmax(axis=-1)$
+    \State $accuracy \gets \text{np.mean}(predictions == labels)$
+    \State \Return $accuracy$
+\EndProcedure
+
+\Procedure{AdversarialAttack}{$fmodel, data, labels, epsilons$}
+    \State $attack \gets \text{fb.attacks.FGSM}()$
+    \State $(adv\_data, clipped\_advs, success) \gets \text{attack}(fmodel, data, labels, \text{epsilons}=epsilons)$
+    \State \Return $adv\_data$
+\EndProcedure
+
+\Procedure{EvaluateAdversarialData}{$model, adv\_data, labels, epsilons$}
+    \For{$\text{eps}, \text{adv} \text{ in zip}(epsilons, adv\_data)$}
+        \State $adv\_predictions \gets \text{model.predict}(adv).argmax(axis=-1)$
+        \State $adv\_accuracy \gets \text{np.mean}(adv\_predictions == labels)$
+        \State $\text{Print accuracy and generate confusion matrix for each } \varepsilon$
+    \EndFor
+\EndProcedure
+
+\State $model \gets \Call{LoadModel}{\text{'/path/to/model.h5'}}$
+\State $data, labels \gets \Call{LoadData}{\text{'/path/to/data.npy', '/path/to/labels.npy'}}$
+\State $fmodel \gets \Call{CreateFoolboxModel}{model}$
+\State $clean\_accuracy \gets \Call{EvaluateCleanData}{model, data, labels}$
+\State $adv\_data \gets \Call{AdversarialAttack}{fmodel, data, labels, \text{[0.01, 0.02, ..., 0.6]}}$
+\State $\Call{EvaluateAdversarialData}{model, adv\_data, labels, \text{[0.01, 0.02, ..., 0.6]}}$
+
+\end{algorithmic}
+\end{algorithm}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_0_misclassifications_eps_0.01.png}
+\caption{Caption for combined_class_0_misclassifications_eps_0.01.png}
+\label{fig:combined_class_0_misclassifications_eps_0.01.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_1_misclassifications_eps_0.01.png}
+\caption{Caption for combined_class_1_misclassifications_eps_0.01.png}
+\label{fig:combined_class_1_misclassifications_eps_0.01.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_2_misclassifications_eps_0.01.png}
+\caption{Caption for combined_class_2_misclassifications_eps_0.01.png}
+\label{fig:combined_class_2_misclassifications_eps_0.01.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_3_misclassifications_eps_0.01.png}
+\caption{Caption for combined_class_3_misclassifications_eps_0.01.png}
+\label{fig:combined_class_3_misclassifications_eps_0.01.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_4_misclassifications_eps_0.01.png}
+\caption{Caption for combined_class_4_misclassifications_eps_0.01.png}
+\label{fig:combined_class_4_misclassifications_eps_0.01.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_5_misclassifications_eps_0.01.png}
+\caption{Caption for combined_class_5_misclassifications_eps_0.01.png}
+\label{fig:combined_class_5_misclassifications_eps_0.01.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_6_misclassifications_eps_0.01.png}
+\caption{Caption for combined_class_6_misclassifications_eps_0.01.png}
+\label{fig:combined_class_6_misclassifications_eps_0.01.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_7_misclassifications_eps_0.01.png}
+\caption{Caption for combined_class_7_misclassifications_eps_0.01.png}
+\label{fig:combined_class_7_misclassifications_eps_0.01.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_8_misclassifications_eps_0.01.png}
+\caption{Caption for combined_class_8_misclassifications_eps_0.01.png}
+\label{fig:combined_class_8_misclassifications_eps_0.01.png}
+\end{figure}
+
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_9_misclassifications_eps_0.01.png}
+\caption{Caption for combined_class_9_misclassifications_eps_0.01.png}
+\label{fig:combined_class_9_misclassifications_eps_0.01.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_0_misclassifications_eps_0.02.png}
+\caption{Caption for combined_class_0_misclassifications_eps_0.02.png}
+\label{fig:combined_class_0_misclassifications_eps_0.02.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_2_misclassifications_eps_0.02.png}
+\caption{Caption for combined_class_2_misclassifications_eps_0.02.png}
+\label{fig:combined_class_2_misclassifications_eps_0.02.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_1_misclassifications_eps_0.02.png}
+\caption{Caption for combined_class_1_misclassifications_eps_0.02.png}
+\label{fig:combined_class_1_misclassifications_eps_0.02.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_3_misclassifications_eps_0.02.png}
+\caption{Caption for combined_class_3_misclassifications_eps_0.02.png}
+\label{fig:combined_class_3_misclassifications_eps_0.02.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_4_misclassifications_eps_0.02.png}
+\caption{Caption for combined_class_4_misclassifications_eps_0.02.png}
+\label{fig:combined_class_4_misclassifications_eps_0.02.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_6_misclassifications_eps_0.02.png}
+\caption{Caption for combined_class_6_misclassifications_eps_0.02.png}
+\label{fig:combined_class_6_misclassifications_eps_0.02.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_5_misclassifications_eps_0.02.png}
+\caption{Caption for combined_class_5_misclassifications_eps_0.02.png}
+\label{fig:combined_class_5_misclassifications_eps_0.02.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_8_misclassifications_eps_0.02.png}
+\caption{Caption for combined_class_8_misclassifications_eps_0.02.png}
+\label{fig:combined_class_8_misclassifications_eps_0.02.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_7_misclassifications_eps_0.02.png}
+\caption{Caption for combined_class_7_misclassifications_eps_0.02.png}
+\label{fig:combined_class_7_misclassifications_eps_0.02.png}
+\end{figure}
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_9_misclassifications_eps_0.02.png}
+\caption{Caption for combined_class_9_misclassifications_eps_0.02.png}
+\label{fig:combined_class_9_misclassifications_eps_0.02.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_0_misclassifications_eps_0.03.png}
+\caption{Caption for combined_class_0_misclassifications_eps_0.03.png}
+\label{fig:combined_class_0_misclassifications_eps_0.03.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_1_misclassifications_eps_0.03.png}
+\caption{Caption for combined_class_1_misclassifications_eps_0.03.png}
+\label{fig:combined_class_1_misclassifications_eps_0.03.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_2_misclassifications_eps_0.03.png}
+\caption{Caption for combined_class_2_misclassifications_eps_0.03.png}
+\label{fig:combined_class_2_misclassifications_eps_0.03.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_3_misclassifications_eps_0.03.png}
+\caption{Caption for combined_class_3_misclassifications_eps_0.03.png}
+\label{fig:combined_class_3_misclassifications_eps_0.03.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_4_misclassifications_eps_0.03.png}
+\caption{Caption for combined_class_4_misclassifications_eps_0.03.png}
+\label{fig:combined_class_4_misclassifications_eps_0.03.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_5_misclassifications_eps_0.03.png}
+\caption{Caption for combined_class_5_misclassifications_eps_0.03.png}
+\label{fig:combined_class_5_misclassifications_eps_0.03.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_6_misclassifications_eps_0.03.png}
+\caption{Caption for combined_class_6_misclassifications_eps_0.03.png}
+\label{fig:combined_class_6_misclassifications_eps_0.03.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_8_misclassifications_eps_0.03.png}
+\caption{Caption for combined_class_8_misclassifications_eps_0.03.png}
+\label{fig:combined_class_8_misclassifications_eps_0.03.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_7_misclassifications_eps_0.03.png}
+\caption{Caption for combined_class_7_misclassifications_eps_0.03.png}
+\label{fig:combined_class_7_misclassifications_eps_0.03.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_9_misclassifications_eps_0.03.png}
+\caption{Caption for combined_class_9_misclassifications_eps_0.03.png}
+\label{fig:combined_class_9_misclassifications_eps_0.03.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_0_misclassifications_eps_0.04.png}
+\caption{Caption for combined_class_0_misclassifications_eps_0.04.png}
+\label{fig:combined_class_0_misclassifications_eps_0.04.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_1_misclassifications_eps_0.04.png}
+\caption{Caption for combined_class_1_misclassifications_eps_0.04.png}
+\label{fig:combined_class_1_misclassifications_eps_0.04.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_2_misclassifications_eps_0.04.png}
+\caption{Caption for combined_class_2_misclassifications_eps_0.04.png}
+\label{fig:combined_class_2_misclassifications_eps_0.04.png}
+\end{figure}
+
+
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_3_misclassifications_eps_0.04.png}
+\caption{Caption for combined_class_3_misclassifications_eps_0.04.png}
+\label{fig:combined_class_3_misclassifications_eps_0.04.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_4_misclassifications_eps_0.04.png}
+\caption{Caption for combined_class_4_misclassifications_eps_0.04.png}
+\label{fig:combined_class_4_misclassifications_eps_0.04.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_5_misclassifications_eps_0.04.png}
+\caption{Caption for combined_class_5_misclassifications_eps_0.04.png}
+\label{fig:combined_class_5_misclassifications_eps_0.04.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_6_misclassifications_eps_0.04.png}
+\caption{Caption for combined_class_6_misclassifications_eps_0.04.png}
+\label{fig:combined_class_6_misclassifications_eps_0.04.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_7_misclassifications_eps_0.04.png}
+\caption{Caption for combined_class_7_misclassifications_eps_0.04.png}
+\label{fig:combined_class_7_misclassifications_eps_0.04.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_8_misclassifications_eps_0.04.png}
+\caption{Caption for combined_class_8_misclassifications_eps_0.04.png}
+\label{fig:combined_class_8_misclassifications_eps_0.04.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_9_misclassifications_eps_0.04.png}
+\caption{Caption for combined_class_9_misclassifications_eps_0.04.png}
+\label{fig:combined_class_9_misclassifications_eps_0.04.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_0_misclassifications_eps_0.05.png}
+\caption{Caption for combined_class_0_misclassifications_eps_0.05.png}
+\label{fig:combined_class_0_misclassifications_eps_0.05.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_2_misclassifications_eps_0.05.png}
+\caption{Caption for combined_class_2_misclassifications_eps_0.05.png}
+\label{fig:combined_class_2_misclassifications_eps_0.05.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_1_misclassifications_eps_0.05.png}
+\caption{Caption for combined_class_1_misclassifications_eps_0.05.png}
+\label{fig:combined_class_1_misclassifications_eps_0.05.png}
+\end{figure}
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_3_misclassifications_eps_0.05.png}
+\caption{Caption for combined_class_3_misclassifications_eps_0.05.png}
+\label{fig:combined_class_3_misclassifications_eps_0.05.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_4_misclassifications_eps_0.05.png}
+\caption{Caption for combined_class_4_misclassifications_eps_0.05.png}
+\label{fig:combined_class_4_misclassifications_eps_0.05.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_5_misclassifications_eps_0.05.png}
+\caption{Caption for combined_class_5_misclassifications_eps_0.05.png}
+\label{fig:combined_class_5_misclassifications_eps_0.05.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_6_misclassifications_eps_0.05.png}
+\caption{Caption for combined_class_6_misclassifications_eps_0.05.png}
+\label{fig:combined_class_6_misclassifications_eps_0.05.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_7_misclassifications_eps_0.05.png}
+\caption{Caption for combined_class_7_misclassifications_eps_0.05.png}
+\label{fig:combined_class_7_misclassifications_eps_0.05.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_8_misclassifications_eps_0.05.png}
+\caption{Caption for combined_class_8_misclassifications_eps_0.05.png}
+\label{fig:combined_class_8_misclassifications_eps_0.05.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_9_misclassifications_eps_0.05.png}
+\caption{Caption for combined_class_9_misclassifications_eps_0.05.png}
+\label{fig:combined_class_9_misclassifications_eps_0.05.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_0_misclassifications_eps_0.1.png}
+\caption{Caption for combined_class_0_misclassifications_eps_0.1.png}
+\label{fig:combined_class_0_misclassifications_eps_0.1.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_1_misclassifications_eps_0.1.png}
+\caption{Caption for combined_class_1_misclassifications_eps_0.1.png}
+\label{fig:combined_class_1_misclassifications_eps_0.1.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_3_misclassifications_eps_0.1.png}
+\caption{Caption for combined_class_3_misclassifications_eps_0.1.png}
+\label{fig:combined_class_3_misclassifications_eps_0.1.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_2_misclassifications_eps_0.1.png}
+\caption{Caption for combined_class_2_misclassifications_eps_0.1.png}
+\label{fig:combined_class_2_misclassifications_eps_0.1.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_5_misclassifications_eps_0.1.png}
+\caption{Caption for combined_class_5_misclassifications_eps_0.1.png}
+\label{fig:combined_class_5_misclassifications_eps_0.1.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_4_misclassifications_eps_0.1.png}
+\caption{Caption for combined_class_4_misclassifications_eps_0.1.png}
+\label{fig:combined_class_4_misclassifications_eps_0.1.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_7_misclassifications_eps_0.1.png}
+\caption{Caption for combined_class_7_misclassifications_eps_0.1.png}
+\label{fig:combined_class_7_misclassifications_eps_0.1.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_6_misclassifications_eps_0.1.png}
+\caption{Caption for combined_class_6_misclassifications_eps_0.1.png}
+\label{fig:combined_class_6_misclassifications_eps_0.1.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_8_misclassifications_eps_0.1.png}
+\caption{Caption for combined_class_8_misclassifications_eps_0.1.png}
+\label{fig:combined_class_8_misclassifications_eps_0.1.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_9_misclassifications_eps_0.1.png}
+\caption{Caption for combined_class_9_misclassifications_eps_0.1.png}
+\label{fig:combined_class_9_misclassifications_eps_0.1.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_0_misclassifications_eps_0.2.png}
+\caption{Caption for combined_class_0_misclassifications_eps_0.2.png}
+\label{fig:combined_class_0_misclassifications_eps_0.2.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_2_misclassifications_eps_0.2.png}
+\caption{Caption for combined_class_2_misclassifications_eps_0.2.png}
+\label{fig:combined_class_2_misclassifications_eps_0.2.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_1_misclassifications_eps_0.2.png}
+\caption{Caption for combined_class_1_misclassifications_eps_0.2.png}
+\label{fig:combined_class_1_misclassifications_eps_0.2.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_3_misclassifications_eps_0.2.png}
+\caption{Caption for combined_class_3_misclassifications_eps_0.2.png}
+\label{fig:combined_class_3_misclassifications_eps_0.2.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_4_misclassifications_eps_0.2.png}
+\caption{Caption for combined_class_4_misclassifications_eps_0.2.png}
+\label{fig:combined_class_4_misclassifications_eps_0.2.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_6_misclassifications_eps_0.2.png}
+\caption{Caption for combined_class_6_misclassifications_eps_0.2.png}
+\label{fig:combined_class_6_misclassifications_eps_0.2.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_5_misclassifications_eps_0.2.png}
+\caption{Caption for combined_class_5_misclassifications_eps_0.2.png}
+\label{fig:combined_class_5_misclassifications_eps_0.2.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_7_misclassifications_eps_0.2.png}
+\caption{Caption for combined_class_7_misclassifications_eps_0.2.png}
+\label{fig:combined_class_7_misclassifications_eps_0.2.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_8_misclassifications_eps_0.2.png}
+\caption{Caption for combined_class_8_misclassifications_eps_0.2.png}
+\label{fig:combined_class_8_misclassifications_eps_0.2.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_9_misclassifications_eps_0.2.png}
+\caption{Caption for combined_class_9_misclassifications_eps_0.2.png}
+\label{fig:combined_class_9_misclassifications_eps_0.2.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_1_misclassifications_eps_0.3.png}
+\caption{Caption for combined_class_1_misclassifications_eps_0.3.png}
+\label{fig:combined_class_1_misclassifications_eps_0.3.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_0_misclassifications_eps_0.3.png}
+\caption{Caption for combined_class_0_misclassifications_eps_0.3.png}
+\label{fig:combined_class_0_misclassifications_eps_0.3.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_3_misclassifications_eps_0.3.png}
+\caption{Caption for combined_class_3_misclassifications_eps_0.3.png}
+\label{fig:combined_class_3_misclassifications_eps_0.3.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_2_misclassifications_eps_0.3.png}
+\caption{Caption for combined_class_2_misclassifications_eps_0.3.png}
+\label{fig:combined_class_2_misclassifications_eps_0.3.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_4_misclassifications_eps_0.3.png}
+\caption{Caption for combined_class_4_misclassifications_eps_0.3.png}
+\label{fig:combined_class_4_misclassifications_eps_0.3.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_5_misclassifications_eps_0.3.png}
+\caption{Caption for combined_class_5_misclassifications_eps_0.3.png}
+\label{fig:combined_class_5_misclassifications_eps_0.3.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_6_misclassifications_eps_0.3.png}
+\caption{Caption for combined_class_6_misclassifications_eps_0.3.png}
+\label{fig:combined_class_6_misclassifications_eps_0.3.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_7_misclassifications_eps_0.3.png}
+\caption{Caption for combined_class_7_misclassifications_eps_0.3.png}
+\label{fig:combined_class_7_misclassifications_eps_0.3.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_9_misclassifications_eps_0.3.png}
+\caption{Caption for combined_class_9_misclassifications_eps_0.3.png}
+\label{fig:combined_class_9_misclassifications_eps_0.3.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_8_misclassifications_eps_0.3.png}
+\caption{Caption for combined_class_8_misclassifications_eps_0.3.png}
+\label{fig:combined_class_8_misclassifications_eps_0.3.png}
+\end{figure}
+
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_0_misclassifications_eps_0.4.png}
+\caption{Caption for combined_class_0_misclassifications_eps_0.4.png}
+\label{fig:combined_class_0_misclassifications_eps_0.4.png}
+\end{figure}
+
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_1_misclassifications_eps_0.4.png}
+\caption{Caption for combined_class_1_misclassifications_eps_0.4.png}
+\label{fig:combined_class_1_misclassifications_eps_0.4.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_2_misclassifications_eps_0.4.png}
+\caption{Caption for combined_class_2_misclassifications_eps_0.4.png}
+\label{fig:combined_class_2_misclassifications_eps_0.4.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_3_misclassifications_eps_0.4.png}
+\caption{Caption for combined_class_3_misclassifications_eps_0.4.png}
+\label{fig:combined_class_3_misclassifications_eps_0.4.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_4_misclassifications_eps_0.4.png}
+\caption{Caption for combined_class_4_misclassifications_eps_0.4.png}
+\label{fig:combined_class_4_misclassifications_eps_0.4.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_5_misclassifications_eps_0.4.png}
+\caption{Caption for combined_class_5_misclassifications_eps_0.4.png}
+\label{fig:combined_class_5_misclassifications_eps_0.4.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_6_misclassifications_eps_0.4.png}
+\caption{Caption for combined_class_6_misclassifications_eps_0.4.png}
+\label{fig:combined_class_6_misclassifications_eps_0.4.png}
+\end{figure}
+
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_7_misclassifications_eps_0.4.png}
+\caption{Caption for combined_class_7_misclassifications_eps_0.4.png}
+\label{fig:combined_class_7_misclassifications_eps_0.4.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_8_misclassifications_eps_0.4.png}
+\caption{Caption for combined_class_8_misclassifications_eps_0.4.png}
+\label{fig:combined_class_8_misclassifications_eps_0.4.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_9_misclassifications_eps_0.4.png}
+\caption{Caption for combined_class_9_misclassifications_eps_0.4.png}
+\label{fig:combined_class_9_misclassifications_eps_0.4.png}
+\end{figure}
+
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_0_misclassifications_eps_0.5.png}
+\caption{Caption for combined_class_0_misclassifications_eps_0.5.png}
+\label{fig:combined_class_0_misclassifications_eps_0.5.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_1_misclassifications_eps_0.5.png}
+\caption{Caption for combined_class_1_misclassifications_eps_0.5.png}
+\label{fig:combined_class_1_misclassifications_eps_0.5.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_2_misclassifications_eps_0.5.png}
+\caption{Caption for combined_class_2_misclassifications_eps_0.5.png}
+\label{fig:combined_class_2_misclassifications_eps_0.5.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_3_misclassifications_eps_0.5.png}
+\caption{Caption for combined_class_3_misclassifications_eps_0.5.png}
+\label{fig:combined_class_3_misclassifications_eps_0.5.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_5_misclassifications_eps_0.5.png}
+\caption{Caption for combined_class_5_misclassifications_eps_0.5.png}
+\label{fig:combined_class_5_misclassifications_eps_0.5.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_4_misclassifications_eps_0.5.png}
+\caption{Caption for combined_class_4_misclassifications_eps_0.5.png}
+\label{fig:combined_class_4_misclassifications_eps_0.5.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_6_misclassifications_eps_0.5.png}
+\caption{Caption for combined_class_6_misclassifications_eps_0.5.png}
+\label{fig:combined_class_6_misclassifications_eps_0.5.png}
+\end{figure}
+
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_8_misclassifications_eps_0.5.png}
+\caption{Caption for combined_class_8_misclassifications_eps_0.5.png}
+\label{fig:combined_class_8_misclassifications_eps_0.5.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_7_misclassifications_eps_0.5.png}
+\caption{Caption for combined_class_7_misclassifications_eps_0.5.png}
+\label{fig:combined_class_7_misclassifications_eps_0.5.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_9_misclassifications_eps_0.5.png}
+\caption{Caption for combined_class_9_misclassifications_eps_0.5.png}
+\label{fig:combined_class_9_misclassifications_eps_0.5.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_0_misclassifications_eps_0.6.png}
+\caption{Caption for combined_class_0_misclassifications_eps_0.6.png}
+\label{fig:combined_class_0_misclassifications_eps_0.6.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_1_misclassifications_eps_0.6.png}
+\caption{Caption for combined_class_1_misclassifications_eps_0.6.png}
+\label{fig:combined_class_1_misclassifications_eps_0.6.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_3_misclassifications_eps_0.6.png}
+\caption{Caption for combined_class_3_misclassifications_eps_0.6.png}
+\label{fig:combined_class_3_misclassifications_eps_0.6.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_4_misclassifications_eps_0.6.png}
+\caption{Caption for combined_class_4_misclassifications_eps_0.6.png}
+\label{fig:combined_class_4_misclassifications_eps_0.6.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_5_misclassifications_eps_0.6.png}
+\caption{Caption for combined_class_5_misclassifications_eps_0.6.png}
+\label{fig:combined_class_5_misclassifications_eps_0.6.png}
+\end{figure}
+
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_7_misclassifications_eps_0.6.png}
+\caption{Caption for combined_class_7_misclassifications_eps_0.6.png}
+\label{fig:combined_class_7_misclassifications_eps_0.6.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_6_misclassifications_eps_0.6.png}
+\caption{Caption for combined_class_6_misclassifications_eps_0.6.png}
+\label{fig:combined_class_6_misclassifications_eps_0.6.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_9_misclassifications_eps_0.6.png}
+\caption{Caption for combined_class_9_misclassifications_eps_0.6.png}
+\label{fig:combined_class_9_misclassifications_eps_0.6.png}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{combined_class_boundary_pgd/combined_class_8_misclassifications_eps_0.6.png}
+\caption{Caption for combined_class_8_misclassifications_eps_0.6.png}
+\label{fig:combined_class_8_misclassifications_eps_0.6.png}
+\end{figure}
+
+
+\end{document}

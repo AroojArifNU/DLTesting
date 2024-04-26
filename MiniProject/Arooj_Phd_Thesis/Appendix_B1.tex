@@ -1,0 +1,123 @@
+\newpage
+\subsection{Smart Contract Code Subproblem 1}
+Appendix B.1 contains the details for the implementation of the smart contract code "AdDissem.sol" which is called in main file. This code should be deployed on a local blockchain by using \href{https://www.trufflesuite.com/ganache}{Ganache} and an online IDE called \href{http://remix.ethereum.org/}{Remix}.\par
+
+\begin{linenumbers}
+\begin{lstlisting}
+
+\end{lstlisting}
+\hypertarget{milp_code}{}
+\hyperlink{milp_text}{AdDissem.sol}
+\begin{lstlisting}
+pragma solidity >=0.4.22 <0.6.0;
+contract AdStruct {
+    bool proof;
+    address owner;
+    address  payable vehicleSenderAddr;
+    address  payable vehicleReceiverAddr;
+    address payable RSUAddr;
+    
+    
+    
+    constructor() public payable { 
+        owner = msg.sender; 
+    }
+    
+     struct advertiserStruct
+    {
+        address payable advertiserAddr;
+        address payable recipientAddr;
+        string  ad;
+        bytes32 hashOfAd;
+        bytes32 merkleRoot;
+        uint reward;
+        uint deadline;
+        uint sampleNumber;
+        
+    }
+    
+   // advertiserStruct  advertiser;       // creating an instance/(object) of the structure
+    
+   
+    advertiserStruct RSU;
+
+    
+ //   mapping (address => advertiserStruct) advertiserMapping; // creating a "mapping" instance which will help in pointing to the struct with a key (address)
+    
+    mapping (address => advertiserStruct) rsuMapping;
+
+  //  address[] public advertisersArray;
+
+    address[] public rsuArray;
+    function createAd(address payable _advertiserAddr , string memory _ad, bytes32 _merkleRoot, uint _reward, uint _deadline, uint _sampleNumber) public
+    {
+        //advertiserStruct memory   this can be joined with next line....
+
+        RSUAddr = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4;
+
+        bytes32 _hashOfAd = keccak256(abi.encodePacked(_ad));
+
+        RSU = advertiserStruct (_advertiserAddr, msg.sender, _ad, _hashOfAd,_merkleRoot, _reward, _deadline, _sampleNumber);
+        rsuMapping[msg.sender] = RSU;
+       // advertiser.advertiserAddr = _advertiserAddr;
+       //  advertiser.recipientAddr = _recipientAddr;
+      //   advertiser.ad = _ad;
+        
+       // advertisersArray.push(msg.sender) -1;
+
+        rsuArray.push(msg.sender) -1;
+    }
+
+    function checkAd () public returns (string memory)
+    {
+        return rsuMapping[msg.sender].ad;
+    }
+     function checkAdHash () public returns (bytes32)
+    {
+        return rsuMapping[msg.sender].hashOfAd;
+    }
+
+    function checkProof (bytes32 _receivedHashProof) public returns (bool)
+    {
+        if (rsuMapping[msg.sender].hashOfAd==_receivedHashProof)
+        {
+            proof = true;
+            return proof;
+        }
+        else{
+            proof = false;
+            return proof;
+
+        }
+
+        }
+        
+    function advertiserToRSU (uint _reward1, address _advertiserAddr1) public payable returns (string memory)
+    {
+        
+        if (proof ==true)
+            {
+        // This function will transfer reward money from Advertiser into RSU. 
+                RSUAddr.transfer(_reward1);
+                return "Succesfully sent";
+            }
+            else{
+                return "Unsuccesful, proof did not match";
+            }
+    }
+
+        function paymentToVehicles(address payable _vehicleSenderAddr, address payable _vehicleReceiverAddr) public payable returns (string memory)
+    {
+        // This function needs some fixing
+        uint rewardMoney = rsuMapping[msg.sender].reward;
+        vehicleSenderAddr = _vehicleSenderAddr;
+        vehicleReceiverAddr = _vehicleReceiverAddr;
+        vehicleSenderAddr.transfer(rewardMoney/2); // The ad sender vehicle gets 50% of reward
+        vehicleReceiverAddr.transfer(rewardMoney/4); // The receiver vehicle gets 25%
+        //recipientAddr.transfer(rewardMoney/4); // The RSU gets 25%
+    }
+
+    }
+
+\end{lstlisting}
+\end{linenumbers} 
