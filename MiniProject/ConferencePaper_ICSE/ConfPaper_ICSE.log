@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.6)  27 MAR 2024 11:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.6)  28 APR 2024 20:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/aa3506phd/Documents/GitHub/DLTest/MiniProject/ConferencePaper_ICSE/ConfPaper_ICSE
-(/Users/aa3506phd/Documents/GitHub/DLTest/MiniProject/ConferencePaper_ICSE/ConfPaper_ICSE.tex
+**/Users/aa3506phd/Documents/GitHub/DLTesting/MiniProject/ConferencePaper_ICSE/ConfPaper_ICSE
+(/Users/aa3506phd/Documents/GitHub/DLTesting/MiniProject/ConferencePaper_ICSE/ConfPaper_ICSE.tex
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-12-11>
 (/usr/local/texlive/2023/texmf-dist/tex/latex/ieeetran/IEEEtran.cls
@@ -361,7 +361,11 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 File: l3backend-pdftex.def 2023-11-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count306
 \l__pdf_internal_box=\box61
-) (./ConfPaper_ICSE.aux)
+) (./ConfPaper_ICSE.aux
+
+LaTeX Warning: Label `fig:graph' multiply defined.
+
+)
 \openout1 = `ConfPaper_ICSE.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
@@ -469,23 +473,23 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-<paper_images/overview.png, id=1, 900.36375pt x 650.43pt>
-File: paper_images/overview.png Graphic file (type png)
-<use paper_images/overview.png>
-Package pdftex.def Info: paper_images/overview.png  used on input line 49.
-(pdftex.def)             Requested size: 226.48395pt x 163.6095pt.
+
+pdfTeX warning: pdflatex (file ./paper_images/DL framework.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<paper_images/DL framework.pdf, id=1, 1285.05093pt x 345.54094pt>
+File: paper_images/DL framework.pdf Graphic file (type pdf)
+<use paper_images/DL framework.pdf>
+Package pdftex.def Info: paper_images/DL framework.pdf  used on input line 40.
+(pdftex.def)             Requested size: 452.9679pt x 121.80055pt.
 
 
-pdfTeX warning: pdflatex (file ./paper_images/graph.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<paper_images/graph.pdf, id=3, 1321.93875pt x 875.52094pt>
-File: paper_images/graph.pdf Graphic file (type pdf)
-<use paper_images/graph.pdf>
-Package pdftex.def Info: paper_images/graph.pdf  used on input line 55.
-(pdftex.def)             Requested size: 226.48395pt x 149.99886pt.
+pdfTeX warning: pdflatex (file ./paper_images/addermodelview.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<paper_images/addermodelview.pdf, id=2, 1365.60187pt x 2030.33531pt>
+File: paper_images/addermodelview.pdf Graphic file (type pdf)
+<use paper_images/addermodelview.pdf>
+Package pdftex.def Info: paper_images/addermodelview.pdf  used on input line 64.
+(pdftex.def)             Requested size: 452.9679pt x 673.45155pt.
 
-Overfull \hbox (232.48395pt too wide) in paragraph at lines 47--59
- [][][] 
- []
+LaTeX Warning: Float too large for page by 1.22472pt on input line 67.
 
 
 ** Conference Paper **
@@ -502,25 +506,29 @@ Before submitting the final camera ready copy, remember to:
 
 
 
- <./paper_images/overview.png> <./paper_images/graph.pdf>] (./ConfPaper_ICSE.aux)
+] [2 <./paper_images/DL framework.pdf>] [3 <./paper_images/addermodelview.pdf>] (./ConfPaper_ICSE.aux)
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-12-11>
  ***********
+
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 9264 strings out of 474181
- 152722 string characters out of 5745948
+ 9251 strings out of 474181
+ 152633 string characters out of 5745948
  1932457 words of memory out of 5000000
- 31400 multiletter control sequences out of 15000+600000
- 592873 words of font info for 132 fonts, out of 8000000 for 9000
+ 31392 multiletter control sequences out of 15000+600000
+ 591663 words of font info for 129 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 67i,8n,77p,1081b,473s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 67i,8n,77p,1084b,300s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ConfPaper_ICSE.pdf (1 page, 264597 bytes).
+Output written on ConfPaper_ICSE.pdf (3 pages, 296589 bytes).
 PDF statistics:
- 45 PDF objects out of 1000 (max. 8388607)
- 28 compressed objects within 1 object stream
+ 74 PDF objects out of 1000 (max. 8388607)
+ 47 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 36363 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 34315 words of extra memory for PDF output out of 35830 (max. 10000000)
 
