@@ -141,60 +141,58 @@ The Testing section evaluates how accurately and confidently the model predicts 
             \item Aggregate these measurements to assess the overall robustness of individual properties (noise, rotation, brightness).
         \end{itemize}
 
-        \item Local Robustness:
-        Local robustness quantifies the robustness of a deep learning model to perturbations in input data, specific to individual properties such as noise, rotation, and brightness. This metric assesses the probability of each class individually when these properties are altered, providing a measure of the model's stability under various conditions.
+    \end{itemize}
 
-        \item Definition and Measurement:
-        
-        Local robustness for a class \(c\) subjected to a property \(p\) is formally defined as the conditional probability of correct classification given the perturbed input:
-        \begin{equation}
-            LR_{c,p} = P(\hat{Y}_{c,p} = Y_c \mid X_c = x'_{c,p}),
-        \end{equation}
-        where \(X_c = x'_{c,p}\) represents the application of property \(p\) with parameter \(\theta_p\) to the original image \(x_c\). The property function \(p(x_c, \theta_p)\) modifies the input \(x_c\) accordingly, e.g., adding Gaussian noise or adjusting brightness.
 
-   
-        To practically estimate local robustness, the model is tested across a statistically significant number of trials, each involving perturbed inputs. The empirical local robustness is calculated as the average of indicator functions over these trials:
-        \begin{equation}
-            \hat{LR}_{c,p} = \frac{1}{N} \sum_{i=1}^N \mathbf{1}(f(p(x_{c,i}, \theta_p)) = y_{c,i}),
-        \end{equation}
-        where \(N\) is the number of test cases, \(f\) denotes the predictive function of the model, and \(\mathbf{1}\) is the indicator function that evaluates to 1 if the condition is true and 0 otherwise.
+    \subsection{Introduction to Local Robustness}
+    Local robustness  assesses how consistent a model's predictions are when faced with alterations such as noise, rotation, and brightness adjustments. 
+    \subsubsection{Definition}
+    Local robustness for a class \(c\) subjected to a property \(p\) is formally defined as the conditional probability of the model correctly classifying a perturbed input:
+    \begin{equation}
+        LR_{c,p} = P(\hat{Y}_{c,p} = Y_c \mid X_c = x'_{c,p}),
+    \end{equation}
+    where \(X_c = x'_{c,p}\) denotes the input from class \(c\) modified by property \(p\), such as adding Gaussian noise or altering brightness.
+    
+    
+    \subsubsection{Empirical Estimation}
+    To measure local robustness in practice, the model is subjected to a series of tests involving perturbed inputs. The robustness is then quantified by averaging the outcomes of these tests:
+    \begin{equation}
+        \hat{LR}_{c,p} = \frac{1}{N} \sum_{i=1}^N \mathbf{1}(f(p(x_{c,i}, \theta_p)) = y_{c,i}),
+    \end{equation}
+    where \(N\) represents the number of test cases, and \(\mathbf{1}\) is the indicator function, which is 1 if the prediction is correct and 0 otherwise. 
+    
+    \subsubsection{Aggregation of Robustness Measures}
+    While individual measures of local robustness are insightful, aggregating these metrics across different properties and classes provides a comprehensive view of the model's overall stability and reliability. For instance, averaging the robustness scores across all classes for a specific property can highlight how well the model handles that property in general:
+    \begin{equation}
+        LR_p = \frac{1}{C} \sum_{c=1}^C LR_{c,p},
+    \end{equation}
+    where \(C\) is the total number of classes. This aggregated metric helps in identifying properties that might require further optimization to enhance the model's overall performance.
 
 
 
         \subsection{Global Robustness Evaluation}
-        Global robustness assesses the model's ability to correctly process and combine outputs from multiple inputs under identical perturbations, using an "adder function" that sums the predictions. This measure evaluates how well the model integrates and interprets simultaneous input perturbations.
+        Global robustness in this context evaluates the model's ability to process and synthesize outputs from multiple inputs, each subjected to the same type of perturbation, directly within an integrated adder function. This adder not only generates predictions but also combines them, assessing the collective output against a predefined combined result.
         
-        \subsubsection{Definition and Mathematical Formulation}
-        
-        Global robustness is defined through an adder function that sums the predicted outputs for two inputs subjected to the same perturbation, and compares this sum to the expected combined result:
+        \subsubsection{Definition and Integrated Functionality}
+        The global robustness is defined with respect to an adder function that both predicts and combines outputs from two perturbed inputs:
         \begin{multline}
-            GR_{(c1, c2), p} = P(\text{Adder}(\hat{Y}_{c1,p}, \hat{Y}_{c2,p}) = \\
+            GR_{(c1, c2), p} = P(\text{Adder}(x'_{c1,p}, x'_{c2,p}) = \\
             Y_{\text{combined}} \mid X_{c1} = x'_{c1,p}, X_{c2} = x'_{c2,p})
         \end{multline}
+        where:        
+        - \(x'_{c1,p}\) and \(x'_{c2,p}\) are the inputs from classes \(c1\) and \(c2\), respectively, after the application of property \(p\).
+        - The \(\text{Adder}\) function now encapsulates the prediction process for each input and the subsequent combination of these predictions.
+        - \(Y_{\text{combined}}\) is the expected result of this combination, reflecting the correct combined output for the inputs processed together.
         
+        Empirical estimation of global robustness now involves:
+        \begin{equation}
+            \hat{GR} = \frac{1}{M} \sum_{j=1}^M \mathbf{1}(\text{Adder}(x'_{j1,p}, x'_{j2,p}) = Y_{j,\text{combined}})
+        \end{equation}
         where:
-        \begin{itemize}
-            \item \(x'_{c1,p}\) and \(x'_{c2,p}\) are the perturbed inputs from classes \(c1\) and \(c2\), respectively, after the application of property \(p\).
-            \item \(\hat{Y}_{c1,p}\) and \(\hat{Y}_{c2,p}\) are the predictions for these inputs.
-            \item \(\text{Adder}(\hat{Y}_{c1,p}, \hat{Y}_{c2,p})\) represents the function that sums these predictions.
-            \item \(Y_{\text{combined}}\) is the expected result of the combined predictions, reflecting correct model output for both inputs together.
-        \end{itemize}
-        
-
-
-        \begin{multline}
-            \hat{GR} = \frac{1}{M} \sum_{j=1}^M \mathbf{1}(\text{Adder}(f(x'_{j1,p}), f(x'_{j2,p})) \\= Y_{j,\text{combined}})
-        \end{multline}
-        where:
-        \begin{itemize}
-            \item \(M\) is the number of test pairs.
-            \item \(\mathbf{1}\) is the indicator function that returns 1 if the adder's output matches the combined expected result and 0 otherwise.
-            \item \(f\) is the prediction function, and \(x'_{j1,p}\), \(x'_{j2,p}\) are the perturbed images in the \(j\)-th test case.
-        \end{itemize}
-
-        
-    \end{itemize}
-
+        - \(M\) is the number of test pairs.
+        - \(\mathbf{1}\) is the indicator function, returning 1 if the combined output from the adder matches the expected result, and 0 otherwise.
+        - The \(\text{Adder}\) function within each test pair handles the prediction from perturbed inputs and their aggregation, effectively simulating a real-world application where input data are integrated to form a single decision output.
+   
 \subsection{Error Summarization}
 This section details the error summarization process following the global robustness testing, where we identify and analyze discrepancies in the model's predictions. By tracing errors from the combined outputs back to individual properties and classes, we systematically pinpoint and address underlying weaknesses.
 
