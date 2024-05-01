@@ -100,9 +100,7 @@ This section presents an overview of the comprehensive testing framework, which 
                 \[ R(S_c, 200) \text{ for each class } c \text{ in } S \]
                 where \( S_c \) represents the samples of class \( c \) within \( S \).
             \end{itemize}
-  
-    
-   
+
 \end{itemize}
 
 
@@ -144,7 +142,6 @@ The Testing section evaluates how accurately and confidently the model predicts 
         \end{itemize}
 
         \item Local Robustness:
-      
         Local robustness quantifies the robustness of a deep learning model to perturbations in input data, specific to individual properties such as noise, rotation, and brightness. This metric assesses the probability of each class individually when these properties are altered, providing a measure of the model's stability under various conditions.
 
         \item Definition and Measurement:
@@ -155,9 +152,8 @@ The Testing section evaluates how accurately and confidently the model predicts 
         \end{equation}
         where \(X_c = x'_{c,p}\) represents the application of property \(p\) with parameter \(\theta_p\) to the original image \(x_c\). The property function \(p(x_c, \theta_p)\) modifies the input \(x_c\) accordingly, e.g., adding Gaussian noise or adjusting brightness.
 
-        \item Empirical Estimation: 
-        
-        To empirically estimate local robustness, the model is tested across a statistically significant number of trials, each involving perturbed inputs. The empirical local robustness is calculated as the average of indicator functions over these trials:
+   
+        To practically estimate local robustness, the model is tested across a statistically significant number of trials, each involving perturbed inputs. The empirical local robustness is calculated as the average of indicator functions over these trials:
         \begin{equation}
             \hat{LR}_{c,p} = \frac{1}{N} \sum_{i=1}^N \mathbf{1}(f(p(x_{c,i}, \theta_p)) = y_{c,i}),
         \end{equation}
@@ -190,12 +186,12 @@ The Testing section evaluates how accurately and confidently the model predicts 
             \hat{GR} = \frac{1}{M} \sum_{j=1}^M \mathbf{1}(\text{Adder}(f(x'_{j1,p}), f(x'_{j2,p})) \\= Y_{j,\text{combined}})
         \end{multline}
         where:
-        - \(M\) is the number of test pairs.
-        - \(\mathbf{1}\) is the indicator function that returns 1 if the adder's output matches the combined expected result and 0 otherwise.
-        - \(f\) is the prediction function, and \(x'_{j1,p}\), \(x'_{j2,p}\) are the perturbed images in the \(j\)-th test case.
-        
-        This approach directly integrates the adder function into the evaluation of global robustness, aligning with the methodology of assessing model performance when processing multiple correlated inputs under similar conditions.
-        
+        \begin{itemize}
+            \item \(M\) is the number of test pairs.
+            \item \(\mathbf{1}\) is the indicator function that returns 1 if the adder's output matches the combined expected result and 0 otherwise.
+            \item \(f\) is the prediction function, and \(x'_{j1,p}\), \(x'_{j2,p}\) are the perturbed images in the \(j\)-th test case.
+        \end{itemize}
+
         
     \end{itemize}
 
