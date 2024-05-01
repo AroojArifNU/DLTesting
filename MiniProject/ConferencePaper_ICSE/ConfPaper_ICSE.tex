@@ -110,28 +110,27 @@ This section presents an overview of the comprehensive testing framework, which 
 
 This section outlines the generation of test cases to assess model robustness through properties such as noise, rotation, and brightness adjustments.
 
-\begin{itemize}
-    \item \textbf{Noise Addition:}
-        \begin{itemize}
-            \item Define the noise property \( p_n(x_i, \sigma) \) for adding Gaussian noise to image \( x_i \) from subset \( S \), where \( \sigma \) specifies the noise intensity:
-            \[ x'_i = p_n(x_i, \sigma) \]
-        \end{itemize}
-
-    \item \textbf{Geometric Transformations:}
-        \begin{itemize}
-            \item \textbf{Rotation:} Define \( p_r(x_i, \theta) \) to rotate image \( x_i \) by angle \( \theta \):
-            \[ x''_i = p_r(x_i, \theta) \]
-            \item \textbf{Brightness Adjustment:} Define \( p_b(x_i, b) \) to adjust the brightness of image \( x_i \), where \( b \) modifies pixel intensity:
-            \[ x'''_i = p_b(x_i, b) \]
-        \end{itemize}
-\end{itemize}
-
 \begin{figure}{}
     \centering
     \includegraphics[width=\linewidth]{paper_images/MNIST Adder.pdf}
     \caption{Graphical View of Local and Global Robustness}
     \label{fig:graph}
 \end{figure}
+
+\begin{itemize}
+    \item \textbf{Noise Addition:} Noise is added to an image \( x_i \) using a Gaussian noise model. The noise function \( p_n \) is defined as:
+    \[ p_n(x_i, \sigma) = x_i + \epsilon \]
+    where \( \epsilon \sim \mathcal{N}(0, \sigma^2) \) denotes the Gaussian noise with mean zero and standard deviation \(\sigma\).
+
+    \item \textbf{Rotation:} The rotation of an image \( x_i \) by an angle \(\theta\) is modeled by the rotation function \( p_r \):
+    \[ p_r(x_i, \theta) = \text{rotate}(x_i, \theta) \]
+    where \(\text{rotate}(\cdot, \theta)\) represents the rotation operation.
+
+    \item \textbf{Brightness Adjustment:} Brightness adjustment of an image \( x_i \) is controlled by a multiplicative factor \( \beta \), which scales the intensity of all pixels. The brightness function \( p_b \) can be defined as:
+    \[ p_b(x_i, \beta) = \beta \cdot x_i \]
+    where \( \beta > 1 \) increases brightness, and \( \beta < 1 \) decreases it. This approach ensures that the image's contrast is preserved while adjusting its brightness.
+
+\end{itemize}
 
 \subsection{Testing }
 
@@ -145,29 +144,60 @@ The Testing section evaluates how accurately and confidently the model predicts 
         \end{itemize}
 
         \item Local Robustness:
-        \begin{itemize}
-            \item Each class \( c \) from the MNIST dataset undergoes individual tests where properties \( p \in \{ \text{noise}, \text{rotation}, \text{brightness} \} \) are applied:
-            \[ x'_{c,p} = p(x_c, \theta_p) \]
-            where \( \theta_p \) represents the intensity or degree of property \( p \) applied to the image.
-            
-            \item The model evaluates each modified input \( x'_{c,p} \), and the outcome \( \hat{y}_{c,p} \) is recorded to measure:
-            \[ LR_{c,p} = P(\hat{Y}_{c,p} = Y_c | X_c = x'_{c,p}) \]
-            This probability is calculated over multiple trials to obtain a robust statistical measure of performance under each property.
-        \end{itemize}
-        
-        
-        \item Global Robustness:
-        \begin{itemize}
-            \item After applying the same property \( p \) to pairs of images \((x_{c1}, x_{c2})\) from different classes and testing them, the model's predictions \((\hat{y}_{c1,p}, \hat{y}_{c2,p})\) are compared against the actual class labels \( (y_{c1}, y_{c2}) \):
-            \[ x'_{c1,p} = p(x_{c1}, \theta_p), \quad x'_{c2,p} = p(x_{c2}, \theta_p) \]
-            {\footnotesize
-            \[ GR_{(c1, p), (c2, p)} = P(\hat{Y}_{c1,p} = Y_{c1} \land \hat{Y}_{c2,p} = Y_{c2} | X_{c1} = x'_{c1,p}, X_{c2} = x'_{c2,p}) \]
-            }
-        \end{itemize}
-               
-        
-\end{itemize}
+      
+        Local robustness quantifies the robustness of a deep learning model to perturbations in input data, specific to individual properties such as noise, rotation, and brightness. This metric assesses the probability of each class individually when these properties are altered, providing a measure of the model's stability under various conditions.
 
+        \item Definition and Measurement:
+        
+        Local robustness for a class \(c\) subjected to a property \(p\) is formally defined as the conditional probability of correct classification given the perturbed input:
+        \begin{equation}
+            LR_{c,p} = P(\hat{Y}_{c,p} = Y_c \mid X_c = x'_{c,p}),
+        \end{equation}
+        where \(X_c = x'_{c,p}\) represents the application of property \(p\) with parameter \(\theta_p\) to the original image \(x_c\). The property function \(p(x_c, \theta_p)\) modifies the input \(x_c\) accordingly, e.g., adding Gaussian noise or adjusting brightness.
+
+        \item Empirical Estimation: 
+        
+        To empirically estimate local robustness, the model is tested across a statistically significant number of trials, each involving perturbed inputs. The empirical local robustness is calculated as the average of indicator functions over these trials:
+        \begin{equation}
+            \hat{LR}_{c,p} = \frac{1}{N} \sum_{i=1}^N \mathbf{1}(f(p(x_{c,i}, \theta_p)) = y_{c,i}),
+        \end{equation}
+        where \(N\) is the number of test cases, \(f\) denotes the predictive function of the model, and \(\mathbf{1}\) is the indicator function that evaluates to 1 if the condition is true and 0 otherwise.
+
+
+
+        \subsection{Global Robustness Evaluation}
+        Global robustness assesses the model's ability to correctly process and combine outputs from multiple inputs under identical perturbations, using an "adder function" that sums the predictions. This measure evaluates how well the model integrates and interprets simultaneous input perturbations.
+        
+        \subsubsection{Definition and Mathematical Formulation}
+        
+        Global robustness is defined through an adder function that sums the predicted outputs for two inputs subjected to the same perturbation, and compares this sum to the expected combined result:
+        \begin{multline}
+            GR_{(c1, c2), p} = P(\text{Adder}(\hat{Y}_{c1,p}, \hat{Y}_{c2,p}) = \\
+            Y_{\text{combined}} \mid X_{c1} = x'_{c1,p}, X_{c2} = x'_{c2,p})
+        \end{multline}
+        
+        where:
+        \begin{itemize}
+            \item \(x'_{c1,p}\) and \(x'_{c2,p}\) are the perturbed inputs from classes \(c1\) and \(c2\), respectively, after the application of property \(p\).
+            \item \(\hat{Y}_{c1,p}\) and \(\hat{Y}_{c2,p}\) are the predictions for these inputs.
+            \item \(\text{Adder}(\hat{Y}_{c1,p}, \hat{Y}_{c2,p})\) represents the function that sums these predictions.
+            \item \(Y_{\text{combined}}\) is the expected result of the combined predictions, reflecting correct model output for both inputs together.
+        \end{itemize}
+        
+
+
+        \begin{multline}
+            \hat{GR} = \frac{1}{M} \sum_{j=1}^M \mathbf{1}(\text{Adder}(f(x'_{j1,p}), f(x'_{j2,p})) \\= Y_{j,\text{combined}})
+        \end{multline}
+        where:
+        - \(M\) is the number of test pairs.
+        - \(\mathbf{1}\) is the indicator function that returns 1 if the adder's output matches the combined expected result and 0 otherwise.
+        - \(f\) is the prediction function, and \(x'_{j1,p}\), \(x'_{j2,p}\) are the perturbed images in the \(j\)-th test case.
+        
+        This approach directly integrates the adder function into the evaluation of global robustness, aligning with the methodology of assessing model performance when processing multiple correlated inputs under similar conditions.
+        
+        
+    \end{itemize}
 
 \subsection{Error Summarization}
 This section details the error summarization process following the global robustness testing, where we identify and analyze discrepancies in the model's predictions. By tracing errors from the combined outputs back to individual properties and classes, we systematically pinpoint and address underlying weaknesses.
@@ -227,7 +257,6 @@ The model is tasked with processing two images, one from each class, both subjec
         Modifications to the training process or data augmentation strategies are suggested to enhance noise robustness, especially for digits with appearances similar to `5'.
 \end{enumerate}
 
-This error summarization framework enables a detailed understanding of the model’s limitations and facilitates targeted improvements to enhance overall system robustness.
 
 
 
