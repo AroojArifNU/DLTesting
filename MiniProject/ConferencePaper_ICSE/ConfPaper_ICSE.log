@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.6)  1 MAY 2024 12:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.6)  7 MAY 2024 11:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -461,53 +461,48 @@ File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 45.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 47.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 45.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 47.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
+<paper_images/framework.png, id=1, 395.4775pt x 387.4475pt>
+File: paper_images/framework.png Graphic file (type png)
+<use paper_images/framework.png>
+Package pdftex.def Info: paper_images/framework.png  used on input line 70.
+(pdftex.def)             Requested size: 220.48395pt x 216.00546pt.
+ [1{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
-pdfTeX warning: pdflatex (file ./paper_images/DL framework.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<paper_images/DL framework.pdf, id=1, 1340.75906pt x 345.54094pt>
-File: paper_images/DL framework.pdf Graphic file (type pdf)
-<use paper_images/DL framework.pdf>
-Package pdftex.def Info: paper_images/DL framework.pdf  used on input line 68.
-(pdftex.def)             Requested size: 452.9679pt x 116.73894pt.
 
+ <./paper_images/framework.png>]
 
-pdfTeX warning: pdflatex (file ./paper_images/MNIST Adder.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<paper_images/MNIST Adder.pdf, id=2, 1365.60187pt x 1828.58156pt>
-File: paper_images/MNIST Adder.pdf Graphic file (type pdf)
-<use paper_images/MNIST Adder.pdf>
-Package pdftex.def Info: paper_images/MNIST Adder.pdf  used on input line 113.
+pdfTeX warning: pdflatex (file ./paper_images/step4.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<paper_images/step4.pdf, id=13, 1365.60187pt x 1828.58156pt>
+File: paper_images/step4.pdf Graphic file (type pdf)
+<use paper_images/step4.pdf>
+Package pdftex.def Info: paper_images/step4.pdf  used on input line 115.
 (pdftex.def)             Requested size: 220.48395pt x 295.2297pt.
-[1{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
-
-]
-Underfull \hbox (badness 1616) in paragraph at lines 141--142
+Underfull \hbox (badness 1616) in paragraph at lines 143--144
 \OT1/ptm/m/n/10 (+20) over-all ro-bust-ness of in-di-vid-ual prop-er-ties
  []
 
-[2 <./paper_images/DL framework.pdf> <./paper_images/MNIST Adder.pdf
+[2 <./paper_images/step4.pdf>]
 
-pdfTeX warning: pdflatex (file ./paper_images/MNIST Adder.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->]
-
-pdfTeX warning: pdflatex (file ./paper_images/step4.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<paper_images/step4.pdf, id=54, 1385.92781pt x 682.04813pt>
-File: paper_images/step4.pdf Graphic file (type pdf)
-<use paper_images/step4.pdf>
-Package pdftex.def Info: paper_images/step4.pdf  used on input line 220.
-(pdftex.def)             Requested size: 220.48395pt x 108.5055pt.
-[3 <./paper_images/step4.pdf>]
+pdfTeX warning: pdflatex (file ./paper_images/step5.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<paper_images/step5.pdf, id=43, 1416.79312pt x 707.64375pt>
+File: paper_images/step5.pdf Graphic file (type pdf)
+<use paper_images/step5.pdf>
+Package pdftex.def Info: paper_images/step5.pdf  used on input line 222.
+(pdftex.def)             Requested size: 220.48395pt x 110.11555pt.
+[3 <./paper_images/step5.pdf>]
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -532,18 +527,18 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 9396 strings out of 474181
- 154387 string characters out of 5745948
- 1945457 words of memory out of 5000000
- 31421 multiletter control sequences out of 15000+600000
- 599268 words of font info for 206 fonts, out of 8000000 for 9000
+ 9426 strings out of 474181
+ 154512 string characters out of 5745948
+ 1943457 words of memory out of 5000000
+ 31418 multiletter control sequences out of 15000+600000
+ 600652 words of font info for 229 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 67i,10n,77p,1084b,414s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 67i,10n,77p,1675b,414s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ConfPaper_ICSE.pdf (4 pages, 673981 bytes).
+Output written on ConfPaper_ICSE.pdf (4 pages, 724356 bytes).
 PDF statistics:
- 129 PDF objects out of 1000 (max. 8388607)
- 82 compressed objects within 1 object stream
+ 119 PDF objects out of 1000 (max. 8388607)
+ 77 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  46096 words of extra memory for PDF output out of 51595 (max. 10000000)
 

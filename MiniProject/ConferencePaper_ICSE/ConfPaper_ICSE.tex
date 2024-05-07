@@ -14,7 +14,7 @@
 \usepackage{float}
 \usepackage{booktabs} % For professional looking tables
 
-\title{A Comprehensive Testing Framework for Deep Learning Models}
+\title{ A Novel Testing Framework for Vision Models Using Bayesian Network}
 \author{Author Name}
 \date{\today}
 
@@ -23,7 +23,9 @@
 \maketitle
 
 \begin{abstract}
-% Your abstract goes here.
+
+    Deep learning models, particularly vision models (VMs), are critical in high-stake domains such as autonomous driving, medical diagnostics, and security systems. The real-world deployment of VMs require rigorous robustness testing due to diverse environmental conditions. Current testing approaches primarily focus on neuron coverage. Although this metric is critical; however, it alone does not ensure comprehensive coverage of all corner cases, which can lead to unexpected failures, thus leaving a gap in the overall evaluation of the VMs robustness. My research develops a comprehensive testing framework designed to enhance the evaluation of VMs through a structured five-stage process.
+    The initial stage, Specification Module, focuses on clearly defining all necessary properties of the system to guide the entire testing process and ensure comprehensive coverage. The second stage, Sampling, involves to gather all relevant samples necessary for thorough model testing. In the third stage, Test Case Generation, the properties are specified in the first stage are applied to the collected samples, and test cases are generated accordingly. For example, in autonomous car testing, properties such as dust, noise, rain, and night conditions are considered to evaluate model performance under these conditions. The fourth stage, Testing \& Probabilistic Graph, begins with testing the generated test cases to validate their effectiveness. After testing,  robustness assessments are conducted both locally and globally. Locally, the robustness of model is evaluated within individual categories or classes to identify weaknesses. In contrast, globally, the model’s performance is assessed across various categories to enhance its generalization capabilities across different scenarios. Errors are systematically recorded for later analysis. This stage integrates a probabilistic approach using Bayesian network, combined with solid mathematical formulation, to provide a comprehensive visual and quantitative analysis of the model’s performance at both local and global levels. The final stage, Error Summarization, compiles and analyses the recorded errors, producing actionable graphical error reports and recommendations for VMs refinement.
 \end{abstract}
 
 
@@ -63,12 +65,12 @@ This paper addresses the following research questions applicable to various deep
 
 
 \section{Methodology}
-\begin{figure*}{}
+\begin{figure}{}
     \centering
-    \includegraphics[width=\linewidth]{paper_images/DL framework.pdf}
+    \includegraphics[width=\linewidth]{paper_images/framework.png}
     \caption{Overview of Testing Framework}
     \label{fig:graph}
-\end{figure*}
+\end{figure}
 
 
 This section presents an overview of the comprehensive testing framework, which is intended to test the specified properties according to given specification. The pipeline begins by precisely describing the properties to be evaluated. To comprehensively examine the model, test cases are created and tested. The error summary step next concentrating on the progression from local to global robustness to highlight the system systemic strengths and weaknesses. This systematic technique improves the robustness of deep learning models by tackling each essential aspect sequentially, from specification to complete error analysis.
@@ -110,7 +112,7 @@ This section outlines the generation of test cases to assess model robustness th
 
 \begin{figure}{}
     \centering
-    \includegraphics[width=\linewidth]{paper_images/MNIST Adder.pdf}
+    \includegraphics[width=\linewidth]{paper_images/step4.pdf}
     \caption{Graphical View of Local and Global Robustness}
     \label{fig:graph}
 \end{figure}
@@ -160,7 +162,7 @@ The Testing section evaluates how accurately and confidently the model predicts 
         \hat{LR}_{c,p} = \frac{1}{N} \sum_{i=1}^N \mathbf{1}(f(p(x_{c,i}, \theta_p)) = y_{c,i}),
     \end{equation}
     where \(N\) represents the number of test cases, and \(\mathbf{1}\) is the indicator function, which is 1 if the prediction is correct and 0 otherwise. 
-    
+
     \subsubsection{Aggregation of Robustness Measures}
     While individual measures of local robustness are insightful, aggregating these metrics across different properties and classes provides a comprehensive view of the model's overall stability and reliability. For instance, averaging the robustness scores across all classes for a specific property can highlight how well the model handles that property in general:
     \begin{equation}
@@ -217,7 +219,7 @@ The model is tasked with processing two images, one from each class, both subjec
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{paper_images/step4.pdf}
+    \includegraphics[width=\linewidth]{paper_images/step5.pdf}
     \caption{Diagram of Error Summarization Highlighting Class-Property Impact}
     \label{fig:error-summarization}
 \end{figure}
