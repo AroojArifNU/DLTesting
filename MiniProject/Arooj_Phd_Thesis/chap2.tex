@@ -8,7 +8,8 @@
 \titlespacing*{\chapter}{0pt}{50pt}{40pt} % Adjust vertical spacing before and after the title
 
 
-\chapter{Literature} % Ensures chapter numbering starts correctly
+\chapter{Literature Review} % Ensures chapter numbering starts correctly
+\label{chp:2}
 \section{Overview} % This will now be Section 1.1, not 0.1
 
 \subsection{Coverage Criteria for Deep Learning Models}
@@ -75,11 +76,11 @@
     \rowcolor[HTML]{EFEFEF} 
     \textbf{Methodology} & \textbf{Dataset} & \textbf{Benchmark} & \textbf{Limitation/Future Work} & \textbf{Coverage Criteria} & \textbf{Test Generation} \\ \endhead
     
-    Symbolic execution with local explainability. LIME provides explanations for predictions\cite{Agarwal} & German Credit Data, Adult census income, Bank marketing, US Executions, Fraud Detection, Raw Car Rentals, Credit data, Census data & THEMIS (Algorithm) The technique produces 3.72 times more successful test cases than existing state-of-the-art. & FW: Expand to text and image domains FW: Measure symbolic execution efficacy using neuron coverage, boundary value coverage. & -- & Symbolic/Concolic \\ \hline
+    Symbolic execution with local explainability. LIME provides explanations for predictions\cite{Agarwal} & German Credit Data, Adult census income, Bank marketing, US Executions, Fraud Detection, Raw Car Rentals, Credit data, Census data & THEMIS (Algorithm) The technique produces 3.72 times more successful test cases than existing state-of-the-art. & FW: Expand to text and image domains FW: Measure symbolic execution efficacy using neuron coverage, boundary value coverage. & -- & Concolic \\ \hline
     
     
-    Concolic testing method \cite{Youcheng} & \makecell[lt]{- MNIST\\ - CIFAR-10} & DeepXplore, DeepTest, DeepCover, and DeepGauge & & \makecell[lt]{NC, SSC, NBC} & Concolic \\ \hline
-    \cellcolor[HTML]{FFFFFF}Whitebox framework for testing DL systems, introducing neuron coverage for test measurement \cite{Kexin}& \makecell[lt]{- MNIST\\ - ImageNet\\ - Driving\\ - VirusTotal\\ - Drebin} & \makecell[lt]{LeNet variations\\ State-of-the-art\\ image classifiers \\ Nvidia DAVE \\ PDF malware detectors\\ Android app\\ malware detectors} & Inherits differential testing constraints. & NC & Dual-optimisation \\ \hline
+    Concolic testing method \cite{Youcheng} & \makecell[lt]{ MNIST\\  CIFAR-10} & DeepXplore, DeepTest, DeepCover, and DeepGauge & & \makecell[lt]{NC, SSC, NBC} & Concolic \\ \hline
+    \cellcolor[HTML]{FFFFFF}Whitebox framework for testing DL systems, introducing neuron coverage for test measurement \cite{Kexin}& \makecell[lt]{ MNIST\\ ImageNet\\ Driving\\ VirusTotal\\ Drebin} & \makecell[lt]{LeNet variations\\ State-of-the-art\\ image classifiers \\ Nvidia DAVE \\ PDF malware detectors\\ Android app\\ malware detectors} & Inherits differential testing constraints. & NC & Dual-optimisation \\ \hline
     Automates testing for DNN-driven autonomous cars \cite{Yuchi}& Udacity self driving car challenge 2 & \makecell[lt]{Chauffeur-\\ Epoch\\ Rambo-S1\\ Rambo-S2\\ Rambo-S3} & \makecell[lt]{L:missing some realistic cases.\\ L: restricted only steering angle,\\ not focus on brake and accelerator\\ L: cannot simulate complex road scene}. & NC & Greedy search \\ \hline
     White box methodology, Proposed four novel test criteria tailored to DNN, structural features. able to capture and quantify causal relations existing in a DNN, Achieved balance between bug finding ability and computational cost \cite{Sun}  & MNIST, CIFAR-10, ImageNet & State-of-the-art neural networks of different sizes (from a few hundred up to millions of neurons) to demonstrate their utility with respect to four aspects: bug finding, DNN safety statistics, testing efficiency, DNN internal structure analysis & & MC/DC & Symbolic execution \\ \hline
     Proposed criteria facilitate the understanding of DNNs as well as the test data quality from different levels and angles\cite{Ma} & \makecell[lt]{MNIST, ImageNet} & \makecell[lt]{LeNet-1\\ LeNet-4\\ LeNet-5,\\ VGG-19,\\ ResNet-50} & \makecell[lt]{More diverse datasets \\and DL architectures needed.\\ Check on real-world systems.} & NBC & Gradient descent methods \\ \hline

@@ -24,7 +24,7 @@
 
 \begin{abstract}
 
-    Deep learning models, particularly vision models (VMs) are critical in high-stakes domains such as autonomous driving, medical diagnostics, and security systems, where their deployment in real-world scenarios requires rigorous robustness testing due to diverse environmental conditions. Traditional metrics like neuron coverage, while essential, do not fully capture all corner cases, which can lead to unexpected model failures. To address this gap, this research introduces a comprehensive testing framework that enhances the robustness evaluation of VMs through a structured five-stage process. The first stage is specification, defines essential system properties to guide the entire testing process and ensure comprehensive coverage. The second sampling stage, gathering relevant samples for exhaustive model testing. In the test case generation stage, the defined properties are applied to create targeted test scenarios, incorporating variables such as dust, noise, and varying lighting conditions. The testing and probabilistic graph stage validates the effectiveness of these test cases and conducts robustness assessments both locally within individual categories and globally across multiple scenarios, employing a Bayesian network for detailed probabilistic and quantitative analysis of performance. The final stage is error summarisation, compiles and analyzes recorded errors to generate actionable graphical error reports and recommendations, thus guiding the refinement of VMs. This framework not only fills existing gaps in VM testing but also supports the development of models that are resilient and reliable across varied conditions.
+    Deep learning models, particularly vision models (VMs) are critical in high-stakes domains such as autonomous driving, medical diagnostics, and security systems, where their deployment in real-world scenarios requires rigorous robustness testing due to diverse environmental conditions. Traditional metrics like neuron coverage, while essential, do not fully capture all corner cases, which can lead to unexpected model failures. To address this gap, this research introduces a comprehensive testing framework that enhances the robustness evaluation of VMs through a structured five-stage process. The first stage is specification, defines essential system properties to guide the entire testing process and ensure comprehensive coverage. The second sampling stage, gathering relevant samples for exhaustive model testing. In the test case generation stage, the defined properties are applied to create targeted test scenarios, incorporating variables such as dust, noise, and varying lighting conditions. The testing and probabilistic graph stage validates the effectiveness of these test cases and conducts robustness assessments both locally within individual category and globally across multiple scenarios, employing a Bayesian network for detailed probabilistic and quantitative analysis of performance. The final stage is error summarisation, compiles and analyzes recorded errors to generate actionable graphical error reports and recommendations, thus guiding the refinement of VMs. This framework not only fills existing gaps in VM testing but also supports the development of models that are resilient and reliable across varied conditions.
 \end{abstract}
 
 
@@ -45,15 +45,15 @@ This research makes the following key contributions to the field of deep learnin
    
     \item We design an \textbf{end-to-end pipeline} for evaluating the robustness of system.
     
-    \item We propose a \textbf{conceptual framework} that quantifies both local and global robustness,with formalized approach to verify system robustness.
+    \item We propose a \textbf{conceptual framework} that quantifies both local (individual category) and global (across diverse categories) robustness,with formalized Bayesian probabilistic approach to verify system robustness.
     \item A novel \textbf{error summarization}  approach which allows better identification of model weaknesses related to class and property.
 
-    \item We perform all our \textbf{experiments} using publicly available deep learning models and MNIST dataset.
+    \item We perform all our \textbf{experiments} using publicly available vision models and MNIST dataset.
 \end{itemize}
 
 \section{Research Questions}
 
-This paper addresses the following research questions applicable to various deep learning models and datasets:
+This paper addresses the following research questions applicable to various vision models and datasets:
 
 \begin{itemize}
     \item How can we design a comprehensive framework to test system robustness?
@@ -73,7 +73,7 @@ This paper addresses the following research questions applicable to various deep
 
 
 This section presents an overview of the comprehensive testing framework, which is intended to test the specified properties according to given specification. The pipeline begins by precisely describing the properties to be evaluated. To comprehensively examine the model, test cases are created and tested. The error summary step next concentrating on the progression from local to global robustness to highlight the system systemic strengths and weaknesses. This systematic technique improves the robustness of deep learning models by tackling each essential aspect sequentially, from specification to complete error analysis.
-
+\subsection{Specification}
 \subsection{Sampling}
  The sample selection process involves a random but balanced choice of samples from each class, focusing exclusively on instances that the model has correctly predicted. This method ensures a representative and fair distribution of data across all classes.
 
@@ -131,7 +131,7 @@ This section outlines the generation of test cases to assess model robustness th
 
 \end{itemize}
 
-\subsection{Testing }
+\subsection{Testing and Probabilistic Graph}
 
 The Testing section evaluates how accurately and confidently the model predicts under various properties (noise, rotation, brightness) applied to images from each class. This phase focuses on directly measuring and quantifying the robustness of the model.
 \begin{itemize}
