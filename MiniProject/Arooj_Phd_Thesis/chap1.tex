@@ -1,14 +1,17 @@
-%% This is an example first chapter.  You should put chapter/appendix that you
-%% write into a separate file, and add a line \include{yourfilename} to
-%% main.tex, where `yourfilename.tex' is the name of the chapter/appendix file.
-%% You can process specific files by typing their names in at the
-%% \files=
-%% prompt when you run the file main.tex through LaTeX.
+% Adjusting chapter title format for regular (numbered) chapters
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\centering}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
 
-\chapter[Introduction]{Introduction}
-\label{chp:1}
-\newpage
-\section{Overview}
+% Using similar styling for unnumbered chapters but without "Chapter" prefix
+\titleformat{name=\chapter,numberless}
+  {\normalfont\huge\bfseries\centering}{}{0pt}{\Huge}
+
+\titlespacing*{\chapter}{0pt}{50pt}{40pt} % Adjust vertical spacing before and after the title
+
+
+\chapter{Introduction} % Ensures chapter numbering starts correctly
+\section{Overview} % This will now be Section 1.1, not 0.1
+
 Deep Neural Networks, or DNNs, are increasingly being
 used in diverse applications owing to their ability to match
 or exceed human level performance. The availability of large
@@ -124,5 +127,6 @@ a test case generation method is proposed to generate test inputs that have grea
 
 \subsection{Organization of thesis}\hypertarget{organization of thesis}{}
 The remainder of the thesis is organized as follows: related studies are presented in Chapter \ref{chp:2}. System model and proposed methodology are demonstrated in Chapter \ref{chp:3}. Chapter \ref{chp:4} describes the simulation results of our proposed schemes. Finally, the findings of this work along with future directions are presented in Chapter \ref{chp:6}.
+
 
 \clearpage

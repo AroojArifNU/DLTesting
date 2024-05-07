@@ -1,7 +1,15 @@
-\chapter[Literature review and problem statement]{Literature review and problem statement}
-\label{chp:2}
-\newpage
-\section{Literature review}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\centering}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+% Using similar styling for unnumbered chapters but without "Chapter" prefix
+\titleformat{name=\chapter,numberless}
+  {\normalfont\huge\bfseries\centering}{}{0pt}{\Huge}
+
+\titlespacing*{\chapter}{0pt}{50pt}{40pt} % Adjust vertical spacing before and after the title
+
+
+\chapter{Literature} % Ensures chapter numbering starts correctly
+\section{Overview} % This will now be Section 1.1, not 0.1
 
 \subsection{Coverage Criteria for Deep Learning Models}
 
