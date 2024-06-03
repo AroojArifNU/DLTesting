@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.6)  28 MAY 2024 11:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.6)  29 MAY 2024 13:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -365,9 +365,6 @@ File: l3backend-pdftex.def 2023-11-09 L3 backend support: PDF output (pdfTeX)
 
 LaTeX Warning: Label `fig:graph' multiply defined.
 
-
-LaTeX Warning: Label `fig:graph' multiply defined.
-
 )
 \openout1 = `ConfPaper_ICSE.aux'.
 
@@ -476,46 +473,41 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-<paper_images/framework.png, id=1, 407.5225pt x 475.7775pt>
-File: paper_images/framework.png Graphic file (type png)
-<use paper_images/framework.png>
-Package pdftex.def Info: paper_images/framework.png  used on input line 76.
-(pdftex.def)             Requested size: 220.48395pt x 257.40968pt.
- [1{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}
+
+pdfTeX warning: pdflatex (file ./paper_images/frame.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<paper_images/frame.pdf, id=1, 1359.57938pt x 124.96687pt>
+File: paper_images/frame.pdf Graphic file (type pdf)
+<use paper_images/frame.pdf>
+Package pdftex.def Info: paper_images/frame.pdf  used on input line 76.
+(pdftex.def)             Requested size: 452.9679pt x 41.63391pt.
+[1{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
 ]
 
-pdfTeX warning: pdflatex (file ./paper_images/step4.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<paper_images/step4.pdf, id=12, 1378.39969pt x 1910.63812pt>
-File: paper_images/step4.pdf Graphic file (type pdf)
-<use paper_images/step4.pdf>
-Package pdftex.def Info: paper_images/step4.pdf  used on input line 121.
-(pdftex.def)             Requested size: 220.48395pt x 305.59174pt.
-
-
 pdfTeX warning: pdflatex (file ./paper_images/noise_rotation_localcal_global.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<paper_images/noise_rotation_localcal_global.pdf, id=13, 1275.26437pt x 800.9925pt>
+<paper_images/noise_rotation_localcal_global.pdf, id=11, 1275.26437pt x 800.9925pt>
 File: paper_images/noise_rotation_localcal_global.pdf Graphic file (type pdf)
 <use paper_images/noise_rotation_localcal_global.pdf>
 Package pdftex.def Info: paper_images/noise_rotation_localcal_global.pdf  used on input line 128.
 (pdftex.def)             Requested size: 220.48395pt x 138.4769pt.
-[2 <./paper_images/framework.png> <./paper_images/step4.pdf> <./paper_images/noise_rotation_localcal_global.pdf
 
-pdfTeX warning: pdflatex (file ./paper_images/noise_rotation_localcal_global.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->]
 Underfull \hbox (badness 1616) in paragraph at lines 155--156
 \OT1/ptm/m/n/10 (+20) over-all ro-bust-ness of in-di-vid-ual prop-er-ties
  []
 
-[3]
+[2 <./paper_images/frame.pdf> <./paper_images/noise_rotation_localcal_global.pdf
+
+pdfTeX warning: pdflatex (file ./paper_images/noise_rotation_localcal_global.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+>]
 
 pdfTeX warning: pdflatex (file ./paper_images/step5.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<paper_images/step5.pdf, id=51, 1416.79312pt x 707.64375pt>
+<paper_images/step5.pdf, id=31, 1416.79312pt x 707.64375pt>
 File: paper_images/step5.pdf Graphic file (type pdf)
 <use paper_images/step5.pdf>
 Package pdftex.def Info: paper_images/step5.pdf  used on input line 234.
 (pdftex.def)             Requested size: 220.48395pt x 110.11555pt.
+[3 <./paper_images/step5.pdf>]
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -527,7 +519,9 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[4 <./paper_images/step5.pdf>] (./ConfPaper_ICSE.aux)
+[4
+
+] (./ConfPaper_ICSE.aux)
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-12-11>
@@ -538,18 +532,18 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 9421 strings out of 474181
- 154805 string characters out of 5745948
+ 9426 strings out of 474181
+ 154730 string characters out of 5745948
  1944457 words of memory out of 5000000
- 31425 multiletter control sequences out of 15000+600000
- 600194 words of font info for 221 fonts, out of 8000000 for 9000
+ 31421 multiletter control sequences out of 15000+600000
+ 600542 words of font info for 227 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 67i,10n,77p,1673b,414s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 67i,10n,77p,1650b,414s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ConfPaper_ICSE.pdf (4 pages, 795236 bytes).
+Output written on ConfPaper_ICSE.pdf (4 pages, 611960 bytes).
 PDF statistics:
- 123 PDF objects out of 1000 (max. 8388607)
- 76 compressed objects within 1 object stream
+ 107 PDF objects out of 1000 (max. 8388607)
+ 65 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 46101 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 46096 words of extra memory for PDF output out of 51595 (max. 10000000)
 

@@ -14,7 +14,7 @@
 \usepackage{float}
 \usepackage{booktabs} % For professional looking tables
 
-\title{ A Novel Testing Framework for Vision Models Using Bayesian Network}
+\title{TestifAI: A Comprehensive Testing Framework for Safe AI}
 \author{Author Name}
 \date{\today}
 
@@ -24,7 +24,7 @@
 
 \begin{abstract}
 
-    Deep learning models, particularly vision models (VMs) are critical in high-stakes domains such as autonomous driving, medical diagnostics, and security systems, where their deployment in real-world scenarios requires rigorous robustness testing due to diverse environmental conditions. Traditional metrics like neuron coverage, while essential, do not fully capture all corner cases, which can lead to unexpected model failures. To address this gap, this research introduces a comprehensive testing framework that enhances the robustness evaluation of VMs through a structured five-stage process. The first stage is specification, defines essential system properties to guide the entire testing process and ensure comprehensive coverage. The second sampling stage, gathering relevant samples for exhaustive model testing. In the test case generation stage, the defined properties are applied to create targeted test scenarios. The testing and probabilistic graph stage validates the effectiveness of these test cases and conducts robustness assessments both locally (within individual category) and globally (across multiple scenarios), employing a Bayesian network for detailed probabilistic and quantitative analysis of performance. The final stage is error summarisation, compiles and analyzes recorded errors to generate actionable graphical error reports and recommendations, thus guiding the refinement of VMs. This framework not only fills existing gaps in VM testing but also supports the development of models that are robust across varied environmental conditions.
+    Deep learning (DL) models are critical in high-stakes domains such as autonomous driving, medical diagnostics, and security systems, where their deployment in real-world scenarios requires rigorous robustness testing due to diverse environmental conditions. Traditional metrics like neuron coverage, while essential, do not fully capture all corner cases, which can lead to unexpected model failures. To address this gap, this research introduces a comprehensive testing framework that enhances the robustness evaluation of models through a structured five-stage process. The first stage is specification, defines essential system properties to guide the entire testing process and ensure comprehensive coverage. The second sampling stage, gathering relevant samples for exhaustive model testing. In the test case generation stage, the defined properties are applied to create targeted test scenarios. The testing and probabilistic graph stage validates the effectiveness of these test cases and conducts robustness assessments both locally (within individual category) and globally (across multiple scenarios), employing a Bayesian network for detailed probabilistic and quantitative analysis of performance. The final stage is error summarisation, compiles and analyzes recorded errors to generate actionable graphical error reports and recommendations, thus guiding the refinement of models. This framework not only fills existing gaps in DL testing but also supports the development of models that are robust across varied environmental conditions.
 \end{abstract}
 
 
@@ -71,12 +71,12 @@ This paper addresses the following research questions applicable to various visi
 
 
 \section{Methodology}
-\begin{figure}{}
+\begin{figure*}{}
     \centering
-    \includegraphics[width=\linewidth]{paper_images/framework.png}
+    \includegraphics[width=\linewidth]{paper_images/frame.pdf}
     \caption{Overview of Testing Framework}
     \label{fig:graph}
-\end{figure}
+\end{figure*}
 
 
 This section presents an overview of the comprehensive testing framework, which is intended to test the specified properties according to given specification. The pipeline begins by precisely describing the properties to be evaluated. To comprehensively examine the model, test cases are created and tested. The error summary step next concentrating on the progression from local to global robustness to highlight the system systemic strengths and weaknesses. This systematic technique improves the robustness of deep learning models by tackling each essential aspect sequentially, from specification to complete error analysis.
@@ -116,12 +116,12 @@ This section presents an overview of the comprehensive testing framework, which 
 
 This section outlines the generation of test cases to assess model robustness through properties such as noise, rotation, and brightness adjustments.
 
-\begin{figure}{}
-    \centering
-    \includegraphics[width=\linewidth]{paper_images/step4.pdf}
-    \caption{Graphical View of Local and Global Robustness}
-    \label{fig:graph}
-\end{figure}
+% \begin{figure}{}
+%     \centering
+%     \includegraphics[width=\linewidth]{paper_images/step4.pdf}
+%     \caption{Graphical View of Local and Global Robustness}
+%     \label{fig:graph}
+% \end{figure}
 
 \begin{figure}{}
     \centering
