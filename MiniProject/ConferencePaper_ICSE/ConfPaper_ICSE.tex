@@ -32,7 +32,7 @@
 
 \section{Problem Statement}
 
-Deep learning models are being more widely used in a variety of applications, yet their correctness in practical applications remains a challenge.
+Deep neural networks (DNNs) are being more widely used in a variety of applications, yet their correctness in practical applications remains a challenge.
 
 Unlike traditional software, DNNs do not have a clear control-flow structure. They learn their decision policy through training on a large dataset, adjusting parameters gradually using several methods to achieve desired accuracy. Consequently, traditional software testing methods like functional coverage, branch coverage, etc. cannot be applied to DNNs, thereby challenging their use for safety- critical applications.Traditional software testing methods fail when applied to DNNs because the code for deep neural networks holds no information about the internal decision-making logic of a DNN.
 \begin{itemize}
@@ -43,19 +43,19 @@ Unlike traditional software, DNNs do not have a clear control-flow structure. Th
 \end{itemize}
 
 \section{Research Goal}
-This paper aims to develop a systematic framework for evaluating local (in a specific region of the input space) and global (across a broad range of inputs) robustness in deep learning models. 
+This paper aims to develop a systematic framework for evaluating local (in a specific region of the input space) and global (across a broad range of inputs) correctness in deep learning models. 
 The goal is to provide a comprehensive error summary to improve model design and training, ensuring their reliability for real-world applications.
 
 \section{Contributions}
-This research makes the following key contributions to the field of deep learning robustness evaluation:
+This research makes the following key contributions to the field of deep learning correctness evaluation:
 \begin{itemize}
    
-    \item We design an \textbf{end-to-end pipeline} for evaluating the robustness of system.
+    \item We design an \textbf{end-to-end pipeline} for evaluating the correctness of system.
     
-    \item We propose a \textbf{conceptual framework} that quantifies both local (individual category) and global (across diverse categories) robustness,with formalized Bayesian probabilistic approach to verify system robustness.
+    \item We propose a \textbf{conceptual framework} that quantifies both local (individual category) and global (across diverse categories) correctness,with formalized Bayesian probabilistic approach to verify system robustness.
     \item A novel \textbf{error summarization}  approach which allows better identification of model weaknesses related to class and property.
 
-    \item We perform all our \textbf{experiments} using publicly available vision models and MNIST dataset.
+    \item We perform all our \textbf{experiments} using publicly available deep learning models and MNIST dataset.
 \end{itemize}
 
 \section{Research Questions}
@@ -242,7 +242,7 @@ The Testing section evaluates how accurately and confidently the  AI subsystem's
     \end{figure}
 
  
-   
+\subsubsection{how to write bayesian story, either it would be proper section or adust each baesian equation in all steps??? }
 \subsection{Error Summarization}
 
 \begin{figure}[H]
