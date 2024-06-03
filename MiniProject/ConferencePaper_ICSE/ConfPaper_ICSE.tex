@@ -9,6 +9,10 @@
 \usepackage{enumitem} % For better control over list
 \usepackage{microtype} % Improves typography
 \usepackage{amsmath}
+\usepackage{tikz}
+
+
+\usetikzlibrary{fit}
 
 % Combine graphicx package loading
 \usepackage{float}
@@ -30,13 +34,26 @@
 
 \section{Introduction}
 
-\section{Problem Statement}
+% General Problem
+
+% What has been done / citations
+
+% Your more specific problem
+
+% What has been done / what hasn't been done
+
+% Stating your exact problem/objective for the paper
+
+% List the contributions
+
+% Structure of the paper (optional)
+
 
 Deep neural networks (DNNs) are being more widely used in a variety of applications, yet their correctness in practical applications remains a challenge.
 
-Unlike traditional software, DNNs do not have a clear control-flow structure. They learn their decision policy through training on a large dataset, adjusting parameters gradually using several methods to achieve desired accuracy. Consequently, traditional software testing methods like functional coverage, branch coverage, etc. cannot be applied to DNNs, thereby challenging their use for safety- critical applications.Traditional software testing methods fail when applied to DNNs because the code for DNNs holds no information about the internal decision-making logic.
+Unlike traditional software, DNNs do not have a clear control-flow structure. They learn their decision policy through training on a large dataset, adjusting parameters gradually using several methods to achieve desired accuracy. Consequently, traditional software testing methods like functional coverage, branch coverage, etc. cannot be applied to DNNs, thereby challenging their use for safety-critical applications. Traditional software testing methods fail when applied to DNNs because the code for DNNs holds no information about the internal decision-making logic.
 \begin{itemize}
-    \item Input space is extremely large, \textbf{unguided simulation} are higly unlikely to find erroneous behavior
+    \item Input space is extremely large, \textbf{unguided simulation} are highly unlikely to find erroneous behaviour
     \item Standards available in industry but \textbf{lack of logcial structure} and \textbf{system specification}  
      \item Heavily depend on manual collections of test data under different conditions which become expensive as number of test condition increases
      \item  Existing coverage criteria are not detailed enough to notice precise behaviours exhibited by DL systems.
@@ -46,7 +63,9 @@ Unlike traditional software, DNNs do not have a clear control-flow structure. Th
 % This paper aims to develop a systematic framework for evaluating local (in a specific region of the input space) and global (across a broad range of inputs) correctness in deep learning models. 
 % The goal is to provide a comprehensive error summary to improve model design and training, ensuring their reliability for real-world applications.
 
-\section{Contributions}
+By systematically addressing each aspect from initial specifications to detailed error analysis, we aim to enhance the model's accuracy and reliability in real-world scenarios.
+
+
 This research makes the following key contributions to the field of deep learning correctness evaluation:
 \begin{itemize}
    
@@ -64,25 +83,60 @@ This paper addresses the following research questions applicable to various visi
 
 \begin{itemize}
     \item How can we design a comprehensive framework to test system correctness?
-    \item How can we systematically evaluated the correctness both at local and global levels within framework?
+    \item How can we systematically evaluate the correctness both at local and global levels within framework?
     \item How can error summarization be employed to quantify the impacts on model correctness?
  
 \end{itemize}
 
+\section{Background}
 
-\section{Methodology}
+AI system is $op(f_1,\dots,f_n)$, where $op$ is some operation.
+
+Specification is...
+
+\section{Approach}
 \begin{figure*}{}
     \centering
-    \includegraphics[width=\linewidth]{paper_images/frame.pdf}
+    % \includegraphics[width=\linewidth]{paper_images/frame.pdf}
+
+    \begin{tikzpicture}[component/.style={fill=gray!80, text=white,
+        rounded corners, outer sep=1mm, text width=2.6cm, align=flush
+        center, minimum height=1.2cm, scale=0.8},
+      input/.style={draw, scale=0.8,  inner sep=2mm, outer sep=1mm}]\sf
+      
+      \foreach \x/\al/\lab in {%
+        1/sampl/Sampling,%
+        2/gener/Testcase Generation,%
+        3/testing/Testing,%
+        4/summary/{Error\\ Summarisation}%
+      }{ \node[component] (\al) at (3.5*\x,0) {\textbf{\lab}}; }
+
+      \node[fit=(sampl)(summary), draw=gray, ultra thick] (approach) {};
+
+      \node[input] (aisystem) at (0.2, 0.5) {AI System};
+      \node[input] (spec)     at (0.2, -0.5) {Specifications};
+
+      \foreach/\from/\to in {%
+        sampl/gener, gener/testing, testing/summary%
+      }{ \draw[-stealth, very thick] (\from) -- (\to); }
+
+      \draw[-latex, thick] (aisystem) -- (approach.179);
+      \draw[-latex, thick] (spec) -- (approach.181);
+    \end{tikzpicture}
     \caption{Overview of Testing Framework}
     \label{fig:graph}
 \end{figure*}
 
-This section outlines our comprehensive approach to evaluating the model's performance under various conditions. The process begins with a detailed description of the properties that need to be tested.
+This section introduces our comprehensive approach to evaluating an AI system performance, summarised in Figure~\ref{fig:graph}. It takes as input the description of an AI system and a set of relevant specifications. Then it has 4 major components. This step-by-step method highlights the strengths and weaknesses of the model.
+\begin{itemize}
+% \item The process begins with a detailed description of the properties that need to be tested.
 
-To thoroughly assess the model, we generate and test specific cases based on these properties. Following this, we summarize the errors, focusing on how individual image performance (local correctness) translates to the overall system performance (global correctness). This step-by-step method highlights the strengths and weaknesses of the model.
+\item We sample inputs for the AI system
+\item To thoroughly assess the model, we generate (testcase generation) and test (testing) specific cases based on these properties.
+  
+\item Following this, we summarise the errors, focusing on how individual image performance (local correctness) translates to the overall system performance (global correctness). 
+\end{itemize}
 
-By systematically addressing each aspect from initial specifications to detailed error analysis, we aim to enhance the model's accuracy and reliability in real-world scenarios.
 
 \subsection{Specification}
 
