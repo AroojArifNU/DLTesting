@@ -34,7 +34,7 @@
 
 Deep neural networks (DNNs) are being more widely used in a variety of applications, yet their correctness in practical applications remains a challenge.
 
-Unlike traditional software, DNNs do not have a clear control-flow structure. They learn their decision policy through training on a large dataset, adjusting parameters gradually using several methods to achieve desired accuracy. Consequently, traditional software testing methods like functional coverage, branch coverage, etc. cannot be applied to DNNs, thereby challenging their use for safety- critical applications.Traditional software testing methods fail when applied to DNNs because the code for deep neural networks holds no information about the internal decision-making logic of a DNN.
+Unlike traditional software, DNNs do not have a clear control-flow structure. They learn their decision policy through training on a large dataset, adjusting parameters gradually using several methods to achieve desired accuracy. Consequently, traditional software testing methods like functional coverage, branch coverage, etc. cannot be applied to DNNs, thereby challenging their use for safety- critical applications.Traditional software testing methods fail when applied to DNNs because the code for DNNs holds no information about the internal decision-making logic.
 \begin{itemize}
     \item Input space is extremely large, \textbf{unguided simulation} are higly unlikely to find erroneous behavior
     \item Standards available in industry but \textbf{lack of logcial structure} and \textbf{system specification}  
@@ -42,9 +42,9 @@ Unlike traditional software, DNNs do not have a clear control-flow structure. Th
      \item  Existing coverage criteria are not detailed enough to notice precise behaviours exhibited by DL systems.
 \end{itemize}
 
-\section{Research Goal}
-This paper aims to develop a systematic framework for evaluating local (in a specific region of the input space) and global (across a broad range of inputs) correctness in deep learning models. 
-The goal is to provide a comprehensive error summary to improve model design and training, ensuring their reliability for real-world applications.
+% \section{Research Goal}
+% This paper aims to develop a systematic framework for evaluating local (in a specific region of the input space) and global (across a broad range of inputs) correctness in deep learning models. 
+% The goal is to provide a comprehensive error summary to improve model design and training, ensuring their reliability for real-world applications.
 
 \section{Contributions}
 This research makes the following key contributions to the field of deep learning correctness evaluation:
@@ -78,8 +78,12 @@ This paper addresses the following research questions applicable to various visi
     \label{fig:graph}
 \end{figure*}
 
+This section outlines our comprehensive approach to evaluating the model's performance under various conditions. The process begins with a detailed description of the properties that need to be tested.
 
-This section presents an overview of the comprehensive testing framework, which is intended to test the specified properties according to given specification. The pipeline begins by precisely describing the properties to be evaluated. To comprehensively examine the model, test cases are created and tested. The error summary step next concentrating on the progression from local to global robustness to highlight the system systemic strengths and weaknesses. This systematic technique improves the correctness of deep learning models by tackling each essential aspect sequentially, from specification to complete error analysis.
+To thoroughly assess the model, we generate and test specific cases based on these properties. Following this, we summarize the errors, focusing on how individual image performance (local correctness) translates to the overall system performance (global correctness). This step-by-step method highlights the strengths and weaknesses of the model.
+
+By systematically addressing each aspect from initial specifications to detailed error analysis, we aim to enhance the model's accuracy and reliability in real-world scenarios.
+
 \subsection{Specification}
 
 This step is crucial to specify the deployment environment of the AI system. This allows us to identify and define the relevant properties to ensure correctness in real-world situations. For instance, consider an AI system designed to recognize digits in images, such as in a calculator (sum)  application. The essential properties to verify include:
