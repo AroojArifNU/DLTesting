@@ -103,11 +103,44 @@ DNNs are inspired by human brains with millions of interconnected neurons. They 
 
 \subsection {DNN Testing Techniques}
 \subsubsection{Coverage Criteria}
+Neuron coverage (NC) is the first coverage metric proposed in the literature to test DNNs. It is defined as the ratio of neurons activated by a test input to the total number of neurons in the model, where a neuron is activated when its activation value exceeds a predefined threshold. K-multisection neuron coverage (KMNC) calculates coverage by dividing the interval between lower and upper bounds into k-bins and measuring the number of bins activated by the test inputs. For a test suite, it is the ratio of uniquely covered bins to the total bins in the model. Neuron boundary coverage (NBC) measures the ratio of corner case regions covered by test inputs, with corner cases defined as activation values below or above those observed during training. Strong neuron activation coverage (SNAC) similarly measures how many upper corner cases, defined as activation values above the training range, are covered by test inputs. Modified Condition/Decision Coverage (MC/DC) metrics capture causal changes in test inputs based on the sign and value change of a neuron’s activation. Likelihood-based Surprise Adequacy (LSA) uses Kernel Density Estimation (KDE) to estimate the likelihood of a test input during the training phase, prioritizing inputs with higher LSA scores as they are closer to classification boundaries. Distance-based Surprise Adequacy (DSA) is an alternative to LSA that uses the distance between activation traces of new test inputs and those observed during training.
+
 \subsubsection{DNN Testing Generation}
 
 \subsection{Limitations of Existing DNN Testing}
 
 \subsection{Realistic Synthetic Images}
+The properties that are exisiting in literature to verify any real world scenario AI systems include:
+\begin{itemize}
+    \item \textbf{Noise}: Assessing performance under various types of noise (e.g., Gaussian noise, salt-and-pepper noise).
+    \item \textbf{Rotation}: Recognizing digits regardless of their orientation.
+    \item \textbf{Scaling}: Handling variations in the size of the digits.
+
+    \item \textbf{Occlusion}: Maintaining recognition accuracy with partially occluded digits.
+
+\end{itemize}
+
+Let \( I \) represent the input image and \( \hat{I} \) the transformed image subjected to various conditions. The transformations can be modeled as follows:
+
+\begin{align}
+    \hat{I}_{noise} &= I + N \\
+    \hat{I}_{rotation} &= R(\theta) \cdot I \\
+    \hat{I}_{brightness} &= B(b) \cdot I \\
+    \hat{I}_{scaling} &= S(s) \cdot I \\
+    \hat{I}_{occlusion} &= I \cdot O 
+\end{align}
+
+Where:
+\begin{itemize}
+    \item \( N \) represents the noise added to the image.
+    \item \( R(\theta) \) denotes a rotation matrix with angle \( \theta \).
+    \item \( B(b) \) denotes brightness with factor \( b \).
+    \item \( S(s) \) is a scaling matrix with scale factor \( s \).
+    \item \( O \) is an occlusion mask.
+\end{itemize}
+
+The performance of the AI system is evaluated based on its ability to correctly recognize the digit in \( \hat{I} \) for each transformation.
+
 \subsection{Bayesian Networks}
 
 AI system is $op(f_1,\dots,f_n)$, where $op$ is some operation.
@@ -160,38 +193,7 @@ This section introduces our comprehensive approach to evaluating an AI system pe
 
 \subsection{Specification}
 
-This step is crucial to specify the deployment environment of the AI system. This allows us to identify and define the relevant properties to ensure correctness in real-world situations. For instance, consider an AI system designed to recognize digits in images, such as in a calculator (sum)  application. The essential properties to verify include:
-
-\begin{itemize}
-    \item \textbf{Noise}: Assessing performance under various types of noise (e.g., Gaussian noise, salt-and-pepper noise).
-    \item \textbf{Rotation}: Recognizing digits regardless of their orientation.
-    \item \textbf{Scaling}: Handling variations in the size of the digits.
-
-    \item \textbf{Occlusion}: Maintaining recognition accuracy with partially occluded digits.
-
-\end{itemize}
-
-Let \( I \) represent the input image and \( \hat{I} \) the transformed image subjected to various conditions. The transformations can be modeled as follows:
-
-\begin{align}
-    \hat{I}_{noise} &= I + N \\
-    \hat{I}_{rotation} &= R(\theta) \cdot I \\
-    \hat{I}_{brightness} &= B(b) \cdot I \\
-    \hat{I}_{scaling} &= S(s) \cdot I \\
-    \hat{I}_{occlusion} &= I \cdot O 
-\end{align}
-
-Where:
-\begin{itemize}
-    \item \( N \) represents the noise added to the image.
-    \item \( R(\theta) \) denotes a rotation matrix with angle \( \theta \).
-    \item \( B(b) \) denotes brightness with factor \( b \).
-    \item \( S(s) \) is a scaling matrix with scale factor \( s \).
-    \item \( O \) is an occlusion mask.
-\end{itemize}
-
-The performance of the AI system is evaluated based on its ability to correctly recognize the digit in \( \hat{I} \) for each transformation.
-
+This step is crucial to specify the deployment environment of the AI system. This allows us to identify and define the relevant properties to ensure correctness in real-world situations. For instance, consider an AI system designed to recognize digits in images, such as in a calculator (sum)  application. 
 
 
 \subsection{Sampling}
