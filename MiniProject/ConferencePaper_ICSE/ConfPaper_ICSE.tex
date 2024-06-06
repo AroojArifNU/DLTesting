@@ -77,18 +77,38 @@ This research makes the following key contributions to the field of deep learnin
     \item We perform all our \textbf{experiments} using publicly available deep learning models and MNIST dataset.
 \end{itemize}
 
-\section{Research Questions}
 
-This paper addresses the following research questions applicable to various vision models and datasets:
 
-\begin{itemize}
-    \item How can we design a comprehensive framework to test system correctness?
-    \item How can we systematically evaluate the correctness both at local and global levels within framework?
-    \item How can error summarization be employed to quantify the impacts on model correctness?
- 
-\end{itemize}
+\section{Background and Related Research}
+\subsection{AI Systems}
 
-\section{Background}
+We define AI systems refer to any software system that is capable to perform complex tasks through use of data, algorithms and high computational power, that typically require human intelligence. These tasks include problem solving, reasoning, decision making and natural language understanding.
+
+Deep learning is a subset of AI, that utilise  deep neural networks (DNNs) for complex patterns recognition. Some AI systems solely based on DNN components. In contrast, hybrid AI systems combine DNNs with traditional softwares to produce the final output.
+
+The development of DNNs is significantly different form traditional softwares. The developers explicitly define logic in traditional softwares but DNNs learn logic rules from the raw data rather than explicitly programmed. The developers shape these rules by modifying the training data, selecting the features and designing the DNNs architecture such as number od neurons and layers 
+
+Since DNNs rules are non-transparent so it is crucial to testing and correcting its error, particularly in safety-critical systems. This paper focuses on ...
+
+\begin{figure}{}
+    \centering
+    \includegraphics[width=\linewidth]{paper_images/traditional and DNN.pdf}
+    \caption{ Comparison between program flows of a traditional program (left) and a neural network (right). The nodes in gray denote the corresponding basic blocks or neurons that participated while processing an input.}
+    \label{fig:graph}
+\end{figure} 
+\subsection{Architecture of Deep Neural Network}
+
+DNNs are inspired by human brains with millions of interconnected neurons. They extract high level features from raw input using labeled training data without any human interference. DNN consists of atleast three layers: input, output and one or more hidden layers. Each neuron has direct connection to the neuron in next layer. The number of neurons on each layer can vary across different DNNs. The connections between neurons are known as edges and their associated weights called as DNN parameters. Neuron recieves input as a weighted sum of output from previous layer. It then applies non-linear activaion funciton (sigmoid, hyperbolic tangent, or Rectified Linear Unit (ReLU)) to this input to generate output. The objective of DNNs training is to learn parameters during training in order to make accurate prediction on unseen data during real world deployment.
+
+
+\subsection {DNN Testing Techniques}
+\subsubsection{Coverage Criteria}
+\subsubsection{DNN Testing Generation}
+
+\subsection{Limitations of Existing DNN Testing}
+
+\subsection{Realistic Synthetic Images}
+\subsection{Bayesian Networks}
 
 AI system is $op(f_1,\dots,f_n)$, where $op$ is some operation.
 
@@ -316,7 +336,16 @@ The Testing section evaluates how accurately and confidently the  AI subsystem's
 
 \section{Experiments}
 
+\section{Research Questions}
 
+This paper addresses the following research questions applicable to various vision models and datasets:
+
+\begin{itemize}
+    \item How can we design a comprehensive framework to test system correctness?
+    \item How can we systematically evaluate the correctness both at local and global levels within framework?
+    \item How can error summarization be employed to quantify the impacts on model correctness?
+ 
+\end{itemize}
 \section{Threats to Validity}
 
 This section outlines significant limitations and assumptions in our study that may affect the validity and reliability of our findings.
