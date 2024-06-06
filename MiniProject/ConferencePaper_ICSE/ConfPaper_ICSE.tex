@@ -10,13 +10,16 @@
 \usepackage{microtype} % Improves typography
 \usepackage{amsmath}
 \usepackage{tikz}
-
-
 \usetikzlibrary{fit}
+\usepackage{marginnote}
 
 % Combine graphicx package loading
 \usepackage{float}
 \usepackage{booktabs} % For professional looking tables
+
+
+\include{macros}
+
 
 \title{TestifAI: A Comprehensive Testing Framework for Safe AI}
 \author{Author Name}
@@ -80,44 +83,42 @@ This research makes the following key contributions to the field of deep learnin
 
 
 \section{Background and Related Research}
-AI system is $op(f_1,\dots,f_n)$, where $op$ is some operation.
 
-Specification is...
-\subsection{AI Systems}
+\subsection{Deep Neural Networks and AI Systems}
+
+Deep neural networks (DNNs) are inspired by human brains with millions of interconnected neurons.\nb{E: rephrase this sentence} They extract high level features from raw input using labeled training data without any human interference.
+
+Formally, a DNN is a function $f\colon\mathbb{R}^{s_0}\mapsto \mathbb{R}^{s_k}$ that takes as input a vector of size $s_0$ and produces a vector of size $s_k$. The function $f$ is computed by composing $k$ layers $L_1\colon\mathbb{R}^{s_0} \mapsto\mathbb{R}^{s_1}, \dots, L_k\colon\mathbb{R}^{s_{k-1}}\mapsto\mathbb{R}^{s_k}$ as $f(x) = L_k(\cdots L_2(L_1(x))\cdots)$.
+%
+Each layer~$L_i$ typically implements a non-linear function. For instance, a \emph{fully-connected} layer linearly transforms its input $x_{i-1}$ as $W x_{i-1} + b$, where $W\in\mathbb{R}^{s_{i} \times s_{i-1}}$ is the matrix of weights and $b\in\mathbb{R}^{s_i}$ is the bias vector, and then applies to it a non-linear activaion funciton (e.g., sigmoid or Rectified Linear Unit (ReLU)) componentwise, generating the output vector $x_i$. For such a layer, the weights specify how its input neurons are connected to its output neurons and are known as \emph{DNN parameters}. For more information about DNNs, we refer the reader to \cite{AddAReferenceForNNs}
+%
+The objective of DNNs training is to learn parameters during training in order to make accurate prediction on unseen data during real world deployment.
+%
+When the prediction task is that of classification, then $s_k$ represents the number of classes. Assuming that $f(x) = (y_1,\dots,y_{s_k})$, the \emph{classification result} is $\displaystyle\mathop{\text{argmax}}_{i=1}^{s_k} y_i$, which is the index of the component with the highest probability $y_i$.
 
 
-We define AI systems refer to any software system that is capable to perform complex tasks through use of data, algorithms and high computational power, that typically require human intelligence. These tasks include problem solving, reasoning, decision making and natural language understanding.
 
-Deep learning is a subset of AI, that utilise  deep neural networks (DNNs) for complex patterns recognition. Some AI systems solely based on DNN components. In contrast, hybrid AI systems combine DNNs with traditional softwares to produce the final output.
+By an \emph{AI system} we refer to any software system that is capable to perform complex tasks through use of data, algorithms and high computational power, that typically require human intelligence. These tasks include problem solving, reasoning, decision making and natural language understanding.
+%
+Deep learning is a subset of AI, that utilise  deep neural networks (DNNs) for complex patterns recognition. Some AI systems are solely based on DNN components. In contrast, \emph{hybrid} AI systems combine DNNs with traditional software to produce the final output.
 
-The development of DNNs is significantly different form traditional softwares. The developers explicitly define logic in traditional softwares but DNNs learn logic rules from the raw data rather than explicitly programmed. The developers shape these rules by modifying the training data, selecting the features and designing the DNNs architecture such as number od neurons and layers 
-
-Since DNNs rules are non-transparent so it is crucial to testing and correcting its error, particularly in safety-critical systems. This paper focuses on ...
+In this paper, we focus on AI systems with DNN components, and for simplicity assume that an AI system $\S$ consists of $n$ DNNs $f_1,\dots,f_n$ and a symbolic (software) component $\sigma$ such that given an input $x$, the \emph{output} $\S(x)$ of $\S$ on $x$ is defined as $\sigma(f_1(x),\dots,f_n(x))$.
 
 \begin{figure}{}
     \centering
     \includegraphics[width=\linewidth]{paper_images/traditional and DNN.pdf}
     \caption{ Comparison between program flows of a traditional program (left) and a neural network (right). The nodes in gray denote the corresponding basic blocks or neurons that participated while processing an input.}
     \label{fig:graph}
-\end{figure} 
-\subsection{Architecture of Deep Neural Network}
-
-DNNs are inspired by human brains with millions of interconnected neurons. They extract high level features from raw input using labeled training data without any human interference. DNN consists of atleast three layers: input, output and one or more hidden layers. Each neuron has direct connection to the neuron in next layer. The number of neurons on each layer can vary across different DNNs. The connections between neurons are known as edges and their associated weights called as DNN parameters. Neuron recieves input as a weighted sum of output from previous layer. It then applies non-linear activaion funciton (sigmoid, hyperbolic tangent, or Rectified Linear Unit (ReLU)) to this input to generate output. The objective of DNNs training is to learn parameters during training in order to make accurate prediction on unseen data during real world deployment.
+\end{figure}
 
 
-\subsection {DNN Testing Techniques}
-\subsubsection{Coverage Criteria}
-In traditional software testing, coverage criteria are used to measure how thoroughly software is tested. In DNNs, coverage might not directly apply to lines of code but rather to the input space or the variety of data the model can effectively handle or provide predictions for.
-Neuron coverage (NC) is the first coverage metric proposed in the literature to test DNNs. It is defined as the ratio of neurons activated by a test input to the total number of neurons in the model, where a neuron is activated when its activation value exceeds a predefined threshold. K-multisection neuron coverage (KMNC) calculates coverage by dividing the interval between lower and upper bounds into k-bins and measuring the number of bins activated by the test inputs. For a test suite, it is the ratio of uniquely covered bins to the total bins in the model. Neuron boundary coverage (NBC) measures the ratio of corner case regions covered by test inputs, with corner cases defined as activation values below or above those observed during training. Strong neuron activation coverage (SNAC) similarly measures how many upper corner cases, defined as activation values above the training range, are covered by test inputs. Modified Condition/Decision Coverage (MC/DC) metrics capture causal changes in test inputs based on the sign and value change of a neuron's activation. Likelihood-based Surprise Adequacy (LSA) uses Kernel Density Estimation (KDE) to estimate the likelihood of a test input during the training phase, prioritizing inputs with higher LSA scores as they are closer to classification boundaries. Distance-based Surprise Adequacy (DSA) is an alternative to LSA that uses the distance between activation traces of new test inputs and those observed during training.
+\subsection{Robustness of DNNs}% Realistic Image Perturbations}
 
-\subsubsection{DNN Testing Generation}
+DNNs are known to be not robust
 
-\subsection{Limitations of Existing DNN Testing}
-Traditional metrics often fall short in several key areas. They are simple, failing to capture the full complexity and preciseness of model behaviors. Trying to explore all possible behaviors of a model is nearly impossible because there are just too many paths to consider. These metrics also often overlook the detailed interactions that happen within and between layers of the model. When it comes to defining and testing all the necessary decision boundaries, especially in complex models, it becomes a alarming task.  Many of the existing metrics do not provide clear directions for improving the model, leaving you without actionable insights. Scalability and adaptability are other major issues. Many criteria are not scalable or adaptable across diverse model architectures.
+Kinds of perturbations
 
-
-\subsection{Realistic Synthetic Images}
-The properties that are exisiting in literature to verify  real world scenario AI systems include:
+The properties that exist in the literature to verify real world scenario AI systems include:
 \begin{itemize}
     \item \textbf{Noise}: Assessing performance under various types of noise (e.g., Gaussian noise, salt-and-pepper noise).
     \item \textbf{Rotation}: Recognizing digits regardless of their orientation.
@@ -126,6 +127,23 @@ The properties that are exisiting in literature to verify  real world scenario A
     \item \textbf{Occlusion}: Maintaining recognition accuracy with partially occluded digits.
 
 \end{itemize}
+
+
+\subsection {DNN Testing Techniques}
+The development of DNNs is significantly different from traditional software. The developers explicitly define logic in traditional software but DNNs learn logic rules from the raw data rather than explicitly programmed. The developers shape these rules by modifying the training data, selecting the features and designing the DNNs architecture such as number od neurons and layers 
+
+Since DNNs rules are non-transparent\nb{E: explain this better, probably need to cite some papers on explainable AI} so it is crucial to testing and correcting its error, particularly in safety-critical systems. Next we briefly introduce two major DNN testing techniques: coverage criteria and test-case generation.
+
+\smallskip\noindent%
+\textbf{Coverage Criteria}
+In traditional software testing, coverage criteria are used to measure how thoroughly software is tested. In DNNs, coverage might not directly apply to lines of code but rather to the input space or the variety of data the model can effectively handle or provide predictions for.
+Neuron coverage (NC) is the first coverage metric proposed in the literature to test DNNs. It is defined as the ratio of neurons activated by a test input to the total number of neurons in the model, where a neuron is activated when its activation value exceeds a predefined threshold. K-multisection neuron coverage (KMNC) calculates coverage by dividing the interval between lower and upper bounds into k-bins and measuring the number of bins activated by the test inputs. For a test suite, it is the ratio of uniquely covered bins to the total bins in the model. Neuron boundary coverage (NBC) measures the ratio of corner case regions covered by test inputs, with corner cases defined as activation values below or above those observed during training. Strong neuron activation coverage (SNAC) similarly measures how many upper corner cases, defined as activation values above the training range, are covered by test inputs. Modified Condition/Decision Coverage (MC/DC) metrics capture causal changes in test inputs based on the sign and value change of a neuron's activation. Likelihood-based Surprise Adequacy (LSA) uses Kernel Density Estimation (KDE) to estimate the likelihood of a test input during the training phase, prioritizing inputs with higher LSA scores as they are closer to classification boundaries. Distance-based Surprise Adequacy (DSA) is an alternative to LSA that uses the distance between activation traces of new test inputs and those observed during training.\nb{E: add references}
+
+\smallskip\noindent%
+\textbf{DNN Test-case Generation}
+
+Traditional metrics often fall short in several key areas. They are simple, failing to capture the full complexity and preciseness of model behaviors. Trying to explore all possible behaviors of a model is nearly impossible because there are just too many paths to consider. These metrics also often overlook the detailed interactions that happen within and between layers of the model. When it comes to defining and testing all the necessary decision boundaries, especially in complex models, it becomes a alarming task.  Many of the existing metrics do not provide clear directions for improving the model, leaving you without actionable insights. Scalability and adaptability are other major issues. Many criteria are not scalable or adaptable across diverse model architectures.
+
 
 
 \subsection{Bayesian Networks}

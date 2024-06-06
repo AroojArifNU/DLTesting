@@ -1,0 +1,28 @@
+\makeatletter
+\if@twocolumn
+  \setlength{\marginparwidth}{20mm}
+  \newcommand{\nb}[1]
+  {%
+   \begingroup%
+   \ifodd\value{page}
+     \if@firstcolumn\reversemarginpar\fi
+   \else
+     \if@firstcolumn\else\reversemarginpar\fi
+   \fi
+   \textcolor{red}{\bf!!}%{\color{red}\it\par[[#1]]\par}
+   \marginnote[%\parbox{\marginparwidth}
+{\scriptsize\textcolor{red}{#1}}]%
+   {%\parbox{\marginparwidth}
+{\scriptsize\textcolor{red}{#1}}}%
+   \endgroup%
+  }
+\else
+  \setlength{\marginparwidth}{40mm}
+  \newcommand{\nb}[1]{\textcolor{red}{\bf!}%
+    \reversemarginpar
+    \marginpar[\parbox{\marginparwidth}{\scriptsize\textcolor{red}{\raggedleft #1}}]%
+    {\parbox{\marginparwidth}{\scriptsize\textcolor{red}{\raggedright #1}}}}
+\fi
+\makeatother
+
+\renewcommand{\S}{\mathcal{S}}
