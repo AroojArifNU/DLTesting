@@ -80,7 +80,11 @@ This research makes the following key contributions to the field of deep learnin
 
 
 \section{Background and Related Research}
+AI system is $op(f_1,\dots,f_n)$, where $op$ is some operation.
+
+Specification is...
 \subsection{AI Systems}
+
 
 We define AI systems refer to any software system that is capable to perform complex tasks through use of data, algorithms and high computational power, that typically require human intelligence. These tasks include problem solving, reasoning, decision making and natural language understanding.
 
@@ -103,12 +107,15 @@ DNNs are inspired by human brains with millions of interconnected neurons. They 
 
 \subsection {DNN Testing Techniques}
 \subsubsection{Coverage Criteria}
-Neuron coverage (NC) is the first coverage metric proposed in the literature to test DNNs. It is defined as the ratio of neurons activated by a test input to the total number of neurons in the model, where a neuron is activated when its activation value exceeds a predefined threshold. K-multisection neuron coverage (KMNC) calculates coverage by dividing the interval between lower and upper bounds into k-bins and measuring the number of bins activated by the test inputs. For a test suite, it is the ratio of uniquely covered bins to the total bins in the model. Neuron boundary coverage (NBC) measures the ratio of corner case regions covered by test inputs, with corner cases defined as activation values below or above those observed during training. Strong neuron activation coverage (SNAC) similarly measures how many upper corner cases, defined as activation values above the training range, are covered by test inputs. Modified Condition/Decision Coverage (MC/DC) metrics capture causal changes in test inputs based on the sign and value change of a neuron’s activation. Likelihood-based Surprise Adequacy (LSA) uses Kernel Density Estimation (KDE) to estimate the likelihood of a test input during the training phase, prioritizing inputs with higher LSA scores as they are closer to classification boundaries. Distance-based Surprise Adequacy (DSA) is an alternative to LSA that uses the distance between activation traces of new test inputs and those observed during training.
+In traditional software testing, coverage criteria are used to measure how thoroughly software is tested. In DNNs, \"coverage\" might not directly apply to lines of code but rather to the input space or the variety of data the model can effectively handle or provide predictions for.
+Neuron coverage (NC) is the first coverage metric proposed in the literature to test DNNs. It is defined as the ratio of neurons activated by a test input to the total number of neurons in the model, where a neuron is activated when its activation value exceeds a predefined threshold. K-multisection neuron coverage (KMNC) calculates coverage by dividing the interval between lower and upper bounds into k-bins and measuring the number of bins activated by the test inputs. For a test suite, it is the ratio of uniquely covered bins to the total bins in the model. Neuron boundary coverage (NBC) measures the ratio of corner case regions covered by test inputs, with corner cases defined as activation values below or above those observed during training. Strong neuron activation coverage (SNAC) similarly measures how many upper corner cases, defined as activation values above the training range, are covered by test inputs. Modified Condition/Decision Coverage (MC/DC) metrics capture causal changes in test inputs based on the sign and value change of a neuron's activation. Likelihood-based Surprise Adequacy (LSA) uses Kernel Density Estimation (KDE) to estimate the likelihood of a test input during the training phase, prioritizing inputs with higher LSA scores as they are closer to classification boundaries. Distance-based Surprise Adequacy (DSA) is an alternative to LSA that uses the distance between activation traces of new test inputs and those observed during training.
 
 \subsubsection{DNN Testing Generation}
 
 \subsection{Limitations of Existing DNN Testing}
-Existing coverage criteria are often coarse-grained, offering a broad overview that lacks detail and may miss subtle yet important aspects of model behavior.
+Traditional metrics often fall short in several key areas. They are oversimplify, failing to capture the full complexity and preciseness of model behaviors. Trying to explore all possible behaviors of a model is nearly impossible because there are just too many paths to consider. These metrics also often overlook the detailed interactions that happen within and between layers of the model. When it comes to defining and testing all the necessary decision boundaries, especially in complex models, it becomes a alarming task.  Many of the existing metrics do not provide clear directions for improving the model, leaving you without actionable insights. Scalability and adaptability are other major issues. Many criteria are not scalable or adaptable across diverse model architectures.
+
+
 \subsection{Realistic Synthetic Images}
 The properties that are exisiting in literature to verify any real world scenario AI systems include:
 \begin{itemize}
@@ -120,32 +127,26 @@ The properties that are exisiting in literature to verify any real world scenari
 
 \end{itemize}
 
-Let \( I \) represent the input image and \( \hat{I} \) the transformed image subjected to various conditions. The transformations can be modeled as follows:
-
-\begin{align}
-    \hat{I}_{noise} &= I + N \\
-    \hat{I}_{rotation} &= R(\theta) \cdot I \\
-    \hat{I}_{brightness} &= B(b) \cdot I \\
-    \hat{I}_{scaling} &= S(s) \cdot I \\
-    \hat{I}_{occlusion} &= I \cdot O 
-\end{align}
-
-Where:
-\begin{itemize}
-    \item \( N \) represents the noise added to the image.
-    \item \( R(\theta) \) denotes a rotation matrix with angle \( \theta \).
-    \item \( B(b) \) denotes brightness with factor \( b \).
-    \item \( S(s) \) is a scaling matrix with scale factor \( s \).
-    \item \( O \) is an occlusion mask.
-\end{itemize}
-
-The performance of the AI system is evaluated based on its ability to correctly recognize the digit in \( \hat{I} \) for each transformation.
 
 \subsection{Bayesian Networks}
 
-AI system is $op(f_1,\dots,f_n)$, where $op$ is some operation.
 
-Specification is...
+Bayesian networks are a powerful probabilistic graphical model that represent a set of variables and their conditional dependencies via a directed acyclic graph (DAG). They are particularly useful for modeling uncertainty in complex systems. The fundamental equation of Bayesian networks is the Bayes theorem, which is given by:
+
+\begin{equation}
+P(A|B) = \frac{P(B|A)P(A)}{P(B)}
+\end{equation}
+
+This equation allows us to update the probability estimate for a hypothesis as more evidence or information becomes available.
+
+In the context of DNNs, Bayesian networks can offer significant advantages. Behavioral assessment considers probabilistic relationships to offer a richer, more detailed understanding of how different inputs affect model outputs. By developing a strategic focus on high-risk areas, it prioritizes regions with the highest uncertainty or risk for targeted testing, making the process more efficient and effective. 
+
+
+
+
+
+
+
 
 \section{Approach}
 \begin{figure*}{}
