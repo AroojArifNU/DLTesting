@@ -117,31 +117,59 @@ In this paper, we focus on AI systems with DNN components, and for simplicity as
 
 \subsection{Robustness of DNNs}% Realistic Image Perturbations}
 
-DNNs are known to be not robust. In research, DNNs have been shown to be vulnerable to two main categories of adversaries: \emph{adversarial attacks} \cite{adv_attacks} and \emph{input transformations} \cite{deeptest}.
+% DNNs are known to be not robust. In research, DNNs have been shown to be vulnerable to two main categories of adversaries: \emph{adversarial attacks} \cite{adv_attacks} and \emph{input transformations} \cite{deeptest}.
 
-\emph{Adversarial attacks} involve carefully crafted perturbations that subtly alter input data to mislead the model into making incorrect predictions:
+% \emph{Adversarial attacks} involve carefully crafted perturbations that subtly alter input data to mislead the model into making incorrect predictions:
+% \begin{itemize}
+%     \item \textbf{Fast Gradient Sign Method (FGSM)}: Alters input pixels in the gradient direction, causing misclassifications with minimal change.
+%     \item \textbf{Basic Iterative Method (BIM)}: Enhances FGSM by applying multiple iterations for stronger perturbations.
+%     \item \textbf{Carlini and Wagner (C\&W) attack}: Uses optimization to create small perturbations that mislead the DNN with high confidence.
+%     \item \textbf{DeepFool}: Iteratively adjusts inputs to cross decision boundaries with minimal perturbations.
+%     \item \textbf{Jacobian-based Saliency Map Attack (JSMA)}: Targets specific input features to cause targeted misclassifications
+% \end{itemize}
+
+% \emph{Input transformations} involve modifying the input images in ways that can reveal the model's sensitivity to variations:
+% \begin{itemize}
+%     \item \textbf{Noise}: Introduce various types of noise (e.g., Gaussian noise, salt-and-pepper noise).
+%     \item \textbf{Translation}: Move the entire image in one or more directions.
+%     \item \textbf{Scaling}: Change the size of the image.
+%     \item \textbf{Shear}: Alter the shape of objects within the image.
+%     \item \textbf{Rotation}: Rotate the image.
+%     \item \textbf{Contrast adjustments}: Modify the contrast of the image.
+%     \item \textbf{Brightness changes}: Alter the brightness of the image.
+%     \item \textbf{Blurring}: Apply a blur effect to the image.
+%     \item \textbf{Occlusion}: Partially hide the image.
+% \end{itemize}
+
+Deep Neural Networks (DNNs) are widely recognized for their lack of robustness. Research has demonstrated that DNNs are susceptible to two primary categories of adversarial interventions: \emph{adversarial attacks} and \emph{input transformations}.
+
+Let \( \mathcal{A} \) denote an adversary. Each category can be described formally as follows:
+
+\section*{Adversarial Attacks (\( \mathcal{A}_{\text{adv}} \))}
+
+These involve the generation of perturbations \( \delta \) such that \( x' = x + \delta \) misleads the DNN \( f \) into making incorrect predictions, where \( x \) is the original input and \( x' \) is the perturbed input. Various methods under this category include:
 \begin{itemize}
-    \item \textbf{Fast Gradient Sign Method (FGSM)}: Alters input pixels in the gradient direction, causing misclassifications with minimal change.
-    \item \textbf{Basic Iterative Method (BIM)}: Enhances FGSM by applying multiple iterations for stronger perturbations.
-    \item \textbf{Carlini and Wagner (C\&W) attack}: Uses optimization to create small perturbations that mislead the DNN with high confidence.
-    \item \textbf{DeepFool}: Iteratively adjusts inputs to cross decision boundaries with minimal perturbations.
-    \item \textbf{Jacobian-based Saliency Map Attack (JSMA)}: Targets specific input features to cause targeted misclassifications
+    \item \textbf{Fast Gradient Sign Method (FGSM)}: For an input \( x \) and its true label \( y \), FGSM generates \( x' = x + \epsilon \cdot \text{sign}(\nabla_x J(x, y)) \), where \( J \) is the loss function and \( \epsilon \) is a small perturbation factor.
+    \item \textbf{Basic Iterative Method (BIM)}: This extends FGSM by iteratively applying small perturbations: \( x'^{(i+1)} = x'^{(i)} + \alpha \cdot \text{sign}(\nabla_x J(x'^{(i)}, y)) \).
+    \item \textbf{Carlini and Wagner (C\&W) Attack}: Utilizes optimization to find \( \delta \) that minimizes the \( L_p \)-norm while ensuring \( f(x + \delta) \neq y \).
+    \item \textbf{DeepFool}: Iteratively perturbs \( x \) by \( \delta \) to move it across decision boundaries.
+    \item \textbf{Jacobian-based Saliency Map Attack (JSMA)}: Manipulates specific features of \( x \) to achieve targeted misclassifications.
 \end{itemize}
 
-\emph{Input transformations} involve modifying the input images in ways that can reveal the model's sensitivity to variations:
+\section*{Input Transformations (\( \mathcal{A}_{\text{trans}} \))}
+
+These involve modifying the input images in a manner that exploits the model's sensitivity to variations, potentially causing misclassifications. Various methods under this category include:
 \begin{itemize}
-    \item \textbf{Noise}: Introduce various types of noise (e.g., Gaussian noise, salt-and-pepper noise).
-    \item \textbf{Translation}: Move the entire image in one or more directions.
-    \item \textbf{Scaling}: Change the size of the image.
-    \item \textbf{Shear}: Alter the shape of objects within the image.
-    \item \textbf{Rotation}: Rotate the image.
-    \item \textbf{Contrast adjustments}: Modify the contrast of the image.
-    \item \textbf{Brightness changes}: Alter the brightness of the image.
-    \item \textbf{Blurring}: Apply a blur effect to the image.
-    \item \textbf{Occlusion}: Partially hide the image.
+    \item \textbf{Noise Addition}: Introducing noise \( \eta \) (e.g., Gaussian, salt-and-pepper) such that \( x' = x + \eta \).
+    \item \textbf{Translation}: Shifting the image \( x \) by a vector \( t \) to obtain \( x' = \text{translate}(x, t) \).
+    \item \textbf{Scaling}: Resizing the image \( x \) by a factor \( s \) to get \( x' = \text{scale}(x, s) \).
+    \item \textbf{Shearing}: Applying a shear transformation to \( x \) resulting in \( x' = \text{shear}(x, \theta) \).
+    \item \textbf{Rotation}: Rotating the image \( x \) by an angle \( \theta \) to produce \( x' = \text{rotate}(x, \theta) \).
+    \item \textbf{Contrast Adjustment}: Modifying the contrast of \( x \), represented as \( x' = \text{adjust\_contrast}(x, \alpha) \).
+    \item \textbf{Brightness Change}: Altering the brightness of \( x \), yielding \( x' = \text{change\_brightness}(x, \beta) \).
+    \item \textbf{Blurring}: Applying a blur effect to \( x \), giving \( x' = \text{blur}(x, k) \), where \( k \) is the kernel size.
+    \item \textbf{Occlusion}: Partially hiding regions of \( x \), leading to \( x' = \text{occlude}(x, m) \), where \( m \) denotes the mask.
 \end{itemize}
-
-
 
 By analyzing various types of adversaries, our proposed comprehensive testing framework evaluates model robustness, providing probabilities of model effectiveness against each adversary and assessing accuracy under adversarial conditions across different classes within any dataset.
 
@@ -180,8 +208,6 @@ Adapting traditional fuzzing technique for DNNs test-case generation method with
 DeepConcolic \cite{deepconcolic} employs a concolic testing approach to generate adversarial inputs for DNN testing. It combines symbolic execution with concrete execution path information to meet coverage criteria, supporting both NC and MC/DC criteria.
 
 
-
-
 Traditional techniques are simple, failing to capture the full complexity and preciseness of model behaviors. Trying to explore all possible behaviors of a model is nearly impossible because there are just too many paths to consider. These metrics also often overlook the detailed interactions that happen within and between layers of the model. When it comes to defining and testing all the necessary decision boundaries, especially in complex models, it becomes a alarming task.  Many of the existing metrics do not provide clear directions for improving the model, leaving you without actionable insights. Scalability and adaptability are other major issues. Many criteria are not scalable or adaptable across diverse model architectures.
 
 In this paper, we address these issues and design a systematic testing framework for .....
@@ -198,9 +224,6 @@ P(A|B) = \frac{P(B|A)P(A)}{P(B)}
 This equation allows us to update the probability estimate for a hypothesis as more evidence or information becomes available.
 
 In the context of DNNs, Bayesian networks can offer significant advantages. Behavioral assessment considers probabilistic relationships to offer a richer, more detailed understanding of how different inputs affect model outputs. By developing a strategic focus on high-risk areas, it prioritizes regions with the highest uncertainty or risk for targeted testing, making the process more efficient and effective. 
-
-
-
 
 
 
@@ -252,7 +275,7 @@ This section introduces our comprehensive approach to evaluating an AI system pe
 
 \subsection{Specification}
 
-This step is crucial to specify the deployment environment of the AI system. This allows us to identify and define the relevant properties to ensure correctness in real-world situations. For instance, consider an AI system designed to recognize digits in images, such as in a calculator (sum)  application. 
+This step is crucial to specify the deployment environment of the AI system. This allows us to identify and define the relevant specifications (adversaries) to ensure correctness in real-world situations. For instance, consider an AI system designed to recognize digits in images, such as in a calculator (sum)  application. 
 
 
 \subsection{Sampling}
