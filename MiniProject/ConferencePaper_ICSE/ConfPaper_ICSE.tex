@@ -121,38 +121,29 @@ DNNs are known to be not robust. In research, DNNs have been shown to be vulnera
 
 \emph{Adversarial attacks} involve carefully crafted perturbations that subtly alter input data to mislead the model into making incorrect predictions:
 \begin{itemize}
-    \item \textbf{Fast Gradient Sign Method (FGSM)}: Perturbs inputs by adjusting pixel values in the direction of the gradient, causing misclassifications with minimal changes.
-    \item \textbf{Basic Iterative Method (BIM)}: Improves upon FGSM by applying it iteratively, leading to more effective perturbations.
-    \item \textbf{Carlini and Wagner (C\&W) attack}: Uses optimization to find small perturbations that fool the network while maintaining high confidence in the incorrect predictions.
-    \item \textbf{DeepFool}: Iteratively perturbs inputs to cross decision boundaries with minimal changes.
-    \item \textbf{Jacobian-based Saliency Map Attack (JSMA)}: Selectively modifies input features to cause targeted misclassifications.
+    \item \textbf{Fast Gradient Sign Method (FGSM)}: Alters input pixels in the gradient direction, causing misclassifications with minimal change.
+    \item \textbf{Basic Iterative Method (BIM)}: Enhances FGSM by applying multiple iterations for stronger perturbations.
+    \item \textbf{Carlini and Wagner (C\&W) attack}: Uses optimization to create small perturbations that mislead the DNN with high confidence.
+    \item \textbf{DeepFool}: Iteratively adjusts inputs to cross decision boundaries with minimal perturbations.
+    \item \textbf{Jacobian-based Saliency Map Attack (JSMA)}: Targets specific input features to cause targeted misclassifications
 \end{itemize}
 
 \emph{Input transformations} involve modifying the input images in ways that can reveal the model's sensitivity to variations:
 \begin{itemize}
-    \item \textbf{Noise}: Assessing performance under various types of noise (e.g., Gaussian noise, salt-and-pepper noise).
-    \item \textbf{Translation}: Moves the entire image in one or more directions, testing the model's ability to handle shifts in object positioning.
-    \item \textbf{Scaling}: Changes the size of the image, assessing the model's robustness to variations in object scale.
-    \item \textbf{Shear}: Applies a shearing transformation, altering the shape of objects within the image to test model sensitivity to such distortions.
-    \item \textbf{Rotation}: Rotates the image, challenging the model's ability to recognize objects from different orientations.
-    \item \textbf{Brightness changes}: Alters the brightness of the image, testing the model's robustness to varying illumination.
-    \item \textbf{Blurring}: Applies a blur effect to the image, assessing the model's ability to handle reduced clarity and sharpness.
+    \item \textbf{Noise}: Introduce various types of noise (e.g., Gaussian noise, salt-and-pepper noise).
+    \item \textbf{Translation}: Move the entire image in one or more directions.
+    \item \textbf{Scaling}: Change the size of the image.
+    \item \textbf{Shear}: Alter the shape of objects within the image.
+    \item \textbf{Rotation}: Rotate the image.
+    \item \textbf{Contrast adjustments}: Modify the contrast of the image.
+    \item \textbf{Brightness changes}: Alter the brightness of the image.
+    \item \textbf{Blurring}: Apply a blur effect to the image.
+    \item \textbf{Occlusion}: Partially hide the image.
 \end{itemize}
 
 
+
 By analyzing various types of adversaries, our proposed comprehensive testing framework evaluates model robustness, providing probabilities of model effectiveness against each adversary and assessing accuracy under adversarial conditions across different classes within any dataset.
-
-
-
-% The properties that exist in the literature to verify real world scenario AI systems include:
-% \begin{itemize}
-%     \item \textbf{Noise}: Assessing performance under various types of noise (e.g., Gaussian noise, salt-and-pepper noise).
-%     \item \textbf{Rotation}: Recognizing digits regardless of their orientation.
-%     \item \textbf{Scaling}: Handling variations in the size of the digits.
-
-%     \item \textbf{Occlusion}: Maintaining recognition accuracy with partially occluded digits.
-
-% \end{itemize}
 
 
 \subsection {DNN Testing Techniques}
