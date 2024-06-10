@@ -141,13 +141,13 @@ In this paper, we focus on AI systems with DNN components, and for simplicity as
 %     \item \textbf{Occlusion}: Partially hide the image.
 % \end{itemize}
 
-Deep Neural Networks (DNNs) are known for their lack of robustness. We demonstrated  DNNs into two primary categories of adversaries: \emph{adversarial attacks} and \emph{input transformations}.
+Deep Neural Networks (DNNs) are known for their lack of robustness.In research, DNNs have been shown to be vulnerable to two main categories of adversaries: \emph{adversarial attacks} and \emph{input transformations}.
 
 Let \( \mathcal{A} \) denote an adversary. Each category can be described formally as follows:
 
 \section*{Adversarial Attacks (\( \mathcal{A}_{\text{adv}} \))}
 
-These involve the generation of perturbations \( \delta \) such that \( x' = x + \delta \) misleads the DNN \( f \) into making incorrect predictions, where \( x \) is the original input and \( x' \) is the perturbed input. Various methods under this category include:
+This involves the generation of perturbations \( \delta \) such that \( x' = x + \delta \) misleads the DNN \( f \) into making incorrect predictions, where \( x \) is the original input and \( x' \) is the perturbed input. Various methods under this category include:
 \begin{itemize}
     \item \textbf{Fast Gradient Sign Method (FGSM)}: For an input \( x \) and its true label \( y \), FGSM generates \( x' = x + \epsilon \cdot \text{sign}(\nabla_x J(x, y)) \), where \( J \) is the loss function and \( \epsilon \) is a small perturbation factor.
     \item \textbf{Basic Iterative Method (BIM)}: This extends FGSM by iteratively applying small perturbations: \( x'^{(i+1)} = x'^{(i)} + \alpha \cdot \text{sign}(\nabla_x J(x'^{(i)}, y)) \).
@@ -158,7 +158,7 @@ These involve the generation of perturbations \( \delta \) such that \( x' = x +
 
 \section*{Input Transformations (\( \mathcal{A}_{\text{trans}} \))}
 
-These involve modifying the input images in a manner that exploits the model's sensitivity to variations, potentially causing misclassifications. Various methods under this category include:
+This involve modifying the input images in a manner that exploits the model's sensitivity to variations, potentially causing misclassifications. Various methods under this category include:
 \begin{itemize}
     \item \textbf{Noise Addition}: Introducing noise \( \eta \) (e.g., Gaussian, salt-and-pepper) such that \( x' = x + \eta \).
     \item \textbf{Translation}: Shifting the image \( x \) by a vector \( t \) to obtain \( x' = \text{translate}(x, t) \).
