@@ -3,15 +3,15 @@
 \usepackage{amsmath, amssymb}
 \usepackage{fontawesome5}
 
-\usepackage{enumitem}
+\usepackage{amsmath}
 \usepackage[margin=1in]{geometry} % Adjust margins if needed
 \usepackage{graphicx} % Required for including images
 \usepackage{subcaption}
 \usepackage{algorithm, algorithmicx} % For algorithms
 \usepackage[table,xcdraw]{xcolor} % For colored tables
-\usepackage{enumitem} % For better control over list
+\usepackage{paralist}
+%\usepackage{enumitem} % For better control over list
 \usepackage{microtype} % Improves typography
-\usepackage{amsmath}
 \usepackage{tikz}
 \usetikzlibrary{fit}
 \usepackage{marginnote}
@@ -58,11 +58,12 @@
 Deep neural networks (DNNs) are being more widely used in a variety of applications, yet their correctness in practical applications remains a challenge.
 
 Unlike traditional software, DNNs do not have a clear control-flow structure. They learn their decision policy through training on a large dataset, adjusting parameters gradually using several methods to achieve desired accuracy. Consequently, traditional software testing methods like functional coverage, branch coverage, etc. cannot be applied to DNNs, thereby challenging their use for safety-critical applications. Traditional software testing methods fail when applied to DNNs because the code for DNNs holds no information about the internal decision-making logic.
+
 \begin{itemize}
-    \item Input space is extremely large, \textbf{unguided simulation} are highly unlikely to find erroneous behaviour
-    \item Standards available in industry but \textbf{lack of logcial structure} and \textbf{system specification}  
-     \item Heavily depend on manual collections of test data under different conditions which become expensive as number of test condition increases
-     \item  Existing coverage criteria are not detailed enough to notice precise behaviours exhibited by DL systems.
+\item Input space is extremely large, \textbf{unguided simulation} are highly unlikely to find erroneous behaviour
+\item Standards available in industry but \textbf{lack of logcial structure} and \textbf{system specification}  
+\item Heavily depend on manual collections of test data under different conditions which become expensive as number of test condition increases
+\item  Existing coverage criteria are not detailed enough to notice precise behaviours exhibited by DL systems.
 \end{itemize}
 
 % \section{Research Goal}
@@ -89,11 +90,11 @@ This research makes the following key contributions to the field of deep learnin
 
 \subsection{Deep Neural Networks and AI Systems}
 
-Deep neural networks (DNNs) mimic human brain structure, consisting of  millions of interconnected neurons.\nb{E: rephrase this sentence} They extract high level features from raw input using labeled training data without any human interference.
+Deep neural networks (DNNs) mimic human brain structure, consisting of  millions of interconnected neurons. They extract high level features from raw input using labeled training data without any human interference.
 
 Formally, a DNN is a function $f\colon\mathbb{R}^{s_0}\mapsto \mathbb{R}^{s_k}$ that takes as input a vector of size $s_0$ and produces a vector of size $s_k$. The function $f$ is computed by composing $k$ layers $L_1\colon\mathbb{R}^{s_0} \mapsto\mathbb{R}^{s_1}, \dots, L_k\colon\mathbb{R}^{s_{k-1}}\mapsto\mathbb{R}^{s_k}$ as $f(x) = L_k(\cdots L_2(L_1(x))\cdots)$.
 %
-Each layer~$L_i$ typically implements a non-linear function. For instance, a \emph{fully-connected} layer linearly transforms its input $x_{i-1}$ as $W x_{i-1} + b$, where $W\in\mathbb{R}^{s_{i} \times s_{i-1}}$ is the matrix of weights and $b\in\mathbb{R}^{s_i}$ is the bias vector, and then applies to it a non-linear activaion funciton (e.g., sigmoid or Rectified Linear Unit (ReLU)) component wise, generating the output vector $x_i$. For such a layer, the weights specify how its input neurons are connected to its output neurons and are known as \emph{DNN parameters}. For more information about DNNs, we refer the reader to \cite{dnn_archi}
+Each layer~$L_i$ typically implements a non-linear function. For instance, a \emph{fully-connected} layer linearly transforms its input $x_{i-1}$ as $W x_{i-1} + b$, where $W\in\mathbb{R}^{s_{i} \times s_{i-1}}$ is the matrix of weights and $b\in\mathbb{R}^{s_i}$ is the bias vector, and then applies to it a non-linear activaion funciton (e.g., sigmoid or Rectified Linear Unit (ReLU)) component wise, generating the output vector $x_i$. For such a layer, the weights specify how its input neurons are connected to its output neurons and are known as \emph{DNN parameters}. For more information about DNNs, we refer the reader to \cite{dnn_archi}.
 %
 The objective of DNNs training is to learn parameters during training in order to make accurate prediction on unseen data during real world deployment.
 %
@@ -104,8 +105,6 @@ When the prediction task is that of classification, then $s_k$ represents the nu
 By an \emph{AI system} we refer to any software system that is capable to perform complex tasks through use of data, algorithms and high computational power, that typically require human intelligence. These tasks include problem solving, reasoning, decision making and natural language understanding.
 %
 Deep learning is a subset of AI, that utilise  deep neural networks (DNNs) for complex patterns recognition. Some AI systems are solely based on DNN components. In contrast, \emph{hybrid} AI systems combine DNNs with traditional software to produce the final output.
-
-In this paper, we focus on AI systems with DNN components, and for simplicity assume that an AI system $\S$ consists of $n$ DNNs $f_1,\dots,f_n$ and a symbolic (software) component $\sigma$ such that given an input $x$, the \emph{output} $\S(x)$ of $\S$ on $x$ is defined as $\sigma(f_1(x),\dots,f_n(x))$.
 
 \begin{figure}{}
     \centering
@@ -141,43 +140,54 @@ In this paper, we focus on AI systems with DNN components, and for simplicity as
 %     \item \textbf{Occlusion}: Partially hide the image.
 % \end{itemize}
 
-Deep Neural Networks (DNNs) are known for their lack of robustness.In research, DNNs have been shown to be vulnerable to two main categories of adversaries:\emph{adversarial attacks} \cite{adv_attacks} and \emph{input transformations} \cite{deeptest}.
+Deep Neural Networks (DNNs) are known for their lack of robustness. In research, DNNs have been shown to be vulnerable to two main categories of adversaries: \emph{adversarial attacks}~\cite{adv_attacks} and \emph{image transformations}~\cite{deeptest}.
 
-Let \( \mathcal{A} \) denote an adversary. Each category can be described formally as follows:
+Let $\mathcal{A}$ denote an adversary. Each category can be described formally as follows:
 
-\section*{Adversarial Attacks (\( \mathcal{A}_{\text{adv}} \))}
+\smallskip\noindent%
+\textbf{Adversarial Attacks $\mathcal{A}_{\text{adv}}$}
 
-This involves the generation of perturbations \( \delta \) such that \( x' = x + \delta \) misleads the DNN \( f \) into making incorrect predictions, where \( x \) is the original input and \( x' \) is the perturbed input. Various methods under this category include:
-\begin{itemize}
-    \item \textbf{Fast Gradient Sign Method (FGSM)}: For an input \( x \) and its true label \( y \), FGSM generates \( x' = x + \epsilon \cdot \text{sign}(\nabla_x J(x, y)) \), where \( J \) is the loss function and \( \epsilon \) is a small perturbation factor.
-    \item \textbf{Basic Iterative Method (BIM)}: This extends FGSM by iteratively applying small perturbations: \( x'^{(i+1)} = x'^{(i)} + \alpha \cdot \text{sign}(\nabla_x J(x'^{(i)}, y)) \).
-    \item \textbf{Carlini and Wagner (C\&W) Attack}: Utilizes optimization to find \( \delta \) that minimizes the \( L_p \)-norm while ensuring \( f(x + \delta) \neq y \).
-    \item \textbf{DeepFool}: Iteratively perturbs \( x \) by \( \delta \) to move it across decision boundaries.
-    \item \textbf{Jacobian-based Saliency Map Attack (JSMA)}: Manipulates specific features of \( x \) to achieve targeted misclassifications.
+(\adv) This involves the generation of perturbations $\delta$ such that $x' = x + \delta$ misleads the DNN $f$ into making incorrect predictions, where $x$ is the original input and $x'$ is the perturbed input. Various methods under this category include:
+\begin{itemize}[$\bullet$]
+    \item \emph{Fast Gradient Sign Method (FGSM)}: For an input~$x$ and its true label $y$, FGSM generates $x' = x + \epsilon \cdot \text{sign}(\nabla_x J(x, y))$, where $J$ is the loss function and $\epsilon$ is a small perturbation factor.
+    \item \emph{Basic Iterative Method (BIM)}: This extends FGSM by iteratively applying small perturbations: $x'^{(i+1)} = x'^{(i)} + \alpha \cdot \text{sign}(\nabla_x J(x'^{(i)}, y))$.
+    \item \emph{Carlini and Wagner (C\&W) Attack}: Utilizes optimization to find $\delta$ that minimizes the $L_p$-norm while ensuring $f(x + \delta) \neq y$.
+    \item \emph{DeepFool}: Iteratively perturbs $x$ by $\delta$ to move it across decision boundaries.
+    \item \emph{Jacobian-based Saliency Map Attack (JSMA)}: Manipulates specific features of $x$ to achieve targeted misclassifications.
 \end{itemize}
 
-\section*{Input Transformations (\( \mathcal{A}_{\text{trans}} \))}
+\smallskip\noindent%
+\textbf{Image Transformations $\mathcal{A}_{\text{trans}}$}
 
-This involve modifying the input images in a manner that exploits the model's sensitivity to variations, potentially causing misclassifications. Various methods under this category include:
-\begin{itemize}
-    \item \textbf{Noise Addition}: Introducing noise \( \eta \) (e.g., Gaussian, salt-and-pepper) such that \( x' = x + \eta \).
-    \item \textbf{Translation}: Shifting the image \( x \) by a vector \( t \) to obtain \( x' = \text{translate}(x, t) \).
-    \item \textbf{Scaling}: Resizing the image \( x \) by a factor \( s \) to get \( x' = \text{scale}(x, s) \).
-    \item \textbf{Shearing}: Applying a shear transformation to \( x \) resulting in \( x' = \text{shear}(x, \theta) \).
-    \item \textbf{Rotation}: Rotating the image \( x \) by an angle \( \theta \) to produce \( x' = \text{rotate}(x, \theta) \).
-    \item \textbf{Contrast Adjustment}: Modifying the contrast of \( x \), represented as \( x' = \text{adjust\_contrast}(x, \alpha) \).
-    \item \textbf{Brightness Change}: Altering the brightness of \( x \), yielding \( x' = \text{change\_brightness}(x, \beta) \).
-    \item \textbf{Blurring}: Applying a blur effect to \( x \), giving \( x' = \text{blur}(x, k) \), where \( k \) is the kernel size.
-    \item \textbf{Occlusion}: Partially hiding regions of \( x \), leading to \( x' = \text{occlude}(x, m) \), where \( m \) denotes the mask.
+\begin{figure*}
+  \centering
+  
+  BIG PICTURE
+  
+  \caption{Image transformations for ...}
+  \label{fig:image-trans}
+\end{figure*}
+
+This involve modifying the input images in a manner that exploits the model's sensitivity to variations, potentially causing misclassifications. Various methods under this category include:\nb{Add a figure with examples of these transformations}
+\begin{itemize}[$\bullet$]
+    \item \emph{Noise Addition} (\noise): Introducing noise $\eta$ (e.g., Gaussian, salt-and-pepper) such that $x' = x + \eta$.
+    \item \emph{Translation} (\translation): Shifting the image $x$ by a vector $t$ to obtain $x' = \text{translate}(x, t)$.
+    \item \emph{Scaling} (\scale): Resizing the image $x$ by a factor $s$ to get $x' = \text{scale}(x, s)$.
+    \item \emph{Shearing} (\shear): Applying a shear transformation to $x$ resulting in $x' = \text{shear}(x, \theta)$.
+    \item \emph{Rotation} (\rotation): Rotating the image $x$ by an angle $\theta$ to produce $x' = \text{rotate}(x, \theta)$.
+    \item \emph{Contrast Adjustment} (\contrast): Modifying the contrast of $x$, represented as $x' = \text{adjust\_contrast}(x, \alpha)$.
+    \item \emph{Brightness Change} (\brightness): Altering the brightness of $x$, yielding $x' = \text{change\_brightness}(x, \beta)$.
+    \item \emph{Blurring} (\blur): Applying a blur effect to $x$, giving $x' = \text{blur}(x, k)$, where $k$ is the kernel size.
+    \item \emph{Occlusion} (\occlusion): Partially hiding regions of $x$, leading to $x' = \text{occlude}(x, m)$, where $m$ denotes the mask.
 \end{itemize}
 
 By analyzing various types of adversaries, our proposed comprehensive testing framework evaluates model robustness, providing probabilities of model effectiveness against each adversary and assessing accuracy under adversarial conditions across different classes within any dataset.
 
 
 \subsection {DNN Testing Techniques}
-The development of DNNs is significantly different from traditional software. The developers explicitly define logic in traditional software but DNNs learn logic rules from the raw data rather than explicitly programmed. The developers shape these rules by modifying the training data, selecting the features and designing the DNNs architecture such as number od neurons and layers 
+The development of DNNs is significantly different from traditional software. The developers explicitly define logic in traditional software but DNNs learn logic rules from the raw data rather than explicitly programmed. The developers shape these rules by modifying the training data, selecting the features and designing the DNNs architecture such as the number of neurons and layers.
 
-Since DNNs rules are non-transparent \cite{deepxplore} \nb{E: explain this better, probably need to cite some papers on explainable AI} so it is crucial to testing and correcting its error, particularly in safety-critical systems. Next we briefly introduce two major DNN testing techniques: coverage criteria and test-case generation.
+Since the logic of a DNN is non-transparent \cite{deepxplore}\nb{E: explain this better, probably need to cite some papers on explainable AI}, we are unable to identify the reasons behind its erroneous behaviour. Therefore, it is crucial to test and correcting its error, particularly in safety-critical systems. Next we briefly introduce two major DNN testing techniques: coverage criteria and test-case generation.
 
 \smallskip\noindent%
 \textbf{Coverage Criteria}
@@ -248,8 +258,8 @@ In the context of DNNs, Bayesian networks can offer significant advantages. Beha
 
       \node[fit=(sampl)(summary), draw=gray, ultra thick] (approach) {};
 
-      \node[input] (aisystem) at (0.2, 0.5) {AI System};
-      \node[input] (spec)     at (0.2, -0.5) {Specifications};
+      \node[input] (aisystem) at (0.2, 0.5) {AI System $\S$};
+      \node[input] (spec)     at (0.2, -0.5) {Specifications $\Sigma$};
 
       \foreach/\from/\to in {%
         sampl/gener, gener/testing, testing/summary%
@@ -259,23 +269,41 @@ In the context of DNNs, Bayesian networks can offer significant advantages. Beha
       \draw[-latex, thick] (spec) -- (approach.181);
     \end{tikzpicture}
     \caption{Overview of Testing Framework}
-    \label{fig:graph}
+    \label{fig:framework}
 \end{figure*}
 
-This section introduces our comprehensive approach to evaluating an AI system performance, summarised in Figure~\ref{fig:graph}. It takes as input the description of an AI system and a set of relevant specifications. Then it has 4 major components. This step-by-step method highlights the strengths and weaknesses of the model.
-\begin{itemize}
+This section introduces our comprehensive approach to evaluating an AI system performance, summarised in Figure~\ref{fig:framework}. It takes as input the description of an AI system and a set of relevant specifications against which the AI system should be checked. The framework itself has 4 main components: % This step-by-step method highlights the strengths and weaknesses of the AI system.
+\begin{inparaenum}[\it (i)]
 % \item The process begins with a detailed description of the properties that need to be tested.
+\item \emph{Sampling} to choose the original inputs for the AI system;
+\item \emph{Testcase generation} to generate the specific test cases from the sampled inputs according to the specifications;
+\item \emph{Validation} to check the behaviour of the AI system on the generated test-cases, where the check can be fully-fledged \emph{verification} or more light-weight \emph{testing};
+  % To thoroughly assess the model, we generate (testcase generation) and test (testing) specific cases based on these properties.  
+\item \emph{Error summarisation} to quantify the performance of the AI system in terms of its global/local robustness/correctness.
+  % Following this, we summarise the errors, focusing on how individual image performance (local correctness) translates to the overall system performance (global correctness).  
+\end{inparaenum}
 
-\item We sample inputs for the AI system
-\item To thoroughly assess the model, we generate (testcase generation) and test (testing) specific cases based on these properties.
-  
-\item Following this, we summarise the errors, focusing on how individual image performance (local correctness) translates to the overall system performance (global correctness). 
+
+
+We focus on AI systems with DNN components. We assume that an AI system $\S$ is a pair $(\F,\D)$ where
+\begin{itemize}
+\item $\F$ is the functional unit consisting of $n$ DNNs $f_1,\dots,f_n$ and a symbolic (software) component~$\sigma$ such that given an input $x$, the \emph{output}~$\F(x)$ is defined as $\sigma(f_1(x),\dots,f_n(x))$.
+  % 
+\item  $\D$ (for dataset) is a function that returns valid inputs for the system. In particular, $\D.\mathit{next}(\mathit{param})$ returns an $x$ that is a valid input for $\F$ for the given $\mathit{param}$.\nb{E: elaborate here what param is}
 \end{itemize}
 
+\begin{example}
+  An instance of a simple AI system is an MNIST Digit Adder $\S_{\text{MNIST}} = (\F,\D)$, where $\F = (f_{\text{mnist}}, +)$, $f_{\text{mnist}}$ is an MNIST Digit classifier and $\F$ takes as input two MNIST Digit images, recognises the digits in the images and computes their sum, i.e., $\F(x_1,x_2) = f_{\text{mnist}}(x_1) + f_{\text{mnist}}(x_2)$. $\D$ is the testing dataset for MNIST Digit consisting of 10,000 images.
+\end{example}
 
-\subsection{Specification}
+We assume that specifications $\Sigma$ is a pair $(P, V)$ where
+\begin{itemize}
+\item $P$ is a set of perturbations against which we are characterising the robustness of $\S$. For example, $P = \{\noise,\translation\}$ includes the random noise and translation perturbations.
 
-This step is crucial to specify the deployment environment of the AI system. This allows us to identify and define the relevant specifications (adversaries) to ensure correctness in real-world situations. For instance, consider an AI system designed to recognize digits in images, such as in a calculator (sum)  application. 
+\item $V$ is a validation flag, if $V=t$, then we do testing, and if $V=v$, we do verification.
+\end{itemize}
+
+% This step is crucial to specify the deployment environment of the AI system. This allows us to identify and define the relevant specifications (adversaries) to ensure correctness in real-world situations. For instance, consider an AI system designed to recognize digits in images, such as in a calculator (sum)  application. 
 
 
 \subsection{Sampling}
@@ -287,23 +315,23 @@ This step is crucial to specify the deployment environment of the AI system. Thi
         \item Model Utilization:
             \begin{itemize}
                 \item A pre-trained CNN model is utilized to select samples.
-                \item Let \( X = \{x_1, x_2, \dots, x_N\} \) denote the set of MNIST images. The model function \( f \) predicts:
+                \item Let $X = \{x_1, x_2, \dots, x_N\}$ denote the set of MNIST images. The model function $f$ predicts:
                 \[ f(x_i) \rightarrow y_i \]
-                \item The filter function \( g \) identifies accurate predictions, defined as:
+                \item The filter function $g$ identifies accurate predictions, defined as:
                 \[ g(x_i) = 
                 \begin{cases} 
                 1 & \text{if } f(x_i) = \text{true label of } x_i \\
                 0 & \text{otherwise}
                 \end{cases} \]
-                \item The subset \( S \) includes only correctly predicted images:
+                \item The subset $S$ includes only correctly predicted images:
                 \[ S = \{x_i \in X \mid g(x_i) = 1\} \]
             \end{itemize}
         \item Random Selection of Samples:
             \begin{itemize}
-                \item Randomly selects 100 samples from each class in \( S \), totaling 1000 samples.
-                \item The random selection function \( R \) is defined to ensure:
+                \item Randomly selects 100 samples from each class in $S$, totaling 1000 samples.
+                \item The random selection function $R$ is defined to ensure:
                 \[ R(S_c, 100) \text{ for each class } c \text{ in } S \]
-                where \( S_c \) represents the samples of class \( c \) within \( S \).
+                where $S_c$ represents the samples of class $c$ within $S$.
             \end{itemize}
 
 \end{itemize}
@@ -314,25 +342,25 @@ This step is crucial to specify the deployment environment of the AI system. Thi
 This section outlines the generation of test cases to assess model robustness through properties such as noise, rotation, brightness adjustments, occlusion, and scaling.
 
 \begin{itemize}
-    \item \textbf{Noise Addition:} Noise is added to an image \( x_i \) using a Gaussian noise model. The noise function \( p_n \) is defined as:
+    \item \textbf{Noise Addition:} Noise is added to an image $x_i$ using a Gaussian noise model. The noise function $p_n$ is defined as:
     \[ p_n(x_i, \sigma) = x_i + \epsilon \]
-    where \( \epsilon \sim \mathcal{N}(0, \sigma) \) denotes the Gaussian noise with mean zero and standard deviation \(\sigma\).
+    where $\epsilon \sim \mathcal{N}(0, \sigma)$ denotes the Gaussian noise with mean zero and standard deviation $\sigma\).
 
-    \item \textbf{Rotation:} The rotation of an image \( x_i \) by an angle \(\theta\) is modeled by the rotation function \( p_r \):
+    \item \textbf{Rotation:} The rotation of an image $x_i$ by an angle $\theta\) is modeled by the rotation function $p_r$:
     \[ p_r(x_i, \theta) = \text{rotate}(x_i, \theta) \]
-    where \(\text{rotate}(\cdot, \theta)\) represents the rotation operation.
+    where $\text{rotate}(\cdot, \theta)\) represents the rotation operation.
 
-    \item \textbf{Brightness Adjustment:} Brightness adjustment of an image \( x_i \) is controlled by a multiplicative factor \( \beta \), which scales the intensity of all pixels. The brightness function \( p_b \) can be defined as:
+    \item \textbf{Brightness Adjustment:} Brightness adjustment of an image $x_i$ is controlled by a multiplicative factor $\beta$, which scales the intensity of all pixels. The brightness function $p_b$ can be defined as:
     \[ p_b(x_i, \beta) = \beta \cdot x_i \]
-    where \( \beta > 1 \) increases brightness, and \( \beta < 1 \) decreases it. This approach ensures that the image's contrast is preserved while adjusting its brightness.
+    where $\beta > 1$ increases brightness, and $\beta < 1$ decreases it. This approach ensures that the image's contrast is preserved while adjusting its brightness.
 
-    \item \textbf{Occlusion:} Occlusion is simulated by covering parts of the image \( x_i \) with a mask \( M \). The occlusion function \( p_o \) is defined as:
+    \item \textbf{Occlusion:} Occlusion is simulated by covering parts of the image $x_i$ with a mask $M$. The occlusion function $p_o$ is defined as:
     \[ p_o(x_i, M) = x_i \cdot M \]
-    where \( M \) is a binary mask that obscures parts of the image, with \( M = 0 \) for occluded pixels and \( M = 1 \) for visible pixels.
+    where $M$ is a binary mask that obscures parts of the image, with $M = 0$ for occluded pixels and $M = 1$ for visible pixels.
 
-    \item \textbf{Scaling:} Scaling of an image \( x_i \) is controlled by a scaling factor \( s \), which resizes the image. The scaling function \( p_s \) is defined as:
+    \item \textbf{Scaling:} Scaling of an image $x_i$ is controlled by a scaling factor $s$, which resizes the image. The scaling function $p_s$ is defined as:
     \[ p_s(x_i, s) = \text{scale}(x_i, s) \]
-    where \(\text{scale}(\cdot, s)\) represents the scaling operation, resizing the image by a factor of \( s \).
+    where $\text{scale}(\cdot, s)\) represents the scaling operation, resizing the image by a factor of $s$.
 \end{itemize}
 
 
@@ -346,20 +374,20 @@ The Testing section evaluates how accurately and confidently the  AI subsystem's
   
     \subsubsection{Local Correctness}
 
-    Local correctness involves checking the AI subsystem's performance on individual images subjected to different transformations. For each image \( x \) from a set of samples \( X \), the AI subsystem produces a confidence score \( f(x) \) representing its certainty in recognizing the digit. The local correctness for a transformation \( T \) applied to an image \( x \) is defined as:
+    Local correctness involves checking the AI subsystem's performance on individual images subjected to different transformations. For each image $x$ from a set of samples $X$, the AI subsystem produces a confidence score $f(x)$ representing its certainty in recognizing the digit. The local correctness for a transformation $T$ applied to an image $x$ is defined as:
 
     \[
         \text{Local Correctness}(x, T) = f(T(x))
     \]
 
-    Where \( T \) can be any transformation such as noise addition, rotation, brightness adjustment, occlusion, or scaling. Each transformation is evaluated to determine its impact on the confidence score.
+    Where $T$ can be any transformation such as noise addition, rotation, brightness adjustment, occlusion, or scaling. Each transformation is evaluated to determine its impact on the confidence score.
 
     
     \subsubsection{Global Correctness}
 
     Global correctness evaluates the AI subsystem's performance on combinations of images and transformations, such as adding two digits under different transformations. Given a set of 100 samples for each digit (0-9), we randomly select images to form digit pairs. The global correctness assesses the combined confidence for recognizing the result of operations like addition under each transformation.
 
-    For each transformation \( T \), we define local correctness for digits \( d_1 \) and \( d_2 \) as follows:
+    For each transformation $T$, we define local correctness for digits $d_1$ and $d_2$ as follows:
     
     \[
     \text{LC}_{T}(d_1) = \text{Local Correctness}(x_1, T)
@@ -368,7 +396,7 @@ The Testing section evaluates how accurately and confidently the  AI subsystem's
     \text{LC}_{T}(d_2) = \text{Local Correctness}(x_2, T)
     \]
     
-    Where \( x_1 \) and \( x_2 \) are randomly selected images representing digits \( d_1 \) and \( d_2 \).
+    Where $x_1$ and $x_2$ are randomly selected images representing digits $d_1$ and $d_2$.
     
     The global correctness for each transformation is then defined as the product of the local correctness values:
     
@@ -389,7 +417,7 @@ The Testing section evaluates how accurately and confidently the  AI subsystem's
         \]
     \end{itemize}
     
-    For the addition operation, if we denote the sum of digits \( d_1 \) and \( d_2 \) as \( d_{\text{sum}} \), the overall global correctness for the operation is:
+    For the addition operation, if we denote the sum of digits $d_1$ and $d_2$ as $d_{\text{sum}}$, the overall global correctness for the operation is:
     
     \[
     \text{Overall Global Correctness} = \min(\text{GC}_{opt}, \text{GC}_{pes})
