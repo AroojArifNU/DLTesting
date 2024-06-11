@@ -4,6 +4,7 @@
 \usepackage{fontawesome5}
 
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage[margin=1in]{geometry} % Adjust margins if needed
 \usepackage{graphicx} % Required for including images
 \usepackage{subcaption}
@@ -15,6 +16,7 @@
 \usepackage{tikz}
 \usetikzlibrary{fit}
 \usepackage{marginnote}
+\usepackage{xspace}
 
 % Combine graphicx package loading
 \usepackage{float}
@@ -170,7 +172,7 @@ Let $\mathcal{A}$ denote an adversary. Each category can be described formally a
 
 This involve modifying the input images in a manner that exploits the model's sensitivity to variations, potentially causing misclassifications. Various methods under this category include:\nb{Add a figure with examples of these transformations}
 \begin{itemize}[$\bullet$]
-    \item \emph{Noise Addition} (\noise): Introducing noise $\eta$ (e.g., Gaussian, salt-and-pepper) such that $x' = x + \eta$.
+    \item \emph{Noise Addition}: Introducing noise $\eta$ such that $x' = x + \eta$.  We consider  \emph{Gaussian} noise \gaussian and \emph{salt-and-pepper} noise \saltpepper.
     \item \emph{Translation} (\translation): Shifting the image $x$ by a vector $t$ to obtain $x' = \text{translate}(x, t)$.
     \item \emph{Scaling} (\scale): Resizing the image $x$ by a factor $s$ to get $x' = \text{scale}(x, s)$.
     \item \emph{Shearing} (\shear): Applying a shear transformation to $x$ resulting in $x' = \text{shear}(x, \theta)$.
@@ -266,7 +268,7 @@ In the context of DNNs, Bayesian networks can offer significant advantages. Beha
       \draw[-latex, thick] (aisystem) -- (approach.179);
       \draw[-latex, thick] (spec) -- (approach.181);
     \end{tikzpicture}
-    \caption{Overview of Testing Framework}
+    \caption{Overview of the \testifai Framework}
     \label{fig:framework}
 \end{figure*}
 
@@ -283,44 +285,73 @@ This section introduces our comprehensive approach to evaluating an AI system pe
 
 
 
-We focus on AI systems with DNN components. We assume that an AI system $\S$ is a pair $(\F,\D)$ where
-\begin{itemize}
-\item $\F$ is the functional unit consisting of $n$ DNNs $f_1,\dots,f_n$ and a symbolic (software) component~$\sigma$ such that given an input $x$, the \emph{output}~$\F(x)$ is defined as $\sigma(f_1(x),\dots,f_n(x))$.
+We focus on AI systems with DNN components performing classification tasks. We assume that an AI system $\S$ is a pair $(\F,\D)$ where
+\begin{itemize}[$\bullet$]
+\item $\F$ is the functional unit consisting of $n$ DNN \emph{classifiers} $f_1,\dots,f_n$ and a symbolic (software) component~$\omega$ such that given an input $\avec{x}=(x_1,\dots,x_n)$, the \emph{output}~$\F(\avec{x})$ is defined as $\omega(f_1(x_1),\dots,f_n(x_n))$.
   % 
-\item  $\D$ (for dataset) is a function that returns valid inputs for the system. In particular, $\D.\mathit{next}(\mathit{param})$ returns an $x$ that is a valid input for $\F$ for the given $\mathit{param}$.\nb{E: elaborate here what param is}
+\item $\D$ (for dataset) is a structure that describes valid inputs for each classifier $f_i$ and the corresponding correct outputs (i.e., labels). In particular, $\D.\mathit{next}_i(\mathit{param})$ returns a valid input $x_i$ for $f_i$, given the parameter $\mathit{param}$.\nb{E: elaborate here what param is} Moreover, $\D.N_i$ is the number of distinct class labels for each classifier~$f_i$.
 \end{itemize}
 
 \begin{example}
-  An instance of a simple AI system is an MNIST Digit Adder $\S_{\text{MNIST}} = (\F,\D)$, where $\F = (f_{\text{mnist}}, +)$, $f_{\text{mnist}}$ is an MNIST Digit classifier and $\F$ takes as input two MNIST Digit images, recognises the digits in the images and computes their sum, i.e., $\F(x_1,x_2) = f_{\text{mnist}}(x_1) + f_{\text{mnist}}(x_2)$. $\D$ is the testing dataset for MNIST Digit consisting of 10,000 images.
+  An instance of a simple AI system is an \emph{MNIST Digit Adder} $\S_{\text{MNIST}} = (\F,\D)$, where $\F = (\{f_{\text{mnist}}\}, +)$, $f_{\text{mnist}}$ is an MNIST Digit classifier and $\F$ takes as input two MNIST Digit images, recognises the digits in the images and computes their sum, i.e., $\F(x_1,x_2) = f_{\text{mnist}}(x_1) + f_{\text{mnist}}(x_2)$. $\D$ is the testing dataset for MNIST Digit consisting of 10,000 labelled images.
 \end{example}
 
-We assume that specifications $\Sigma$ is a pair $(P, V)$ where
-\begin{itemize}
-\item $P$ is a set of perturbations against which we are characterising the robustness of $\S$. For example, $P = \{\noise,\translation\}$ includes the random noise and translation perturbations.
+\smallskip
 
-\item $V$ is a validation flag, if $V=t$, then we do testing, and if $V=v$, we do verification.
-\end{itemize}
-
+We assume that \emph{specifications} $\Sigma$ is a pair $(P, V)$,
+where $P$ is a set of perturbations against which we are
+characterising the behaviour of $\S$. Each perturbation comes with the
+parameters to instantiate the set of all possible perturbations. 
+%
+Furthermore, $V$ is a validation flag, if $V=t$, then we do testing,
+and if $V=v$, we do verification.
 
 \begin{example}
-    To evaluate the correctness of the MNIST Digit Adder $\S_{\text{MNIST}}$, we define the specifications $\Sigma = (P, V)$ as follows:
-    $\Sigma = (P = \{\noise,\rotation\},  V=t)$
-  
-    Specifically, we apply the following perturbations to the input images $x_1$ and $x_2$:
-    \begin{itemize} 
-        \item \textbf{Rotation}: Each input image will be rotated by a specified angle, $\theta$. Let $x_1' = \text{rotate}(x_1, \theta)$ and $x_2' = \text{rotate}(x_2, \theta)$. We then compute:
-       
-        $\F(x_1', x_2') = f_{\text{mnist}}(x_1') + f_{\text{mnist}}(x_2')$
-        \item \textbf{Noise}: Gaussian noise with mean $\mu$ and standard deviation $\sigma$ will be added to each input image. Let $x_1'' = \text{noise}(x_1, \mu, \sigma)$ and $x_2'' = \text{noise}(x_2, \mu, \sigma)$. We then compute:
-        
-        $\F(x_1'', x_2'') = f_{\text{mnist}}(x_1'') + f_{\text{mnist}}(x_2'')$
-    \end{itemize}
-  
-  \end{example}
-  
+  To evaluate the correctness of the MNIST Digit Adder
+  $\S_{\text{MNIST}}$, we define the specifications $\Sigma = (P, V)$
+  as follows:
+  $P = \{\gaussian(0,0.1), \saltpepper(200:255, 0:5, 0.2),
+  \rotation(3,30,3)\}$ and $V=t$. Here, $\gaussian(0,0.1)$ specifies
+  Gaussian noise with the mean of $0$ and standard deviation of $0.1$,
+  $\saltpepper(200:255,0:5,0.2)$ specifies salt and pepper noise,
+  where 10\% of pixels are `bleached' up to the values 200 to 255 and
+  10\% of pixels are darkened to the values between 0 and 5, and
+  $\rotation(3,30,3)$
+  specifies the set of rotations with the minimum rotation angle of 3,
+  maximum of 30 and the step size of 3.
+  % Specifically, we apply the following perturbations to the input
+  % images $x_1$ and $x_2$:
+  % \begin{itemize} 
+  % \item \textbf{Rotation}: Each input image will be rotated by a
+  %   specified angle, $\theta$. Let $x_1' = \text{rotate}(x_1, \theta)$
+  %   and $x_2' = \text{rotate}(x_2, \theta)$. We then compute:
+  %
+  %   $\F(x_1', x_2') = f_{\text{mnist}}(x_1') + f_{\text{mnist}}(x_2')$
+  % \item \textbf{Noise}: Gaussian noise with mean $\mu$ and standard
+  %   deviation $\sigma$ will be added to each input image. Let
+  %   $x_1'' = \text{noise}(x_1, \mu, \sigma)$ and
+  %   $x_2'' = \text{noise}(x_2, \mu, \sigma)$. We then compute:
+  %
+  %   $\F(x_1'', x_2'') = f_{\text{mnist}}(x_1'') + f_{\text{mnist}}(x_2'')$
+  %   \end{itemize}
+\end{example}
+
+\smallskip
+
+In what follows, we assume fixed the inputs, an AI system $\S=(\F,\D)$
+and specifications $\Sigma=(P,V)$.
 
 \subsection{Sampling}
-The sampling process involves a random but balanced choice of samples from each class, focusing exclusively on instances that the model has correctly predicted. This method ensures a representative and fair distribution of data across all classes. 
+The sampling process involves a random but balanced choice of samples from each class, focusing exclusively on instances that the model has correctly predicted.
+%
+Sampling happens independently for each classifier $f_i$. To ensure a representative and fair distribution of data across all classes, we sample the same number of instances from each class. The full sample $S_i$ for classifier $f_i$, $i=1,\dots,n$, is computed as:
+
+\begin{equation}
+S_i = \bigcup_{c=1}^{\D.N_i} samp_i(\D,c,M_i)
+\end{equation}
+%
+where $M_i$ is the number of samples for each class specific to $f_i$, and $samp_i(\D,c,M_i)$ is obtained by $M_i$ calls to the method $\D.next_i$ for each class $c$:
+\[samp_i(\D,c,M_i) = \bigcup_{j=1}^{M_i} \{\D.next_i(class=c)\}\]
 
 \begin{example}
     To perform sampling, we utilize a pre-trained CNN model to select samples from dataset $\D$. Let $X = \{x_1, x_2, \dots, x_N\}$ denote the set of MNIST images in $\D$. The functional unit $\F$, which consists of $f_{\text{mnist}}$, predicts the labels for each input: $f_{\text{mnist}}(x_i) \rightarrow y_i$. The filter function $g$ identifies accurate predictions, defined as $g(x_i) = 1$ if $f_{\text{mnist}}(x_i)$ equals the true label of $x_i$, and $g(x_i) = 0$ otherwise. The subset $S$ includes only correctly predicted images: $S = \{x_i \in X \mid g(x_i) = 1\}$. Randomly, 100 samples are selected from each class in $S$, totaling 1000 samples. The random selection function $R$ ensures $R(S_c, 100)$ for each class $c$, where $S_c$ represents the samples of class $c$ within $S$.
@@ -364,7 +395,7 @@ The sampling process involves a random but balanced choice of samples from each 
 % \end{itemize}
 
 
-\subsection{Testing }
+\subsection{Validation}
 
 The Testing section evaluates how accurately and confidently the  AI subsystem's predicts under various properties applied to images from each class. This phase focuses on directly measuring and quantifying the correctness of the  AI subsystem's.
 
