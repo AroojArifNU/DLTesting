@@ -308,10 +308,10 @@ We assume that specifications $\Sigma$ is a pair $(P, V)$ where
   
     Specifically, we apply the following perturbations to the input images $x_1$ and $x_2$:
     \begin{itemize} 
-        \item \textbf{Rotation}: Let $x_1' = \text{rotate}(x_1, \theta)$ and $x_2' = \text{rotate}(x_2, \theta)$. We then compute:
+        \item \textbf{Rotation}: Each input image will be rotated by a specified angle, $\theta$. Let $x_1' = \text{rotate}(x_1, \theta)$ and $x_2' = \text{rotate}(x_2, \theta)$. We then compute:
        
         $\F(x_1', x_2') = f_{\text{mnist}}(x_1') + f_{\text{mnist}}(x_2')$
-        \item \textbf{Noise}: Let $x_1'' = \text{noise}(x_1, \mu, \sigma)$ and $x_2'' = \text{noise}(x_2, \mu, \sigma)$. We then compute:
+        \item \textbf{Noise}: Gaussian noise with mean $\mu$ and standard deviation $\sigma$ will be added to each input image. Let $x_1'' = \text{noise}(x_1, \mu, \sigma)$ and $x_2'' = \text{noise}(x_2, \mu, \sigma)$. We then compute:
         
         $\F(x_1'', x_2'') = f_{\text{mnist}}(x_1'') + f_{\text{mnist}}(x_2'')$
     \end{itemize}
