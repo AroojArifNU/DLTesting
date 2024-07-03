@@ -1,3 +1,4 @@
+% Adjusting chapter title format for regular (numbered) chapters
 \titleformat{\chapter}[display]
   {\normalfont\huge\bfseries\centering}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
 
@@ -7,86 +8,210 @@
 
 \titlespacing*{\chapter}{0pt}{50pt}{40pt} % Adjust vertical spacing before and after the title
 
-
-\chapter{Literature Review} % Ensures chapter numbering starts correctly
+\chapter{Literature Review}
 \label{chp:2}
-\section{Overview} % This will now be Section 1.1, not 0.1
 
-\subsection{Coverage Criteria for Deep Learning Models}
+\section{Overview}
+This chapter provides a review of the literature related to deep neural networks, probabilistic logic programming, and their integration, particularly focusing on Problog and its extensions.
+
+\subsection{Deep Neural Networks and AI Systems}
+
+Deep neural networks (DNNs) mimic the structure of the human brain, consisting of millions of interconnected neurons. They extract high-level features from raw input using labeled training data without human interference.
+
+Formally, a DNN is a function $f\colon\mathbb{R}^{s_0}\mapsto \mathbb{R}^{s_k}$ that takes as input a vector of size $s_0$ and produces a vector of size $s_k$. The function $f$ is computed by composing $k$ layers $L_1\colon\mathbb{R}^{s_0} \mapsto\mathbb{R}^{s_1}, \dots, L_k\colon\mathbb{R}^{s_{k-1}}\mapsto\mathbb{R}^{s_k}$ as $f(x) = L_k(\cdots L_2(L_1(x))\cdots)$.
+
+Each layer~$L_i$ typically implements a non-linear function. For instance, a \emph{fully-connected} layer linearly transforms its input $x_{i-1}$ as $W x_{i-1} + b$, where $W\in\mathbb{R}^{s_{i} \times s_{i-1}}$ is the matrix of weights and $b\in\mathbb{R}^{s_i}$ is the bias vector. Then, it applies a non-linear activation function (e.g., sigmoid or Rectified Linear Unit (ReLU)) component-wise, generating the output vector $x_i$. The weights specify how its input neurons are connected to its output neurons and are known as \emph{DNN parameters}. For more information about DNNs, we refer the reader to \cite{dnn_archi, Hassija, Liang}.
+
+The objective of DNN training is to learn parameters during training to make accurate predictions on unseen data during real-world deployment.
+
+When the prediction task is classification, then $s_k$ represents the number of classes. Assuming that $f(x) = (y_1,\dots,y_{s_k})$, the \emph{classification result} is $\displaystyle\mathop{\text{argmax}}_{i=1}^{s_k} y_i$, which is the index of the component with the highest probability $y_i$. By abuse of notation, sometimes we write $f(x)=c$ to denote the fact that $x$ was classified as $c$. We also write $f(x)_c$ to refer to $y_c$ which represents the probability of $x$ being in class $c$.
+
+By an \emph{AI system}, we refer to any software system capable of performing complex tasks through the use of data, algorithms, and high computational power, which typically require human intelligence. These tasks include problem-solving, reasoning, decision-making, and natural language understanding.
+
+Deep learning is a subset of AI that utilizes deep neural networks (DNNs) for complex pattern recognition. Some AI systems are solely based on DNN components, whereas \emph{hybrid} AI systems combine DNNs with traditional software to produce the final output.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{traditionalandDNN.pdf}
+    \caption{Comparison between program flows of a traditional program (left) and a neural network (right). The nodes in gray denote the corresponding basic blocks or neurons that participated while processing an input.}
+    \label{fig:graph}
+\end{figure}
+
+\subsection{Robustness of DNNs}
+
+Deep neural networks (DNNs) are known for their lack of robustness. Research has shown DNNs to be vulnerable to two main categories of adversaries: \emph{adversarial attacks}~\cite{adv_attacks} and \emph{image transformations}~\cite{deeptest}.
+
+Let $\mathcal{A}$ denote an adversary. Each category can be described formally as follows:
+
+\smallskip\noindent%
+\textbf{Adversarial Attacks $\mathcal{A}_{\text{adv}}$}
+
+(\adv) This involves the generation of perturbations $\delta$ such that $x' = x + \delta$ misleads the DNN $f$ into making incorrect predictions, where $x$ is the original input and $x'$ is the perturbed input. Various methods under this category include:
+
+\begin{itemize}
+    \item \emph{Fast Gradient Sign Method (FGSM)}: For an input~$x$ and its true label $y$, FGSM generates $x' = x + \epsilon \cdot \text{sign}(\nabla_x J(x, y))$, where $J$ is the loss function and $\epsilon$ is a small perturbation factor.
+    \item \emph{Basic Iterative Method (BIM)}: This extends FGSM by iteratively applying small perturbations: $x'^{(i+1)} = x'^{(i)} + \alpha \cdot \text{sign}(\nabla_x J(x'^{(i)}, y))$.
+    \item \emph{Carlini and Wagner (C\&W) Attack}: Utilizes optimization to find $\delta$ that minimizes the $L_p$-norm while ensuring $f(x + \delta) \neq y$.
+    \item \emph{DeepFool}: Iteratively perturbs $x$ by $\delta$ to move it across decision boundaries.
+    \item \emph{Jacobian-based Saliency Map Attack (JSMA)}: Manipulates specific features of $x$ to achieve targeted misclassifications.
+\end{itemize}
+
+\smallskip\noindent%
+\textbf{Image Transformations $\mathcal{A}_{\text{trans}}$}
+
+This involves modifying the input images in a manner that exploits the model's sensitivity to variations, potentially causing misclassifications. Various methods under this category include:
+
+\begin{itemize}
+    \item \emph{Noise Addition}: Introducing noise $\eta$ such that $x' = x + \eta$. We consider \emph{Gaussian} noise and \emph{salt-and-pepper} noise.
+    \item \emph{Translation}: Shifting the image $x$ by a vector $t$ to obtain $x' = \text{translate}(x, t)$.
+    \item \emph{Scaling}: Resizing the image $x$ by a factor $s$ to get $x' = \text{scale}(x, s)$.
+    \item \emph{Shearing}: Applying a shear transformation to $x$ resulting in $x' = \text{shear}(x, \theta)$.
+    \item \emph{Rotation}: Rotating the image $x$ by an angle $\theta$ to produce $x' = \text{rotate}(x, \theta)$.
+    \item \emph{Contrast Adjustment}: Modifying the contrast of $x$, represented as $x' = \text{adjust\_contrast}(x, \alpha)$.
+    \item \emph{Brightness Change}: Altering the brightness of $x$, yielding $x' = \text{change\_brightness}(x, \beta)$.
+    \item \emph{Blurring}: Applying a blur effect to $x$, giving $x' = \text{blur}(x, k)$, where $k$ is the kernel size.
+    \item \emph{Occlusion}: Partially hiding regions of $x$, leading to $x' = \text{occlude}(x, m)$, where $m$ denotes the mask.
+\end{itemize}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{figures/output_update.png}
+    \caption{Image transformations for ...}
+    \label{fig:image-trans}
+\end{figure*}
+
+By analyzing various types of adversaries, our proposed comprehensive testing framework evaluates model robustness, providing probabilities of model effectiveness against each adversary and assessing accuracy under adversarial conditions across different classes within any dataset.
+
+\subsection{DNN Testing Techniques}
+
+The development of DNNs is significantly different from traditional software. While developers explicitly define logic in traditional software, DNNs learn logic rules from raw data. Developers shape these rules by modifying the training data, selecting features, and designing the DNN architecture, such as the number of neurons and layers.
+
+Since the logic of a DNN is non-transparent \cite{deepxplore}, identifying the reasons behind its erroneous behavior is challenging. Therefore, testing and correcting its errors are crucial, particularly in safety-critical systems. Next, we briefly introduce two major DNN testing techniques: coverage criteria and test-case generation.
+
+\smallskip\noindent%
+\textbf{Coverage Criteria}
+
+In traditional software testing, coverage criteria measure how thoroughly software is tested. In DNNs, coverage might not directly apply to lines of code but rather to the input space or the variety of data the model can effectively handle or provide predictions for.
+
+Neuron coverage (NC) \cite{deepxplore} is the first coverage metric proposed in the literature to test DNNs. It is defined as the ratio of neurons activated by a test input to the total number of neurons in the model, where a neuron is activated when its activation value exceeds a predefined threshold.
+
+Ma et al. \cite{deepguage} proposed a variety of coverage metrics, including K-multisection neuron coverage (KMNC), Neuron boundary coverage (NBC), and Strong neuron activation coverage (SNAC). KMNC calculates coverage by dividing the interval between lower and upper bounds into k-bins and measuring the number of bins activated by the test inputs. NBC measures the ratio of corner case regions covered by test inputs, with corner cases defined as activation values below or above those observed during training. SNAC similarly measures how many upper corner cases, defined as activation values above the training range, are covered by test inputs.
+
+Modified Condition/Decision Coverage (MC/DC) \cite{SunY} captures causal changes in test inputs based on the sign and value change of a neuron's activation.
+
+Likelihood-based Surprise Adequacy (LSA) uses Kernel Density Estimation (KDE) to estimate the likelihood of a test input during the training phase, prioritizing inputs with higher LSA scores as they are closer to classification boundaries. Distance-based Surprise Adequacy (DSA) is an alternative to LSA that uses the distance between activation traces of new test inputs and those observed during training \cite{KimJ}.
+
+\smallskip\noindent%
+\textbf{DNN Test-case Generation}
+
+Test-case generation methods are influenced by traditional software testing methods like fuzz testing, metamorphic testing, and symbolic execution. In the following sections, we will explore the current state of the art in DNN test generation.
+
+DeepXplore \cite{deepxplore} is a whitebox test-case generation method that checks how different DNNs behave using domain-specific rules on inputs. It uses multiple models trained on the same data to find differences in their prediction. It aims to jointly optimize neuron coverage and different predictions between models, using gradient ascent for test generation.
+
+DeepTest \cite{deeptest} focuses on generating test inputs for autonomous cars by applying domain-specific rules on seed inputs. It uses a greedy search method based on the NC metric to create effective test cases.
+
+Adapting traditional fuzzing techniques for DNN test-case generation includes methods like DLFuzz \cite{dlfuzz} and TensorFuzz \cite{tensorfuzz}. DLFuzz generates adversarial inputs based on NC, akin to DeepXplore, but does not require multiple models and uses constraints to keep new inputs similar to originals. TensorFuzz employs coverage-guided testing to uncover numerical issues and discrepancies in DNNs and their quantized versions.
+
+DeepConcolic \cite{deepconcolic} employs a concolic testing approach to generate adversarial inputs for DNN testing. It combines symbolic execution with concrete execution path information to meet coverage criteria, supporting both NC and MC/DC criteria.
+
+Traditional techniques are simple, failing to capture the full complexity and precision of model behaviors. Exploring all possible behaviors of a model is nearly impossible due to the vast number of paths to consider. These metrics also often overlook the detailed interactions within and between layers of the model. Defining and testing all necessary decision boundaries, especially in complex models, is a daunting task. Many existing metrics do not provide clear directions for improving the model, leaving you without actionable insights. Scalability and adaptability are other major issues. Many criteria are not scalable or adaptable across diverse model architectures.
+
+In this thesis, we address these issues and design a systematic testing framework for DNNs.
+
+\subsection{Bayesian Networks}
+
+Bayesian networks are a powerful probabilistic graphical model that represents a set of variables and their conditional dependencies via a directed acyclic graph (DAG). They are particularly useful for modeling uncertainty in complex systems. The fundamental equation of Bayesian networks is Bayes' theorem, which is given by:
+
+\begin{equation}
+P(A|B) = \frac{P(B|A)P(A)}{P(B)}
+\end{equation}
+
+This equation allows us to update the probability estimate for a hypothesis as more evidence or information becomes available.
+
+In the context of DNNs, Bayesian networks can offer significant advantages. Behavioral assessment considers probabilistic relationships to offer a richer, more detailed understanding of how different inputs affect model outputs. By developing a strategic focus on high-risk areas, it prioritizes regions with the highest uncertainty or risk for targeted testing, making the process more efficient and effective.
+
+
+% Start of Problog integration
+\subsection{Probabilistic Logic Programming and Problog}
+{\color{blue}
+Probabilistic logic programming (PLP) combines logic programming with probability theory, enabling the representation of uncertain knowledge. Problog, a prominent PLP language, extends Prolog by associating probabilities with facts and rules, facilitating the handling of uncertain information effectively.
+
+Problog was introduced by De Raedt et al. \cite{DeRaedt}, providing a framework for probabilistic reasoning within the well-established logical framework of Prolog. The key contributions of Problog include:
+\begin{itemize}
+    \item \textbf{Integration of Probabilities:} Problog integrates probabilistic reasoning with logic programming by allowing facts to have associated probabilities.
+    \item \textbf{Flexible Inference Mechanism:} It supports various inference techniques, including exact and approximate inference, to handle different types of queries and data efficiently.
+    \item \textbf{Expressiveness:} Problog's expressiveness allows it to model complex relationships and dependencies, making it suitable for a wide range of applications.
+\end{itemize}
+}
+
+% Prolog to Python Syntax Table
+\subsection{Prolog to Python Syntax Conversion}
+
+Clauses in Problog can be constructed by overloading Python operators, making the syntax more intuitive for those familiar with Python. The following table illustrates the conversion:
 
 \begin{table}[h]
-    \centering
-    \begin{tabular}{|p{4cm}|p{5cm}|p{5cm}|}
-    \hline
-    \textbf{Existing Coverage Methods} & \textbf{Description} & \textbf{Limitation} \\
-    \hline
-    Neuron Coverage & Measures the model's logic use by counting activated neurons from test inputs. & Doesn't capture all potential DNN behaviors and can achieve high coverage with few inputs; it is a coarse measure. \\
-    \hline
-    k-Multisection Neuron Coverage & Divides neuron activation values observed during training into k buckets and counts how many buckets are covered by a set of inputs. & Loses information on activations beyond the observed range during aggregation. \\
-    \hline
-    DeepCover & Considers condition-decision dependencies between adjacent DNN layers. & Limited to small, feedforward, fully-connected networks; doesn't generalize to complex architectures like RNNs or LSTMs. \\
-    \hline
-    DeepCT & Inspired by combinatorial testing, assesses logic use by the fraction of neurons activated in each layer. & Lacks consideration for inter-layer relationships and hasn't been proven to scale to real-world DNNs. \\
-    \hline
-    \end{tabular}
-    \caption{Coverage Methods, Descriptions, and Limitations}
-    \label{table:coverage_methods}
-    \end{table}
-
-\subsection{Test Case Generation for Deep Learning Models}
-
-    
+  \centering
+  \begin{tabular}{|l|l|l|}
+  \hline
+  \textbf{Prolog} & \textbf{Python} & \textbf{English} \\
+  \hline
+  :- & \texttt{<<} & clause \\
+  ,  & \texttt{\&} & and \\
+  ;  & \texttt{|} & or \\
+  \textbackslash+ & \texttt{\textasciitilde} & not \\
+  \hline
+  \end{tabular}
+  \caption{Prolog to Python Syntax Conversion}
+  \label{table:prolog-python-syntax}
+  \end{table}
+  
+  
+% Example Scenario
+\subsection{Example Scenario}
 
 
-\begin{table}[h]
-    \centering
-    \begin{tabular}{|p{3.5cm}|p{5.5cm}|p{5.5cm}|}
-    \hline
-    \textbf{Existing Methods} & \textbf{Description} & \textbf{Limitation} \\
-    \hline
-    Joint Optimization & Modifies an existing input through image manipulations recursively until it triggers different behavior in the model. & Time-consuming and produces a low ratio of impactful test inputs compared to the total tested/generated. \\
-    \hline
-    Greedy Search & Applies random transformations to an existing test input until a suitable test input is identified. & Similar to joint optimization, it is also time-intensive and results in a low number of effective test inputs relative to the total tested. \\
-    \hline
-    \end{tabular}
-    \caption{Summary of Existing Test Input Generation Methods}
-    \label{table:test_input_generation_methods}
-    \end{table}
-    
-	
-\begin{table}[h]
-    \centering
-    \begin{tabular}{|p{6cm}|p{6cm}|}
-    \hline
-    \textbf{Existing Approaches} & \textbf{Limitations} \\
-    \hline
-    Collecting as much real-world data as possible and manually labeling it for correctness. & The process requires a lot of manual effort. \\
-    \hline
-    Comparing outputs across multiple DNNs for the same task, identifying discrepancies as corner cases. & Can misclassify inputs if all models agree, due to shared biases or errors. Limited to tasks with multiple reliable models, which may not always be available. \\
-    \hline
-    \end{tabular}
-    \caption{Limitations of Existing Approaches in DNN Testing}
-    \label{table:existing_approaches_limitations}
-    \end{table}
+In this section, we illustrate how Problog can be utilized to find global robustness based on local robustness values obtained from a deep learning model.
 
-\begin{landscape}
-    \begin{xltabular}{\linewidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{3.5cm}|>{\raggedright\arraybackslash}p{6cm}|>{\raggedright\arraybackslash}p{2.5cm}|>{\raggedright\arraybackslash}p{3cm}|} % Adjust '3cm' as needed
-    \caption{Summary of Test Methodologies and Their Characteristics} \\
-    \hline
-    \rowcolor[HTML]{EFEFEF} 
-    \textbf{Methodology} & \textbf{Dataset} & \textbf{Benchmark} & \textbf{Limitation/Future Work} & \textbf{Coverage Criteria} & \textbf{Test Generation} \\ \endhead
-    
-    Symbolic execution with local explainability. LIME provides explanations for predictions\cite{Agarwal} & German Credit Data, Adult census income, Bank marketing, US Executions, Fraud Detection, Raw Car Rentals, Credit data, Census data & THEMIS (Algorithm) The technique produces 3.72 times more successful test cases than existing state-of-the-art. & FW: Expand to text and image domains FW: Measure symbolic execution efficacy using neuron coverage, boundary value coverage. & -- & Concolic \\ \hline
-    
-    
-    Concolic testing method \cite{Youcheng} & \makecell[lt]{ MNIST\\  CIFAR-10} & DeepXplore, DeepTest, DeepCover, and DeepGauge & & \makecell[lt]{NC, SSC, NBC} & Concolic \\ \hline
-    \cellcolor[HTML]{FFFFFF}Whitebox framework for testing DL systems, introducing neuron coverage for test measurement \cite{Kexin}& \makecell[lt]{ MNIST\\ ImageNet\\ Driving\\ VirusTotal\\ Drebin} & \makecell[lt]{LeNet variations\\ State-of-the-art\\ image classifiers \\ Nvidia DAVE \\ PDF malware detectors\\ Android app\\ malware detectors} & Inherits differential testing constraints. & NC & Dual-optimisation \\ \hline
-    Automates testing for DNN-driven autonomous cars \cite{Yuchi}& Udacity self driving car challenge 2 & \makecell[lt]{Chauffeur-\\ Epoch\\ Rambo-S1\\ Rambo-S2\\ Rambo-S3} & \makecell[lt]{L:missing some realistic cases.\\ L: restricted only steering angle,\\ not focus on brake and accelerator\\ L: cannot simulate complex road scene}. & NC & Greedy search \\ \hline
-    White box methodology, Proposed four novel test criteria tailored to DNN, structural features. able to capture and quantify causal relations existing in a DNN, Achieved balance between bug finding ability and computational cost \cite{Sun}  & MNIST, CIFAR-10, ImageNet & State-of-the-art neural networks of different sizes (from a few hundred up to millions of neurons) to demonstrate their utility with respect to four aspects: bug finding, DNN safety statistics, testing efficiency, DNN internal structure analysis & & MC/DC & Symbolic execution \\ \hline
-    Proposed criteria facilitate the understanding of DNNs as well as the test data quality from different levels and angles\cite{Ma} & \makecell[lt]{MNIST, ImageNet} & \makecell[lt]{LeNet-1\\ LeNet-4\\ LeNet-5,\\ VGG-19,\\ ResNet-50} & \makecell[lt]{More diverse datasets \\and DL architectures needed.\\ Check on real-world systems.} & NBC & Gradient descent methods \\ \hline
-    An unsupervised learning framework to synthesize realistic driving scenes to test inconsistent behaviors\cite{Zhang} & Udacity Training Udacity Test Ep1 Udacity Test Ep2 Youtube Ep1 Youtube Ep2 & Autumn, Chauffeur & \makecell[lt]{Lack a good standard to evaluate image\\ quality (i.e., realism). Udacity dataset is \\relatively small and the \\autonomous driving models are \\quite simple. Only focus on steering\\ wheel.} & -- & Mutation testing \\ \hline
-    An automated fuzz testing framework for hunting potential defects of general-purpose DNNs\cite{Xie} & MNIST, CIFAR-10, ImageNet & \makecell[lt]{LeNet-1\\ LeNet-4\\ LeNet-5\\ RN-20\\ VGG-16\\ MobileNet\\ RN-50} & NC cannot generate effective results to evaluate the models with various quality. NC is less effective in error triggering test detection and sensitive defect detection. & \makecell[lt]{NC\\ KMNC\\ NBC\\ SNAC\\ KNC\\ KNC} & Metamorphic mutation \\ \hline
-    
-    \end{xltabular}
-    
-    \end{landscape}
+Consider a scenario where we have the local robustness values for two digits, digit 0 and digit 1, obtained using a deep learning model in Python. We use Problog to find the global robustness based on these local values.
+
+Here is an example Problog code snippet:
+
+\begin{verbatim}
+0.8::digit_0.
+0.6::digit_1.
+
+correct_0 :- digit_0.
+wrong_0 :- \+correct_0.
+correct_1 :- digit_1.
+wrong_1 :- \+correct_1.
+
+pair_0_1 :- correct_0, correct_1.
+pair_wrong_0_1 :- wrong_0, wrong_1.
+
+global_correct :- pair_0_1; pair_wrong_0_1.
+
+query(correct_0).
+query(correct_1).
+query(wrong_0).
+query(wrong_1).
+query(pair_0_1).
+query(pair_wrong_0_1).
+query(global_correct).
+\end{verbatim}
+
+In this example:
+\begin{itemize}
+  \item \texttt{0.8::digit\_0.} specifies that digit 0 has a local robustness probability of 0.8.
+  \item \texttt{0.6::digit\_1.} specifies that digit 1 has a local robustness probability of 0.6.
+  \item \texttt{correct\_0} and \texttt{correct\_1} indicate that the predictions for digits 0 and 1 are correct.
+  \item \texttt{wrong\_0} and \texttt{wrong\_1} indicate that the predictions for digits 0 and 1 are wrong.
+  \item \texttt{pair\_0\_1} checks if both digits are correctly predicted.
+  \item \texttt{pair\_wrong\_0\_1} checks if both digits are wrongly predicted.
+  \item \texttt{global\_correct} determines if the global prediction is correct by checking if both digits are either correctly or wrongly predicted.
+  \item The \texttt{query} statements are used to query the probabilities of these events.
+\end{itemize}
+
+
+Using Problog in this way allows us to compute the global robustness of the system based on the local robustness of individual components, providing a more comprehensive assessment of the model's performance under uncertainty.
+
+

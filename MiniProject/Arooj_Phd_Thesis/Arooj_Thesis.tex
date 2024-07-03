@@ -51,7 +51,7 @@
 \usepackage{pifont}
 \usepackage{url}
 \usepackage{array}
-\usepackage{enumitem}
+% \usepackage{enumitem}
 \usepackage{bookmark}
 \usepackage{arydshln}
 \usepackage{booktabs}
@@ -78,6 +78,14 @@
 \usepackage{makecell} % For line breaks within cells
 \usepackage{listings} % For including code-like listings
 \usepackage{xcolor} % For color definitions in listings
+\usepackage{paralist}
+%\usepackage{enumitem} % For better control over list
+\usepackage[T1]{fontenc}
+\usepackage{lmodern} % Latin Modern font which supports a wider range of sizes
+
+\usepackage{microtype} % Improves typography
+\usepackage{tikz}
+\usetikzlibrary{fit}
 
 \makeatletter
 \def\BState{\State\hskip-\ALG@thistlm}
@@ -96,6 +104,9 @@
 
 \begin{document}
 \pagenumbering{roman}
+
+\include{macros}
+
 \include{cover1}
 % \include{cover2}
 % \include{cover3}
@@ -111,6 +122,8 @@
 \include{figures}
 \include{tables}
 \include{algos}
+
+
 % \include{cover10}
 \pagenumbering{arabic}
 %----------------------------------
@@ -130,6 +143,11 @@
 % \include{chap5}
 \include{chap6}
 \include{chap7}
+
+\include{chap8}
+\include{chap9}
+\include{chap10}
+
 
  %\appendix
 %  \begin{appendices}

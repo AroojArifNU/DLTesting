@@ -1,12 +1,17 @@
 \babel@toc {english}{}\relax 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces The internal logic of a deep neural network is opaque to humans, as opposed to the well laid out decision logic of traditional software programs \cite {Intro_1}}}{3}{figure.5}%
+\contentsline {figure}{\numberline {1.1}{\ignorespaces The internal logic of a deep neural network is opaque to humans, unlike the well-laid-out decision logic of traditional software programs \cite {Intro_1}}}{3}{figure.5}%
 \contentsline {figure}{\numberline {1.2}{\ignorespaces A high-level representation of most existing DNN testing methods \cite {Intro_1}}}{3}{figure.6}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Comparison between program flows of a traditional program (left) and a neural network (right). The nodes in gray denote the corresponding basic blocks or neurons that participated while processing an input.}}{7}{figure.17}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Image transformations for ...}}{9}{figure.19}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces The outline of proposed approach explains overall flow of work.}}{14}{figure.24}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Coverage Assesment (Local and Global)}}{15}{figure.25}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Error Summarization}}{16}{figure.27}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Overview of the Proposed Framework}}{15}{figure.29}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Graphical View of Local and Global Correctness}}{20}{figure.44}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Error Summarization}}{20}{figure.46}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
