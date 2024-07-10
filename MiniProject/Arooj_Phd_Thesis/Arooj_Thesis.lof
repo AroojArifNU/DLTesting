@@ -1,17 +1,20 @@
 \babel@toc {english}{}\relax 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces The internal logic of a deep neural network is opaque to humans, unlike the well-laid-out decision logic of traditional software programs \cite {Intro_1}}}{3}{figure.5}%
+\contentsline {figure}{\numberline {1.1}{\ignorespaces The internal logic of a deep neural network is opaque to humans, unlike the well-laid-out decision logic of traditional software programs \cite {Intro_1}}}{2}{figure.5}%
 \contentsline {figure}{\numberline {1.2}{\ignorespaces A high-level representation of most existing DNN testing methods \cite {Intro_1}}}{3}{figure.6}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Comparison between program flows of a traditional program (left) and a neural network (right). The nodes in gray denote the corresponding basic blocks or neurons that participated while processing an input.}}{7}{figure.17}%
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Image transformations for ...}}{9}{figure.19}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Overview of the Proposed Framework}}{15}{figure.29}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Graphical View of Local and Global Correctness}}{20}{figure.44}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Error Summarization}}{20}{figure.46}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Overview of the Proposed Framework}}{14}{figure.28}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Problog code snippet for evaluating handwritten digit recognition under noise, brightness, and rotation transformations.}}{20}{figure.44}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Problog code snippet for evaluating vehicle detection under different weather conditions.}}{20}{figure.46}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Error Summarization}}{22}{figure.50}%
 \addvspace {10\p@ }
-\addvspace {10\p@ }
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Local Correctness for each Class and Property}}{25}{figure.97}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Global Correctness for Noise, Brightness, and Rotation Transformations}}{26}{figure.99}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Final Global Correctness}}{26}{figure.100}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Local and Global Correctness of Vehicle Detection Under Various Weather Conditions}}{28}{figure.104}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -13,6 +13,79 @@
 
 \label{chp:4}
 
+\section{Use Case 1: Handwritten Digit Recognition }
+\subsection{Local Correctness Evaluation}
+
+In this section, we evaluate the local correctness of the model under different transformations, namely rotation, noise, and brightness. Each transformation is applied with specific parameters to simulate real-world variations. Images are rotated by 25 degrees to evaluate the model's performance under rotation. Gaussian noise with a noise factor of 0.2 is added to the images to test the model's robustness to noisy conditions. The brightness of the images is increased by a factor of 0.3 to simulate different lighting conditions.
+
+The local correctness graphs provide insights into the model's robustness under these transformations for each digit class. The model exhibited high performance under rotation (0.99) and brightness (1.00) for Class 0, with slightly reduced accuracy under noise (0.81). For Class 1, the model maintained consistently high accuracy across all transformations: rotation (0.99), noise (0.99), and brightness (1.00). However, the model struggled more with rotations (0.76) and noise (0.79) for Class 2 compared to brightness (1.00). Similarly, for Class 3, the model showed lower accuracy for rotations (0.82) and noise (0.78), but performed perfectly under brightness (1.00). 
+
+Class 4 demonstrated high accuracy across all properties, with rotation (0.91), noise (0.86), and brightness (1.00). Class 5 maintained high performance under all transformations: rotation (0.89), noise (0.99), and brightness (1.00). The model showed noticeable difficulty with noise (0.64) for Class 6, while maintaining high accuracy for rotation (0.87) and brightness (0.99). For Class 7, high accuracy was observed under brightness (1.00), with reduced performance under rotation (0.75) and noise (0.86). The model faced significant challenges under noise (0.02) for Class 8, but maintained good performance for rotation (0.68) and brightness (0.99). Finally, for Class 9, the model showed moderate performance under noise (0.51), and high accuracy under rotation (0.93) and brightness (0.99).
+
+Overall, the model demonstrates strong robustness to brightness changes across all classes, frequently achieving perfect accuracy. However, performance under noise is highly variable, with some classes, such as Class 8, experiencing a dramatic drop in accuracy. While the model generally handles rotations well, there remains room for improvement, particularly in addressing noise-induced challenges. This analysis highlights the necessity for targeted training to enhance the model's robustness, especially under noisy conditions for specific classes.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{local_correctness.eps}
+    \caption{Local Correctness for each Class and Property}
+    \label{fig:local_correctness}
+\end{figure}
+\subsection{Global Correctness Evaluation}
+The following figures illustrate the global correctness of various pairs of digits under different transformations: noise, brightness adjustment, and rotation. The final global correctness for each transformation is also depicted.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{global_correctness.eps}
+    \caption{Global Correctness for Noise, Brightness, and Rotation Transformations}
+    \label{fig:global_correctness}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{global_correctness_combine.eps}
+    \caption{Final Global Correctness}
+    \label{fig:final_global_correctness}
+\end{figure}
+
+The global correctness values for pairs of digits under the noise transformation vary significantly. Some pairs such as (0,0), (1,1), (2,2), etc., achieve perfect correctness (100\%), while others like (0,5) and (1,8) exhibit very low correctness (3.00\% and 18.04\%, respectively). This indicates that the model's performance is highly inconsistent under noise, likely due to the distortion introduced affecting digit recognition. The model performs exceptionally well under brightness adjustments, with most pairs achieving near-perfect correctness. This suggests that the model is robust to changes in brightness, maintaining high confidence scores despite variations in image illumination. Performance under rotation is moderate, with significant variations across different pairs. Some pairs like (0,0), (1,1), (3,3), etc., achieve high correctness, while others such as (2,5) and (5,8) have lower correctness values. This variation suggests that while the model can handle certain rotations well, it struggles with others, potentially due to the angles and the inherent difficulty in recognizing rotated digits.
+
+Combining the global correctness across all transformations, we observe an overall high performance with a final global correctness of 97.65\%. **Brightness** contributes the most to this high score (97.03\%), while Noise contributes the least (0.58\%). Rotation has a moderate impact (20.41\%), reflecting its varied performance across different pairs. These observations highlight the strengths and weaknesses of the AI subsystem under different transformations. The high performance under brightness adjustments indicates robustness to illumination changes, while the challenges with noise and rotation suggest areas for improvement in handling these perturbations.
+
+
+\section{Use Case 2: Autonomous Vehicle Perception}
+
+In this use case, we investigate the robustness of an AI system for autonomous vehicles in detecting objects, particularly vehicles, under various weather conditions including fog, rain, snow, and sand. The goal is to assess the system's performance across these challenging environments to ensure reliable operation.
+
+The dataset was split into training and validation sets, with class balancing performed through oversampling to address any class imbalances. Data augmentation techniques such as rotation, width and height shifts, shear transformation, zoom, and horizontal flips were applied to the training set to enhance the model's generalizability.
+
+The trained model's performance was evaluated on a balanced validation set resampled to ensure uniform class distribution.
+
+\subsubsection{Local Correctness Analysis}
+
+The local correctness of the model for each weather condition is depicted in the first graph. The AI system exhibits the following correctness values:
+- \textbf{Fog:} The detection correctness is 51\%, indicating moderate performance. Fog conditions likely introduce significant visual obstructions that challenge the model's ability to correctly identify vehicles.
+- \textbf{Rain:} Achieving a correctness of 75\%, the model performs relatively well in rainy conditions, suggesting robustness to moderate visual disturbances caused by rain.
+- \textbf{Snow:} Similar to rain, the system shows a correctness of 75\%, demonstrating its capability to handle snowy environments, where the visual contrast might be reduced.
+- \textbf{Sand:} With the highest correctness of 88\%, the model excels in sandy conditions, possibly due to clearer visibility compared to other adverse weather scenarios.
+
+\subsubsection{Global Correctness Analysis}
+
+The second graph illustrates the global correctness for vehicle detection under different combination methods of weather conditions:
+- \textbf{AND (Intersection):} The model's correctness is 25\%. This low value reflects the stringent requirement for the system to correctly detect vehicles under all specified conditions simultaneously, highlighting potential vulnerabilities when multiple weather challenges are present.
+- \textbf{OR (Union):} Achieving a perfect correctness of 100\%, the model successfully detects vehicles under at least one of the conditions. This high performance underscores the system's reliability when at least one favorable condition is present.
+- \textbf{Combination of AND/OR:} The correctness stands at 51\%, representing a balanced approach where the model must correctly detect vehicles under fog and any one of the other conditions (rain, snow, or sand). This mixed strategy provides a realistic measure of the system's robustness in practical scenarios with varying weather conditions.
+
+\textbf{Summary:} These results underscore the AI system's strengths and weaknesses in different weather conditions. The high correctness under sand conditions suggests that the model performs well in relatively clear environments. However, the moderate performance in fog highlights a need for improvement to handle heavy visual obstructions. The perfect correctness under the OR strategy is promising, indicating that the system can be highly reliable if at least one favorable condition exists. The AND strategy's low correctness value points to the challenges of ensuring detection under multiple simultaneous adverse conditions.
+
+Overall, the analysis provides a comprehensive understanding of the model's capabilities and areas for enhancement, guiding future improvements to ensure robust performance in diverse weather scenarios for autonomous vehicle perception systems.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{globalcorrectness_vehicle_detection.eps}
+    \caption{Local and Global Correctness of Vehicle Detection Under Various Weather Conditions}
+    \label{fig:global_correctness_vehicle_detection}
+\end{figure}
+
 
 
 

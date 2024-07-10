@@ -118,100 +118,41 @@ Traditional techniques are simple, failing to capture the full complexity and pr
 
 In this thesis, we address these issues and design a systematic testing framework for DNNs.
 
-\subsection{Bayesian Networks}
+\subsection{Probabilistic Logic Programming (PLP)}
 
-Bayesian networks are a powerful probabilistic graphical model that represents a set of variables and their conditional dependencies via a directed acyclic graph (DAG). They are particularly useful for modeling uncertainty in complex systems. The fundamental equation of Bayesian networks is Bayes' theorem, which is given by:
+Probabilistic Logic Programming (PLP) integrates probabilistic reasoning with the flexibility and expressiveness of logic programming. Traditional logic programming paradigms are deterministic, where each statement is either true or false. However, real-world scenarios often involve inherent uncertainties which deterministic logic cannot adequately handle. PLP addresses this limitation by allowing the representation of uncertainties directly within the logic framework, thereby enabling more nuanced and accurate modeling of complex domains \cite{Sato2001, Kimmig2011}.
 
-\begin{equation}
-P(A|B) = \frac{P(B|A)P(A)}{P(B)}
-\end{equation}
+PLP has been explored extensively in various domains, including artificial intelligence, bioinformatics, and robotics. Sato and Kameya's introduction of PRISM \cite{Sato1997} was a significant milestone, combining statistical modeling with logic programming. Subsequent work by Koller and Friedman \cite{Koller2009} on probabilistic graphical models further influenced PLP frameworks. Various approaches to PLP, such as Logic Programs with Annotated Disjunctions (LPADs) \cite{Vennekens2004}, ProbLog \cite{DeRaedt2007}, Probabilistic Horn Abduction (PHA) \cite{Poole1993}, Independent Choice Logic (ICL) \cite{Poole1997}, and PRISM \cite{Sato2001}, have been developed, each leveraging the distribution semantics introduced by Sato \cite{Sato2001}.
 
-This equation allows us to update the probability estimate for a hypothesis as more evidence or information becomes available.
+Among these, ProbLog has gained prominence due to its simplicity and expressive power, making it a preferred choice for many applications \cite{Kimmig2011}. ProbLog extends a logic program with probabilistic facts, defining a probability distribution over possible worlds (sets of facts). The probability of a query is computed by marginalizing over the probabilities of the worlds where the query is true.
 
-In the context of DNNs, Bayesian networks can offer significant advantages. Behavioral assessment considers probabilistic relationships to offer a richer, more detailed understanding of how different inputs affect model outputs. By developing a strategic focus on high-risk areas, it prioritizes regions with the highest uncertainty or risk for targeted testing, making the process more efficient and effective.
+The need for explainable AI (XAI) has become increasingly important, particularly in domains where decisions must be transparent and interpretable, such as medical diagnosis and finance. Various approaches to XAI emphasize model interpretability and the generation of comprehensible explanations for model predictions \cite{Arrieta2020}. PLP, with its ability to generate explanations as part of its reasoning process, fits well within the XAI paradigm. Vidal \cite{Vidal2023} proposes a novel approach where explanations in PLP are represented as programs generated from a given query through unfolding-like transformations. This approach preserves the causal structure of inferences and ensures minimality by excluding irrelevant information. Such explanations can be parameterized to hide uninteresting details, making them comprehensible to non-expert users.
 
 
-% Start of Problog integration
-\subsection{Probabilistic Logic Programming and Problog}
-{\color{blue}
-Probabilistic logic programming (PLP) combines logic programming with probability theory, enabling the representation of uncertain knowledge. Problog, a prominent PLP language, extends Prolog by associating probabilities with facts and rules, facilitating the handling of uncertain information effectively.
+Despite the extensive research in PLP and its applications, its use in testing DNNs is still very new. DNNs are powerful but often act like "black boxes," making it hard to understand and trust their predictions. This thesis presents a new way to use PLP for testing DNNs, an area that has not been explored before.
 
-Problog was introduced by De Raedt et al. \cite{DeRaedt}, providing a framework for probabilistic reasoning within the well-established logical framework of Prolog. The key contributions of Problog include:
-\begin{itemize}
-    \item \textbf{Integration of Probabilities:} Problog integrates probabilistic reasoning with logic programming by allowing facts to have associated probabilities.
-    \item \textbf{Flexible Inference Mechanism:} It supports various inference techniques, including exact and approximate inference, to handle different types of queries and data efficiently.
-    \item \textbf{Expressiveness:} Problog's expressiveness allows it to model complex relationships and dependencies, making it suitable for a wide range of applications.
-\end{itemize}
-}
-
-% Prolog to Python Syntax Table
-\subsection{Prolog to Python Syntax Conversion}
-
-Clauses in Problog can be constructed by overloading Python operators, making the syntax more intuitive for those familiar with Python. The following table illustrates the conversion:
-
-\begin{table}[h]
-  \centering
-  \begin{tabular}{|l|l|l|}
-  \hline
-  \textbf{Prolog} & \textbf{Python} & \textbf{English} \\
-  \hline
-  :- & \texttt{<<} & clause \\
-  ,  & \texttt{\&} & and \\
-  ;  & \texttt{|} & or \\
-  \textbackslash+ & \texttt{\textasciitilde} & not \\
-  \hline
-  \end{tabular}
-  \caption{Prolog to Python Syntax Conversion}
-  \label{table:prolog-python-syntax}
-  \end{table}
-  
-  
-% Example Scenario
-\subsection{Example Scenario}
+By using PLP, we can turn the probabilistic outputs  of DNNs into probabilistic facts and rules. This helps in reasoning about uncertainties in the model's predictions and generating clear explanations for each prediction. This approach makes it easier to understand why a model made a certain prediction, giving insights into the model’s decision-making process. PLP can also help in debugging DNNs by identifying and fixing inconsistencies or unexpected behaviors in the predictions. By examining the probabilistic rules and their explanations, we can find areas for improvement more effectively. Additionally, PLP allows us to simulate different scenarios by changing probabilistic facts, which is useful for testing how robust the DNNs are under various conditions. This innovative method opens up new opportunities for research and practical applications, making deep learning systems more transparent, reliable, and trustworthy.
 
 
-In this section, we illustrate how Problog can be utilized to find global robustness based on local robustness values obtained from a deep learning model.
+% \smallskip\noindent%
+% \textbf{Example Application of PLP in Deep Learning Testing}
 
-Consider a scenario where we have the local robustness values for two digits, digit 0 and digit 1, obtained using a deep learning model in Python. We use Problog to find the global robustness based on these local values.
+% To illustrate the concept, consider a simple example using Problog. Suppose we have a DNN predicting the robustness of recognizing two digits with certain probabilities. We can represent these predictions in Problog as follows:
 
-Here is an example Problog code snippet:
+% \begin{verbatim}
+% 0.8::digit_0.
+% 0.6::digit_1.
 
-\begin{verbatim}
-0.8::digit_0.
-0.6::digit_1.
+% correct_0 :- digit_0.
+% wrong_0 :- \+correct_0.
+% correct_1 :- digit_1.
+% wrong_1 :- \+correct_1.
 
-correct_0 :- digit_0.
-wrong_0 :- \+correct_0.
-correct_1 :- digit_1.
-wrong_1 :- \+correct_1.
+% global_correct :- correct_0, correct_1.
+% \end{verbatim}
 
-pair_0_1 :- correct_0, correct_1.
-pair_wrong_0_1 :- wrong_0, wrong_1.
+% In this example, the probabilities assigned to \texttt{digit\_0} and \texttt{digit\_1} represent the local robustness probabilities of recognizing the digits correctly. The predicates \texttt{correct\_0} and \texttt{correct\_1} indicate correct predictions, while \texttt{wrong\_0} and \texttt{wrong\_1} indicate incorrect predictions. The predicate \texttt{global\_correct} determines the overall correctness by ensuring both digits are correctly recognized. By querying these predicates, we can derive the global robustness of the system based on the local predictions.
 
-global_correct :- pair_0_1; pair_wrong_0_1.
+% Using Problog in this manner allows for a comprehensive assessment of the model's performance under uncertainty, integrating local probabilities to evaluate global outcomes.
 
-query(correct_0).
-query(correct_1).
-query(wrong_0).
-query(wrong_1).
-query(pair_0_1).
-query(pair_wrong_0_1).
-query(global_correct).
-\end{verbatim}
-
-In this example:
-\begin{itemize}
-  \item \texttt{0.8::digit\_0.} specifies that digit 0 has a local robustness probability of 0.8.
-  \item \texttt{0.6::digit\_1.} specifies that digit 1 has a local robustness probability of 0.6.
-  \item \texttt{correct\_0} and \texttt{correct\_1} indicate that the predictions for digits 0 and 1 are correct.
-  \item \texttt{wrong\_0} and \texttt{wrong\_1} indicate that the predictions for digits 0 and 1 are wrong.
-  \item \texttt{pair\_0\_1} checks if both digits are correctly predicted.
-  \item \texttt{pair\_wrong\_0\_1} checks if both digits are wrongly predicted.
-  \item \texttt{global\_correct} determines if the global prediction is correct by checking if both digits are either correctly or wrongly predicted.
-  \item The \texttt{query} statements are used to query the probabilities of these events.
-\end{itemize}
-
-
-Using Problog in this way allows us to compute the global robustness of the system based on the local robustness of individual components, providing a more comprehensive assessment of the model's performance under uncertainty.
-
-
+% PLP offers a robust framework for incorporating uncertainty and explainability into the testing of DNNs. By leveraging the strengths of PLP, researchers and practitioners can gain deeper insights into model behavior, enhance transparency, and improve the overall reliability of AI systems. This novel integration of PLP in testing frameworks represents a significant advancement in the field, opening new avenues for future research and application.

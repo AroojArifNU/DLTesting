@@ -1,4 +1,10 @@
 \documentclass[12pt, a4paper, oneside]{CIITThesissV1}
+\usepackage{helvet} % Use Helvetica font as the sans-serif font
+\renewcommand{\familydefault}{\sfdefault} % Set the default font family to sans-serif
+
+\usepackage{mdframed} 
+\usepackage{algorithm}
+\usepackage{algorithmic}
 \usepackage{placeins}
 \usepackage{multirow}
 \usepackage{sectsty}
@@ -58,7 +64,7 @@
 \usepackage{amsmath,amssymb,amsfonts}
 %\usepackage[ruled,linesnumbered]{algorithm2e}
 %The following line is added to support the algorithms.
-\usepackage[ruled,vlined]{algorithm2e}
+% \usepackage[ruled,vlined]{algorithm2e}
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{hyperref}
@@ -85,6 +91,11 @@
 
 \usepackage{microtype} % Improves typography
 \usepackage{tikz}
+
+
+
+
+
 \usetikzlibrary{fit}
 
 \makeatletter
@@ -141,12 +152,12 @@
 \include{chap3}
 \include{chap4}
 % \include{chap5}
-\include{chap6}
+% \include{chap6}
 \include{chap7}
 
 \include{chap8}
 \include{chap9}
-\include{chap10}
+% \include{chap10}
 
 
  %\appendix
