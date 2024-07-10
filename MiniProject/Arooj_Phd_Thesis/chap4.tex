@@ -13,6 +13,24 @@
 
 \label{chp:4}
 
+\section{Datasets}
+
+
+\subsection{MNIST Dataset}
+
+The MNIST dataset is a widely recognized benchmark in the field of deep neural networks (DNNs), comprising 70,000 grayscale images of handwritten digits. These images are split into 60,000 training samples and 10,000 testing samples, each of size 28x28 pixels. The dataset includes labels for each digit from 0 to 9, making it a total of 10 classes. This dataset is extensively used for evaluating the performance of various DNN algorithms due to its simplicity and the well-established baseline results it offers. To ensure the correctness our model, we selected 100 correctly classified samples from each class. This selection process involved comparing the model's predictions with the actual labels and choosing only those samples where the predictions were correct. This resulted in a balanced subset of 1,000 samples, with 100 samples from each of the 10 classes.
+
+\subsection{DAWN Dataset}
+
+The DAWN (Vehicle Detection in Adverse Weather Nature Dataset) dataset focuses on vehicle detection under adverse weather conditions, providing a diverse set of real-traffic images categorized into four weather conditions: fog, snow, rain, and sandstorms. Initially, the class distribution in the training set was imbalanced, with the following counts: 258 for label 1, 240 for label 0, 163 for label 3, and 160 for label 2.
+
+To address this imbalance, we resampled the training set to ensure an equal number of samples for each class. This resulted in a balanced training set with 258 samples for each label. This balancing step was crucial for fair training and evaluation of the model, ensuring that no class was overrepresented or underrepresented.
+
+For the testing set, we selected 100 samples from each class, ensuring a balanced evaluation dataset. This selection process was critical to accurately assess the model's performance across different classes and adverse weather conditions.
+
+
+
+
 \section{Use Case 1: Handwritten Digit Recognition }
 \subsection{Local Correctness Evaluation}
 
@@ -32,6 +50,21 @@ Overall, the model demonstrates strong robustness to brightness changes across a
 \end{figure}
 \subsection{Global Correctness Evaluation}
 The following figures illustrate the global correctness of various pairs of digits under different transformations: noise, brightness adjustment, and rotation. The final global correctness for each transformation is also depicted.
+
+In my experiment, I checked the following specifications:
+
+\scalebox{0.9}{%
+\begin{minipage}{\linewidth}
+\begin{align*}
+  global\_noise &\leftrightarrow (noise\_0\_0 \land noise\_0\_1 \land noise\_0\_2 \land \ldots \land noise\_9\_9) \\
+  global\_brightness &\leftrightarrow (brightness\_0\_0 \land brightness\_0\_1 \land brightness\_0\_2 \land \ldots \land brightness\_9\_9) \\
+  global\_rotation &\leftrightarrow (rotation\_0\_0 \land rotation\_0\_1 \land rotation\_0\_2 \land \ldots \land rotation\_9\_9) \\
+  global\_system &\leftrightarrow (global\_noise \lor global\_brightness \lor global\_rotation)
+\end{align*}
+\end{minipage}
+}
+  
+
 
 \begin{figure}[H]
     \centering
@@ -60,7 +93,7 @@ The dataset was split into training and validation sets, with class balancing pe
 
 The trained model's performance was evaluated on a balanced validation set resampled to ensure uniform class distribution.
 
-\subsubsection{Local Correctness Analysis}
+\subsection{Local Correctness Analysis}
 
 The local correctness of the model for each weather condition is depicted in the first graph. The AI system exhibits the following correctness values:
 - \textbf{Fog:} The detection correctness is 51\%, indicating moderate performance. Fog conditions likely introduce significant visual obstructions that challenge the model's ability to correctly identify vehicles.
@@ -68,25 +101,37 @@ The local correctness of the model for each weather condition is depicted in the
 - \textbf{Snow:} Similar to rain, the system shows a correctness of 75\%, demonstrating its capability to handle snowy environments, where the visual contrast might be reduced.
 - \textbf{Sand:} With the highest correctness of 88\%, the model excels in sandy conditions, possibly due to clearer visibility compared to other adverse weather scenarios.
 
-\subsubsection{Global Correctness Analysis}
+\subsection{Global Correctness Analysis}
+
+\subsection{Global Correctness Evaluation for Vehicle Detection}
 
 The second graph illustrates the global correctness for vehicle detection under different combination methods of weather conditions:
-- \textbf{AND (Intersection):} The model's correctness is 25\%. This low value reflects the stringent requirement for the system to correctly detect vehicles under all specified conditions simultaneously, highlighting potential vulnerabilities when multiple weather challenges are present.
-- \textbf{OR (Union):} Achieving a perfect correctness of 100\%, the model successfully detects vehicles under at least one of the conditions. This high performance underscores the system's reliability when at least one favorable condition is present.
-- \textbf{Combination of AND/OR:} The correctness stands at 51\%, representing a balanced approach where the model must correctly detect vehicles under fog and any one of the other conditions (rain, snow, or sand). This mixed strategy provides a realistic measure of the system's robustness in practical scenarios with varying weather conditions.
 
-\textbf{Summary:} These results underscore the AI system's strengths and weaknesses in different weather conditions. The high correctness under sand conditions suggests that the model performs well in relatively clear environments. However, the moderate performance in fog highlights a need for improvement to handle heavy visual obstructions. The perfect correctness under the OR strategy is promising, indicating that the system can be highly reliable if at least one favorable condition exists. The AND strategy's low correctness value points to the challenges of ensuring detection under multiple simultaneous adverse conditions.
-
-Overall, the analysis provides a comprehensive understanding of the model's capabilities and areas for enhancement, guiding future improvements to ensure robust performance in diverse weather scenarios for autonomous vehicle perception systems.
+\scalebox{0.9}{%
+\begin{minipage}{\linewidth}
+\begin{align*}
+  global\_weather &\leftrightarrow (fog \land rain \land snow \land sand) \\
+  global\_weather &\leftrightarrow (fog \lor rain \lor snow \lor sand) \\
+  global\_weather &\leftrightarrow (fog \land (rain \lor snow \lor sand))
+\end{align*}
+\end{minipage}
+}
 
 \begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{globalcorrectness_vehicle_detection.eps}
-    \caption{Local and Global Correctness of Vehicle Detection Under Various Weather Conditions}
-    \label{fig:global_correctness_vehicle_detection}
+  \centering
+  \includegraphics[width=0.8\textwidth]{globalcorrectness_vehicle_detection.eps}
+  \caption{Local and Global Correctness of Vehicle Detection Under Various Weather Conditions}
+  \label{fig:global_correctness_vehicle_detection}
 \end{figure}
 
 
+
+
+\begin{itemize}
+    \item \textbf{AND (Intersection):} The model's correctness is 25\%. This low value reflects the stringent requirement for the system to correctly detect vehicles under all specified conditions simultaneously, highlighting potential vulnerabilities when multiple weather challenges are present.
+    \item \textbf{OR (Union):} Achieving a perfect correctness of 100\%, the model successfully detects vehicles under at least one of the conditions. This high performance underscores the system's reliability when at least one favorable condition is present.
+    \item \textbf{Combination of AND/OR:} The correctness stands at 51\%, representing a balanced approach where the model must correctly detect vehicles under fog and any one of the other conditions (rain, snow, or sand). This mixed strategy provides a realistic measure of the system's robustness in practical scenarios with varying weather conditions.
+\end{itemize}
 
 
 

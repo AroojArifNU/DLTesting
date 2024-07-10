@@ -32,17 +32,21 @@
 \contentsline {section}{\numberline {3.6}Error Summarization}{22}{section.49}%
 \contentsline {subsection}{\numberline {3.6.1}Algorithm for Evaluating Model Robustness Using ProbLog}{22}{subsection.51}%
 \contentsline {chapter}{\numberline {4}Simulations and Results}{24}{chapter.94}%
-\contentsline {section}{\numberline {4.1}Use Case 1: Handwritten Digit Recognition }{24}{section.95}%
-\contentsline {subsection}{\numberline {4.1.1}Local Correctness Evaluation}{24}{subsection.96}%
-\contentsline {subsection}{\numberline {4.1.2}Global Correctness Evaluation}{25}{subsection.98}%
-\contentsline {section}{\numberline {4.2}Use Case 2: Autonomous Vehicle Perception}{27}{section.101}%
-\contentsline {subsubsection}{\numberline {4.2.0.1}Local Correctness Analysis}{27}{subsubsection.102}%
-\contentsline {subsubsection}{\numberline {4.2.0.2}Global Correctness Analysis}{28}{subsubsection.103}%
-\contentsline {chapter}{\numberline {5}References}{29}{chapter.105}%
-\contentsline {chapter}{\numberline {6}Current Progress}{33}{chapter.107}%
-\contentsline {section}{\numberline {6.1}Achievements in the Last 10 Months}{33}{section.108}%
-\contentsline {section}{\numberline {6.2}Challenges and Solutions}{33}{section.109}%
-\contentsline {chapter}{\numberline {7}Future Work and Two-Year Plan}{34}{chapter.110}%
-\contentsline {section}{\numberline {7.1}Short-term Goals (Next 6 Months)}{34}{section.111}%
-\contentsline {section}{\numberline {7.2}Medium-term Goals (Next 1 Year)}{34}{section.112}%
-\contentsline {section}{\numberline {7.3}Long-term Goals (Next 2 Years)}{34}{section.113}%
+\contentsline {section}{\numberline {4.1}Datasets}{24}{section.95}%
+\contentsline {subsection}{\numberline {4.1.1}MNIST Dataset}{24}{subsection.96}%
+\contentsline {subsection}{\numberline {4.1.2}DAWN Dataset}{24}{subsection.97}%
+\contentsline {section}{\numberline {4.2}Use Case 1: Handwritten Digit Recognition }{25}{section.98}%
+\contentsline {subsection}{\numberline {4.2.1}Local Correctness Evaluation}{25}{subsection.99}%
+\contentsline {subsection}{\numberline {4.2.2}Global Correctness Evaluation}{26}{subsection.101}%
+\contentsline {section}{\numberline {4.3}Use Case 2: Autonomous Vehicle Perception}{28}{section.104}%
+\contentsline {subsection}{\numberline {4.3.1}Local Correctness Analysis}{28}{subsection.105}%
+\contentsline {subsection}{\numberline {4.3.2}Global Correctness Analysis}{29}{subsection.106}%
+\contentsline {subsection}{\numberline {4.3.3}Global Correctness Evaluation for Vehicle Detection}{29}{subsection.107}%
+\contentsline {chapter}{\numberline {5}References}{30}{chapter.109}%
+\contentsline {chapter}{\numberline {6}Current Progress}{34}{chapter.111}%
+\contentsline {section}{\numberline {6.1}Achievements in the Last 10 Months}{34}{section.112}%
+\contentsline {section}{\numberline {6.2}Challenges and Solutions}{34}{section.113}%
+\contentsline {chapter}{\numberline {7}Future Work and Two-Year Plan}{35}{chapter.114}%
+\contentsline {section}{\numberline {7.1}Short-term Goals (Next 6 Months)}{35}{section.115}%
+\contentsline {section}{\numberline {7.2}Medium-term Goals (Next 1 Year)}{35}{section.116}%
+\contentsline {section}{\numberline {7.3}Long-term Goals (Next 2 Years)}{35}{section.117}%
