@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.6)  10 JUL 2024 12:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.6)  17 JUL 2024 00:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1263,7 +1263,95 @@ File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \tikz@expandcount=\count430
  (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfit.code.tex
+))) (/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+Package: tcolorbox 2023/09/26 version 6.1.0 text color boxes
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2023-11-06 v1.5v LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks73
+\verbatim@line=\toks74
+\verbatim@in@stream=\read5
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+))
+\tcb@titlebox=\box98
+\tcb@upperbox=\box99
+\tcb@lowerbox=\box100
+\tcb@phantombox=\box101
+\c@tcbbreakpart=\count431
+\c@tcblayer=\count432
+\c@tcolorbox@number=\count433
+\tcb@temp=\box102
+\tcb@temp=\box103
+\tcb@temp=\box104
+\tcb@temp=\box105
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbraster.code.tex
+Library (tcolorbox): 'tcbraster.code.tex' version '6.1.0'
+\c@tcbrastercolumn=\count434
+\c@tcbrasterrow=\count435
+\c@tcbrasternum=\count436
+\c@tcbraster=\count437
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
+Library (tcolorbox): 'tcbskins.code.tex' version '6.1.0'
+(/usr/local/texlive/2023/texmf-dist/tex/latex/tikzfill/tikzfill.image.sty
+Package: tikzfill.image 2023/08/08 v1.0.1 Image filling library for TikZ
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/tikzfill/tikzfill-common.sty
+Package: tikzfill-common 2023/08/08 v1.0.1 Auxiliary code for tikzfill
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/tikzfill/tikzlibraryfill.image.code.tex
+File: tikzlibraryfill.image.code.tex 2023/08/08 v1.0.1 Image filling library
+\l__tikzfill_img_box=\box106
+)) (/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.1.0'
+)) (/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
+Library (tcolorbox): 'tcbbreakable.code.tex' version '6.1.0'
+(/usr/local/texlive/2023/texmf-dist/tex/latex/pdfcol/pdfcol.sty
+Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
+)
+Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
+\tcb@testbox=\box107
+\tcb@totalupperbox=\box108
+\tcb@totallowerbox=\box109
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbhooks.code.tex
+Library (tcolorbox): 'tcbhooks.code.tex' version '6.1.0'
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code.tex
+Library (tcolorbox): 'tcbtheorems.code.tex' version '6.1.0'
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbfitting.code.tex
+Library (tcolorbox): 'tcbfitting.code.tex' version '6.1.0'
+\tcbfitdim=\dimen382
+\tcb@lowerfitdim=\dimen383
+\tcb@upperfitdim=\dimen384
+\tcb@cur@hbadness=\count438
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcblistingsutf8.code.tex
+Library (tcolorbox): 'tcblistingsutf8.code.tex' version '6.1.0'
+(/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcblistings.code.tex
+Library (tcolorbox): 'tcblistings.code.tex' version '6.1.0'
+(/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcblistingscore.code.tex
+Library (tcolorbox): 'tcblistingscore.code.tex' version '6.1.0'
+(/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbprocessing.code.tex
+Library (tcolorbox): 'tcbprocessing.code.tex' version '6.1.0'
+(/usr/local/texlive/2023/texmf-dist/tex/latex/tools/shellesc.sty
+Package: shellesc 2023/07/08 v1.0d unified shell escape interface for LaTeX
+Package shellesc Info: Restricted shell escape enabled on input line 77.
+))
+\c@tcblisting=\count439
+)) (/usr/local/texlive/2023/texmf-dist/tex/latex/listingsutf8/listingsutf8.sty
+Package: listingsutf8 2019-12-10 v1.5 Allow UTF-8 in listings input (HO)
+ (/usr/local/texlive/2023/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
+))) (/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbexternal.code.tex
+Library (tcolorbox): 'tcbexternal.code.tex' version '6.1.0'
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbmagazine.code.tex
+Library (tcolorbox): 'tcbmagazine.code.tex' version '6.1.0'
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbvignette.code.tex
+Library (tcolorbox): 'tcbvignette.code.tex' version '6.1.0'
+(/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfadings.code.tex
+File: tikzlibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code.tex
+File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (/usr/local/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbposter.code.tex
+Library (tcolorbox): 'tcbposter.code.tex' version '6.1.0'
+)) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfit.code.tex
 File: tikzlibraryfit.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
 Package csquotes Info: Checking for multilingual support...
@@ -1305,19 +1393,19 @@ Package caption Info: threeparttable package is loaded.
 Package caption Info: End \AtBeginDocument code.
  (/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count431
-\scratchdimen=\dimen382
-\scratchbox=\box98
-\nofMPsegments=\count432
-\nofMParguments=\count433
-\everyMPshowfont=\toks73
-\MPscratchCnt=\count434
-\MPscratchDim=\dimen383
-\MPnumerator=\count435
-\makeMPintoPDFobject=\count436
-\everyMPtoPDFconversion=\toks74
+\scratchcounter=\count440
+\scratchdimen=\dimen385
+\scratchbox=\box110
+\nofMPsegments=\count441
+\nofMParguments=\count442
+\everyMPshowfont=\toks75
+\MPscratchCnt=\count443
+\MPscratchDim=\dimen386
+\MPnumerator=\count444
+\makeMPintoPDFobject=\count445
+\everyMPtoPDFconversion=\toks76
 )
-\c@lstlisting=\count437
+\c@lstlisting=\count446
 Package hyperref Info: Link coloring ON on input line 116.
 LaTeX Info: Redefining \microtypecontext on input line 116.
 Package microtype Info: Applying patch `item' on input line 116.
@@ -1345,7 +1433,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 \openout2 = `cover1.aux'.
 
  (./cover1.tex
-<nu_logo.jpeg, id=7, 903.375pt x 903.375pt>
+<nu_logo.jpeg, id=43, 903.375pt x 903.375pt>
 File: nu_logo.jpeg Graphic file (type jpg)
 <use nu_logo.jpeg>
 Package pdftex.def Info: nu_logo.jpeg  used on input line 10.
@@ -1492,32 +1580,7 @@ Chapter 1.
 
 
 ]
-<figures/fig1.png, id=199, 538.01pt x 195.73125pt>
-File: figures/fig1.png Graphic file (type png)
-<use figures/fig1.png>
-Package pdftex.def Info: figures/fig1.png  used on input line 37.
-(pdftex.def)             Requested size: 333.97972pt x 121.50443pt.
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 38.
- (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/t1lmr.fd
-File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-
-LaTeX Font Warning: Font shape `T1/lmss/m/sc' in size <10.95> not available
-(Font)              Font shape `T1/lmr/m/sc' tried instead on input line 38.
-
-Package microtype Info: Character `029' is missing
-(microtype)             in font `T1/lmr/m/sc/10.95'.
-(microtype)             Ignoring protrusion settings for this character.
-<figures/fig2.png, id=203, 416.55624pt x 214.8025pt>
-File: figures/fig2.png Graphic file (type png)
-<use figures/fig2.png>
-Package pdftex.def Info: figures/fig2.png  used on input line 44.
-(pdftex.def)             Requested size: 333.97972pt x 172.22899pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[2 <./figures/fig1.png>]
-LaTeX Font Info:    Trying to load font information for TS1+lmss on input line 54.
+LaTeX Font Info:    Trying to load font information for TS1+lmss on input line 41.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/ts1lmss.fd
 File: ts1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -1525,11 +1588,32 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [3{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc} <./figures/fig2.png>] [4]
+ [2{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}]
+<figures/fig1.png, id=253, 538.01pt x 195.73125pt>
+File: figures/fig1.png Graphic file (type png)
+<use figures/fig1.png>
+Package pdftex.def Info: figures/fig1.png  used on input line 56.
+(pdftex.def)             Requested size: 333.97972pt x 121.50443pt.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 57.
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/t1lmr.fd
+File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
 
-LaTeX Warning: Reference `chp:6' on page 5 undefined on input line 95.
+LaTeX Font Warning: Font shape `T1/lmss/m/sc' in size <10.95> not available
+(Font)              Font shape `T1/lmr/m/sc' tried instead on input line 57.
 
-[5])
+Package microtype Info: Character `029' is missing
+(microtype)             in font `T1/lmr/m/sc/10.95'.
+(microtype)             Ignoring protrusion settings for this character.
+<figures/fig2.png, id=257, 416.55624pt x 214.8025pt>
+File: figures/fig2.png Graphic file (type png)
+<use figures/fig2.png>
+Package pdftex.def Info: figures/fig2.png  used on input line 63.
+(pdftex.def)             Requested size: 333.97972pt x 172.22899pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[3 <./figures/fig1.png>] [4 <./figures/fig2.png>] [5])
 \openout2 = `chap2.aux'.
 
  (./chap2.tex
@@ -1546,12 +1630,11 @@ Chapter 2.
 ]
 
 pdfTeX warning: pdflatex (file ./figures/traditionalandDNN.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/traditionalandDNN.pdf, id=251, 1191.7022pt x 660.21657pt>
+<figures/traditionalandDNN.pdf, id=304, 1191.7022pt x 660.21657pt>
 File: figures/traditionalandDNN.pdf Graphic file (type pdf)
 <use figures/traditionalandDNN.pdf>
 Package pdftex.def Info: figures/traditionalandDNN.pdf  used on input line 35.
 (pdftex.def)             Requested size: 417.47307pt x 231.28073pt.
-[7 <./figures/traditionalandDNN.pdf>]
 
 LaTeX Font Warning: Font shape `T1/lmss/m/sc' in size <12> not available
 (Font)              Font shape `T1/lmr/m/sc' tried instead on input line 49.
@@ -1559,7 +1642,7 @@ LaTeX Font Warning: Font shape `T1/lmss/m/sc' in size <12> not available
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/12'.
 (microtype)             Ignoring protrusion settings for this character.
-
+[7 <./figures/traditionalandDNN.pdf>]
 Overfull \hbox (54.71931pt too wide) in paragraph at lines 70--71
 []\T1/lmss/m/sl/12 (-20) Contrast Ad-just-ment\T1/lmss/m/n/12 (-20) : Mod-i-fy-ing the con-trast of $\OML/lmm/m/it/12 x$\T1/lmss/m/n/12 (-20) , rep-re-sented as $\OML/lmm/m/it/12 x[] \OT1/lmr/m/n/12 (-20) = [](\OML/lmm/m/it/12 x; \OT1/lmr/m/n/12 (-20) )$\T1/lmss/m/n/12 (-20) . 
  []
@@ -1569,13 +1652,12 @@ Overfull \hbox (25.42798pt too wide) in paragraph at lines 71--72
 []\T1/lmss/m/sl/12 (-20) Brightness Change\T1/lmss/m/n/12 (-20) : Al-ter-ing the bright-ness of $\OML/lmm/m/it/12 x$\T1/lmss/m/n/12 (-20) , yield-ing $\OML/lmm/m/it/12 x[] \OT1/lmr/m/n/12 (-20) = [](\OML/lmm/m/it/12 x; ^^L\OT1/lmr/m/n/12 (-20) )$\T1/lmss/m/n/12 (-20) . 
  []
 
-[8]
-<figures/output_update.png, id=278, 2160.51164pt x 268.1217pt>
+<figures/output_update.png, id=327, 2160.51164pt x 268.1217pt>
 File: figures/output_update.png Graphic file (type png)
 <use figures/output_update.png>
 Package pdftex.def Info: figures/output_update.png  used on input line 78.
 (pdftex.def)             Requested size: 417.47307pt x 51.80688pt.
- [9 <./figures/output_update.png>] [10] [11]) [12]
+[8] [9 <./figures/output_update.png>] [10] [11] [12] [13] [14]) [15]
 \openout2 = `chap3.aux'.
 
  (./chap3.tex
@@ -1583,7 +1665,7 @@ Chapter 3.
 ------------------------------------------------------------------------------
  3 Proposed Framework
 ------------------------------------------------------------------------------
-[13
+[16
 
 
 
@@ -1626,7 +1708,7 @@ LaTeX Font Warning: Font shape `T1/lmss/m/scit' undefined
 LaTeX Font Warning: Font shape `T1/lmss/m/scit' undefined
 (Font)              using `T1/lmss/m/sc' instead on input line 69.
 
-[14{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
+[17{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
 LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <12> not available
 (Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 97.
 
@@ -1634,20 +1716,20 @@ Overfull \hbox (40.25783pt too wide) in paragraph at lines 97--99
 \T1/lmss/m/sl/12 (-20) and $\OML/lmm/m/it/12 x[] \OT1/lmr/m/n/12 (-20) = [](\OML/lmm/m/it/12 x[]; ^^R\OT1/lmr/m/n/12 (-20) )$\T1/lmss/m/sl/12 (-20) . The test case is then: $\OMS/lmsy/m/n/12 T[] \OT1/lmr/m/n/12 (-20) = []$ 
  []
 
-[15] [16]
+[18] [19]
 Overfull \hbox (18.1366pt too wide) detected at line 174
 \OML/lmm/m/it/12 P\OT1/lmr/m/n/12 ([] \OMS/lmsy/m/n/12 [ []\OT1/lmr/m/n/12 ) = \OML/lmm/m/it/12 P\OT1/lmr/m/n/12 ([]) + \OML/lmm/m/it/12 P\OT1/lmr/m/n/12 ([]) \OMS/lmsy/m/n/12 ^^@ \OML/lmm/m/it/12 P\OT1/lmr/m/n/12 ([] \OMS/lmsy/m/n/12 \ []\OT1/lmr/m/n/12 )
  []
 
-[17]
+[20]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[18]
+[21]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 240.
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 242.
+(mdframed)              on input line 236.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 238.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -1655,52 +1737,47 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [19]
+ [22]
 
 Package caption Warning: \setcaptiontype
-(caption)                outside box or environment on input line 285.
+(caption)                outside box or environment on input line 281.
 See the caption package documentation for explanation.
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 293.
+(mdframed)              on input line 289.
 
-Overfull \hbox (2.02693pt too wide) in paragraph at lines 325--325
+Overfull \hbox (2.02693pt too wide) in paragraph at lines 309--309
 []\T1/lmtt/m/n/8 global_correct_vehicle_and :- correct_rain_vehicle, correct_fog_vehicle, correct_snow_vehicle.[] 
  []
 
 
-Overfull \hbox (19.02693pt too wide) in paragraph at lines 325--325
+Overfull \hbox (19.02693pt too wide) in paragraph at lines 315--315
 []\T1/lmtt/m/n/8 global_correct_mixed_vehicle :- correct_rain_vehicle, (correct_fog_vehicle; correct_snow_vehicle).[] 
  []
 
 Package mdframed Info: mdframed inside float 
- mdframed uses option nobreak mdframed on input line 326.
-[20]
+ mdframed uses option nobreak mdframed on input line 322.
+[23]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 334.
- [21]
+(Font)              <10.95> on input line 330.
+ [24]
 
-LaTeX Warning: Reference `Coverage' on page 22 undefined on input line 799.
+LaTeX Warning: Reference `Coverage' on page 25 undefined on input line 795.
 
 
 
 pdfTeX warning: pdflatex (file ./figures/step5.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/step5.pdf, id=396, 1416.79312pt x 707.64375pt>
+<figures/step5.pdf, id=483, 1416.79312pt x 707.64375pt>
 File: figures/step5.pdf Graphic file (type pdf)
 <use figures/step5.pdf>
-Package pdftex.def Info: figures/step5.pdf  used on input line 803.
+Package pdftex.def Info: figures/step5.pdf  used on input line 799.
 (pdftex.def)             Requested size: 417.47307pt x 208.51555pt.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 809.
 
-Underfull \hbox (badness 1565) in paragraph at lines 810--810
-|[]\T1/lmss/bx/n/14.4 (+20) Algorithm for Eval-u-at-ing Model Ro-bust-ness Us-ing
- []
+LaTeX Warning: Float too large for page by 29.82689pt on input line 871.
 
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 813.
-
-LaTeX Warning: Float too large for page by 29.82689pt on input line 875.
-
-) [22 <./figures/step5.pdf>] [23]
+) [25 <./figures/step5.pdf>] [26]
 \openout2 = `chap4.aux'.
 
  (./chap4.tex
@@ -1708,12 +1785,12 @@ Chapter 4.
 ------------------------------------------------------------------------------
  4 Simulations and Results
 ------------------------------------------------------------------------------
-[24
+[27
 
 
 
 
-] [25]
+] [28]
 Package epstopdf Info: Source file: <figures/local_correctness.eps>
 (epstopdf)                    date: 2024-07-09 22:53:28
 (epstopdf)                    size: 87426 bytes
@@ -1723,18 +1800,32 @@ Package epstopdf Info: Source file: <figures/local_correctness.eps>
 (epstopdf)             Command: <repstopdf --outfile=figures/local_correctness-eps-converted-to.pdf figures/local_correctness.eps>
 (epstopdf)             \includegraphics on input line 47.
 Package epstopdf Info: Output file is already uptodate.
-<figures/local_correctness-eps-converted-to.pdf, id=469, 1445.4pt x 722.7pt>
+<figures/local_correctness-eps-converted-to.pdf, id=554, 1445.4pt x 722.7pt>
 File: figures/local_correctness-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/local_correctness-eps-converted-to.pdf>
 Package pdftex.def Info: figures/local_correctness-eps-converted-to.pdf  used on input line 47.
 (pdftex.def)             Requested size: 417.47307pt x 208.73953pt.
-
-Overfull \hbox (100.82109pt too wide) detected at line 65
+Package epstopdf Info: Source file: <figures/local_correctness_shap.eps>
+(epstopdf)                    date: 2024-07-16 23:11:11
+(epstopdf)                    size: 77978 bytes
+(epstopdf)             Output file: <figures/local_correctness_shap-eps-converted-to.pdf>
+(epstopdf)                    date: 2024-07-16 23:14:03
+(epstopdf)                    size: 23686 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/local_correctness_shap-eps-converted-to.pdf figures/local_correctness_shap.eps>
+(epstopdf)             \includegraphics on input line 54.
+Package epstopdf Info: Output file is already uptodate.
+<figures/local_correctness_shap-eps-converted-to.pdf, id=555, 1445.4pt x 722.7pt>
+File: figures/local_correctness_shap-eps-converted-to.pdf Graphic file (type pdf)
+<use figures/local_correctness_shap-eps-converted-to.pdf>
+Package pdftex.def Info: figures/local_correctness_shap-eps-converted-to.pdf  used on input line 54.
+(pdftex.def)             Requested size: 417.47307pt x 208.73953pt.
+ [29 <./figures/local_correctness-eps-converted-to.pdf> <./figures/local_correctness_shap-eps-converted-to.pdf>]
+Overfull \hbox (100.82109pt too wide) detected at line 74
 []
  []
 
 
-Overfull \hbox (52.51343pt too wide) in paragraph at lines 65--66
+Overfull \hbox (52.51343pt too wide) in paragraph at lines 74--75
 [][] 
  []
 
@@ -1745,14 +1836,14 @@ Package epstopdf Info: Source file: <figures/global_correctness.eps>
 (epstopdf)                    date: 2024-07-10 00:13:02
 (epstopdf)                    size: 20583 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/global_correctness-eps-converted-to.pdf figures/global_correctness.eps>
-(epstopdf)             \includegraphics on input line 71.
+(epstopdf)             \includegraphics on input line 80.
 Package epstopdf Info: Output file is already uptodate.
-<figures/global_correctness-eps-converted-to.pdf, id=470, 2168.1pt x 1011.78pt>
+<figures/global_correctness-eps-converted-to.pdf, id=676, 2168.1pt x 1011.78pt>
 File: figures/global_correctness-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/global_correctness-eps-converted-to.pdf>
-Package pdftex.def Info: figures/global_correctness-eps-converted-to.pdf  used on input line 71.
+Package pdftex.def Info: figures/global_correctness-eps-converted-to.pdf  used on input line 80.
 (pdftex.def)             Requested size: 417.47307pt x 194.81842pt.
-[26 <./figures/local_correctness-eps-converted-to.pdf>]
+[30]
 Package epstopdf Info: Source file: <figures/global_correctness_combine.eps>
 (epstopdf)                    date: 2024-07-10 00:07:45
 (epstopdf)                    size: 26272 bytes
@@ -1760,14 +1851,44 @@ Package epstopdf Info: Source file: <figures/global_correctness_combine.eps>
 (epstopdf)                    date: 2024-07-10 00:13:02
 (epstopdf)                    size: 16957 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/global_correctness_combine-eps-converted-to.pdf figures/global_correctness_combine.eps>
-(epstopdf)             \includegraphics on input line 78.
+(epstopdf)             \includegraphics on input line 87.
 Package epstopdf Info: Output file is already uptodate.
-<figures/global_correctness_combine-eps-converted-to.pdf, id=532, 722.7pt x 433.62pt>
+<figures/global_correctness_combine-eps-converted-to.pdf, id=681, 722.7pt x 433.62pt>
 File: figures/global_correctness_combine-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/global_correctness_combine-eps-converted-to.pdf>
-Package pdftex.def Info: figures/global_correctness_combine-eps-converted-to.pdf  used on input line 78.
+Package pdftex.def Info: figures/global_correctness_combine-eps-converted-to.pdf  used on input line 87.
 (pdftex.def)             Requested size: 333.97972pt x 200.38731pt.
- [27 <./figures/global_correctness-eps-converted-to.pdf> <./figures/global_correctness_combine-eps-converted-to.pdf>] [28]
+ [31 <./figures/global_correctness-eps-converted-to.pdf> <./figures/global_correctness_combine-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <figures/global_correctness_noise_comparison.eps>
+(epstopdf)                    date: 2024-07-16 23:53:41
+(epstopdf)                    size: 61790 bytes
+(epstopdf)             Output file: <figures/global_correctness_noise_comparison-eps-converted-to.pdf>
+(epstopdf)                    date: 2024-07-16 23:53:59
+(epstopdf)                    size: 26237 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/global_correctness_noise_comparison-eps-converted-to.pdf figures/global_correctness_noise_comparison.eps>
+(epstopdf)             \includegraphics on input line 120.
+Package epstopdf Info: Output file is already uptodate.
+<figures/global_correctness_noise_comparison-eps-converted-to.pdf, id=762, 722.7pt x 361.35pt>
+File: figures/global_correctness_noise_comparison-eps-converted-to.pdf Graphic file (type pdf)
+<use figures/global_correctness_noise_comparison-eps-converted-to.pdf>
+Package pdftex.def Info: figures/global_correctness_noise_comparison-eps-converted-to.pdf  used on input line 120.
+(pdftex.def)             Requested size: 413.30063pt x 206.64983pt.
+ [32]
+Package epstopdf Info: Source file: <figures/combined_global_correctness.eps>
+(epstopdf)                    date: 2024-07-16 23:36:34
+(epstopdf)                    size: 43900 bytes
+(epstopdf)             Output file: <figures/combined_global_correctness-eps-converted-to.pdf>
+(epstopdf)                    date: 2024-07-16 23:38:21
+(epstopdf)                    size: 30383 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/combined_global_correctness-eps-converted-to.pdf figures/combined_global_correctness.eps>
+(epstopdf)             \includegraphics on input line 128.
+Package epstopdf Info: Output file is already uptodate.
+<figures/combined_global_correctness-eps-converted-to.pdf, id=767, 722.7pt x 433.62pt>
+File: figures/combined_global_correctness-eps-converted-to.pdf Graphic file (type pdf)
+<use figures/combined_global_correctness-eps-converted-to.pdf>
+Package pdftex.def Info: figures/combined_global_correctness-eps-converted-to.pdf  used on input line 128.
+(pdftex.def)             Requested size: 333.97972pt x 200.38731pt.
+ [33 <./figures/global_correctness_noise_comparison-eps-converted-to.pdf> <./figures/combined_global_correctness-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <figures/globalcorrectness_vehicle_detection.eps>
 (epstopdf)                    date: 2024-07-10 02:28:29
 (epstopdf)                    size: 32290 bytes
@@ -1775,14 +1896,14 @@ Package epstopdf Info: Source file: <figures/globalcorrectness_vehicle_detection
 (epstopdf)                    date: 2024-07-10 02:36:36
 (epstopdf)                    size: 19346 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf figures/globalcorrectness_vehicle_detection.eps>
-(epstopdf)             \includegraphics on input line 122.
+(epstopdf)             \includegraphics on input line 164.
 Package epstopdf Info: Output file is already uptodate.
-<figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf, id=617, 854.19125pt x 427.5975pt>
+<figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf, id=924, 854.19125pt x 427.5975pt>
 File: figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf>
-Package pdftex.def Info: figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf  used on input line 122.
+Package pdftex.def Info: figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf  used on input line 164.
 (pdftex.def)             Requested size: 333.97972pt x 167.17992pt.
- [29 <./figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf>])
+ [34 <./figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf>] [35])
 \openout2 = `chap7.aux'.
 
  (./chap7.tex
@@ -1790,19 +1911,19 @@ Chapter 5.
 ------------------------------------------------------------------------------
  5 References
 ------------------------------------------------------------------------------
-[30
+[36
 
 
 
 
-] [31
+] [37
 
-]
-Underfull \hbox (badness 2150) in paragraph at lines 41--42
+] [38]
+Underfull \hbox (badness 2150) in paragraph at lines 68--69
 []\T1/lmss/m/n/12 (+20) Sun, Youcheng, et al. "Test-ing deep neu-ral net-works." arXiv preprint
  []
 
-[32]) [33]
+[39]) [40]
 \openout2 = `chap8.aux'.
 
  (./chap8.tex
@@ -1810,7 +1931,7 @@ Chapter 6.
 ------------------------------------------------------------------------------
  6 Current Progress
 ------------------------------------------------------------------------------
-) [34
+) [41
 
 
 
@@ -1823,7 +1944,7 @@ Chapter 7.
 ------------------------------------------------------------------------------
  7 Future Work and Two-Year Plan
 ------------------------------------------------------------------------------
-) [35
+) [42
 
 
 
@@ -1837,23 +1958,20 @@ L3 programming layer <2023-12-11>
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 38442 strings out of 474181
- 689613 string characters out of 5745948
- 1954457 words of memory out of 5000000
- 59372 multiletter control sequences out of 15000+600000
- 686840 words of font info for 248 fonts, out of 8000000 for 9000
+ 43832 strings out of 474181
+ 840427 string characters out of 5745948
+ 1955457 words of memory out of 5000000
+ 64636 multiletter control sequences out of 15000+600000
+ 687506 words of font info for 254 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 81i,13n,93p,1681b,889s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 81i,13n,96p,1982b,887s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbo10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsso12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsso8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Arooj_Thesis.pdf (43 pages, 1504674 bytes).
+Output written on Arooj_Thesis.pdf (50 pages, 1593630 bytes).
 PDF statistics:
- 1021 PDF objects out of 1200 (max. 8388607)
- 732 compressed objects within 8 object streams
- 196 named destinations out of 1000 (max. 500000)
- 74711 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 1346 PDF objects out of 1440 (max. 8388607)
+ 835 compressed objects within 9 object streams
+ 220 named destinations out of 1000 (max. 500000)
+ 74878 words of extra memory for PDF output out of 89155 (max. 10000000)
 

@@ -11,10 +11,10 @@
 \chapter{Literature Review}
 \label{chp:2}
 
-\section{Overview}
-This chapter provides a review of the literature related to deep neural networks, probabilistic logic programming, and their integration, particularly focusing on Problog and its extensions.
+% \section{Overview}
+This chapter provides a review of the literature related to DNN, testing and formal verification, DNN testing techniques and probabilistic logic programming.
 
-\subsection{Deep Neural Networks and AI Systems}
+\section{Deep Neural Networks and AI Systems}
 
 Deep neural networks (DNNs) mimic the structure of the human brain, consisting of millions of interconnected neurons. They extract high-level features from raw input using labeled training data without human interference.
 
@@ -37,7 +37,7 @@ Deep learning is a subset of AI that utilizes deep neural networks (DNNs) for co
     \label{fig:graph}
 \end{figure}
 
-\subsection{Robustness of DNNs}
+\section{Robustness of Deep Neural Networks}
 
 Deep neural networks (DNNs) are known for their lack of robustness. Research has shown DNNs to be vulnerable to two main categories of adversaries: \emph{adversarial attacks}~\cite{adv_attacks} and \emph{image transformations}~\cite{deeptest}.
 
@@ -82,7 +82,80 @@ This involves modifying the input images in a manner that exploits the model's s
 
 By analyzing various types of adversaries, our proposed comprehensive testing framework evaluates model robustness, providing probabilities of model effectiveness against each adversary and assessing accuracy under adversarial conditions across different classes within any dataset.
 
-\subsection{DNN Testing Techniques}
+
+
+\section{Sampling Techniques}
+\textcolor{blue}{
+Sampling is a crucial step in the testing of DNNs, as it involves selecting a representative subset of inputs from a potentially vast input space. Various sampling techniques are employed to ensure comprehensive testing. Random sampling, which involves randomly selecting inputs, is simple to implement and provides broad coverage, but it might miss critical edge cases \cite{Frey1997}. Stratified sampling, which divides the input space into strata and samples from each, ensures representation of all strata but requires prior knowledge of the strata \cite{Katz2017}. Random over-sampling balances class distribution by duplicating examples in the minority class, though it can lead to overfitting \cite{Chawla2002}. SMOTE (Synthetic Minority Over-sampling Technique) generates synthetic examples in the minority class to reduce overfitting compared to random over-sampling, but it can introduce noise \cite{Chawla2002}. NearMiss focuses on selecting examples close to the decision boundary, emphasizing difficult examples, but may discard useful information \cite{Mani2003}. Borderline-SMOTE generates synthetic examples near the class borders, targeting challenging areas, though it may still introduce noise \cite{Han2005}. Adaptive sampling dynamically adjusts the strategy based on intermediate results, efficiently focusing on areas with higher uncertainty or potential errors, but it is complex to implement \cite{Roth2019}. These techniques enhance the robustness of DNN testing by ensuring diverse and representative input coverage, each with specific advantages and limitations that need to be considered in the context of the testing objectives.
+}
+
+
+\begin{tcolorbox}[colback=purple!2!white, colframe=purple]
+
+  Currently, I am using Borderline-SMOTE for sampling, which generates synthetic examples near decision boundaries to improve class balance and model robustness. This approach is effective in handling challenging borderline cases and enhancing model performance.
+
+  \textbf{Challenge}: Borderline-SMOTE can introduce noise and requires careful parameter tuning. I plan to refine this technique to mitigate these issues and further improve sampling efficiency in future work.
+
+    
+  \end{tcolorbox}
+
+
+\section{Testing and Formal Verification}
+\textcolor{blue}{
+Testing and formal verification are two distinct approaches used to ensure the reliability and correctness of DNNs. Testing is an empirical process that involves executing a system with a variety of inputs to identify defects or bugs. For example, to verify the detection of stop signs in an autonomous vehicle's neural network, testing would involve generating a set of images with variations in brightness, rotation, and noise. These images are then fed into the neural network, and the outputs are analyzed to check if the stop sign is correctly detected. Specific test cases might include images taken in different lighting conditions (daylight, twilight, night), with stop signs at various angles (0°, 15°, 30°, 45°), and with added Gaussian noise. The main advantage of testing is its practicality, providing immediate feedback on the neural network’s performance under these conditions \cite{Albarghouthi}.}
+
+\textcolor{blue}{In contrast, formal verification uses mathematical and logical reasoning to prove that a system meets its specifications under all possible conditions. This involves formalizing the properties of the system and using formal methods such as model checking or theorem proving to verify these properties. For instance, the property that the neural network must detect stop signs correctly under different brightness levels, rotations, and noise can be formalized as follows: for any input image containing a stop sign, regardless of these variations, the network should output a correct detection. Tools like SMT solvers are then used to verify this property. Unlike testing, formal verification aims to provide rigorous guarantees of correctness, ensuring that the system adheres to its specifications in all cases \cite{DeepMind2023, Albarghouthi}.}
+
+\textcolor{blue}{A key difference between the two approaches is the scope of their validation. Testing is limited to the specific cases generated, which may not cover all possible scenarios. Formal verification, however, aims to cover all possible scenarios within the defined properties, offering stronger guarantees. For example, while testing might reveal that the neural network fails to detect a stop sign under very dim lighting, formal verification would mathematically prove whether such failures can occur under any possible input within the specified range. This makes formal verification particularly valuable in safety-critical applications where ensuring the absence of errors is crucial \cite{Urban2021}.}
+
+
+  
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=2cm]
+
+
+        % Testing Process
+        \node (start1) [fill=gray!80,rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black] {Input Data};
+        \node (process1) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=start1] {Generate Test Cases};
+        \node (process2) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=process1] {Execute Test Cases};
+        \node (process3) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=process2] {Analyze Outputs};
+        \node (process4) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=process3] {Identify Bugs};
+
+        \draw [thick,->,>=stealth] (start1) -- (process1);
+        \draw [thick,->,>=stealth] (process1) -- (process2);
+        \draw [thick,->,>=stealth] (process2) -- (process3);
+        \draw [thick,->,>=stealth] (process3) -- (process4);
+
+        % Verification Process
+        \node (start2) [rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!80, right of=start1, xshift=6cm] {Input Model Specifications};
+        \node (process5) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=start2] {Formalize Specifications};
+        \node (process6) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=process5] {Apply Formal Methods};
+        \node (process7) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=process6] {Verify Against Specifications};
+        \node (process8) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=process7] {Prove Correctness};
+
+        \draw [thick,->,>=stealth] (start2) -- (process5);
+        \draw [thick,->,>=stealth] (process5) -- (process6);
+        \draw [thick,->,>=stealth] (process6) -- (process7);
+        \draw [thick,->,>=stealth] (process7) -- (process8);
+    \end{tikzpicture}
+    \caption{Comparison of Testing and Verification Processes}
+    \label{fig:testing_verification}
+\end{figure}
+
+\begin{tcolorbox}[colback=purple!2!white, colframe=purple]
+
+  Currently, my work focuses on \textbf{testing}, generating diverse test cases to identify defects and improve the robustness of Deep Neural Networks (DNNs). This approach is effective in providing immediate feedback and uncovering a wide range of issues.
+
+  \textbf{Challenge}: Testing may not cover all possible scenarios and can miss critical edge cases. In the future, I plan to extend this work to \textbf{formal verification}, using mathematical methods to rigorously prove the system meets specifications under all conditions, thereby providing stronger guarantees of correctness.
+  
+  \end{tcolorbox}
+
+
+
+
+
+\section{DNN Testing Techniques}
 
 The development of DNNs is significantly different from traditional software. While developers explicitly define logic in traditional software, DNNs learn logic rules from raw data. Developers shape these rules by modifying the training data, selecting features, and designing the DNN architecture, such as the number of neurons and layers.
 
@@ -118,7 +191,11 @@ Traditional techniques are simple, failing to capture the full complexity and pr
 
 In this thesis, we address these issues and design a systematic testing framework for DNNs.
 
-\subsection{Probabilistic Logic Programming (PLP)}
+
+
+
+
+\section{Probabilistic Logic Programming (PLP)}
 
 Probabilistic Logic Programming (PLP) integrates probabilistic reasoning with the flexibility and expressiveness of logic programming. Traditional logic programming paradigms are deterministic, where each statement is either true or false. However, real-world scenarios often involve inherent uncertainties which deterministic logic cannot adequately handle. PLP addresses this limitation by allowing the representation of uncertainties directly within the logic framework, thereby enabling more nuanced and accurate modeling of complex domains \cite{Sato2001, Kimmig2011}.
 
@@ -133,26 +210,3 @@ Despite the extensive research in PLP and its applications, its use in testing D
 
 By using PLP, we can turn the probabilistic outputs  of DNNs into probabilistic facts and rules. This helps in reasoning about uncertainties in the model's predictions and generating clear explanations for each prediction. This approach makes it easier to understand why a model made a certain prediction, giving insights into the model’s decision-making process. PLP can also help in debugging DNNs by identifying and fixing inconsistencies or unexpected behaviors in the predictions. By examining the probabilistic rules and their explanations, we can find areas for improvement more effectively. Additionally, PLP allows us to simulate different scenarios by changing probabilistic facts, which is useful for testing how robust the DNNs are under various conditions. This innovative method opens up new opportunities for research and practical applications, making deep learning systems more transparent, reliable, and trustworthy.
 
-
-% \smallskip\noindent%
-% \textbf{Example Application of PLP in Deep Learning Testing}
-
-% To illustrate the concept, consider a simple example using Problog. Suppose we have a DNN predicting the robustness of recognizing two digits with certain probabilities. We can represent these predictions in Problog as follows:
-
-% \begin{verbatim}
-% 0.8::digit_0.
-% 0.6::digit_1.
-
-% correct_0 :- digit_0.
-% wrong_0 :- \+correct_0.
-% correct_1 :- digit_1.
-% wrong_1 :- \+correct_1.
-
-% global_correct :- correct_0, correct_1.
-% \end{verbatim}
-
-% In this example, the probabilities assigned to \texttt{digit\_0} and \texttt{digit\_1} represent the local robustness probabilities of recognizing the digits correctly. The predicates \texttt{correct\_0} and \texttt{correct\_1} indicate correct predictions, while \texttt{wrong\_0} and \texttt{wrong\_1} indicate incorrect predictions. The predicate \texttt{global\_correct} determines the overall correctness by ensuring both digits are correctly recognized. By querying these predicates, we can derive the global robustness of the system based on the local predictions.
-
-% Using Problog in this manner allows for a comprehensive assessment of the model's performance under uncertainty, integrating local probabilities to evaluate global outcomes.
-
-% PLP offers a robust framework for incorporating uncertainty and explainability into the testing of DNNs. By leveraging the strengths of PLP, researchers and practitioners can gain deeper insights into model behavior, enhance transparency, and improve the overall reliability of AI systems. This novel integration of PLP in testing frameworks represents a significant advancement in the field, opening new avenues for future research and application.

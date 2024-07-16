@@ -48,6 +48,15 @@ Overall, the model demonstrates strong robustness to brightness changes across a
     \caption{Local Correctness for each Class and Property}
     \label{fig:local_correctness}
 \end{figure}
+\subsection{SHAP Analysis and Pixel Modification}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{local_correctness_shap.eps}
+  \caption{Local Correctness for each Class and Property based on SHAP Analysis. The bars represent the accuracy of correctly classified samples after applying noise and brightness transformations, highlighting the influence of these properties on model predictions.}
+  \label{fig:local_correctness_shap}
+\end{figure}
+
+The analysis presented in Figure \ref{fig:local_correctness_shap} provides a detailed examination of the model's performance across different classes in response to noise and brightness perturbations. This evaluation was conducted following the application of SHAP (SHapley Additive exPlanations) analysis, which identified the top 30\% most influential pixels. These critical regions were then modified to simulate realistic scenarios, testing the model's robustness. The results reveal varying degrees of resilience across classes. For instance, Class 0 shows moderate robustness to noise with a correctness of 0.62, while demonstrating high robustness to brightness changes with a correctness of 0.99. Class 1, on the other hand, exhibits perfect robustness to both noise and brightness with correctness values of 1.0. Classes such as 2 and 3 maintain high robustness to brightness (0.99 and 1.0, respectively) but show a moderate decline in performance under noise. Notably, Class 8 is highly sensitive to noise, with a correctness of only 0.02, highlighting its vulnerability. Overall, brightness changes have a relatively lower impact on the model's performance compared to noise, as evidenced by consistently higher correctness values. This analysis underscores the need for targeted improvements to enhance noise robustness, particularly for classes like 6, 8, and 9, which show significant sensitivity. Addressing these weaknesses through techniques such as noise-augmented data training or more robust architectural designs will lead to a more resilient and reliable model, better suited for real-world applications where such perturbations are common.
 \subsection{Global Correctness Evaluation}
 The following figures illustrate the global correctness of various pairs of digits under different transformations: noise, brightness adjustment, and rotation. The final global correctness for each transformation is also depicted.
 
@@ -83,8 +92,43 @@ In my experiment, I checked the following specifications:
 The global correctness values for pairs of digits under the noise transformation vary significantly. Some pairs such as (0,0), (1,1), (2,2), etc., achieve perfect correctness (100\%), while others like (0,5) and (1,8) exhibit very low correctness (3.00\% and 18.04\%, respectively). This indicates that the model's performance is highly inconsistent under noise, likely due to the distortion introduced affecting digit recognition. The model performs exceptionally well under brightness adjustments, with most pairs achieving near-perfect correctness. This suggests that the model is robust to changes in brightness, maintaining high confidence scores despite variations in image illumination. Performance under rotation is moderate, with significant variations across different pairs. Some pairs like (0,0), (1,1), (3,3), etc., achieve high correctness, while others such as (2,5) and (5,8) have lower correctness values. This variation suggests that while the model can handle certain rotations well, it struggles with others, potentially due to the angles and the inherent difficulty in recognizing rotated digits.
 
 Combining the global correctness across all transformations, we observe an overall high performance with a final global correctness of 97.65\%. **Brightness** contributes the most to this high score (97.03\%), while Noise contributes the least (0.58\%). Rotation has a moderate impact (20.41\%), reflecting its varied performance across different pairs. These observations highlight the strengths and weaknesses of the AI subsystem under different transformations. The high performance under brightness adjustments indicates robustness to illumination changes, while the challenges with noise and rotation suggest areas for improvement in handling these perturbations.
+\subsection{Analysis of Global Correctness After SHAP Analysis}
+The analysis of the global correctness graphs for noise transformations, both with and without SHAP analysis, clearly shows the importance of using SHAP to find key areas in the data. 
+
+In the first graph, which looks at individual noise pairs, supports this finding by consistently showing lower correctness for each pair when SHAP analysis is used. The pattern of reduced performance across different pairs indicates that SHAP is effective at identifying critical parts of the data that, when altered, reveal the model's weaknesses.
+
+The second graph, we see that the global correctness for noise transformations drops dramatically from 58\% without SHAP to just 0.25\% with SHAP. This significant drop suggests that when the most important pixels identified by SHAP are changed, the model's performance suffers greatly. This is important because it helps us find areas where the model is weakest against noise.
+
+These results demonstrate that using SHAP to create test cases by focusing on important pixels is a powerful method for discovering counterexamples. By systematically changing these key areas, we can stress-test the model and uncover its limitations under noisy conditions. This approach not only highlights where the model currently struggles but also points to ways we can improve its robustness. By addressing these weaknesses, we can build more reliable models that perform well even when there is noise in the data.
+% The analysis of global correctness following the application of SHAP (SHapley Additive exPlanations) values provides critical insights into the model's performance under different conditions. The SHAP values, which identified the top 30\% most influential pixels, were used to modify the test samples and assess the impact on model performance. The results highlight significant disparities in the model's robustness to noise and brightness. The global correctness for noise is alarmingly low at 0.25\%, indicating a severe sensitivity to noise modifications. This suggests that the model's ability to correctly classify images drastically diminishes when noise is introduced, pointing to a critical weakness that needs to be addressed. Conversely, the global correctness for brightness stands at a robust 83.77\%, showcasing the model's resilience to changes in brightness. This high performance under brightness modifications suggests that the model has effectively learned the key features that remain invariant to lighting conditions. Overall, the system's correctness is 85.51\%, reflecting the combined effect of noise and brightness, where the robustness to brightness significantly bolsters the overall performance despite the poor noise resilience. Detailed analysis of class pair correctness further underscores this variability, with some pairs achieving 100\% correctness under noise and others plummeting to 4\%. In contrast, correctness under brightness remains consistently high across class pairs. This critical analysis reveals that while the model is robust to brightness changes, there is a significant vulnerability to noise that must be mitigated. Future efforts should focus on enhancing noise robustness, potentially through noise augmentation during training, to improve the model's overall reliability and performance in diverse real-world conditions.
+% \begin{figure}[H]
+%   \centering
+%   \includegraphics[width=\textwidth]{global_correctness_shap.eps}
+%   \caption{Global Correctness for Noise and Brightness Transformations}
+%   \label{fig:global_correctness}
+% \end{figure}
+
+% \begin{figure}[H]
+%   \centering
+%   \includegraphics[width=0.8\textwidth]{global_correctness_combine_shap.eps}
+%   \caption{Final Global Correctness}
+%   \label{fig:final_global_correctness}
+% \end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.99\textwidth]{global_correctness_noise_comparison.eps}
+  \caption{Global Correctness for Noise pairs}
+  \label{fig:global_correctness_noise_shap}
+\end{figure}
 
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{combined_global_correctness.eps}
+  \caption{Combine Global Correctness}
+  \label{fig:combine_global_correctness}
+\end{figure}
 \section{Use Case 2: Autonomous Vehicle Perception}
 
 In this use case, we investigate the robustness of an AI system for autonomous vehicles in detecting objects, particularly vehicles, under various weather conditions including fog, rain, snow, and sand. The goal is to assess the system's performance across these challenging environments to ensure reliable operation.
@@ -102,8 +146,6 @@ The local correctness of the model for each weather condition is depicted in the
 - \textbf{Sand:} With the highest correctness of 88\%, the model excels in sandy conditions, possibly due to clearer visibility compared to other adverse weather scenarios.
 
 \subsection{Global Correctness Analysis}
-
-\subsection{Global Correctness Evaluation for Vehicle Detection}
 
 The second graph illustrates the global correctness for vehicle detection under different combination methods of weather conditions:
 

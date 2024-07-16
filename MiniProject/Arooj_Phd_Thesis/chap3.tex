@@ -195,14 +195,10 @@ $$P(\text{Global Robustness}_{\text{OR}}) = 0.78 + 0.85 - (0.78 \times 0.85)$$
 
 \end{example}
 
-
-
-\section{Use Cases and Examples}
-
+\subsection{Use Cases and Examples}
 To illustrate the application of ProbLog for global robustness in real-world scenarios, we present the following use cases:
 
-\subsection{Use Case 1: Handwritten Digit Recognition}
-
+\subsubsection{Use Case 1: Handwritten Digit Recognition}
 \textbf{Scenario:} Consider an AI system designed to recognize handwritten digits, such as the MNIST dataset. The system is evaluated under various transformations, including noise addition, rotation, and brightness adjustment. The goal is to determine the global robustness of the system in recognizing digit pairs correctly under these properties.
 
 The tables below provide the probabilities for correctly recognizing digit pairs under different conditions (AND and OR relationships) for an MNIST 2-digit addition system. Each world represents a different combination of transformations applied to the digits.
@@ -286,7 +282,7 @@ query(global_correct_noise_0_1).
 
 \textbf{Explanation:} In this scenario, we are interested in the global correctness of recognizing pairs of digits (0 and 1) under different transformations. The ProbLog code models the local robustness probabilities for each transformation and combines them to evaluate the global correctness.
 
-\subsection{Use Case 2: Autonomous Vehicle Perception}
+\subsubsection{Use Case 2: Autonomous Vehicle Perception}
 
 \textbf{Scenario:} An AI system used in autonomous vehicles must reliably detect objects such as vehicles under various weather conditions (rain, sand, fog, and snow). The goal is to evaluate the system's robustness in identifying these objects correctly under these weather conditions.
 
@@ -807,7 +803,7 @@ Error summarization involves evaluating the performance of the AI system by iden
 
 
 
-\subsection{Algorithm for Evaluating Model Robustness Using ProbLog}
+\section{Algorithm for Evaluating Model Robustness Using ProbLog}
 
 \begin{algorithm}
   \caption{Evaluating Model Robustness Using ProbLog}
