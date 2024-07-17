@@ -86,23 +86,32 @@ By analyzing various types of adversaries, our proposed comprehensive testing fr
 
 \section{Sampling Techniques}
 \textcolor{blue}{
-Sampling is a crucial step in the testing of DNNs, as it involves selecting a representative subset of inputs from a potentially vast input space. Various sampling techniques are employed to ensure comprehensive testing. Random sampling, which involves randomly selecting inputs, is simple to implement and provides broad coverage, but it might miss critical edge cases \cite{Frey1997}. Stratified sampling, which divides the input space into strata and samples from each, ensures representation of all strata but requires prior knowledge of the strata \cite{Katz2017}. Random over-sampling balances class distribution by duplicating examples in the minority class, though it can lead to overfitting \cite{Chawla2002}. SMOTE (Synthetic Minority Over-sampling Technique) generates synthetic examples in the minority class to reduce overfitting compared to random over-sampling, but it can introduce noise \cite{Chawla2002}. NearMiss focuses on selecting examples close to the decision boundary, emphasizing difficult examples, but may discard useful information \cite{Mani2003}. Borderline-SMOTE generates synthetic examples near the class borders, targeting challenging areas, though it may still introduce noise \cite{Han2005}. Adaptive sampling dynamically adjusts the strategy based on intermediate results, efficiently focusing on areas with higher uncertainty or potential errors, but it is complex to implement \cite{Roth2019}. These techniques enhance the robustness of DNN testing by ensuring diverse and representative input coverage, each with specific advantages and limitations that need to be considered in the context of the testing objectives.
+Sampling is a crucial step in the testing of DNNs, as it involves selecting a representative subset of inputs from a potentially vast input space. Various sampling techniques are employed to ensure comprehensive testing. Random sampling, which involves randomly selecting inputs, is simple to implement and provides broad coverage, but it might miss critical edge cases \cite{Frey1997}. Stratified sampling, which divides the input space into strata and samples from each, ensures representation of all strata but requires prior knowledge of the strata \cite{Katz2017}. Random over-sampling balances class distribution by duplicating examples in the minority class, though it can lead to overfitting \cite{Chawla2002}. SMOTE (Synthetic Minority Over-sampling Technique) generates synthetic examples in the minority class to reduce overfitting compared to random over-sampling, but it can introduce noise \cite{Chawla2002}. ADASYN (Adaptive Synthetic Sampling Approach for Imbalanced Learning) adjusts the number of synthetic samples generated for each minority class example according to its difficulty level, thereby focusing more on difficult-to-learn examples and enhancing model performance on challenging cases \cite{He2008}. NearMiss focuses on selecting examples close to the decision boundary, emphasizing difficult examples, but may discard useful information \cite{Mani2003}. Borderline-SMOTE generates synthetic examples near the class borders, targeting challenging areas, though it may still introduce noise \cite{Han2005}. Adaptive sampling dynamically adjusts the strategy based on intermediate results, efficiently focusing on areas with higher uncertainty or potential errors, but it is complex to implement \cite{Roth2019}. These techniques enhance the robustness of DNN testing by ensuring diverse and representative input coverage, each with specific advantages and limitations that need to be considered in the context of the testing objectives.
 }
-
-
 \begin{tcolorbox}[colback=purple!2!white, colframe=purple]
 
-  Currently, I am using Borderline-SMOTE for sampling, which generates synthetic examples near decision boundaries to improve class balance and model robustness. This approach is effective in handling challenging borderline cases and enhancing model performance.
-
-  \textbf{Challenge}: Borderline-SMOTE can introduce noise and requires careful parameter tuning. I plan to refine this technique to mitigate these issues and further improve sampling efficiency in future work.
-
-    
+  Currently, I am employing a hybrid sampling approach that combines Borderline-SMOTE and ADASYN. Borderline-SMOTE generates synthetic examples near decision boundaries to enhance class balance and model robustness, focusing on areas prone to misclassification. ADASYN adjusts the number of synthetic samples for each minority class example based on its difficulty level, targeting hard-to-learn examples. This combined approach ensures balanced classes and effectively addresses corner cases, thereby significantly improving overall model performance.
+  
+  \textbf{Challenge}: Synthetic sampling can introduce noise. While Borderline-SMOTE might add noise, ADASYN mitigates this by focusing on challenging examples, reducing the risk of overfitting. The hybrid technique leverages the strengths of both methods, resulting in a robust and accurate model.
+  
   \end{tcolorbox}
 
+  \begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{borderlineSmote.jpeg}
+    \caption{Borderline-Smote}
+    \label{fig:image-trans}
+\end{figure*}
+\begin{figure*}
+  \centering
+  \includegraphics[width=\linewidth]{adasynexample.jpeg}
+  \caption{Adasyn}
+  \label{fig:image-trans}
+\end{figure*}
 
 \section{Testing and Formal Verification}
 \textcolor{blue}{
-Testing and formal verification are two distinct approaches used to ensure the reliability and correctness of DNNs. Testing is an empirical process that involves executing a system with a variety of inputs to identify defects or bugs. For example, to verify the detection of stop signs in an autonomous vehicle's neural network, testing would involve generating a set of images with variations in brightness, rotation, and noise. These images are then fed into the neural network, and the outputs are analyzed to check if the stop sign is correctly detected. Specific test cases might include images taken in different lighting conditions (daylight, twilight, night), with stop signs at various angles (0°, 15°, 30°, 45°), and with added Gaussian noise. The main advantage of testing is its practicality, providing immediate feedback on the neural network’s performance under these conditions \cite{Albarghouthi}.}
+Testing (t) and formal verification (v) are two distinct approaches used to ensure the reliability and correctness of DNNs. Testing is an empirical process that involves executing a system with a variety of inputs to identify defects or bugs. For example, to verify the detection of stop signs in an autonomous vehicle's neural network, testing would involve generating a set of images with variations in brightness, rotation, and noise. These images are then fed into the neural network, and the outputs are analyzed to check if the stop sign is correctly detected. Specific test cases might include images taken in different lighting conditions (daylight, twilight, night), with stop signs at various angles (0°, 15°, 30°, 45°), and with added Gaussian noise. The main advantage of testing is its practicality, providing immediate feedback on the neural network’s performance under these conditions \cite{Albarghouthi}.}
 
 \textcolor{blue}{In contrast, formal verification uses mathematical and logical reasoning to prove that a system meets its specifications under all possible conditions. This involves formalizing the properties of the system and using formal methods such as model checking or theorem proving to verify these properties. For instance, the property that the neural network must detect stop signs correctly under different brightness levels, rotations, and noise can be formalized as follows: for any input image containing a stop sign, regardless of these variations, the network should output a correct detection. Tools like SMT solvers are then used to verify this property. Unlike testing, formal verification aims to provide rigorous guarantees of correctness, ensuring that the system adheres to its specifications in all cases \cite{DeepMind2023, Albarghouthi}.}
 
@@ -146,8 +155,10 @@ Testing and formal verification are two distinct approaches used to ensure the r
 \begin{tcolorbox}[colback=purple!2!white, colframe=purple]
 
   Currently, my work focuses on \textbf{testing}, generating diverse test cases to identify defects and improve the robustness of Deep Neural Networks (DNNs). This approach is effective in providing immediate feedback and uncovering a wide range of issues.
-
-  \textbf{Challenge}: Testing may not cover all possible scenarios and can miss critical edge cases. In the future, I plan to extend this work to \textbf{formal verification}, using mathematical methods to rigorously prove the system meets specifications under all conditions, thereby providing stronger guarantees of correctness.
+  
+  \textbf{Challenge 1}: Testing may not cover all possible scenarios and can miss critical edge cases. In the future, I plan to extend this work to \textbf{formal verification}, using mathematical methods to rigorously prove the system meets specifications under all conditions, thereby providing stronger guarantees of correctness.
+  
+  \textbf{Challenge 2}: Verifiers can take an extensive amount of time to check the robustness of inputs, which can delay the verification process and impact the overall efficiency of the system evaluation.
   
   \end{tcolorbox}
 

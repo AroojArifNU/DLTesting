@@ -16,38 +16,38 @@
 \contentsline {section}{\numberline {2.1}Deep Neural Networks and AI Systems}{6}{section.17}%
 \contentsline {section}{\numberline {2.2}Robustness of Deep Neural Networks}{7}{section.19}%
 \contentsline {section}{\numberline {2.3}Sampling Techniques}{9}{section.21}%
-\contentsline {section}{\numberline {2.4}Testing and Formal Verification}{10}{section.22}%
-\contentsline {section}{\numberline {2.5}DNN Testing Techniques}{11}{section.24}%
-\contentsline {section}{\numberline {2.6}Probabilistic Logic Programming (PLP)}{13}{section.25}%
-\contentsline {chapter}{\numberline {3}Proposed Framework}{16}{chapter.26}%
-\contentsline {section}{\numberline {3.1}Proposed Approach}{16}{section.27}%
-\contentsline {section}{\numberline {3.2}Sampling}{17}{section.35}%
-\contentsline {section}{\numberline {3.3}Test Case Generation}{18}{section.38}%
-\contentsline {section}{\numberline {3.4}Validation}{18}{section.40}%
-\contentsline {subsection}{\numberline {3.4.1}Local Robustness}{19}{subsection.41}%
-\contentsline {subsection}{\numberline {3.4.2}Global Robustness}{20}{subsection.43}%
-\contentsline {subsection}{\numberline {3.4.3}Use Cases and Examples}{21}{subsection.45}%
-\contentsline {subsubsection}{\numberline {3.4.3.1}Use Case 1: Handwritten Digit Recognition}{21}{subsubsection.46}%
-\contentsline {subsubsection}{\numberline {3.4.3.2}Use Case 2: Autonomous Vehicle Perception}{23}{subsubsection.49}%
-\contentsline {section}{\numberline {3.5}Error Summarization}{25}{section.53}%
-\contentsline {section}{\numberline {3.6}Algorithm for Evaluating Model Robustness Using ProbLog}{25}{section.55}%
-\contentsline {chapter}{\numberline {4}Simulations and Results}{27}{chapter.98}%
-\contentsline {section}{\numberline {4.1}Datasets}{27}{section.99}%
-\contentsline {subsection}{\numberline {4.1.1}MNIST Dataset}{27}{subsection.100}%
-\contentsline {subsection}{\numberline {4.1.2}DAWN Dataset}{27}{subsection.101}%
-\contentsline {section}{\numberline {4.2}Use Case 1: Handwritten Digit Recognition }{28}{section.102}%
-\contentsline {subsection}{\numberline {4.2.1}Local Correctness Evaluation}{28}{subsection.103}%
-\contentsline {subsection}{\numberline {4.2.2}SHAP Analysis and Pixel Modification}{29}{subsection.105}%
-\contentsline {subsection}{\numberline {4.2.3}Global Correctness Evaluation}{30}{subsection.107}%
-\contentsline {subsection}{\numberline {4.2.4}Analysis of Global Correctness After SHAP Analysis}{32}{subsection.110}%
-\contentsline {section}{\numberline {4.3}Use Case 2: Autonomous Vehicle Perception}{33}{section.113}%
-\contentsline {subsection}{\numberline {4.3.1}Local Correctness Analysis}{34}{subsection.114}%
-\contentsline {subsection}{\numberline {4.3.2}Global Correctness Analysis}{34}{subsection.115}%
-\contentsline {chapter}{\numberline {5}References}{36}{chapter.117}%
-\contentsline {chapter}{\numberline {6}Current Progress}{41}{chapter.119}%
-\contentsline {section}{\numberline {6.1}Achievements in the Last 10 Months}{41}{section.120}%
-\contentsline {section}{\numberline {6.2}Challenges and Solutions}{41}{section.121}%
-\contentsline {chapter}{\numberline {7}Future Work and Two-Year Plan}{42}{chapter.122}%
-\contentsline {section}{\numberline {7.1}Short-term Goals (Next 6 Months)}{42}{section.123}%
-\contentsline {section}{\numberline {7.2}Medium-term Goals (Next 1 Year)}{42}{section.124}%
-\contentsline {section}{\numberline {7.3}Long-term Goals (Next 2 Years)}{42}{section.125}%
+\contentsline {section}{\numberline {2.4}Testing and Formal Verification}{11}{section.24}%
+\contentsline {section}{\numberline {2.5}DNN Testing Techniques}{12}{section.26}%
+\contentsline {section}{\numberline {2.6}Probabilistic Logic Programming (PLP)}{14}{section.27}%
+\contentsline {chapter}{\numberline {3}Proposed Framework}{17}{chapter.28}%
+\contentsline {section}{\numberline {3.1}Proposed Approach}{17}{section.29}%
+\contentsline {section}{\numberline {3.2}Sampling}{19}{section.37}%
+\contentsline {section}{\numberline {3.3}Test Case Generation}{20}{section.39}%
+\contentsline {section}{\numberline {3.4}Validation}{20}{section.41}%
+\contentsline {subsection}{\numberline {3.4.1}Local Robustness}{21}{subsection.42}%
+\contentsline {subsection}{\numberline {3.4.2}Global Robustness}{22}{subsection.44}%
+\contentsline {subsection}{\numberline {3.4.3}Use Cases and Examples}{23}{subsection.46}%
+\contentsline {subsubsection}{\numberline {3.4.3.1}Use Case 1: Handwritten Digit Recognition}{23}{subsubsection.47}%
+\contentsline {subsubsection}{\numberline {3.4.3.2}Use Case 2: Autonomous Vehicle Perception}{25}{subsubsection.50}%
+\contentsline {section}{\numberline {3.5}Error Summarization}{27}{section.54}%
+\contentsline {section}{\numberline {3.6}Algorithm for Evaluating Model Robustness Using ProbLog}{27}{section.56}%
+\contentsline {chapter}{\numberline {4}Simulations and Results}{29}{chapter.99}%
+\contentsline {section}{\numberline {4.1}Datasets}{29}{section.100}%
+\contentsline {subsection}{\numberline {4.1.1}MNIST Dataset}{29}{subsection.101}%
+\contentsline {subsection}{\numberline {4.1.2}DAWN Dataset}{29}{subsection.102}%
+\contentsline {section}{\numberline {4.2}Use Case 1: Handwritten Digit Recognition }{30}{section.103}%
+\contentsline {subsection}{\numberline {4.2.1}Local Correctness Evaluation}{30}{subsection.104}%
+\contentsline {subsection}{\numberline {4.2.2}SHAP Analysis and Pixel Modification}{31}{subsection.106}%
+\contentsline {subsection}{\numberline {4.2.3}Global Correctness Evaluation}{32}{subsection.108}%
+\contentsline {subsection}{\numberline {4.2.4}Analysis of Global Correctness After SHAP Analysis}{34}{subsection.111}%
+\contentsline {section}{\numberline {4.3}Use Case 2: Autonomous Vehicle Perception}{35}{section.114}%
+\contentsline {subsection}{\numberline {4.3.1}Local Correctness Analysis}{36}{subsection.115}%
+\contentsline {subsection}{\numberline {4.3.2}Global Correctness Analysis}{36}{subsection.116}%
+\contentsline {chapter}{\numberline {5}References}{38}{chapter.118}%
+\contentsline {chapter}{\numberline {6}Current Progress}{43}{chapter.120}%
+\contentsline {section}{\numberline {6.1}Achievements in the Last 10 Months}{43}{section.121}%
+\contentsline {section}{\numberline {6.2}Challenges and Solutions}{43}{section.122}%
+\contentsline {chapter}{\numberline {7}Future Work and Two-Year Plan}{44}{chapter.123}%
+\contentsline {section}{\numberline {7.1}Short-term Goals (Next 6 Months)}{44}{section.124}%
+\contentsline {section}{\numberline {7.2}Medium-term Goals (Next 1 Year)}{44}{section.125}%
+\contentsline {section}{\numberline {7.3}Long-term Goals (Next 2 Years)}{44}{section.126}%

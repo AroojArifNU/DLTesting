@@ -11,6 +11,63 @@
 \chapter{Proposed Framework} % Ensures chapter numbering starts correctly
 \label{chp:3}
 
+% \section{Proposed Approach}
+
+% This section introduces our comprehensive approach to evaluating AI system performance, summarized in Figure~\ref{fig:framework}. It takes as input the description of an AI system and a set of relevant specifications against which the AI system should be checked. The framework itself has four main components:
+
+% \begin{enumerate}[\it (i)]
+%     \item \emph{Sampling}: Choosing the original inputs for the AI system.
+%     \item \emph{Testcase Generation}: Generating specific test cases from the sampled inputs according to the specifications.
+%     \item \emph{Validation}: Checking the behavior of the AI system on the generated test cases, which can be fully-fledged \emph{verification} or more lightweight \emph{testing}.
+%     \item \emph{Error Summarization}: Quantifying the performance of the AI system in terms of its global/local robustness/correctness.
+% \end{enumerate}
+
+% We focus on AI systems with DNN components performing classification tasks. We assume that an AI system $\S$ is a pair $(\F,\D)$ where:
+% \begin{itemize}
+%     \item $\F$ is the functional unit consisting of $n$ DNN \emph{classifiers} $f_1,\dots,f_n$ and a symbolic (software) component~$\omega$ such that given an input $\avec{x}=(x_1,\dots,x_n)$, the \emph{output}~$\F(\avec{x})$ is defined as $\omega(f_1(x_1),\dots,f_n(x_n))$.
+%     \item $\D$ (for dataset) is a structure that describes valid inputs for each classifier $f_i$ and the corresponding correct outputs (i.e., labels). In particular, $\D.\mathit{next}_i(\mathit{param})$ returns a valid input $x_i$ for $f_i$, given the parameter $\mathit{param}$. Moreover, $\D.N_i$ is the number of distinct class labels for each classifier~$f_i$.
+% \end{itemize}
+
+% \begin{figure*}[h]
+%   \centering
+%   \begin{tikzpicture}[component/.style={fill=gray!80, text=white,
+%       rounded corners, outer sep=1mm, text width=2.6cm, align=flush
+%       center, minimum height=1.2cm, scale=0.8},
+%     input/.style={draw, scale=0.8,  inner sep=2mm, outer sep=1mm}]\sf
+    
+%     \foreach \x/\al/\lab in {%
+%       1/sampl/Sampling,%
+%       2/gener/Testcase Generation,%
+%       3/testing/Validation,%
+%       4/summary/{Error\\ Summarisation}%
+%     }{ \node[component] (\al) at (3.5*\x,0) {\textbf{\lab}}; }
+
+%     \node[fit=(sampl)(summary), draw=gray, ultra thick] (approach) {};
+
+%     \node[input] (aisystem) at (0.2, 0.5) {AI System $\S$};
+%     \node[input] (spec)     at (0.2, -0.5) {Specifications $\Sigma$};
+
+%     \foreach/\from/\to in {%
+%       sampl/gener, gener/testing, testing/summary%
+%     }{ \draw[-stealth, very thick] (\from) -- (\to); }
+
+%     \draw[-latex, thick] (aisystem) -- (approach.179);
+%     \draw[-latex, thick] (spec) -- (approach.181);
+%   \end{tikzpicture}
+%   \caption{Overview of the Proposed Framework}
+%   \label{fig:framework}
+% \end{figure*}
+
+% \begin{example}
+% \label{ex:mnist-adder}
+% An instance of a simple AI system is an \emph{MNIST Digit Adder} $\S_{\text{MNIST}} = (\F,\D)$, where $\F = (\{f_{\text{mnist}}\}, +)$, $f_{\text{mnist}}$ is an MNIST Digit classifier and $\F$ takes as input two MNIST Digit images, recognizes the digits in the images, and computes their sum, i.e., $\F(x_1,x_2) = f_{\text{mnist}}(x_1) + f_{\text{mnist}}(x_2)$. $\D$ is the testing dataset for MNIST Digit consisting of 10,000 labeled images.
+% \end{example}
+
+% We assume that \emph{specifications} $\Sigma$ is a pair $(P, V)$, where $P$ is a set of perturbations against which we are characterizing the behavior of $\S$. Each perturbation comes with parameters to instantiate the set of all possible perturbations. $V$ is a validation flag, where if $V=t$, then we do testing, and if $V=v$, we do verification.
+
+% \begin{example}
+% To evaluate the correctness of the MNIST Digit Adder $\S_{\text{MNIST}}$, we define the specifications $\Sigma = (P, V)$ as follows: $P = \{\gaussian(0,0.1), \saltpepper(200:255, 0:5, 0.2), \rotation(3,30,3)\}$ and $V=t$. Here, $\gaussian(0,0.1)$ specifies Gaussian noise with a mean of $0$ and standard deviation of $0.1$, $\saltpepper(200:255,0:5,0.2)$ specifies salt and pepper noise, where 10\% of pixels are bleached up to values 200 to 255 and 10\% of pixels are darkened to values between 0 and 5, and $\rotation(3,30,3)$ specifies the set of rotations with the minimum rotation angle of 3, maximum of 30, and the step size of 3.
+% \end{example}
 \section{Proposed Approach}
 
 This section introduces our comprehensive approach to evaluating AI system performance, summarized in Figure~\ref{fig:framework}. It takes as input the description of an AI system and a set of relevant specifications against which the AI system should be checked. The framework itself has four main components:
@@ -25,8 +82,18 @@ This section introduces our comprehensive approach to evaluating AI system perfo
 We focus on AI systems with DNN components performing classification tasks. We assume that an AI system $\S$ is a pair $(\F,\D)$ where:
 \begin{itemize}
     \item $\F$ is the functional unit consisting of $n$ DNN \emph{classifiers} $f_1,\dots,f_n$ and a symbolic (software) component~$\omega$ such that given an input $\avec{x}=(x_1,\dots,x_n)$, the \emph{output}~$\F(\avec{x})$ is defined as $\omega(f_1(x_1),\dots,f_n(x_n))$.
-    \item $\D$ (for dataset) is a structure that describes valid inputs for each classifier $f_i$ and the corresponding correct outputs (i.e., labels). In particular, $\D.\mathit{next}_i(\mathit{param})$ returns a valid input $x_i$ for $f_i$, given the parameter $\mathit{param}$. Moreover, $\D.N_i$ is the number of distinct class labels for each classifier~$f_i$.
+    \item \textcolor{blue}{ $\D$ (for dataset) is a structure that describes valid inputs and the corresponding correct outputs (i.e., labels). In particular, $\D.\mathit{next}(c)$ returns a valid input $\avec{x}$, given the parameter $c$, which represents the number of classes in the dataset. Moreover, $\D.N$ is the total number of distinct class labels.}
 \end{itemize}
+
+\textcolor{blue}{
+To ensure clarity in cases where multiple functional units are present, it is essential to specify which dataset belongs to which functional unit. Formally, let $\F = \{f_1, \dots, f_n\}$ represent the set of functional units and $\D = \{\D_1, \dots, \D_m\}$ represent the set of datasets. Each dataset $\D_j$ is associated with one or more functional units $\{f_{i_1}, \dots, f_{i_k}\} \subseteq \F$. This means that each $\D_j$ provides valid inputs and corresponding correct outputs specifically for the classifiers $f_{i_1}, \dots, f_{i_k}$. In this framework, each dataset $\D_j$ must clearly define its scope of association with the functional units. For instance, if $\D_1$ is associated with $f_1$ and $f_3$, then $\D_1$ provides valid inputs and correct outputs for both $f_1$ and $f_3$. This explicit association ensures that datasets are correctly utilized for their respective functional units, avoiding any ambiguity in the evaluation process.}
+
+
+\textcolor{blue}{
+To handle user-defined specifications and provide default behaviors when specifications are not explicitly defined, we assume that \emph{specifications} $\Sigma$ is a pair $(P, V)$, where $P$ is a set of perturbations against which we are characterizing the behavior of $\S$. Each perturbation comes with parameters to instantiate the set of all possible perturbations. $V$ is a validation flag, where if $V=t$, then we do testing, and if $V=v$, we do verification.}
+
+\textcolor{blue}{If the user does not specify which classes to test or which properties to evaluate, our framework defaults to testing all classes in the dataset and evaluating all possible properties. Formally, let $\mathcal{C}$ be the set of all classes in the dataset $\D$ and $\mathcal{P}$ be the set of all possible properties. If the user does not define a subset $\mathcal{C}_u \subseteq \mathcal{C}$ or $\mathcal{P}_u \subseteq \mathcal{P}$, then $\mathcal{C}_u = \mathcal{C}$ and $\mathcal{P}_u = \mathcal{P}$, respectively.
+}
 
 \begin{figure*}[h]
   \centering
@@ -59,31 +126,79 @@ We focus on AI systems with DNN components performing classification tasks. We a
 \end{figure*}
 
 \begin{example}
-\label{ex:mnist-adder}
-An instance of a simple AI system is an \emph{MNIST Digit Adder} $\S_{\text{MNIST}} = (\F,\D)$, where $\F = (\{f_{\text{mnist}}\}, +)$, $f_{\text{mnist}}$ is an MNIST Digit classifier and $\F$ takes as input two MNIST Digit images, recognizes the digits in the images, and computes their sum, i.e., $\F(x_1,x_2) = f_{\text{mnist}}(x_1) + f_{\text{mnist}}(x_2)$. $\D$ is the testing dataset for MNIST Digit consisting of 10,000 labeled images.
-\end{example}
+  \label{ex:mnist-adder}
+  An instance of a simple AI system is an \emph{MNIST Digit Adder} $\S_{\text{CNN}} = (\F,\D)$, where $\F = (\{f_{\text{CNN}}\}, +)$, $f_{\text{CNN}}$ is an MNIST Digit classifier and $\F$ takes as input two MNIST Digit images, recognizes the digits in the images, and computes their sum, i.e., $\F(x_1,x_2) = f_{\text{CNN}}(x_1) + f_{\text{CNN}}(x_2)$. $\D = \{ \D_{\text{mnist}} \}$ is the testing dataset for digits consisting of 10,000 labeled images (0-9), where $\D_{\text{mnist}}$ is associated with the classifier $f_{\text{CNN}}$.
+  \end{example}
+  
+  We assume that \emph{specifications} $\Sigma$ is a pair $(P, V)$, where $P$ is a set of perturbations against which we are characterizing the behavior of $\S$. Each perturbation comes with parameters to instantiate the set of all possible perturbations. $V$ is a validation flag, where if $V=t$, then we do testing, and if $V=v$, we do verification.
+  
+  \begin{example}
+  To evaluate the correctness of the  $\S_{\text{MNIST}}$, we define the specifications $\Sigma = (P, V)$ as follows: $P = \{\gaussian(0,0.1), \saltpepper(200:255, 0:5, 0.2), \rotation(3,30,3)\}$ and $V=t$. Here, $\gaussian(0,0.1)$ specifies Gaussian noise with a mean of $0$ and standard deviation of $0.1$, $\saltpepper(200:255,0:5,0.2)$ specifies salt and pepper noise, where 10\% of pixels are bleached up to values 200 to 255 and 10\% of pixels are darkened to values between 0 and 5, and $\rotation(3,30,3)$ specifies the set of rotations with the minimum rotation angle of 3, maximum of 30, and the step size of 3.
+  \end{example}
+  
 
-We assume that \emph{specifications} $\Sigma$ is a pair $(P, V)$, where $P$ is a set of perturbations against which we are characterizing the behavior of $\S$. Each perturbation comes with parameters to instantiate the set of all possible perturbations. $V$ is a validation flag, where if $V=t$, then we do testing, and if $V=v$, we do verification.
+\smallskip\noindent%
+% Let's look into every component in detail.
+% \section{Sampling}
 
-\begin{example}
-To evaluate the correctness of the MNIST Digit Adder $\S_{\text{MNIST}}$, we define the specifications $\Sigma = (P, V)$ as follows: $P = \{\gaussian(0,0.1), \saltpepper(200:255, 0:5, 0.2), \rotation(3,30,3)\}$ and $V=t$. Here, $\gaussian(0,0.1)$ specifies Gaussian noise with a mean of $0$ and standard deviation of $0.1$, $\saltpepper(200:255,0:5,0.2)$ specifies salt and pepper noise, where 10\% of pixels are bleached up to values 200 to 255 and 10\% of pixels are darkened to values between 0 and 5, and $\rotation(3,30,3)$ specifies the set of rotations with the minimum rotation angle of 3, maximum of 30, and the step size of 3.
-\end{example}
+% The sampling process involves a random but balanced choice of samples from each class, focusing exclusively on instances that the model has correctly predicted. Sampling happens independently for each classifier $f_i$. To ensure a representative and fair distribution of data across all classes, we sample the same number of instances from each class. The full sample $S_i$ for classifier $f_i$, $i=1,\dots,n$, is computed as:
+
+% \begin{equation}
+% S_i = \bigcup_{c=1}^{\D.N_i} S_i^c
+% \end{equation}
+
+% where $S_i^c$ is a subset of the correctly classified samples for a class $c$ consisting of $M_i$ (the number of samples for each class specific to $f_i$) elements:
+% \[S_i^c = \big\{x = \D.next_i(class=c)\mid f_i(x)=c\big\}|_{M_i}\] 
+% Note that each sample is obtained by a call to the method $\D.next_i$.
+
+% \begin{example}
+% Recall the MNIST Digit Adder system $\S_{\text{MNIST}}$ from Example~\ref{ex:mnist-adder}. When sampling, we make sure to select only correctly classified samples. For each digit $c$ (0 to 9), we randomly sample 100 images, i.e., $samp_1(\D,c,100)$ contains 100 inputs $x$ such that $f_{\text{CNN}}(x) = c$. In total, $S_1$ contains 1000 samples for all 10 classes.
+% \end{example}
 
 \section{Sampling}
 
-The sampling process involves a random but balanced choice of samples from each class, focusing exclusively on instances that the model has correctly predicted. Sampling happens independently for each classifier $f_i$. To ensure a representative and fair distribution of data across all classes, we sample the same number of instances from each class. The full sample $S_i$ for classifier $f_i$, $i=1,\dots,n$, is computed as:
+The sampling process is designed to identify efficient and corner cases by employing a hybrid approach that combines Borderline-SMOTE and ADASYN. This combined method generates synthetic examples, enhancing class balance and model robustness. Borderline-SMOTE focuses on creating samples near decision boundaries, while ADASYN targets hard-to-learn examples, ensuring that both typical and challenging cases are effectively covered. It is important to note that this sampling process is used solely for testing purposes, not for training the model.
+
+\textcolor{blue}{To ensure a balanced and representative dataset for testing, we perform the following steps for each classifier $f_i$ independently:}
+\begin{itemize}
+    % \item Randomly sample an equal number of correctly classified instances from each class.
+    \item Apply Borderline-SMOTE to generate synthetic samples near decision boundaries to enhance class balance.
+    \item Use ADASYN to adjust the number of synthetic samples for each minority class example based on its difficulty level.
+\end{itemize}
+
+The full sample $S_i$ for classifier $f_i$, $i=1,\dots,n$, is computed as:
 
 \begin{equation}
 S_i = \bigcup_{c=1}^{\D.N_i} S_i^c
 \end{equation}
 
 where $S_i^c$ is a subset of the correctly classified samples for a class $c$ consisting of $M_i$ (the number of samples for each class specific to $f_i$) elements:
-\[S_i^c = \big\{x = \D.next_i(class=c)\mid f_i(x)=c\big\}|_{M_i}\] 
+\[S_i^c = \big\{x = \D.next_i(class=c)\mid f_i(x)=c\big\}|_{M_i}\]
+
+\textcolor{blue}{After the initial sampling, we enhance $S_i^c$ by applying Borderline-SMOTE and ADASYN as follows:}
+\[
+S_i^c = S_i^c \cup \text{Borderline-SMOTE}(S_i^c) \cup \text{ADASYN}(S_i^c)
+\]
 Note that each sample is obtained by a call to the method $\D.next_i$.
 
-\begin{example}
-Recall the MNIST Digit Adder system $\S_{\text{MNIST}}$ from Example~\ref{ex:mnist-adder}. When sampling, we make sure to select only correctly classified samples. For each digit $c$ (0 to 9), we randomly sample 100 images, i.e., $samp_1(\D,c,100)$ contains 100 inputs $x$ such that $f_{\text{mnist}}(x) = c$. In total, $S_1$ contains 1000 samples for all 10 classes.
-\end{example}
+% \begin{example}
+% Recall the $\S_{\text{MNIST}}$ from Example~\ref{ex:mnist-adder}. When sampling, we make sure to select only correctly classified samples. For each digit $c$ (0 to 9), we randomly sample 100 images, i.e., $samp_1(\D,c,100)$ contains 100 inputs $x$ such that $f_{\text{CNN}}(x) = c$. After initial sampling, we apply Borderline-SMOTE to generate synthetic samples near the decision boundaries and ADASYN to further adjust the number of synthetic samples for challenging examples. In total, $S_1$ contains the original 1000 samples plus the additional synthetic samples for all 10 classes.
+% \end{example}
+
+\begin{tcolorbox}[colback=purple!2!white, colframe=purple, title=Challenges in Sampling]
+  \begin{itemize}
+    \item \textbf{Synthetic Sample Quality:} Ensuring generated samples represent true corner cases, not noise.
+    \item \textbf{Computational Overhead:} Managing the intensive computation required for hybrid sampling.
+    % \item \textbf{Parameter Tuning:} Finding optimal settings for Borderline-SMOTE and ADASYN to prevent ineffective sampling.
+  \end{itemize}
+  % \textbf{Mitigation Strategies:}
+  % \begin{itemize}
+  %   \item Use empirical evaluation to find optimal parameters for both techniques.
+  %   \item Monitor the quality of synthetic samples to ensure they improve test coverage without adding noise.
+  %   \item Limit the number of synthetic samples to balance computational efficiency and test coverage.
+  % \end{itemize}
+\end{tcolorbox}
+
 
 \section{Test Case Generation}
 
