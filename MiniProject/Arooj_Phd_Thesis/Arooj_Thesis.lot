@@ -2,9 +2,9 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Specification Probabilities for MNIST 2-Digit Addition Under Different Transformations}}{24}{table.48}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces Specification Probabilities (AND) for Vehicle Detection Under Different Weather Conditions \( P(A \cap B \cap C) = P(A) \times P(B) \times P(C) \)}}{26}{table.52}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces Specification Probabilities (OR) for Vehicle Detection Under Different Weather Conditions \( P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C) \)}}{26}{table.53}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Specification Probabilities for MNIST 2-Digit Addition Under Different Transformations}}{25}{table.54}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Specification Probabilities (AND) for Vehicle Detection Under Different Weather Conditions \( P(A \cap B \cap C) = P(A) \times P(B) \times P(C) \)}}{27}{table.58}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Specification Probabilities (OR) for Vehicle Detection Under Different Weather Conditions \( P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C) \)}}{27}{table.59}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

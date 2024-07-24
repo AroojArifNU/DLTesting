@@ -71,54 +71,127 @@ DNN testing techniques aim to discover bugs by finding counterexamples that chal
 
 Deep learning models are being more widely used in various applications, yet their reliability in practical applications remains a challenge.
 
-% \begin{tcolorbox}[colback=blue!5!white, colframe=blue, title=Research Questions]
 
-  \smallskip\noindent%
-  \textbf{Research Questions}\hypertarget{researchquestions}{}
-  
+The research conducted in this thesis is driven by high-level questions that address significant challenges in the field of deep neural networks (DNNs). These questions are designed to ensure that the developed solutions not only solve specific issues but also contribute to broader goals of enhancing the reliability and robustness of DNNs in safety-critical applications.
+
+\subsection{Research Questions and Broader Goals}
+
+\begin{enumerate}
+    \item \textbf{How can we sample inputs efficiently?}
+        \begin{itemize}
+            \item \textbf{Broader Goal (BG1):} Improve the robustness and accuracy of DNNs by ensuring comprehensive test coverage.
+            \item \textbf{Research Objective:} Develop a hybrid sampling approach combining Borderline-SMOTE and ADASYN to enhance handling of corner cases.
+        \end{itemize}
+    
+    \item \textbf{How can we design a comprehensive framework to test system robustness?}
+        \begin{itemize}
+            \item \textbf{Broader Goal (BG2):} Ensure that DNNs are reliable and safe for deployment in safety-critical applications.
+            \item \textbf{Research Objective:} Create a robust framework that systematically evaluates DNN performance, reliability, and robustness.
+        \end{itemize}
+    
+    \item \textbf{How can we systematically evaluate the robustness both at local (property-specific) and global (overall system) levels within the framework?}
+        \begin{itemize}
+            \item \textbf{Broader Goal (BG3):} Provide a thorough assessment of DNN robustness across different levels and scenarios.
+            \item \textbf{Research Objective:} Integrate advanced probabilistic methods to evaluate both local and global robustness, providing comprehensive error summaries.
+        \end{itemize}
+    
+    \item \textbf{Can SHAP values be used for test case generation?}
+        \begin{itemize}
+            \item \textbf{Broader Goal (BG4):} Enhance the interpretability and reliability of DNN testing processes.
+            \item \textbf{Research Objective:} Implement SHAP analysis to identify and prioritize key influential features in the DNN testing process.
+        \end{itemize}
+    
+    \item \textbf{How can error summarization be employed to quantify the impacts on model robustness?}
+        \begin{itemize}
+            \item \textbf{Broader Goal (BG5):} Facilitate targeted and effective model refinement by identifying weaknesses.
+            \item \textbf{Research Objective:} Innovate error summarization techniques that identify and quantify model weaknesses.
+        \end{itemize}
+\end{enumerate}
+
+\section{Research Objectives}
+
+The primary high-level objectives of this thesis are as follows:
+
+\begin{enumerate}
+
+  \item \textbf{Develop Efficient Input Sampling Techniques:}
+    
   \begin{itemize}
-      \item \textcolor{blue}{How can we sample inputs efficiently? How can a hybrid sampling approach combining Borderline-SMOTE and ADASYN improve the handling of corner cases and enhance the robustness and accuracy of deep neural networks compared to using each technique individually?}
-      \item How can we design a comprehensive framework to test system robustness?
-      \item How can we systematically evaluate the robustness both at local (property-specific) and global (overall system) levels within the framework?
-      \item \textcolor{blue}{Can SHAP values be used for test case generation?}
-      \item How can error summarization be employed to quantify the impacts on model robustness?
+      \item \textbf{Linked to Q1 and BG1:} Create a hybrid sampling approach combining Borderline-SMOTE and ADASYN to enhance handling of corner cases and ensure comprehensive test coverage.
   \end{itemize}
-  
-  % \end{tcolorbox}
-  
-  \smallskip\noindent%
-  The above research questions guide the investigation and aim to address the challenges associated with testing deep neural networks (DNNs). These questions help to frame the specific objectives that this thesis seeks to achieve. 
-  
-  \section{Research Objectives}
-  
-  \textcolor{blue}{The primary high-level objectives of this thesis are as follows:}
-  
-  \begin{enumerate}
-    \item \textcolor{blue}{\textbf{Develop a Comprehensive Testing Framework for Deep Neural Networks (DNNs):}
-    Create a robust framework that systematically evaluates the performance, reliability, and robustness of DNNs, particularly in safety-critical applications.}
+
+    \item \textbf{Develop a Comprehensive Testing Framework for Deep Neural Networks (DNNs):}
     
-    \item \textcolor{blue}{\textbf{Integrate Advanced Techniques for Correctness and Robustness Evaluation:}
-    Combine traditional local correctness calculations with global correctness evaluations using advanced probabilistic methods like Problog, and develop methods to assess both local (specific properties) and global (overall system) robustness, providing comprehensive error summaries to guide improvements in model design and training.}
+    \begin{itemize}
+        \item \textbf{Linked to Q2 and BG2:} Create a robust framework that systematically evaluates the performance, reliability, and robustness of DNNs, particularly in safety-critical applications.
+    \end{itemize}
     
-    \item \textcolor{blue}{\textbf{Enhance Interpretability through SHAP Analysis:}
-    Implement SHAP (SHapley Additive exPlanations) analysis to identify and prioritize key influential features in the DNN testing process.}
+    \item \textbf{Integrate Advanced Techniques for Correctness and Robustness Evaluation:}
     
-    % \item \textcolor{blue}{\textbf{Innovate Error Summarization Techniques:}
-    % Propose and implement new techniques for error summarization that identify and quantify model weaknesses, facilitating more targeted and effective model refinement.}
+    \begin{itemize}
+        \item \textbf{Linked to Q3, Q5, and BG3, BG5:} Combine traditional local correctness calculations with global correctness evaluations using advanced probabilistic methods like Problog, and develop methods to assess both local (specific properties) and global (overall system) robustness, providing comprehensive error summaries to guide improvements in model design and training.
+    \end{itemize}
+    
+    \item \textbf{Enhance Interpretability through SHAP Analysis:}
+    
+    \begin{itemize}
+        \item \textbf{Linked to Q4 and BG4:} Implement SHAP (SHapley Additive exPlanations) analysis to identify and prioritize key influential features in the DNN testing process.
+    \end{itemize}
+    
 \end{enumerate}
 
 
-\section{Thesis Contributions}\hypertarget{contributions}{}
+% \begin{tcolorbox}[colback=blue!5!white, colframe=blue, title=Research Questions]
 
-This research makes the following key contributions to the field of deep learning robustness evaluation:
-\begin{itemize}
-    \item We design an \textbf{end-to-end pipeline} for evaluating the correctness of the system.
-    \item We propose a \textbf{conceptual framework} that quantifies both local and global correctness, with a formalized Bayesian probabilistic approach to verify system robustness.
-    \item A novel \textbf{error summarization} approach which allows better identification of model weaknesses related to class and property.
-    \item We perform all our \textbf{experiments} using publicly available deep learning models and datasets.
-\end{itemize}
+%   \smallskip\noindent%
+%   \textbf{Research Questions}\hypertarget{researchquestions}{}
+  
+%   \begin{itemize}
+%       \item \textcolor{blue}{How can we sample inputs efficiently? How can a hybrid sampling approach combining Borderline-SMOTE and ADASYN improve the handling of corner cases and enhance the robustness and accuracy of deep neural networks compared to using each technique individually?}
+%       \item How can we design a comprehensive framework to test system robustness?
+%       \item How can we systematically evaluate the robustness both at local (property-specific) and global (overall system) levels within the framework?
+%       \item \textcolor{blue}{Can SHAP values be used for test case generation?}
+%       \item How can error summarization be employed to quantify the impacts on model robustness?
+%   \end{itemize}
+  
+%   % \end{tcolorbox}
+  
+%   \smallskip\noindent%
+%   The above research questions guide the investigation and aim to address the challenges associated with testing deep neural networks (DNNs). These questions help to frame the specific objectives that this thesis seeks to achieve. 
+  
+%   \section{Research Objectives}
+  
+%   \textcolor{blue}{The primary high-level objectives of this thesis are as follows:}
+  
+%   \begin{enumerate}
+%     \item \textcolor{blue}{\textbf{Develop a Comprehensive Testing Framework for Deep Neural Networks (DNNs):}
+%     Create a robust framework that systematically evaluates the performance, reliability, and robustness of DNNs, particularly in safety-critical applications.}
+    
+%     \item \textcolor{blue}{\textbf{Integrate Advanced Techniques for Correctness and Robustness Evaluation:}
+%     Combine traditional local correctness calculations with global correctness evaluations using advanced probabilistic methods like Problog, and develop methods to assess both local (specific properties) and global (overall system) robustness, providing comprehensive error summaries to guide improvements in model design and training.}
+    
+%     \item \textcolor{blue}{\textbf{Enhance Interpretability through SHAP Analysis:}
+%     Implement SHAP (SHapley Additive exPlanations) analysis to identify and prioritize key influential features in the DNN testing process.}
+    
+%     % \item \textcolor{blue}{\textbf{Innovate Error Summarization Techniques:}
+%     % Propose and implement new techniques for error summarization that identify and quantify model weaknesses, facilitating more targeted and effective model refinement.}
+% \end{enumerate}
+
+
+% \section{Thesis Contributions}\hypertarget{contributions}{}
+
+% This research makes the following key contributions to the field of deep learning robustness evaluation:
+% \begin{itemize}
+%     \item We design an \textbf{end-to-end pipeline} for evaluating the correctness of the system.
+%     \item We propose a \textbf{conceptual framework} that quantifies both local and global correctness, with a formalized Bayesian probabilistic approach to verify system robustness.
+%     \item A novel \textbf{error summarization} approach which allows better identification of model weaknesses related to class and property.
+%     \item We perform all our \textbf{experiments} using publicly available deep learning models and datasets.
+% \end{itemize}
 
 \section{Organization of the Thesis}\hypertarget{organization of thesis}{}
 The remainder of the thesis is organized as follows: related studies are presented in Chapter \ref{chp:2}. The system model and proposed methodology are demonstrated in Chapter \ref{chp:3}. Chapter \ref{chp:4} describes the simulation results of our proposed schemes. Finally, the findings of this work along with future directions are presented in Chapter \ref{chp:9}.
+
+
+
 
 \clearpage
