@@ -9,12 +9,156 @@
 \titlespacing*{\chapter}{0pt}{50pt}{40pt} % Adjust vertical spacing before and after the title
 
 
-\chapter{Future Work and Two-Year Plan} % Ensures chapter numbering starts correctly
+\chapter{Current Work and Two-Year Plan} % Ensures chapter numbering starts correctly
 
 \label{chp:9}
 
-\section{Short-term Goals (Next 6 Months)}
+\section{First Three Months Plan (October 2023 - December 2023)}
 
-\section{Medium-term Goals (Next 1 Year)}
 
-\section{Long-term Goals (Next 2 Years)}
+Over the first three months, the main objectives were to do a thorough literature analysis on test cases and adversarial examples and use adversarial test case generation in Google Colab using libraries such Adversarial ToolBox and FoolBox. Reading literature and investigating adversarial libraries were two associated tasks during this time.
+
+\textbf{Reading Literature on Test Cases (Weeks 1-4)}:
+I focused on identifying and reading key papers on test case generation for Deep Neural Networks (DNNs), summarizing key findings, and noting common methods and research gaps.
+
+% I read a lot of important papers on test case generation for DNNs and summed up the most important findings. I also made notes on common methods and study gaps.
+
+\textbf{Exploring Libraries for Adversarial Test Case Generation (Weeks 1-8)}:
+I explored adversarial test case generation libraries using Google Colab, installed Adversarial ToolBox and FoolBox, and familiarized myself with their functionality through example codes.
+
+\textbf{Implementing Adversarial Attacks and Semantic Adversarial Examples (Weeks 3-8)}:
+I implemented various adversarial attacks on the MNIST dataset and generated semantic adversarial examples using transformations like noise addition, translation, scaling, rotation, etc. I documented the effects of varying parameters such as epsilon values and prepared a preliminary report on my findings.
+
+By the end of the first three months, I had a solid understanding of current research on test case generation, practical experience with adversarial test case generation libraries, and initial results from experiments on the MNIST dataset. 
+
+\section{Second Three Months Plan (January 2024 - March 2024)}
+
+The focus for these three months was on studying SHAP (SHapley Additive exPlanations) as an interpretable technique and using it to identify high-importance pixels in the MNIST and CIFAR datasets.
+
+\textbf{Studying SHAP (Weeks 1-4)}:
+I reviewed the theoretical foundations of SHAP and its applications in interpreting model predictions, and implemented SHAP on different models.
+
+\textbf{Applying SHAP to Identify Important Pixels (Weeks 5-8)}:
+I applied SHAP to identify high-importance pixels in the MNIST and CIFAR datasets and conducted experiments by altering these pixels to observe the impact on model robustness.
+
+\textbf{Analyzing Model Robustness (Weeks 9-12)}:
+I analyzed the robustness of the models based on the alterations made to the important pixels identified by SHAP, documenting the results and preparing a report on my findings.
+
+By the end of this three-month period, I had a comprehensive understanding of SHAP and its application in identifying important features, providing valuable insights into the robustness of models.
+
+\section{Third Three Months Plan (April 2024 - June 2024)}
+
+The focus for these three months was on reading papers on test case generation and coverage criteria, identifying gaps in existing frameworks, designing a conceptual end-to-end framework, and understanding the calculation of local and global robustness.
+
+\textbf{Reading Papers and Identifying Gaps (Weeks 1-4)}:
+I reviewed several papers on test case generation and coverage criteria, identifying the absence of a comprehensive end-to-end framework.
+
+\textbf{Designing a Conceptual Framework (Weeks 5-8)}:
+I conceptualized and designed a framework that integrates specification, test case generation, coverage criteria, and error summarization. I developed models to understand and illustrate the differences between local and global coverage.
+
+\textbf{Implementing the Simple Adder Example (Weeks 9-12)}:
+I implemented a simple adder example using the MNIST dataset to demonstrate local and global coverage concepts, calculating local correctness first and then global correctness.
+
+\textbf{Exploring ProbLog (Weeks 9-12)}:
+I explored ProbLog, a probabilistic programming language, to calculate probabilities related to model robustness.
+
+By the end of this period, I had designed a comprehensive framework and implemented practical examples to demonstrate local and global coverage, providing insights into incorporating probabilistic calculations.
+
+\section{Fourth and Fifth Months Plan (July 2024 - August 2024)}
+
+During these two months, the focus was on implementing ProbLog to check global robustness, integrating ProbLog with Python, and applying the framework to different datasets.
+
+\textbf{Implementing ProbLog for Global Robustness (July 2024)}:
+I implemented ProbLog to check the global robustness of models, successfully running the simple adder example using the MNIST dataset with various semantic attacks.
+
+\textbf{Integrating ProbLog with Python (July 2024)}:
+I integrated ProbLog with Python to calculate local robustness and pass the resulting values to ProbLog for global robustness calculations.
+
+\textbf{Applying the Framework to Different Datasets (August 2024)}:
+I applied the framework to the DAWN dataset with different weather conditions, assuming specific specifications and calculating global correctness.
+
+\textbf{Writing the Mini Thesis (August 2024)}:
+I documented all activities and findings in a mini thesis, summarizing the implementation of ProbLog, the integration with Python, and the application of the framework to different datasets.
+
+By the end of this period, I had successfully implemented and integrated ProbLog with Python, applied the framework to the MNIST and DAWN datasets, and documented the entire process and findings in a mini thesis.
+
+\section{Two-Year Plan (October 2024 - September 2026)}
+
+The next two years of my PhD will focus on several key areas: exploring and developing efficient sampling techniques, working on error summarization, writing and submitting papers to conferences and journals, and integrating these advancements into the existing framework. Below is a detailed plan outlining these activities.
+
+\subsection{October 2024 - December 2024}
+
+During the first three months, the primary focus will be on exploring and developing efficient sampling techniques. This includes conducting an in-depth review of existing sampling methods to identify their strengths and limitations, and beginning to develop a new or improved sampling method aimed at efficiently identifying corner cases. Initial experiments will be conducted using the MNIST and CIFAR datasets to gather preliminary results. Concurrently, I will begin drafting a paper based on these findings, aiming for submission to a conference or journal by the end of this period.
+
+\subsection{January 2025 - March 2025}
+
+In the next three months, the focus will shift to refining and testing the newly developed sampling technique. The refined method will be applied to additional datasets, such as DAWN and ImageNet, to evaluate its robustness and generalizability. Integration of the sampling technique into the existing testing framework will also be completed. Preliminary analysis will be conducted to compare the new sampling technique's efficiency and effectiveness with traditional methods. Another paper will be written and submitted during this period, possibly extending the first paper with more comprehensive results.
+
+\subsection{April 2025 - June 2025}
+
+The focus for these three months will be on comprehensive evaluation and validation of the sampling technique. Extensive testing will be conducted across various datasets and models, and results will be validated using statistical and probabilistic methods to ensure reliability. Necessary adjustments will be made to the testing framework to better incorporate the new sampling technique. During this time, I will also begin exploring different methods for error summarization to identify the best way to present error summaries. A draft manuscript based on the findings from the sampling technique development and evaluation will be prepared for submission.
+
+\subsection{July 2025 - September 2025}
+
+The primary activities during this period will involve finalizing the sampling technique, ensuring it is well-documented and reproducible, and completing its integration into the testing framework. I will start drafting the initial chapters of my thesis, focusing on the methodology, sampling technique, and preliminary results. Preparations for conference presentations and workshops will also take place to present findings and gather feedback from the academic community. Additionally, another paper focusing on comprehensive evaluation results or error summarization methods will be drafted and submitted.
+
+\subsection{October 2025 - September 2026}
+
+The final year of my PhD will be dedicated to implementation, evaluation, and thesis writing. From October 2025 to December 2025, I will apply the finalized testing framework to real-world DNN systems in collaboration with industry partners or academic collaborators. Data collected from these real-world applications will be analyzed to assess the practical impact and effectiveness of the framework. Concurrently, I will continue refining the methods for error summarization based on real-world application data and feedback.
+
+From January 2026 to March 2026, I will conduct final experiments to solidify the results and conclusions of my research, performing a detailed analysis of all collected data. Manuscripts will be finalized and submitted to high-impact journals and conferences, ensuring all research outputs are peer-reviewed and published. The error summarization method will be concluded and integrated into the framework.
+
+From April 2026 to June 2026, I will complete writing the remaining chapters of my thesis, including results, discussion, and conclusion. The entire thesis will be reviewed and edited, incorporating feedback from supervisors and peers to ensure clarity and coherence. Preparations for the thesis defense will also take place, including creating presentation slides and rehearsing the defense presentation.
+
+Finally, from July 2026 to September 2026, I will submit the finalized thesis to the examination committee and successfully defend it, addressing any questions and feedback. Required revisions will be made based on the defense feedback, and the final approved version of the thesis will be submitted. All administrative tasks required for graduation will be completed, and preparations for the graduation ceremony will be made.
+
+Throughout these two years, I will consistently work on writing and submitting papers to conferences and journals, ensuring continuous dissemination of my research findings and contributing to the academic community.
+
+
+% \section{Gantt Chart for PhD Progress and Future Plan}
+
+% \begin{center}
+%   \begin{ganttchart}[
+%     y unit title=0.6cm,
+%     y unit chart=0.7cm,
+%     vgrid,
+%     hgrid,
+%     title height=1,
+%     title label font=\bfseries\footnotesize,
+%     bar/.append style={fill=blue!60},
+%     bar incomplete/.append style={fill=blue!30},
+%     bar height=0.6,
+%     group right shift=0,
+%     group top shift=0.6,
+%     group height=0.3,
+%     group peaks width={0.2}
+%   ]{2023-10}{2026-09}
+%     % Titles
+%     \gantttitle{2023}{3}
+%     \gantttitle{2024}{12}
+%     \gantttitle{2025}{12}
+%     \gantttitle{2026}{9} \\
+%     \gantttitlelist{10,...,12}{1}
+%     \gantttitlelist{1,...,12}{1}
+%     \gantttitlelist{1,...,12}{1}
+%     \gantttitlelist{1,...,9}{1} \\
+  
+%     % Completed Tasks
+%     \ganttgroup{Completed Work}{2023-10}{2024-08} \\
+%     \ganttbar[progress=100]{Literature Review and Adversarial Testing}{2023-10}{2023-12} \\
+%     \ganttbar[progress=100]{Study and Apply SHAP}{2024-01}{2024-03} \\
+%     \ganttbar[progress=100]{Framework Design and ProbLog Exploration}{2024-04}{2024-06} \\
+%     \ganttbar[progress=100]{ProbLog Integration and Mini Thesis}{2024-07}{2024-08} \\
+    
+%     % Future Work
+%     \ganttgroup{Future Work}{2024-09}{2026-09} \\
+%     \ganttbar[progress=100]{Explore and Develop Sampling Techniques}{2024-09}{2024-11} \\
+%     \ganttbar[progress=100]{Refine and Test Sampling Techniques}{2024-12}{2025-02} \\
+%     \ganttbar[progress=100]{Comprehensive Evaluation and Validation}{2025-03}{2025-05} \\
+%     \ganttbar[progress=100]{Finalize Sampling Technique}{2025-06}{2025-08} \\
+%     \ganttbar[progress=100]{Implementation and Real-World Applications}{2025-09}{2025-11} \\
+%     \ganttbar[progress=100]{Final Experiments and Analysis}{2025-12}{2026-02} \\
+%     \ganttbar[progress=100]{Thesis Writing and Review}{2026-03}{2026-05} \\
+%     \ganttbar[progress=100]{Thesis Defense and Final Submission}{2026-06}{2026-09}
+%   \end{ganttchart}
+%   \end{center}

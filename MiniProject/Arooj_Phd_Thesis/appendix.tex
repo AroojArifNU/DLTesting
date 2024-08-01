@@ -1,0 +1,23 @@
+% \chapter{References} % Ensures chapter numbering starts correctly
+% Adjusting chapter title format for regular (numbered) chapters
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\centering}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+% Using similar styling for unnumbered chapters but without "Chapter" prefix
+\titleformat{name=\chapter,numberless}
+  {\normalfont\huge\bfseries\centering}{}{0pt}{\Huge}
+
+\titlespacing*{\chapter}{0pt}{50pt}{40pt} % Adjust vertical spacing before and after the title
+
+
+\label{chp:8}
+\begin{singlespace}
+  \textbf{Term 1}\label{term1}:
+  This is the definition of Term 1.
+  
+  \appendix
+  \chapter{Appendix}
+  \section{Glossary}
+  
+  \noindent\textbf{Term 1:} This is the definition of \textsc{\hyperref[term1]{\uppercase{Term 1}}} as explained in Section \ref{term1} of Chapter 1.
+  

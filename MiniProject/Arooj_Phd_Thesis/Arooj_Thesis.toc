@@ -1,53 +1,57 @@
 \babel@toc {english}{}\relax 
-\contentsline {chapter}{Abstract}{iii}{Doc-Start}%
-\contentsline {chapter}{List of Figures}{vi}{Doc-Start}%
-\contentsline {chapter}{List of Tables}{vii}{Doc-Start}%
-\contentsline {chapter}{List of Algorithms}{viii}{Doc-Start}%
-\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.2}%
-\contentsline {section}{\numberline {1.1}Context}{1}{section.3}%
-\contentsline {section}{\numberline {1.2}Background and Motivation}{1}{section.4}%
-\contentsline {subsection}{\numberline {1.2.1}Challenges of Deep Learning Models}{2}{subsection.5}%
-\contentsline {subsection}{\numberline {1.2.2}Challenges in Testing of Deep Learning Models}{3}{subsection.6}%
-\contentsline {section}{\numberline {1.3}Thesis Statement}{3}{section.9}%
-\contentsline {subsection}{\numberline {1.3.1}Research Questions and Broader Goals}{4}{subsection.10}%
-\contentsline {section}{\numberline {1.4}Research Objectives}{5}{section.16}%
-\contentsline {section}{\numberline {1.5}Organization of the Thesis}{6}{section.21}%
-\contentsline {chapter}{\numberline {2}Literature Review}{7}{chapter.22}%
-\contentsline {section}{\numberline {2.1}Deep Neural Networks and AI Systems}{7}{section.23}%
-\contentsline {section}{\numberline {2.2}Robustness of Deep Neural Networks}{8}{section.25}%
-\contentsline {section}{\numberline {2.3}Sampling Techniques}{10}{section.27}%
-\contentsline {section}{\numberline {2.4}Testing and Formal Verification}{12}{section.30}%
-\contentsline {section}{\numberline {2.5}DNN Testing Techniques}{13}{section.32}%
-\contentsline {section}{\numberline {2.6}Probabilistic Logic Programming (PLP)}{15}{section.33}%
-\contentsline {chapter}{\numberline {3}Proposed Framework}{18}{chapter.34}%
-\contentsline {section}{\numberline {3.1}Proposed Approach}{18}{section.35}%
-\contentsline {section}{\numberline {3.2}Sampling}{20}{section.43}%
-\contentsline {section}{\numberline {3.3}Test Case Generation}{21}{section.45}%
-\contentsline {section}{\numberline {3.4}Validation}{21}{section.47}%
-\contentsline {subsection}{\numberline {3.4.1}Local Robustness}{22}{subsection.48}%
-\contentsline {subsection}{\numberline {3.4.2}Global Robustness}{23}{subsection.50}%
-\contentsline {subsection}{\numberline {3.4.3}Use Cases and Examples}{24}{subsection.52}%
-\contentsline {subsubsection}{\numberline {3.4.3.1}Use Case 1: Handwritten Digit Recognition}{24}{subsubsection.53}%
-\contentsline {subsubsection}{\numberline {3.4.3.2}Use Case 2: Autonomous Vehicle Perception}{26}{subsubsection.56}%
-\contentsline {section}{\numberline {3.5}Error Summarization}{28}{section.60}%
-\contentsline {section}{\numberline {3.6}Algorithm for Evaluating Model Robustness Using ProbLog}{28}{section.62}%
-\contentsline {chapter}{\numberline {4}Simulations and Results}{30}{chapter.105}%
-\contentsline {section}{\numberline {4.1}Datasets}{30}{section.106}%
-\contentsline {subsection}{\numberline {4.1.1}MNIST Dataset}{30}{subsection.107}%
-\contentsline {subsection}{\numberline {4.1.2}DAWN Dataset}{30}{subsection.108}%
-\contentsline {section}{\numberline {4.2}Use Case 1: Handwritten Digit Recognition }{31}{section.109}%
-\contentsline {subsection}{\numberline {4.2.1}Local Correctness Evaluation}{31}{subsection.110}%
-\contentsline {subsection}{\numberline {4.2.2}SHAP Analysis and Pixel Modification}{32}{subsection.112}%
-\contentsline {subsection}{\numberline {4.2.3}Global Correctness Evaluation}{33}{subsection.114}%
-\contentsline {subsection}{\numberline {4.2.4}Analysis of Global Correctness After SHAP Analysis}{35}{subsection.117}%
-\contentsline {section}{\numberline {4.3}Use Case 2: Autonomous Vehicle Perception}{36}{section.120}%
-\contentsline {subsection}{\numberline {4.3.1}Local Correctness Analysis}{37}{subsection.121}%
-\contentsline {subsection}{\numberline {4.3.2}Global Correctness Analysis}{37}{subsection.122}%
-\contentsline {chapter}{\numberline {5}References}{39}{chapter.124}%
-\contentsline {chapter}{\numberline {6}Current Progress}{44}{chapter.126}%
-\contentsline {section}{\numberline {6.1}Achievements in the Last 10 Months}{44}{section.127}%
-\contentsline {section}{\numberline {6.2}Challenges and Solutions}{44}{section.128}%
-\contentsline {chapter}{\numberline {7}Future Work and Two-Year Plan}{45}{chapter.129}%
-\contentsline {section}{\numberline {7.1}Short-term Goals (Next 6 Months)}{45}{section.130}%
-\contentsline {section}{\numberline {7.2}Medium-term Goals (Next 1 Year)}{45}{section.131}%
-\contentsline {section}{\numberline {7.3}Long-term Goals (Next 2 Years)}{45}{section.132}%
+\contentsline {chapter}{Abstract}{ii}{Doc-Start}%
+\contentsline {chapter}{List of Figures}{v}{Doc-Start}%
+\contentsline {chapter}{List of Tables}{vi}{Doc-Start}%
+\contentsline {chapter}{List of Algorithms}{vii}{Doc-Start}%
+\contentsline {chapter}{Abstract}{1}{chapter*.1}%
+\contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.2}%
+\contentsline {section}{\numberline {1.1}Background and Motivation}{2}{section.3}%
+\contentsline {section}{\numberline {1.2}Research Goal}{4}{section.6}%
+\contentsline {subsection}{\numberline {1.2.1}Research Gap}{5}{subsection.7}%
+\contentsline {subsection}{\numberline {1.2.2}Research Objectives}{5}{subsection.8}%
+\contentsline {subsection}{\numberline {1.2.3}Research Questions}{6}{subsection.15}%
+\contentsline {section}{\numberline {1.3}Research Contribution}{6}{section.23}%
+\contentsline {section}{\numberline {1.4}Organization of the Thesis}{7}{section.24}%
+\contentsline {chapter}{\numberline {2}Literature Review}{8}{chapter.25}%
+\contentsline {section}{\numberline {2.1}Deep Neural Networks and AI Systems}{8}{section.26}%
+\contentsline {section}{\numberline {2.2}Robustness of Deep Neural Networks}{9}{section.28}%
+\contentsline {section}{\numberline {2.3}Sampling Techniques}{11}{section.30}%
+\contentsline {section}{\numberline {2.4}Testing and Formal Verification}{12}{section.31}%
+\contentsline {section}{\numberline {2.5}DNN Testing Techniques}{13}{section.33}%
+\contentsline {section}{\numberline {2.6}Probabilistic Logic Programming (PLP)}{15}{section.34}%
+\contentsline {chapter}{\numberline {3}Proposed Framework}{17}{chapter.35}%
+\contentsline {section}{\numberline {3.1}Proposed Approach}{17}{section.36}%
+\contentsline {section}{\numberline {3.2}Sampling}{19}{section.44}%
+\contentsline {section}{\numberline {3.3}Test Case Generation}{20}{section.46}%
+\contentsline {section}{\numberline {3.4}Validation}{20}{section.48}%
+\contentsline {subsection}{\numberline {3.4.1}Local Robustness}{21}{subsection.49}%
+\contentsline {subsection}{\numberline {3.4.2}Global Robustness}{22}{subsection.51}%
+\contentsline {subsection}{\numberline {3.4.3}Use Cases and Examples}{23}{subsection.53}%
+\contentsline {subsubsection}{\numberline {3.4.3.1}Use Case 1: Handwritten Digit Recognition}{23}{subsubsection.54}%
+\contentsline {subsubsection}{\numberline {3.4.3.2}Use Case 2: Autonomous Vehicle Perception}{25}{subsubsection.57}%
+\contentsline {section}{\numberline {3.5}Error Summarization}{27}{section.61}%
+\contentsline {section}{\numberline {3.6}Algorithm for Evaluating Model Robustness Using ProbLog}{27}{section.63}%
+\contentsline {chapter}{\numberline {4}Simulations and Results}{29}{chapter.106}%
+\contentsline {section}{\numberline {4.1}Datasets}{29}{section.107}%
+\contentsline {subsection}{\numberline {4.1.1}MNIST Dataset}{29}{subsection.108}%
+\contentsline {subsection}{\numberline {4.1.2}DAWN Dataset}{29}{subsection.109}%
+\contentsline {section}{\numberline {4.2}Use Case 1: Handwritten Digit Recognition }{30}{section.110}%
+\contentsline {subsection}{\numberline {4.2.1}Local Correctness Evaluation}{30}{subsection.111}%
+\contentsline {subsection}{\numberline {4.2.2}SHAP Analysis and Pixel Modification}{31}{subsection.113}%
+\contentsline {subsection}{\numberline {4.2.3}Global Correctness Evaluation}{32}{subsection.115}%
+\contentsline {subsection}{\numberline {4.2.4}Analysis of Global Correctness After SHAP Analysis}{34}{subsection.118}%
+\contentsline {section}{\numberline {4.3}Use Case 2: Autonomous Vehicle Perception}{35}{section.121}%
+\contentsline {subsection}{\numberline {4.3.1}Local Correctness Analysis}{36}{subsection.122}%
+\contentsline {subsection}{\numberline {4.3.2}Global Correctness Analysis}{36}{subsection.123}%
+\contentsline {chapter}{\numberline {5}Current Work and Two-Year Plan}{42}{chapter.126}%
+\contentsline {section}{\numberline {5.1}First Three Months Plan (October 2023 - December 2023)}{42}{section.127}%
+\contentsline {section}{\numberline {5.2}Second Three Months Plan (January 2024 - March 2024)}{43}{section.128}%
+\contentsline {section}{\numberline {5.3}Third Three Months Plan (April 2024 - June 2024)}{43}{section.129}%
+\contentsline {section}{\numberline {5.4}Fourth and Fifth Months Plan (July 2024 - August 2024)}{44}{section.130}%
+\contentsline {section}{\numberline {5.5}Two-Year Plan (October 2024 - September 2026)}{44}{section.131}%
+\contentsline {subsection}{\numberline {5.5.1}October 2024 - December 2024}{45}{subsection.132}%
+\contentsline {subsection}{\numberline {5.5.2}January 2025 - March 2025}{45}{subsection.133}%
+\contentsline {subsection}{\numberline {5.5.3}April 2025 - June 2025}{45}{subsection.134}%
+\contentsline {subsection}{\numberline {5.5.4}July 2025 - September 2025}{45}{subsection.135}%
+\contentsline {subsection}{\numberline {5.5.5}October 2025 - September 2026}{46}{subsection.136}%
+\contentsline {chapter}{\numberline {A}Glossary}{47}{appendix.137}%
