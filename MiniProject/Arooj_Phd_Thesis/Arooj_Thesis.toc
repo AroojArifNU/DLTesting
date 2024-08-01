@@ -7,8 +7,8 @@
 \contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.2}%
 \contentsline {section}{\numberline {1.1}Background and Motivation}{2}{section.3}%
 \contentsline {section}{\numberline {1.2}Research Goal}{4}{section.6}%
-\contentsline {subsection}{\numberline {1.2.1}Research Gap}{5}{subsection.7}%
-\contentsline {subsection}{\numberline {1.2.2}Research Objectives}{5}{subsection.8}%
+\contentsline {subsection}{\numberline {1.2.1}Thesis Goal}{5}{subsection.7}%
+\contentsline {subsection}{\numberline {1.2.2}Research Questions and Research Objectives}{5}{subsection.8}%
 \contentsline {subsection}{\numberline {1.2.3}Research Questions}{6}{subsection.15}%
 \contentsline {section}{\numberline {1.3}Research Contribution}{6}{section.23}%
 \contentsline {section}{\numberline {1.4}Organization of the Thesis}{7}{section.24}%

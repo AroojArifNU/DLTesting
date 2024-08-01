@@ -15,7 +15,7 @@
 Deep Neural Networks (DNNs) are increasingly being used in diverse applications due to their ability to match or exceed human-level performance. With the broader deployment of DNNs in various safety-critical systems like autonomous vehicles, healthcare, and avionics, concerns over their safety and trustworthiness have been raised \cite{ZhaoXBanks}. The availability of large datasets, fast computing methods, and their high performance has enabled the use of DNNs in safety-critical applications \cite{LeCun}. The critical nature of such applications makes it essential to thoroughly evaluate these DNNs before deployment to guarentee their reliability and safety.
 
 
-In recent years, there has been significant amount of publications focused on tackling this concern. Figure. \ref*{fig:no_publish} visualizes the significant growth in the number of published papers related to DNNs safety from 2008 to 2023. The data is gathered using a comprehensive set of relevant keywords \footnote{The keywords used for data extraction include: 'deep neural network safety,' 'DNN verification,' 'DNN testing,' 'deep learning robustness,' 'neural network adversarial attacks,' 'DNN defense mechanisms,' 'DNN interpretability,' 'deep learning certification,' 'neural network validation,' and 'machine learning security.'}.
+In recent years, there has been significant amount of publications focused on tackling this concern. Figure. \ref*{fig:no_publish} visualizes the significant growth in the number of published papers related to DNNs safety from 2008 to 2023\footnote{The data is gathered using a comprehensive set of relevant keywords. The keywords used for data extraction include: 'deep neural network safety,' 'DNN verification,' 'DNN testing,' 'deep learning robustness,' 'neural network adversarial attacks,' 'DNN defense mechanisms,' 'DNN interpretability,' 'deep learning certification,' 'neural network validation,' and 'machine learning security.'}.
 
 \begin{figure*}
   \centering
@@ -30,7 +30,7 @@ DNNs have shown a lack of robustness due to their vulnerability to adversarial e
 
 In the past, researchers have extensively discussed both verification and testing techniques, which are useful for evaluating the DNNs. Verification involves proving the \hyperref[gloss]{\textsc{property}} \label{property} of a system through mathematical proof. This approach ensures that certain property is met by the system based on a \hyperref[gloss]{\textsc{formal analysis.}} \label{formal analysis} However,DNN verification techniques are promising, they suffer from a scalability problem, due to the high computational complexity and the large size of DNNs. Up to now, DNN verification techniques either work with small scale DNNs or with approximate methods with convergence guarantees on the bounds \cite{HuangX}. This limitation impacts the ability to achieve high coverage, which means thoroughly testing the model across a wide range of input scenarios and conditions to ensure that all potential issues are identified.
 
-On the other hand, testing focuses on identifying defects (i.e, counter example to a property) or provide assurance cases \cite {Rushby}, by evaluating the behavior of system through {\textsc{empirical methods.}} \label{empirical methods} As a result, they can achieve high coverage, which suggests that more of a DNN's behavior has been tested and therefore the DNN has a lower chance of containing undetected bugs \cite{HuangX}. While these coverage metrics are useful, they often fall short in providing comprehensive evaluations. This is because they primarily focus on the internal structure of the deep models, such as neuron activation patterns, rather than evaluating the DNNs behavior on a diverse set of inputs. This internal focus can miss identifying specific inputs that cause failures or unexpected behavior.
+On the other hand, testing focuses on identifying defects (i.e, counter example to a property) or provide assurance cases \cite {Rushby}, by evaluating the behavior of system through {\textsc{empirical methods.}} \label{empirical methods} As a result, they can achieve high coverage, which suggests that more of a DNN's behavior has been tested and therefore the DNN has a lower chance of containing undetected bugs \cite{HuangX}. While these coverage metrics are useful, they often fall short in providing \hyperref[gloss]{\textsc{comprehensive}}\label{comprehensive} evaluations. This is because they primarily focus on the internal structure of the deep models, such as neuron activation patterns, rather than evaluating the DNNs behavior on a diverse set of inputs. This internal focus can miss identifying specific inputs that cause failures or unexpected behavior.
 
 
 \begin{tcolorbox}[colback=purple!2!white, colframe=purple,title= Thesis Goal]
@@ -51,15 +51,16 @@ On the other hand, testing focuses on identifying defects (i.e, counter example 
 
 If no specific requirements are provided by the user, the framework will operate based on default parameters to ensure a thorough assessment. However, it can also be customized for specific cases or multiple cases based on user specifications. For instance, a user might require the framework to focus on a particular class or scenario that is critical. This flexibility ensures that the framework addresses the most important aspects of the application in question.
 
-To accurately identify weaknesses and areas for improvement, the framework will calculate both local coverage and global coverage using probabilistic programming language. This approach allows for a detailed analysis of the model's behavior under different conditions, providing insights into how the model performs in specific scenarios and overall. By examining local-level coverage, the framework can detect vulnerabilities that may arise in specific parts of the model or under particular conditions. Global-level coverage assessment, on the other hand, evaluates the model's overall stability across a wide range of scenarios. Together, these analyses help pinpoint specific vulnerabilities and highlight areas where the model can be improved, ultimately leading to more robust systems.
+To accurately identify weaknesses and areas for improvement, the framework will calculate both local coverage and global coverage using probabilistic programming language that allows you to define bayesian probability models and solve them automatically. This approach allows for a detailed analysis of the model's behavior under different conditions, providing insights into how the model performs in specific scenarios and overall. By examining local-level coverage, the framework can detect vulnerabilities that may arise in specific parts of the model or under particular conditions. Global-level coverage assessment, on the other hand, evaluates the model's overall stability across a wide range of scenarios. Together, these analyses help pinpoint specific vulnerabilities and highlight areas where the model can be improved, ultimately leading to more robust systems.
 
 Additionally, the framework will generate a comprehensive error summary, providing insights into the types and frequencies of errors encountered. This summary will highlight critical failure points and suggest targeted improvements, enabling developers to enhance the system robustness.
 Through continuous evaluation and iterative refinement, the framework aims to significantly enhance the safety and dependability of DNN models across different operational levels. This ongoing process ensures that the models remain robust and effective in a wide variety of real-world applications, ultimately contributing to their reliability in safety-critical systems.
 
-\subsection{Research Gap}
+\subsection{Thesis Goal}
 Currently, there is no end-to-end automated framework that thoroughly integrates data, test cases, and test coverage according to given specifications and provides a detailed error summary.
 
-\subsection{Research Objectives}
+\subsection{Research Questions and Research Objectives}
+
 The objectives of this research are to:
 
 \begin{enumerate}
@@ -78,7 +79,7 @@ The objectives of this research are to:
 \subsection{Research Questions}
 
 \begin{enumerate}
-  \item How can we design a \hyperref[gloss]{\textsc{comprehensive}}\label{comprehensive} framework to test system robustness?
+  \item How can we design a comprehensive framework to test system robustness?
     \item How can we clearly define and specify the properties of the system?    
     \item How can we sample inputs efficiently?
     \item How can we generate highly effective test cases that ensure complete coverage?                                                                                                                                                     
@@ -117,7 +118,7 @@ This research makes the following key contributions to the field of deep learnin
 \begin{itemize}
     \item An \textit{\textcolor{blue}{end-to-end pipeline}} is designed for evaluating the robustness of the system.
     \item A \textit{\textcolor{blue}{hybrid sampling}} technique is proposed to identify and prioritize the corner cases.
-    \item A \textit{\textcolor{blue}{conceptual framework}} is proposed that quantifies both local and global robustness. This framework uses Problog, a probabilistic logic programming language, to verify system robustness. This approach allows for more precise and reliable robustness verification.
+    \item A \textit{\textcolor{blue}{conceptual framework}} is proposed that quantifies both local and global robustness. This framework uses Problog, a probabilistic logic programming language, to verify system global robustness. 
     \item An \textit{\textcolor{blue}{interpretability-driven test case generation}} approach is employed to pinpoint critical input features, which are then used to create test cases with a higher probability of inducing mispredictions, thus effectively evaluating and enhancing model robustness.
     % \item A novel \textit{error summarization} approach is introduced, which helps in better identifying where model makes mistakes, especially in relation to specific classes and property.
     \item All \textit{\textcolor{blue}{experiments}} are conducted using publicly available datasets, including DAWN, CIFAR, and MNIST.

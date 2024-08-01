@@ -12,7 +12,7 @@
 \label{chp:2}
 
 % \section{Overview}
-This chapter provides a review of the literature related to DNN, testing and formal verification, DNN testing techniques and probabilistic logic programming.
+% This chapter provides a review of the literature related to DNN, testing and formal verification, DNN testing techniques and probabilistic logic programming.
 
 \section{Deep Neural Networks and AI Systems}
 
@@ -39,12 +39,12 @@ Deep learning is a subset of AI that utilizes deep neural networks (DNNs) for co
 
 \section{Robustness of Deep Neural Networks}
 
-Deep neural networks (DNNs) are known for their lack of robustness. Research has shown DNNs to be vulnerable to two main categories of adversaries: \emph{adversarial attacks}~\cite{adv_attacks} and \emph{image transformations}~\cite{deeptest}.
+Deep neural networks (DNNs) are known for their lack of robustness. Research has shown DNNs to be vulnerable to two main categories of adversaries \cite{Hosseini}: \emph{adversarial examples}~\cite{adv_attacks} and \emph{semantic adversarial examples}~\cite{deeptest}.
 
 Let $\mathcal{A}$ denote an adversary. Each category can be described formally as follows:
 
 \smallskip\noindent%
-\textbf{Adversarial Attacks $\mathcal{A}_{\text{adv}}$}
+\textbf{Adversarial Examples $\mathcal{A}_{\text{adv}}$}
 
 (\adv) This involves the generation of perturbations $\delta$ such that $x' = x + \delta$ misleads the DNN $f$ into making incorrect predictions, where $x$ is the original input and $x'$ is the perturbed input. Various methods under this category include:
 
@@ -57,7 +57,7 @@ Let $\mathcal{A}$ denote an adversary. Each category can be described formally a
 \end{itemize}
 
 \smallskip\noindent%
-\textbf{Image Transformations $\mathcal{A}_{\text{trans}}$}
+\textbf{Semantic Adversarial Examples $\mathcal{A}_{\text{trans}}$}
 
 This involves modifying the input images in a manner that exploits the model's sensitivity to variations, potentially causing misclassifications. Various methods under this category include:
 
