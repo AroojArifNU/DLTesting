@@ -1,57 +1,88 @@
 \babel@toc {english}{}\relax 
 \contentsline {chapter}{Abstract}{ii}{Doc-Start}%
-\contentsline {chapter}{List of Figures}{v}{Doc-Start}%
-\contentsline {chapter}{List of Tables}{vi}{Doc-Start}%
-\contentsline {chapter}{List of Algorithms}{vii}{Doc-Start}%
+\contentsline {chapter}{List of Figures}{vii}{Doc-Start}%
+\contentsline {chapter}{List of Tables}{viii}{Doc-Start}%
+\contentsline {chapter}{List of Algorithms}{ix}{Doc-Start}%
 \contentsline {chapter}{Abstract}{1}{chapter*.1}%
 \contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.2}%
 \contentsline {section}{\numberline {1.1}Background and Motivation}{2}{section.3}%
 \contentsline {section}{\numberline {1.2}Research Goal}{4}{section.6}%
-\contentsline {subsection}{\numberline {1.2.1}Thesis Goal}{5}{subsection.7}%
-\contentsline {subsection}{\numberline {1.2.2}Research Questions and Research Objectives}{5}{subsection.8}%
-\contentsline {subsection}{\numberline {1.2.3}Research Questions}{6}{subsection.15}%
-\contentsline {section}{\numberline {1.3}Research Contribution}{6}{section.23}%
-\contentsline {section}{\numberline {1.4}Organization of the Thesis}{7}{section.24}%
-\contentsline {chapter}{\numberline {2}Literature Review}{8}{chapter.25}%
-\contentsline {section}{\numberline {2.1}Deep Neural Networks and AI Systems}{8}{section.26}%
-\contentsline {section}{\numberline {2.2}Robustness of Deep Neural Networks}{9}{section.28}%
-\contentsline {section}{\numberline {2.3}Sampling Techniques}{11}{section.30}%
-\contentsline {section}{\numberline {2.4}Testing and Formal Verification}{12}{section.31}%
-\contentsline {section}{\numberline {2.5}DNN Testing Techniques}{13}{section.33}%
-\contentsline {section}{\numberline {2.6}Probabilistic Logic Programming (PLP)}{15}{section.34}%
-\contentsline {chapter}{\numberline {3}Proposed Framework}{17}{chapter.35}%
-\contentsline {section}{\numberline {3.1}Proposed Approach}{17}{section.36}%
-\contentsline {section}{\numberline {3.2}Sampling}{19}{section.44}%
-\contentsline {section}{\numberline {3.3}Test Case Generation}{20}{section.46}%
-\contentsline {section}{\numberline {3.4}Validation}{20}{section.48}%
-\contentsline {subsection}{\numberline {3.4.1}Local Robustness}{21}{subsection.49}%
-\contentsline {subsection}{\numberline {3.4.2}Global Robustness}{22}{subsection.51}%
-\contentsline {subsection}{\numberline {3.4.3}Use Cases and Examples}{23}{subsection.53}%
-\contentsline {subsubsection}{\numberline {3.4.3.1}Use Case 1: Handwritten Digit Recognition}{23}{subsubsection.54}%
-\contentsline {subsubsection}{\numberline {3.4.3.2}Use Case 2: Autonomous Vehicle Perception}{25}{subsubsection.57}%
-\contentsline {section}{\numberline {3.5}Error Summarization}{27}{section.61}%
-\contentsline {section}{\numberline {3.6}Algorithm for Evaluating Model Robustness Using ProbLog}{27}{section.63}%
-\contentsline {chapter}{\numberline {4}Simulations and Results}{29}{chapter.106}%
-\contentsline {section}{\numberline {4.1}Datasets}{29}{section.107}%
-\contentsline {subsection}{\numberline {4.1.1}MNIST Dataset}{29}{subsection.108}%
-\contentsline {subsection}{\numberline {4.1.2}DAWN Dataset}{29}{subsection.109}%
-\contentsline {section}{\numberline {4.2}Use Case 1: Handwritten Digit Recognition }{30}{section.110}%
-\contentsline {subsection}{\numberline {4.2.1}Local Correctness Evaluation}{30}{subsection.111}%
-\contentsline {subsection}{\numberline {4.2.2}SHAP Analysis and Pixel Modification}{31}{subsection.113}%
-\contentsline {subsection}{\numberline {4.2.3}Global Correctness Evaluation}{32}{subsection.115}%
-\contentsline {subsection}{\numberline {4.2.4}Analysis of Global Correctness After SHAP Analysis}{34}{subsection.118}%
-\contentsline {section}{\numberline {4.3}Use Case 2: Autonomous Vehicle Perception}{35}{section.121}%
-\contentsline {subsection}{\numberline {4.3.1}Local Correctness Analysis}{36}{subsection.122}%
-\contentsline {subsection}{\numberline {4.3.2}Global Correctness Analysis}{36}{subsection.123}%
-\contentsline {chapter}{\numberline {5}Current Work and Two-Year Plan}{42}{chapter.126}%
-\contentsline {section}{\numberline {5.1}First Three Months Plan (October 2023 - December 2023)}{42}{section.127}%
-\contentsline {section}{\numberline {5.2}Second Three Months Plan (January 2024 - March 2024)}{43}{section.128}%
-\contentsline {section}{\numberline {5.3}Third Three Months Plan (April 2024 - June 2024)}{43}{section.129}%
-\contentsline {section}{\numberline {5.4}Fourth and Fifth Months Plan (July 2024 - August 2024)}{44}{section.130}%
-\contentsline {section}{\numberline {5.5}Two-Year Plan (October 2024 - September 2026)}{44}{section.131}%
-\contentsline {subsection}{\numberline {5.5.1}October 2024 - December 2024}{45}{subsection.132}%
-\contentsline {subsection}{\numberline {5.5.2}January 2025 - March 2025}{45}{subsection.133}%
-\contentsline {subsection}{\numberline {5.5.3}April 2025 - June 2025}{45}{subsection.134}%
-\contentsline {subsection}{\numberline {5.5.4}July 2025 - September 2025}{45}{subsection.135}%
-\contentsline {subsection}{\numberline {5.5.5}October 2025 - September 2026}{46}{subsection.136}%
-\contentsline {chapter}{\numberline {A}Glossary}{47}{appendix.137}%
+\contentsline {section}{\numberline {1.3}Research Questions and Objectives}{5}{section.7}%
+\contentsline {section}{\numberline {1.4}Contribution of this Report}{6}{section.15}%
+\contentsline {section}{\numberline {1.5}Organization of the Thesis}{7}{section.16}%
+\contentsline {chapter}{\numberline {2}Literature Review}{8}{chapter.17}%
+\contentsline {section}{\numberline {2.1}Deep Neural Networks and AI Systems}{8}{section.18}%
+\contentsline {section}{\numberline {2.2}Robustness of Deep Neural Networks}{9}{section.20}%
+\contentsline {section}{\numberline {2.3}Sampling Techniques}{11}{section.22}%
+\contentsline {section}{\numberline {2.4}Testing and Formal Verification}{12}{section.23}%
+\contentsline {section}{\numberline {2.5}DNN Testing Techniques}{13}{section.25}%
+\contentsline {section}{\numberline {2.6}Probabilistic Logic Programming (PLP)}{15}{section.26}%
+\contentsline {chapter}{\numberline {3}Proposed Framework}{17}{chapter.27}%
+\contentsline {section}{\numberline {3.1}Proposed Approach}{17}{section.28}%
+\contentsline {section}{\numberline {3.2}Sampling}{19}{section.36}%
+\contentsline {section}{\numberline {3.3}Test Case Generation}{20}{section.38}%
+\contentsline {section}{\numberline {3.4}Validation}{20}{section.40}%
+\contentsline {subsection}{\numberline {3.4.1}Local Robustness}{21}{subsection.41}%
+\contentsline {subsection}{\numberline {3.4.2}Global Robustness}{22}{subsection.43}%
+\contentsline {subsection}{\numberline {3.4.3}Use Cases and Examples}{23}{subsection.45}%
+\contentsline {subsubsection}{\numberline {3.4.3.1}Use Case 1: Handwritten Digit Recognition}{23}{subsubsection.46}%
+\contentsline {subsubsection}{\numberline {3.4.3.2}Use Case 2: Autonomous Vehicle Perception}{25}{subsubsection.49}%
+\contentsline {section}{\numberline {3.5}Error Summarization}{27}{section.53}%
+\contentsline {section}{\numberline {3.6}Algorithm for Evaluating Model Robustness Using ProbLog}{27}{section.55}%
+\contentsline {chapter}{\numberline {4}Simulations and Results}{29}{chapter.98}%
+\contentsline {section}{\numberline {4.1}Datasets}{29}{section.99}%
+\contentsline {subsection}{\numberline {4.1.1}MNIST Dataset}{29}{subsection.100}%
+\contentsline {subsection}{\numberline {4.1.2}DAWN Dataset}{29}{subsection.101}%
+\contentsline {section}{\numberline {4.2}Use Case 1: Handwritten Digit Recognition }{30}{section.102}%
+\contentsline {subsection}{\numberline {4.2.1}Local Correctness Evaluation}{30}{subsection.103}%
+\contentsline {subsection}{\numberline {4.2.2}SHAP Analysis and Pixel Modification}{31}{subsection.105}%
+\contentsline {subsection}{\numberline {4.2.3}Global Correctness Evaluation}{32}{subsection.107}%
+\contentsline {subsection}{\numberline {4.2.4}Analysis of Global Correctness After SHAP Analysis}{34}{subsection.110}%
+\contentsline {section}{\numberline {4.3}Use Case 2: Autonomous Vehicle Perception}{35}{section.113}%
+\contentsline {subsection}{\numberline {4.3.1}Local Correctness Analysis}{36}{subsection.114}%
+\contentsline {subsection}{\numberline {4.3.2}Global Correctness Analysis}{36}{subsection.115}%
+\contentsline {chapter}{\numberline {5}PhD Two-Year Plan}{38}{chapter.117}%
+\contentsline {section}{\numberline {5.1}Research Modules}{38}{section.118}%
+\contentsline {section}{\numberline {5.2}Mapping of Research Modules to Objectives}{38}{section.120}%
+\contentsline {subsection}{\numberline {5.2.1}DNN Testing Framework (Module 1, 25\% completion)}{39}{subsection.122}%
+\contentsline {subsubsection}{\numberline {5.2.1.1}Literature review (M\textsubscript {1} - M\textsubscript {5}, 60\% completion)}{39}{subsubsection.123}%
+\contentsline {subsubsection}{\numberline {5.2.1.2}Designing a conceptual framework (M\textsubscript {8} - M\textsubscript {12}, 100\% completion)}{39}{subsubsection.124}%
+\contentsline {subsubsection}{\numberline {5.2.1.3}Design local and global coverage flow (M\textsubscript {8} - M\textsubscript {10}, 70\% completion)}{39}{subsubsection.125}%
+\contentsline {subsubsection}{\numberline {5.2.1.4}Implementing the Simple real life Example to cauclate local to global robustness(M\textsubscript {8} - M\textsubscript {10}, 100\% completion)}{39}{subsubsection.126}%
+\contentsline {subsubsection}{\numberline {5.2.1.5}Implementing ProbLog for calculating global robustness with one example (M\textsubscript {9} - M\textsubscript {11}, 100\% completion)}{39}{subsubsection.127}%
+\contentsline {subsubsection}{\numberline {5.2.1.6}Integrate ProbLog code with python code (M\textsubscript {9} - M\textsubscript {11}, 100\% completion)}{40}{subsubsection.128}%
+\contentsline {subsubsection}{\numberline {5.2.1.7}Applying the framework to different datasets (M\textsubscript {9} - M\textsubscript {13}, 50\% completion)}{40}{subsubsection.129}%
+\contentsline {subsection}{\numberline {5.2.2}Specification (Module 2, 0\% completion)}{40}{subsection.130}%
+\contentsline {subsubsection}{\numberline {5.2.2.1}Find a way to define specification, how to formalize it (M\textsubscript {20} - M\textsubscript {23}, 0\% completion)}{40}{subsubsection.131}%
+\contentsline {subsubsection}{\numberline {5.2.2.2}How to pass specifications to ProbLog (M\textsubscript {20} - M\textsubscript {23}, 0\% completion)}{40}{subsubsection.132}%
+\contentsline {subsubsection}{\numberline {5.2.2.3}Integrate specification module into the framework (M\textsubscript {20} - M\textsubscript {23}, 0\% completion)}{40}{subsubsection.133}%
+\contentsline {subsection}{\numberline {5.2.3}Sampling (Module 3, 30\% completion)}{40}{subsection.134}%
+\contentsline {subsubsection}{\numberline {5.2.3.1}Reading Papers Related to Sampling Techniques and Identify Gaps (M\textsubscript {9} - M\textsubscript {10}, 50\% completion)}{40}{subsubsection.135}%
+\contentsline {subsubsection}{\numberline {5.2.3.2}Develop Efficient Sampling Technique (M\textsubscript {10} - M\textsubscript {12}, 0\% completion))}{40}{subsubsection.136}%
+\contentsline {subsubsection}{\numberline {5.2.3.3}Implement Existing Sampling Techniques (M\textsubscript {9} - M\textsubscript {10}, 30\% completion)}{40}{subsubsection.137}%
+\contentsline {subsubsection}{\numberline {5.2.3.4}Integrate this Module into the Framework (M\textsubscript {9} - M\textsubscript {10}, 0\% completion)}{41}{subsubsection.138}%
+\contentsline {subsection}{\numberline {5.2.4}Interpretability (Module 4, 20\% completion)}{41}{subsection.139}%
+\contentsline {subsubsection}{\numberline {5.2.4.1}Literature Review (M\textsubscript {4} - M\textsubscript {24}, 30\% completion)}{41}{subsubsection.140}%
+\contentsline {subsubsection}{\numberline {5.2.4.2}Implementation of SHAP Tool (M\textsubscript {4} - M\textsubscript {6}, 80\% completion)}{41}{subsubsection.141}%
+\contentsline {subsubsection}{\numberline {5.2.4.3}Applying SHAP to Identify Important Pixels (M\textsubscript {4} - M\textsubscript {5}, 80\% completion)}{41}{subsubsection.142}%
+\contentsline {subsubsection}{\numberline {5.2.4.4}Explore Other Interpretability Analysis Techniques (M\textsubscript {15} - M\textsubscript {17}, 0\% completion)}{41}{subsubsection.143}%
+\contentsline {subsubsection}{\numberline {5.2.4.5}Integrate Interpretability Approach in Test Case Generation Module (M\textsubscript {16} - M\textsubscript {17}, 0\% completion)}{41}{subsubsection.144}%
+\contentsline {subsection}{\numberline {5.2.5}Testcase Generation (Module 5, 50\% completion)}{41}{subsection.145}%
+\contentsline {subsubsection}{\numberline {5.2.5.1}Literature Review (M\textsubscript {1} - M\textsubscript {18}, 50\% completion)}{41}{subsubsection.146}%
+\contentsline {subsubsection}{\numberline {5.2.5.2}Exploring Libraries for Test Case Generation (M\textsubscript {1} - M\textsubscript {2}, 80\% completion)}{41}{subsubsection.147}%
+\contentsline {subsubsection}{\numberline {5.2.5.3}Implementing Adversarial Attacks and Semantic Adversarial Test Cases (M\textsubscript {3} - M\textsubscript {4}, 80\% completion)}{42}{subsubsection.148}%
+\contentsline {subsubsection}{\numberline {5.2.5.4}Apply Existing Test Case Generation Methods to Benchmark Datasets (Analyze the results (M\textsubscript {13} - M\textsubscript {14}, 0\% completion))}{42}{subsubsection.149}%
+\contentsline {subsubsection}{\numberline {5.2.5.5}Automate Proposed Test Generation Module (M\textsubscript {15} - M\textsubscript {16}, 0\% completion)}{42}{subsubsection.150}%
+\contentsline {subsection}{\numberline {5.2.6}Coverage Criteria (Module 6, 35\% completion)}{42}{subsection.151}%
+\contentsline {subsubsection}{\numberline {5.2.6.1}Reading Papers and Identifying Gaps (M\textsubscript {6} - M\textsubscript {9}, 50\% completion)}{42}{subsubsection.152}%
+\contentsline {subsubsection}{\numberline {5.2.6.2}Apply Existing Coverage Criteria to Benchmark Datasets ((M\textsubscript {13} - M\textsubscript {14}, 0\% completion))}{42}{subsubsection.153}%
+\contentsline {subsubsection}{\numberline {5.2.6.3}Reading Papers Related to Problog (M\textsubscript {6} - M\textsubscript {8}, 50\% completion)}{42}{subsubsection.154}%
+\contentsline {subsubsection}{\numberline {5.2.6.4}Understand the Problog Language and Editor (M\textsubscript {9} - M\textsubscript {10}, 80\% completion)}{42}{subsubsection.155}%
+\contentsline {subsubsection}{\numberline {5.2.6.5}Run Examples on Problog and Understand Inputs and Outputs (M\textsubscript {9} - M\textsubscript {10}, 70\% completion)}{42}{subsubsection.156}%
+\contentsline {subsection}{\numberline {5.2.7}Error Summarization (Module 7, 0\% completion)}{43}{subsection.157}%
+\contentsline {subsubsection}{\numberline {5.2.7.1}Find Ways to Properly Summarize the Counter Examples (M\textsubscript {17} - M\textsubscript {18}, 0\% completions)}{43}{subsubsection.158}%
+\contentsline {subsubsection}{\numberline {5.2.7.2}Best Visuals to Represent Errors Report (M\textsubscript {18} - M\textsubscript {20}, 0\% completion)}{43}{subsubsection.159}%
+\contentsline {subsubsection}{\numberline {5.2.7.3}Integrate Error Summarization Module in Framework (M\textsubscript {20} - M\textsubscript {21}, 0\% completion)}{43}{subsubsection.160}%
+\contentsline {section}{\numberline {5.3}Mapping of Research Milestones to Objectives}{43}{section.161}%
+\contentsline {section}{\numberline {5.4}Gantt Chart for Task-Wise Completion}{44}{section.163}%
+\contentsline {chapter}{\numberline {A}}{50}{appendix.165}%

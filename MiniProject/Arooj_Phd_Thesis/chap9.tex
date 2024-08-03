@@ -8,157 +8,281 @@
 
 \titlespacing*{\chapter}{0pt}{50pt}{40pt} % Adjust vertical spacing before and after the title
 
-
-\chapter{Current Work and Two-Year Plan} % Ensures chapter numbering starts correctly
-
+\definecolor{barblue}{RGB}{153,204,254}
+\definecolor{groupblue}{RGB}{51,102,254}
+\definecolor{linkred}{RGB}{165,0,33}
+\chapter{PhD Two-Year Plan} % Ensures chapter numbering starts correctly
 \label{chp:9}
 
-\section{First Three Months Plan (October 2023 - December 2023)}
+\section{Research Modules}
+I have categorized my research into seven modules as depicted in Figure \ref{fig:no_publish}: Module 1 (DNN Testing Framework), Module 2 (Specification), Module 3 (Sampling), Module 4 (Interpretability), Module 5 (Testcase Generation), Module 6 (Coverage Criteria), and Module 7 (Error Summarization).
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\linewidth]{researchareas.png}
+  \caption{Research Modules}
+  \label{fig:no_publish}
+\end{figure}
+
+\section{Mapping of Research Modules to Objectives}
+The research is structured into seven distinct modules, each addressing a specific objective. Table \ref{table:modules} outlines the mapping of these research modules to their corresponding objectives discussed in Section \ref{sec:research_objectives}.
+
+\begin{table}[ht]
+  \centering
+  \renewcommand{\arraystretch}{1.5} % Adjusts the row padding
+  \begin{tabular}{|l|l|}
+    \hline
+    \rowcolor[HTML]{000000} 
+    \multicolumn{1}{|c|}{\cellcolor[HTML]{000000}{\color[HTML]{FFFFFF} \textbf{Research Modules}}} & {\color[HTML]{FFFFFF} \textbf{Research Objectives}} \\ \hline
+    {\color[HTML]{404040} DNN Testing Framework} & Obj1 \\ \hline
+    {\color[HTML]{404040} Specification} & Obj2 \\ \hline
+    {\color[HTML]{404040} Sampling} & Obj3 \\ \hline
+    {\color[HTML]{404040} Interpretability} & Obj4 \\ \hline
+    {\color[HTML]{404040} Testcase Generation} & Obj5 \\ \hline
+    {\color[HTML]{404040} Coverage Criteria} & Obj6 \\ \hline
+    Error Summarization & Obj7 \\ \hline
+  \end{tabular}
+  \caption{Mapping of Research Modules to Objectives}
+  \label{table:modules}
+\end{table}
+
+These modules are further divided into specific tasks to streamline the research process:
+
+\subsection{DNN Testing Framework (Module 1, 25\% completion)}
+\subsubsection{Literature review (M\textsubscript{1} - M\textsubscript{5}, 60\% completion)}
+Outline comprehensive testing requirements.
+
+\subsubsection{Designing a conceptual framework (M\textsubscript{8} - M\textsubscript{12}, 100\% completion)}
+Set clear criteria for evaluating test outcomes.
+
+\subsubsection{Design local and global coverage flow (M\textsubscript{8} - M\textsubscript{10}, 70\% completion)}
+Set clear criteria for evaluating test outcomes.
+
+\subsubsection{Implementing the Simple real life Example to cauclate local to global robustness(M\textsubscript{8} - M\textsubscript{10}, 100\% completion)}
+Implement Adder for this
+
+\subsubsection{Implementing ProbLog for  calculating global robustness with one example (M\textsubscript{9} - M\textsubscript{11}, 100\% completion)}
+Set clear criteria for evaluating test outcomes.
+
+\subsubsection{Integrate ProbLog code with python code (M\textsubscript{9} - M\textsubscript{11}, 100\% completion)}
+Set clear criteria for evaluating test outcomes.
+
+\subsubsection{Applying the framework to different datasets (M\textsubscript{9} - M\textsubscript{13}, 50\% completion)}
+Set clear criteria for evaluating test outcomes.
 
 
-Over the first three months, the main objectives were to do a thorough literature analysis on test cases and adversarial examples and use adversarial test case generation in Google Colab using libraries such Adversarial ToolBox and FoolBox. Reading literature and investigating adversarial libraries were two associated tasks during this time.
 
-\textbf{Reading Literature on Test Cases (Weeks 1-4)}:
-I focused on identifying and reading key papers on test case generation for Deep Neural Networks (DNNs), summarizing key findings, and noting common methods and research gaps.
+\subsection{Specification (Module 2, 0\% completion)}
+\subsubsection{Find a way to define specification, how to  formalize it (M\textsubscript{20} - M\textsubscript{23}, 0\% completion)}
+Outline comprehensive testing requirements.
 
-% I read a lot of important papers on test case generation for DNNs and summed up the most important findings. I also made notes on common methods and study gaps.
+\subsubsection{How to pass specifications to ProbLog (M\textsubscript{20} - M\textsubscript{23}, 0\% completion)}
+Set clear criteria for evaluating test outcomes.
 
-\textbf{Exploring Libraries for Adversarial Test Case Generation (Weeks 1-8)}:
-I explored adversarial test case generation libraries using Google Colab, installed Adversarial ToolBox and FoolBox, and familiarized myself with their functionality through example codes.
-
-\textbf{Implementing Adversarial Attacks and Semantic Adversarial Examples (Weeks 3-8)}:
-I implemented various adversarial attacks on the MNIST dataset and generated semantic adversarial examples using transformations like noise addition, translation, scaling, rotation, etc. I documented the effects of varying parameters such as epsilon values and prepared a preliminary report on my findings.
-
-By the end of the first three months, I had a solid understanding of current research on test case generation, practical experience with adversarial test case generation libraries, and initial results from experiments on the MNIST dataset. 
-
-\section{Second Three Months Plan (January 2024 - March 2024)}
-
-The focus for these three months was on studying SHAP (SHapley Additive exPlanations) as an interpretable technique and using it to identify high-importance pixels in the MNIST and CIFAR datasets.
-
-\textbf{Studying SHAP (Weeks 1-4)}:
-I reviewed the theoretical foundations of SHAP and its applications in interpreting model predictions, and implemented SHAP on different models.
-
-\textbf{Applying SHAP to Identify Important Pixels (Weeks 5-8)}:
-I applied SHAP to identify high-importance pixels in the MNIST and CIFAR datasets and conducted experiments by altering these pixels to observe the impact on model robustness.
-
-\textbf{Analyzing Model Robustness (Weeks 9-12)}:
-I analyzed the robustness of the models based on the alterations made to the important pixels identified by SHAP, documenting the results and preparing a report on my findings.
-
-By the end of this three-month period, I had a comprehensive understanding of SHAP and its application in identifying important features, providing valuable insights into the robustness of models.
-
-\section{Third Three Months Plan (April 2024 - June 2024)}
-
-The focus for these three months was on reading papers on test case generation and coverage criteria, identifying gaps in existing frameworks, designing a conceptual end-to-end framework, and understanding the calculation of local and global robustness.
-
-\textbf{Reading Papers and Identifying Gaps (Weeks 1-4)}:
-I reviewed several papers on test case generation and coverage criteria, identifying the absence of a comprehensive end-to-end framework.
-
-\textbf{Designing a Conceptual Framework (Weeks 5-8)}:
-I conceptualized and designed a framework that integrates specification, test case generation, coverage criteria, and error summarization. I developed models to understand and illustrate the differences between local and global coverage.
-
-\textbf{Implementing the Simple Adder Example (Weeks 9-12)}:
-I implemented a simple adder example using the MNIST dataset to demonstrate local and global coverage concepts, calculating local correctness first and then global correctness.
-
-\textbf{Exploring ProbLog (Weeks 9-12)}:
-I explored ProbLog, a probabilistic programming language, to calculate probabilities related to model robustness.
-
-By the end of this period, I had designed a comprehensive framework and implemented practical examples to demonstrate local and global coverage, providing insights into incorporating probabilistic calculations.
-
-\section{Fourth and Fifth Months Plan (July 2024 - August 2024)}
-
-During these two months, the focus was on implementing ProbLog to check global robustness, integrating ProbLog with Python, and applying the framework to different datasets.
-
-\textbf{Implementing ProbLog for Global Robustness (July 2024)}:
-I implemented ProbLog to check the global robustness of models, successfully running the simple adder example using the MNIST dataset with various semantic attacks.
-
-\textbf{Integrating ProbLog with Python (July 2024)}:
-I integrated ProbLog with Python to calculate local robustness and pass the resulting values to ProbLog for global robustness calculations.
-
-\textbf{Applying the Framework to Different Datasets (August 2024)}:
-I applied the framework to the DAWN dataset with different weather conditions, assuming specific specifications and calculating global correctness.
-
-\textbf{Writing the Mini Thesis (August 2024)}:
-I documented all activities and findings in a mini thesis, summarizing the implementation of ProbLog, the integration with Python, and the application of the framework to different datasets.
-
-By the end of this period, I had successfully implemented and integrated ProbLog with Python, applied the framework to the MNIST and DAWN datasets, and documented the entire process and findings in a mini thesis.
-
-\section{Two-Year Plan (October 2024 - September 2026)}
-
-The next two years of my PhD will focus on several key areas: exploring and developing efficient sampling techniques, working on error summarization, writing and submitting papers to conferences and journals, and integrating these advancements into the existing framework. Below is a detailed plan outlining these activities.
-
-\subsection{October 2024 - December 2024}
-
-During the first three months, the primary focus will be on exploring and developing efficient sampling techniques. This includes conducting an in-depth review of existing sampling methods to identify their strengths and limitations, and beginning to develop a new or improved sampling method aimed at efficiently identifying corner cases. Initial experiments will be conducted using the MNIST and CIFAR datasets to gather preliminary results. Concurrently, I will begin drafting a paper based on these findings, aiming for submission to a conference or journal by the end of this period.
-
-\subsection{January 2025 - March 2025}
-
-In the next three months, the focus will shift to refining and testing the newly developed sampling technique. The refined method will be applied to additional datasets, such as DAWN and ImageNet, to evaluate its robustness and generalizability. Integration of the sampling technique into the existing testing framework will also be completed. Preliminary analysis will be conducted to compare the new sampling technique's efficiency and effectiveness with traditional methods. Another paper will be written and submitted during this period, possibly extending the first paper with more comprehensive results.
-
-\subsection{April 2025 - June 2025}
-
-The focus for these three months will be on comprehensive evaluation and validation of the sampling technique. Extensive testing will be conducted across various datasets and models, and results will be validated using statistical and probabilistic methods to ensure reliability. Necessary adjustments will be made to the testing framework to better incorporate the new sampling technique. During this time, I will also begin exploring different methods for error summarization to identify the best way to present error summaries. A draft manuscript based on the findings from the sampling technique development and evaluation will be prepared for submission.
-
-\subsection{July 2025 - September 2025}
-
-The primary activities during this period will involve finalizing the sampling technique, ensuring it is well-documented and reproducible, and completing its integration into the testing framework. I will start drafting the initial chapters of my thesis, focusing on the methodology, sampling technique, and preliminary results. Preparations for conference presentations and workshops will also take place to present findings and gather feedback from the academic community. Additionally, another paper focusing on comprehensive evaluation results or error summarization methods will be drafted and submitted.
-
-\subsection{October 2025 - September 2026}
-
-The final year of my PhD will be dedicated to implementation, evaluation, and thesis writing. From October 2025 to December 2025, I will apply the finalized testing framework to real-world DNN systems in collaboration with industry partners or academic collaborators. Data collected from these real-world applications will be analyzed to assess the practical impact and effectiveness of the framework. Concurrently, I will continue refining the methods for error summarization based on real-world application data and feedback.
-
-From January 2026 to March 2026, I will conduct final experiments to solidify the results and conclusions of my research, performing a detailed analysis of all collected data. Manuscripts will be finalized and submitted to high-impact journals and conferences, ensuring all research outputs are peer-reviewed and published. The error summarization method will be concluded and integrated into the framework.
-
-From April 2026 to June 2026, I will complete writing the remaining chapters of my thesis, including results, discussion, and conclusion. The entire thesis will be reviewed and edited, incorporating feedback from supervisors and peers to ensure clarity and coherence. Preparations for the thesis defense will also take place, including creating presentation slides and rehearsing the defense presentation.
-
-Finally, from July 2026 to September 2026, I will submit the finalized thesis to the examination committee and successfully defend it, addressing any questions and feedback. Required revisions will be made based on the defense feedback, and the final approved version of the thesis will be submitted. All administrative tasks required for graduation will be completed, and preparations for the graduation ceremony will be made.
-
-Throughout these two years, I will consistently work on writing and submitting papers to conferences and journals, ensuring continuous dissemination of my research findings and contributing to the academic community.
+\subsubsection{Integrate specification module into the framework (M\textsubscript{20} - M\textsubscript{23}, 0\% completion)}
+Set clear criteria for evaluating test outcomes.
 
 
-% \section{Gantt Chart for PhD Progress and Future Plan}
 
-% \begin{center}
-%   \begin{ganttchart}[
-%     y unit title=0.6cm,
-%     y unit chart=0.7cm,
-%     vgrid,
-%     hgrid,
-%     title height=1,
-%     title label font=\bfseries\footnotesize,
-%     bar/.append style={fill=blue!60},
-%     bar incomplete/.append style={fill=blue!30},
-%     bar height=0.6,
-%     group right shift=0,
-%     group top shift=0.6,
-%     group height=0.3,
-%     group peaks width={0.2}
-%   ]{2023-10}{2026-09}
-%     % Titles
-%     \gantttitle{2023}{3}
-%     \gantttitle{2024}{12}
-%     \gantttitle{2025}{12}
-%     \gantttitle{2026}{9} \\
-%     \gantttitlelist{10,...,12}{1}
-%     \gantttitlelist{1,...,12}{1}
-%     \gantttitlelist{1,...,12}{1}
-%     \gantttitlelist{1,...,9}{1} \\
+\subsection{Sampling (Module 3, 30\% completion)}
+\subsubsection{Reading Papers Related to Sampling Techniques and Identify Gaps (M\textsubscript{9} - M\textsubscript{10}, 50\% completion)}
+M\textsubscript{9} - M\textsubscript{10}, 50\% completion.
+
+\subsubsection{Develop Efficient Sampling Technique (M\textsubscript{10} - M\textsubscript{12}, 0\% completion))}
+Develop a technique that will cover all inputs or corner cases (M\textsubscript{10} - M\textsubscript{12}, 0\% completion).
+
+\subsubsection{Implement Existing Sampling Techniques (M\textsubscript{9} - M\textsubscript{10}, 30\% completion)}
+Identify corner cases and prioritize those corner cases (M\textsubscript{9} - M\textsubscript{10}, 30\% completion).
+
+\subsubsection{Integrate this Module into the Framework (M\textsubscript{9} - M\textsubscript{10}, 0\% completion)}
+M\textsubscript{9} - M\textsubscript{10}, 0\% completion.
+
+\subsection{Interpretability (Module 4, 20\% completion)}
+\subsubsection{Literature Review (M\textsubscript{4} - M\textsubscript{24}, 30\% completion)}
+M\textsubscript{4} - M\textsubscript{24}, 30\% completion.
+
+\subsubsection{Implementation of SHAP Tool (M\textsubscript{4} - M\textsubscript{6}, 80\% completion)}
+M\textsubscript{4} - M\textsubscript{6}, 80\% completion.
+
+\subsubsection{Applying SHAP to Identify Important Pixels (M\textsubscript{4} - M\textsubscript{5}, 80\% completion)}
+M\textsubscript{4} - M\textsubscript{5}, 80\% completion.
+
+\subsubsection{Explore Other Interpretability Analysis Techniques (M\textsubscript{15} - M\textsubscript{17}, 0\% completion)}
+Explore techniques such as LIME to identify key features that can guide the generation of optimal test cases for evaluating model robustness (M\textsubscript{15} - M\textsubscript{17}, 0\% completion).
+
+\subsubsection{Integrate Interpretability Approach in Test Case Generation Module (M\textsubscript{16} - M\textsubscript{17}, 0\% completion)}
+M\textsubscript{16} - M\textsubscript{17}, 0\% completion.
+
+\subsection{Testcase Generation (Module 5, 50\% completion)}
+\subsubsection{Literature Review (M\textsubscript{1} - M\textsubscript{18}, 50\% completion)}
+M\textsubscript{1} - M\textsubscript{18}, 50\% completion.
+
+\subsubsection{Exploring Libraries for Test Case Generation (M\textsubscript{1} - M\textsubscript{2}, 80\% completion)}
+M\textsubscript{1} - M\textsubscript{2}, 80\% completion.
+
+\subsubsection{Implementing Adversarial Attacks and Semantic Adversarial Test Cases (M\textsubscript{3} - M\textsubscript{4}, 80\% completion)}
+M\textsubscript{3} - M\textsubscript{4}, 80\% completion.
+
+\subsubsection{Apply Existing Test Case Generation Methods to Benchmark Datasets (Analyze the results (M\textsubscript{13} - M\textsubscript{14}, 0\% completion))}
+Analyze the results (M\textsubscript{13} - M\textsubscript{14}, 0\% completion).
+
+\subsubsection{Automate Proposed Test Generation Module (M\textsubscript{15} - M\textsubscript{16}, 0\% completion)}
+M\textsubscript{15} - M\textsubscript{16}, 0\% completion.
+
+\subsection{Coverage Criteria (Module 6, 35\% completion)}
+\subsubsection{Reading Papers and Identifying Gaps (M\textsubscript{6} - M\textsubscript{9}, 50\% completion)}
+M\textsubscript{6} - M\textsubscript{9}, 50\% completion.
+
+\subsubsection{Apply Existing Coverage Criteria to Benchmark Datasets ((M\textsubscript{13} - M\textsubscript{14}, 0\% completion))}
+Analyze the results (M\textsubscript{13} - M\textsubscript{14}, 0\% completion).
+
+\subsubsection{Reading Papers Related to Problog (M\textsubscript{6} - M\textsubscript{8}, 50\% completion)}
+M\textsubscript{6} - M\textsubscript{8}, 50\% completion.
+
+\subsubsection{Understand the Problog Language and Editor (M\textsubscript{9} - M\textsubscript{10}, 80\% completion)}
+M\textsubscript{9} - M\textsubscript{10}, 80\% completion.
+
+\subsubsection{Run Examples on Problog and Understand Inputs and Outputs (M\textsubscript{9} - M\textsubscript{10}, 70\% completion)}
+M\textsubscript{9} - M\textsubscript{10}, 70\% completion.
+
+\subsection{Error Summarization (Module 7, 0\% completion)}
+\subsubsection{Find Ways to Properly Summarize the Counter Examples (M\textsubscript{17} - M\textsubscript{18}, 0\% completions)}
+M\textsubscript{17} - M\textsubscript{18}, 0\% completion.
+
+\subsubsection{Best Visuals to Represent Errors Report (M\textsubscript{18} - M\textsubscript{20}, 0\% completion)} 
+M\textsubscript{18} - M\textsubscript{20}, 0\% completion.
+
+\subsubsection{Integrate Error Summarization Module in Framework (M\textsubscript{20} - M\textsubscript{21}, 0\% completion)}
+M\textsubscript{20} - M\textsubscript{21}, 0\% completion.
+
+\section{Mapping of Research Milestones to Objectives}
+\begin{table*}[ht]
+  \centering
+  \renewcommand{\arraystretch}{1.5} 
+  \begin{tabular}{|l|l|}
+    \hline
+    \rowcolor[HTML]{000000} 
+    \multicolumn{1}{|c|}{\cellcolor[HTML]{000000}{\color[HTML]{FFFFFF} \textbf{Milestones}}} & {\color[HTML]{FFFFFF} \textbf{Research Objectives}} \\ \hline
+    {\color[HTML]{404040} Conference 1 (EuroML Conf 2025)} & Obj1, 4, 6 \\ \hline
+    {\color[HTML]{404040} Conference 2 (ICSE 2025)} & Obj3 \\ \hline
+    {\color[HTML]{404040} Conference 4 (ASE 2026)} & Obj2 \\ \hline
+    {\color[HTML]{404040} Conference 5 (ICST 2026)} & Obj7 \\ \hline
+    {\color[HTML]{404040} Journal Paper 1 (Neural Networks)} & Obj1, 3, 4, 5 \\ \hline
+    {\color[HTML]{404040} Journal Paper 2 (IEEE Transaction on Software Engineering)} & Obj1, 2, 6, 7 \\ \hline
+  \end{tabular}
+  \caption{Mapping of Research Milestones to Objectives}
+  \label{table:milestones}
+\end{table*}
+
+
+\section{Gantt Chart for Task-Wise Completion}
+\hspace*{-3cm}
+% \afterpage{
+% \begin{landscape}
+\begin{ganttchart}[
+  y unit chart=0.6cm,
+  x unit=0.023cm,
+  vgrid={*1{draw=none}, *1{draw=black!10}}, % Reduce vertical grid lines
+  hgrid={*1{draw=black!20}}, % Reduce horizontal grid lines
+  time slot format=isodate,
+  title/.append style={fill=none, draw=black},
+  title label font=\bfseries\footnotesize\color{black},
+  bar/.append style={draw=none, fill=barblue},
+  bar incomplete/.append style={fill=barblue!50},
+  bar label font=\bfseries\footnotesize\color{black},
+  group incomplete/.append style={fill=groupblue},
+  group left shift=0,
+  group right shift=0,
+  group height=.4,
+  group peaks tip position=0,
+  group label node/.append style={left=.5cm},
+  group progress label font=\bfseries\small,
+  link/.append style={-latex, line width=1.5pt, linkred},
+  link label font=\scriptsize\bfseries,
+  link label node/.append style={below left=-2pt and 0pt}
+]{2024-10-01}{2026-10-30}
+\gantttitlecalendar{year, month=shortname} \\
+
+% Module 1: DNN Testing Framework
+\ganttgroup[progress=25]{M1}{2024-10-01}{2024-12-31} \\
+\ganttbar[progress=60]{5.2.1.1}{2024-10-01}{2024-12-28}\\ % Literature review (M1-M5)
+\ganttbar[progress=100]{5.2.1.2}{2024-10-01}{2024-12-31}\\ % Designing a conceptual framework (M8-M12)
+\ganttbar[progress=70]{5.2.1.3}{2024-10-01}{2024-12-31} \\% Design local and global coverage flow (M8-M10)
+\ganttbar[progress=100]{5.2.1.4}{2024-10-01}{2024-12-31}\\ % Implementing the Simple real life Example (M8-M10)
+\ganttbar[progress=100]{5.2.1.5}{2024-10-01}{2024-12-30} \\% Implementing ProbLog for calculating global robustness (M9-M11)
+\ganttbar[progress=100]{5.2.1.6}{2024-10-01}{2024-12-30} \\% Integrate ProbLog code with python code (M9-M11)
+\ganttbar[progress=50]{5.2.1.7}{2024-10-01}{2024-12-31} \\% Applying the framework to different datasets (M9-M13)
+
+% Module 2: Specification
+\ganttgroup[progress=0]{M2} {2025-01-01}{2025-06-30} \\
+\ganttbar[progress=0]{5.2.2.1}{2025-01-01}{2025-03-31} \\% Find a way to define specification (M20-M23)
+\ganttbar[progress=0]{5.2.2.2}{2025-01-01}{2025-03-31} \\% How to pass specifications to ProbLog (M20-M23)
+\ganttbar[progress=0]{5.2.2.3}{2025-04-01}{2025-06-30}\\ % Integrate specification module into the framework (M20-M23)
+
+% % Module 3: Sampling
+\ganttgroup[progress=30]{M3}{2024-10-01}{2025-06-30} \\
+\ganttbar[progress=50]{5.2.3.1}{2024-10-01}{2024-07-31}\\ % Reading Papers Related to Sampling Techniques and Identify Gaps (M9-M10)
+\ganttbar[progress=0]{5.2.3.2}{2024-10-01}{2024-08-30} \\% Develop Efficient Sampling Technique (M10-M12)
+\ganttbar[progress=30]{5.2.3.3}{2024-10-01}{2025-12-31} \\% Implement Existing Sampling Techniques (M9-M10)
+\ganttbar[progress=0]{5.2.3.4}{2025-10-01}{2025-06-30} \\% Integrate this Module into the Framework (M9-M10)
+  % % Module 4: Interpretability
+  \ganttgroup[progress=20]{M4}{2024-10-01}{2025-09-30} \\
+  \ganttbar[progress=30]{5.2.4.1}{2024-10-01}{2024-06-30}\\ % Literature Review (M4-M24)
+  \ganttbar[progress=80]{5.2.4.2}{2024-10-01}{2024-12-31}\\ % Implementation of SHAP Tool (M4-M6)
+  % Integrate Interpretability Approach in Test Case Generation Module (M16-M17)
+\end{ganttchart}
+\newpage
+\hspace*{-3cm}
+\begin{ganttchart}[
+  y unit chart=0.6cm,
+  x unit=0.023cm,
+  vgrid={*1{draw=none}, *1{draw=black!10}}, % Reduce vertical grid lines
+  hgrid={*1{draw=black!20}}, % Reduce horizontal grid lines
+  time slot format=isodate,
+  title/.append style={fill=none, draw=black},
+  title label font=\bfseries\footnotesize\color{black},
+  bar/.append style={draw=none, fill=barblue},
+  bar incomplete/.append style={fill=barblue!50},
+  bar label font=\bfseries\footnotesize\color{black},
+  group incomplete/.append style={fill=groupblue},
+  group left shift=0,
+  group right shift=0,
+  group height=.4,
+  group peaks tip position=0,
+  group label node/.append style={left=.5cm},
+  group progress label font=\bfseries\small,
+  link/.append style={-latex, line width=1.5pt, linkred},
+  link label font=\scriptsize\bfseries,
+  link label node/.append style={below left=-2pt and 0pt}
+]{2024-10-01}{2026-10-30}
+  \gantttitlecalendar{year, month=shortname} \\
   
-%     % Completed Tasks
-%     \ganttgroup{Completed Work}{2023-10}{2024-08} \\
-%     \ganttbar[progress=100]{Literature Review and Adversarial Testing}{2023-10}{2023-12} \\
-%     \ganttbar[progress=100]{Study and Apply SHAP}{2024-01}{2024-03} \\
-%     \ganttbar[progress=100]{Framework Design and ProbLog Exploration}{2024-04}{2024-06} \\
-%     \ganttbar[progress=100]{ProbLog Integration and Mini Thesis}{2024-07}{2024-08} \\
-    
-%     % Future Work
-%     \ganttgroup{Future Work}{2024-09}{2026-09} \\
-%     \ganttbar[progress=100]{Explore and Develop Sampling Techniques}{2024-09}{2024-11} \\
-%     \ganttbar[progress=100]{Refine and Test Sampling Techniques}{2024-12}{2025-02} \\
-%     \ganttbar[progress=100]{Comprehensive Evaluation and Validation}{2025-03}{2025-05} \\
-%     \ganttbar[progress=100]{Finalize Sampling Technique}{2025-06}{2025-08} \\
-%     \ganttbar[progress=100]{Implementation and Real-World Applications}{2025-09}{2025-11} \\
-%     \ganttbar[progress=100]{Final Experiments and Analysis}{2025-12}{2026-02} \\
-%     \ganttbar[progress=100]{Thesis Writing and Review}{2026-03}{2026-05} \\
-%     \ganttbar[progress=100]{Thesis Defense and Final Submission}{2026-06}{2026-09}
-%   \end{ganttchart}
-%   \end{center}
+  \ganttbar[progress=80]{5.2.4.3}{2024-10-01}{2025-03-31}\\ % Applying SHAP to Identify Important Pixels (M4-M5)
+  \ganttbar[progress=0]{5.2.4.4}{2024-10-01}{2025-06-30}\\ % Explore Other Interpretability Analysis Techniques (M15-M17)
+  \ganttbar[progress=0]{5.2.4.5}{2024-10-01}{2025-09-30}\\ 
+
+% Module 5: Testcase Generation
+\ganttgroup[progress=50]{M5}{2024-10-01}{2024-12-30} \\
+\ganttbar[progress=50]{5.2.5.1}{2024-10-01}{2024-03-31}\\ % Literature Review (M1-M18)
+\ganttbar[progress=80]{5.2.5.2}{2024-10-01}{2024-09-30}\\ % Exploring Libraries for Test Case Generation (M1-M2)
+\ganttbar[progress=80]{5.2.5.3}{2024-10-01}{2025-03-31}\\ % Implementing Adversarial Attacks and Semantic Adversarial Test Cases (M3-M4)
+\ganttbar[progress=0]{5.2.5.4}{2024-10-01}{2025-06-30}\\ % Apply Existing Test Case Generation Methods to Benchmark Datasets (M13-M14)
+\ganttbar[progress=0]{5.2.5.5}{2024-10-01}{2025-03-30}\\ % Automate Proposed Test Generation Module (M15-M16)
+
+% Module 6: Coverage Criteria
+\ganttgroup[progress=35]{M6}{2024-10-01}{2025-12-30} \\
+\ganttbar[progress=50]{5.2.6.1}{2024-10-01}{2024-03-31}\\ % Reading Papers and Identifying Gaps (M6-M9)
+\ganttbar[progress=0]{5.2.6.2}{2024-10-01}{2024-09-30}\\ % Apply Existing Coverage Criteria to Benchmark Datasets (M13-M14)
+\ganttbar[progress=50]{5.2.6.3}{2024-10-01}{2025-03-31}\\ % Reading Papers Related to Problog (M6-M8)
+\ganttbar[progress=80]{5.2.6.4}{2025-10-01}{2025-12-30} \\% Understand the Problog Language and Editor (M9-M10)
+\ganttbar[progress=70]{5.2.6.5}{2025-10-01}{2025-12-30}\\ % Run Examples on Problog and Understand Inputs and Outputs (M9-M10)
+
+% Module 7: Error Summarization
+\ganttgroup[progress=0]{M7}{2024-10-01}{2026-09-30} \\
+\ganttbar[progress=0]{5.2.7.1}{2024-10-01}{2024-03-31}\\ % Find Ways to Properly Summarize the Counter Examples (M17-M18)
+\ganttbar[progress=0]{5.2.7.2}{2024-10-01}{2024-09-30} \\% Best Visuals to Represent Errors Report (M18-M20)
+\ganttbar[progress=0]{5.2.7.3}{2024-10-01}{2026-09-30} % Integrate Error Summarization Module in Framework (M20-M21)
+
+\end{ganttchart}
+% \end{landscape}
+% }
