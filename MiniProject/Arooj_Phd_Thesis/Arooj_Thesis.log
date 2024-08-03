@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.6)  3 AUG 2024 02:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.6)  3 AUG 2024 20:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1414,7 +1414,7 @@ File: tikzlibraryfit.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
-LaTeX Font Info:    Trying to load font information for T1+lmss on input line 128.
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 130.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (./Arooj_Thesis.aux (./macros.aux) (./cover1.aux) (./abstract.aux) (./contents.aux) (./figures.aux) (./tables.aux) (./algos.aux) (./How to read this document.aux) (./chap1.aux) (./chap2.aux) (./chap3.aux) (./chap4.aux) (./chap9.aux
@@ -1424,24 +1424,24 @@ LaTeX Warning: Label `fig:no_publish' multiply defined.
 ) (./chap7.aux) (./Appendix_A.aux))
 \openout1 = `Arooj_Thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 130.
+LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 130.
+LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 130.
+LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 130.
+LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 130.
+LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 130.
+LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 130.
+LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 130.
+LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 130.
+LaTeX Font Info:    ... okay on input line 130.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
@@ -1468,20 +1468,20 @@ Package caption Info: End \AtBeginDocument code.
 \everyMPtoPDFconversion=\toks76
 )
 \c@lstlisting=\count473
-Package hyperref Info: Link coloring ON on input line 128.
-LaTeX Info: Redefining \microtypecontext on input line 128.
-Package microtype Info: Applying patch `item' on input line 128.
-Package microtype Info: Applying patch `toc' on input line 128.
-Package microtype Info: Applying patch `eqnum' on input line 128.
-Package microtype Info: Applying patch `footnote' on input line 128.
-Package microtype Info: Applying patch `verbatim' on input line 128.
+Package hyperref Info: Link coloring ON on input line 130.
+LaTeX Info: Redefining \microtypecontext on input line 130.
+Package microtype Info: Applying patch `item' on input line 130.
+Package microtype Info: Applying patch `toc' on input line 130.
+Package microtype Info: Applying patch `eqnum' on input line 130.
+Package microtype Info: Applying patch `footnote' on input line 130.
+Package microtype Info: Applying patch `verbatim' on input line 130.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 128.
+LaTeX Info: Redefining \showhyphens on input line 130.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1575,12 +1575,22 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 
 
 
-] [4]
-Overfull \hbox (7.53094pt too wide) in paragraph at lines 78--78
+]
+Overfull \hbox (12.32224pt too wide) in paragraph at lines 56--56
+ [][] [][][]\T1/lmss/m/n/12 (-20) Integrate er-ror sum-marza-tion modules(M$[]$ - M$[]$, 
+ []
+
+[4]
+Overfull \hbox (18.61565pt too wide) in paragraph at lines 67--67
+ [][] [][][]\T1/lmss/m/n/12 (-20) Automate sam-ple gen-er-a-tion ac-cord-ing to specification(M$[]$ 
+ []
+
+[5]
+Overfull \hbox (7.53094pt too wide) in paragraph at lines 82--82
  [][] [][][]\T1/lmss/m/n/12 (-20) Apply Ex-ist-ing Cov-er-age Cri-te-ria to Bench-mark Datasets 
  []
 
-[5])
+)
 \tf@toc=\write5
 \openout5 = `Arooj_Thesis.toc'.
 
@@ -1654,7 +1664,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7> on input line 18.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 18.
-<figures/Number of Published Papers on DNN Safety.png, id=356, 722.7pt x 433.62pt>
+<figures/Number of Published Papers on DNN Safety.png, id=389, 722.7pt x 433.62pt>
 File: figures/Number of Published Papers on DNN Safety.png Graphic file (type png)
 <use figures/Number of Published Papers on DNN Safety.png>
 Package pdftex.def Info: figures/Number of Published Papers on DNN Safety.png  used on input line 22.
@@ -1698,7 +1708,7 @@ Chapter 2.
 ]
 
 pdfTeX warning: pdflatex (file ./figures/traditionalandDNN.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/traditionalandDNN.pdf, id=440, 1191.7022pt x 660.21657pt>
+<figures/traditionalandDNN.pdf, id=472, 1191.7022pt x 660.21657pt>
 File: figures/traditionalandDNN.pdf Graphic file (type pdf)
 <use figures/traditionalandDNN.pdf>
 Package pdftex.def Info: figures/traditionalandDNN.pdf  used on input line 35.
@@ -1713,7 +1723,7 @@ Overfull \hbox (25.42798pt too wide) in paragraph at lines 71--72
 []\T1/lmss/m/sl/12 (-20) Brightness Change\T1/lmss/m/n/12 (-20) : Al-ter-ing the bright-ness of $\OML/lmm/m/it/12 x$\T1/lmss/m/n/12 (-20) , yield-ing $\OML/lmm/m/it/12 x[] \OT1/lmr/m/n/12 (-20) = [](\OML/lmm/m/it/12 x; ^^L\OT1/lmr/m/n/12 (-20) )$\T1/lmss/m/n/12 (-20) . 
  []
 
-<figures/output_update.png, id=465, 2160.51164pt x 268.1217pt>
+<figures/output_update.png, id=497, 2160.51164pt x 268.1217pt>
 File: figures/output_update.png Graphic file (type png)
 <use figures/output_update.png>
 Package pdftex.def Info: figures/output_update.png  used on input line 78.
@@ -1830,7 +1840,7 @@ LaTeX Warning: Reference `Coverage' on page 27 undefined on input line 910.
 
 
 pdfTeX warning: pdflatex (file ./figures/step5.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/step5.pdf, id=620, 1416.79312pt x 707.64375pt>
+<figures/step5.pdf, id=653, 1416.79312pt x 707.64375pt>
 File: figures/step5.pdf Graphic file (type pdf)
 <use figures/step5.pdf>
 Package pdftex.def Info: figures/step5.pdf  used on input line 914.
@@ -1862,7 +1872,7 @@ Package epstopdf Info: Source file: <figures/local_correctness.eps>
 (epstopdf)             Command: <repstopdf --outfile=figures/local_correctness-eps-converted-to.pdf figures/local_correctness.eps>
 (epstopdf)             \includegraphics on input line 47.
 Package epstopdf Info: Output file is already uptodate.
-<figures/local_correctness-eps-converted-to.pdf, id=692, 1445.4pt x 722.7pt>
+<figures/local_correctness-eps-converted-to.pdf, id=724, 1445.4pt x 722.7pt>
 File: figures/local_correctness-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/local_correctness-eps-converted-to.pdf>
 Package pdftex.def Info: figures/local_correctness-eps-converted-to.pdf  used on input line 47.
@@ -1876,7 +1886,7 @@ Package epstopdf Info: Source file: <figures/local_correctness_shap.eps>
 (epstopdf)             Command: <repstopdf --outfile=figures/local_correctness_shap-eps-converted-to.pdf figures/local_correctness_shap.eps>
 (epstopdf)             \includegraphics on input line 54.
 Package epstopdf Info: Output file is already uptodate.
-<figures/local_correctness_shap-eps-converted-to.pdf, id=693, 1445.4pt x 722.7pt>
+<figures/local_correctness_shap-eps-converted-to.pdf, id=725, 1445.4pt x 722.7pt>
 File: figures/local_correctness_shap-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/local_correctness_shap-eps-converted-to.pdf>
 Package pdftex.def Info: figures/local_correctness_shap-eps-converted-to.pdf  used on input line 54.
@@ -1900,7 +1910,7 @@ Package epstopdf Info: Source file: <figures/global_correctness.eps>
 (epstopdf)             Command: <repstopdf --outfile=figures/global_correctness-eps-converted-to.pdf figures/global_correctness.eps>
 (epstopdf)             \includegraphics on input line 80.
 Package epstopdf Info: Output file is already uptodate.
-<figures/global_correctness-eps-converted-to.pdf, id=812, 2168.1pt x 1011.78pt>
+<figures/global_correctness-eps-converted-to.pdf, id=845, 2168.1pt x 1011.78pt>
 File: figures/global_correctness-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/global_correctness-eps-converted-to.pdf>
 Package pdftex.def Info: figures/global_correctness-eps-converted-to.pdf  used on input line 80.
@@ -1915,7 +1925,7 @@ Package epstopdf Info: Source file: <figures/global_correctness_combine.eps>
 (epstopdf)             Command: <repstopdf --outfile=figures/global_correctness_combine-eps-converted-to.pdf figures/global_correctness_combine.eps>
 (epstopdf)             \includegraphics on input line 87.
 Package epstopdf Info: Output file is already uptodate.
-<figures/global_correctness_combine-eps-converted-to.pdf, id=817, 722.7pt x 433.62pt>
+<figures/global_correctness_combine-eps-converted-to.pdf, id=850, 722.7pt x 433.62pt>
 File: figures/global_correctness_combine-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/global_correctness_combine-eps-converted-to.pdf>
 Package pdftex.def Info: figures/global_correctness_combine-eps-converted-to.pdf  used on input line 87.
@@ -1930,7 +1940,7 @@ Package epstopdf Info: Source file: <figures/global_correctness_noise_comparison
 (epstopdf)             Command: <repstopdf --outfile=figures/global_correctness_noise_comparison-eps-converted-to.pdf figures/global_correctness_noise_comparison.eps>
 (epstopdf)             \includegraphics on input line 120.
 Package epstopdf Info: Output file is already uptodate.
-<figures/global_correctness_noise_comparison-eps-converted-to.pdf, id=899, 722.7pt x 361.35pt>
+<figures/global_correctness_noise_comparison-eps-converted-to.pdf, id=931, 722.7pt x 361.35pt>
 File: figures/global_correctness_noise_comparison-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/global_correctness_noise_comparison-eps-converted-to.pdf>
 Package pdftex.def Info: figures/global_correctness_noise_comparison-eps-converted-to.pdf  used on input line 120.
@@ -1945,7 +1955,7 @@ Package epstopdf Info: Source file: <figures/combined_global_correctness.eps>
 (epstopdf)             Command: <repstopdf --outfile=figures/combined_global_correctness-eps-converted-to.pdf figures/combined_global_correctness.eps>
 (epstopdf)             \includegraphics on input line 128.
 Package epstopdf Info: Output file is already uptodate.
-<figures/combined_global_correctness-eps-converted-to.pdf, id=905, 722.7pt x 433.62pt>
+<figures/combined_global_correctness-eps-converted-to.pdf, id=937, 722.7pt x 433.62pt>
 File: figures/combined_global_correctness-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/combined_global_correctness-eps-converted-to.pdf>
 Package pdftex.def Info: figures/combined_global_correctness-eps-converted-to.pdf  used on input line 128.
@@ -1960,7 +1970,7 @@ Package epstopdf Info: Source file: <figures/globalcorrectness_vehicle_detection
 (epstopdf)             Command: <repstopdf --outfile=figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf figures/globalcorrectness_vehicle_detection.eps>
 (epstopdf)             \includegraphics on input line 164.
 Package epstopdf Info: Output file is already uptodate.
-<figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf, id=1062, 854.19125pt x 427.5975pt>
+<figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf, id=1094, 854.19125pt x 427.5975pt>
 File: figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf>
 Package pdftex.def Info: figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf  used on input line 164.
@@ -1973,7 +1983,7 @@ Chapter 5.
 ------------------------------------------------------------------------------
  5 PhD Two-Year Plan
 ------------------------------------------------------------------------------
-<figures/researchareas.png, id=1123, 1445.4pt x 813.0375pt>
+<figures/researchareas.png, id=1155, 1445.4pt x 813.0375pt>
 File: figures/researchareas.png Graphic file (type png)
 <use figures/researchareas.png>
 Package pdftex.def Info: figures/researchareas.png  used on input line 22.
@@ -2158,27 +2168,75 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 76.
+(hyperref)                removing `\mathsurround' on input line 72.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 76.
+(hyperref)                removing `\z@' on input line 72.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 76.
+(hyperref)                removing `subscript' on input line 72.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 76.
+(hyperref)                removing `\mathsurround' on input line 72.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 76.
+(hyperref)                removing `\z@' on input line 72.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 76.
+(hyperref)                removing `subscript' on input line 72.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 75.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 75.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 75.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 75.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 75.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 75.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 77.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 77.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 77.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 77.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 77.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 77.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -2206,591 +2264,636 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 82.
+(hyperref)                removing `\mathsurround' on input line 87.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 82.
+(hyperref)                removing `\z@' on input line 87.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 82.
+(hyperref)                removing `subscript' on input line 87.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 82.
+(hyperref)                removing `\mathsurround' on input line 87.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 82.
+(hyperref)                removing `\z@' on input line 87.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 82.
+(hyperref)                removing `subscript' on input line 87.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 88.
+(hyperref)                removing `\mathsurround' on input line 90.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 88.
+(hyperref)                removing `\z@' on input line 90.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 88.
+(hyperref)                removing `subscript' on input line 90.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 88.
+(hyperref)                removing `\mathsurround' on input line 90.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 88.
+(hyperref)                removing `\z@' on input line 90.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 88.
+(hyperref)                removing `subscript' on input line 90.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 91.
+(hyperref)                removing `\mathsurround' on input line 93.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 91.
+(hyperref)                removing `\z@' on input line 93.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 91.
+(hyperref)                removing `subscript' on input line 93.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 91.
+(hyperref)                removing `\mathsurround' on input line 93.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 91.
+(hyperref)                removing `\z@' on input line 93.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 91.
+(hyperref)                removing `subscript' on input line 93.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 94.
+(hyperref)                removing `\mathsurround' on input line 99.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 94.
+(hyperref)                removing `\z@' on input line 99.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 94.
+(hyperref)                removing `subscript' on input line 99.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 94.
+(hyperref)                removing `\mathsurround' on input line 99.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 94.
+(hyperref)                removing `\z@' on input line 99.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 94.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 97.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 97.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 97.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 97.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 97.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 97.
+(hyperref)                removing `subscript' on input line 99.
 
 [40]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 101.
+(hyperref)                removing `\mathsurround' on input line 102.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 101.
+(hyperref)                removing `\z@' on input line 102.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 101.
+(hyperref)                removing `subscript' on input line 102.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 101.
+(hyperref)                removing `\mathsurround' on input line 102.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 101.
+(hyperref)                removing `\z@' on input line 102.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 101.
+(hyperref)                removing `subscript' on input line 102.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 104.
+(hyperref)                removing `\mathsurround' on input line 105.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 104.
+(hyperref)                removing `\z@' on input line 105.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 104.
+(hyperref)                removing `subscript' on input line 105.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 104.
+(hyperref)                removing `\mathsurround' on input line 105.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 104.
+(hyperref)                removing `\z@' on input line 105.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 104.
+(hyperref)                removing `subscript' on input line 105.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 107.
+(hyperref)                removing `\mathsurround' on input line 108.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 107.
+(hyperref)                removing `\z@' on input line 108.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 107.
+(hyperref)                removing `subscript' on input line 108.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 107.
+(hyperref)                removing `\mathsurround' on input line 108.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 107.
+(hyperref)                removing `\z@' on input line 108.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 107.
+(hyperref)                removing `subscript' on input line 108.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 110.
+(hyperref)                removing `\mathsurround' on input line 112.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 110.
+(hyperref)                removing `\z@' on input line 112.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 110.
+(hyperref)                removing `subscript' on input line 112.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 110.
+(hyperref)                removing `\mathsurround' on input line 112.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 110.
+(hyperref)                removing `\z@' on input line 112.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 110.
+(hyperref)                removing `subscript' on input line 112.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 113.
+(hyperref)                removing `\mathsurround' on input line 115.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 113.
+(hyperref)                removing `\z@' on input line 115.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 113.
+(hyperref)                removing `subscript' on input line 115.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 113.
+(hyperref)                removing `\mathsurround' on input line 115.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 113.
+(hyperref)                removing `\z@' on input line 115.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 113.
+(hyperref)                removing `subscript' on input line 115.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 117.
+(hyperref)                removing `\mathsurround' on input line 118.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 117.
+(hyperref)                removing `\z@' on input line 118.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 117.
+(hyperref)                removing `subscript' on input line 118.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 117.
+(hyperref)                removing `\mathsurround' on input line 118.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 117.
+(hyperref)                removing `\z@' on input line 118.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 117.
+(hyperref)                removing `subscript' on input line 118.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 120.
+(hyperref)                removing `\mathsurround' on input line 121.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 120.
+(hyperref)                removing `\z@' on input line 121.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 120.
+(hyperref)                removing `subscript' on input line 121.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 120.
+(hyperref)                removing `\mathsurround' on input line 121.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 120.
+(hyperref)                removing `\z@' on input line 121.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 120.
+(hyperref)                removing `subscript' on input line 121.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 123.
+(hyperref)                removing `\mathsurround' on input line 124.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 123.
+(hyperref)                removing `\z@' on input line 124.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 123.
+(hyperref)                removing `subscript' on input line 124.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 123.
+(hyperref)                removing `\mathsurround' on input line 124.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 123.
+(hyperref)                removing `\z@' on input line 124.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 123.
+(hyperref)                removing `subscript' on input line 124.
 
 [41]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 126.
+(hyperref)                removing `\mathsurround' on input line 128.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 126.
+(hyperref)                removing `\z@' on input line 128.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 126.
+(hyperref)                removing `subscript' on input line 128.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 126.
+(hyperref)                removing `\mathsurround' on input line 128.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 126.
+(hyperref)                removing `\z@' on input line 128.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 126.
+(hyperref)                removing `subscript' on input line 128.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 129.
+(hyperref)                removing `\mathsurround' on input line 131.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 129.
+(hyperref)                removing `\z@' on input line 131.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 129.
+(hyperref)                removing `subscript' on input line 131.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 129.
+(hyperref)                removing `\mathsurround' on input line 131.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 129.
+(hyperref)                removing `\z@' on input line 131.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 129.
+(hyperref)                removing `subscript' on input line 131.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 133.
+(hyperref)                removing `\mathsurround' on input line 134.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 133.
+(hyperref)                removing `\z@' on input line 134.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 133.
+(hyperref)                removing `subscript' on input line 134.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 133.
+(hyperref)                removing `\mathsurround' on input line 134.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 133.
+(hyperref)                removing `\z@' on input line 134.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 133.
+(hyperref)                removing `subscript' on input line 134.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 136.
+(hyperref)                removing `\mathsurround' on input line 137.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 136.
+(hyperref)                removing `\z@' on input line 137.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 136.
+(hyperref)                removing `subscript' on input line 137.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 136.
+(hyperref)                removing `\mathsurround' on input line 137.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 136.
+(hyperref)                removing `\z@' on input line 137.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 136.
+(hyperref)                removing `subscript' on input line 137.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 139.
+(hyperref)                removing `\mathsurround' on input line 140.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 139.
+(hyperref)                removing `\z@' on input line 140.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 139.
+(hyperref)                removing `subscript' on input line 140.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 139.
+(hyperref)                removing `\mathsurround' on input line 140.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 139.
+(hyperref)                removing `\z@' on input line 140.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 139.
+(hyperref)                removing `subscript' on input line 140.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 142.
+(hyperref)                removing `\mathsurround' on input line 144.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 142.
+(hyperref)                removing `\z@' on input line 144.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 142.
+(hyperref)                removing `subscript' on input line 144.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 142.
+(hyperref)                removing `\mathsurround' on input line 144.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 142.
+(hyperref)                removing `\z@' on input line 144.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 142.
+(hyperref)                removing `subscript' on input line 144.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 145.
+(hyperref)                removing `\mathsurround' on input line 147.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 145.
+(hyperref)                removing `\z@' on input line 147.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 145.
+(hyperref)                removing `subscript' on input line 147.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 145.
+(hyperref)                removing `\mathsurround' on input line 147.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 145.
+(hyperref)                removing `\z@' on input line 147.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 145.
+(hyperref)                removing `subscript' on input line 147.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 149.
+(hyperref)                removing `\mathsurround' on input line 150.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 149.
+(hyperref)                removing `\z@' on input line 150.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 149.
+(hyperref)                removing `subscript' on input line 150.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 149.
+(hyperref)                removing `\mathsurround' on input line 150.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 149.
+(hyperref)                removing `\z@' on input line 150.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 149.
+(hyperref)                removing `subscript' on input line 150.
 
 [42]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 152.
+(hyperref)                removing `\mathsurround' on input line 153.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 152.
+(hyperref)                removing `\z@' on input line 153.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 152.
+(hyperref)                removing `subscript' on input line 153.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 152.
+(hyperref)                removing `\mathsurround' on input line 153.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 152.
+(hyperref)                removing `\z@' on input line 153.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 152.
+(hyperref)                removing `subscript' on input line 153.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 155.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 155.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 155.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 155.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 155.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 155.
-
-
-Overfull \hbox (16.23793pt too wide) in paragraph at lines 162--173
- [][] 
+Underfull \hbox (badness 1845) in paragraph at lines 156--156
+|[]\T1/lmss/bx/n/12 (+20) Implementing and Au-tomat-ing ProbLog for DNN Cov-er-age
  []
 
-Missing character: There is no , in font nullfont!
 
-Overfull \hbox (40.15427pt too wide) in paragraph at lines 179--234
-|  [] 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 156.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 156.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 156.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 156.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 156.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 156.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 160.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 160.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 160.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 160.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 160.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 160.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 163.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 163.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 163.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 163.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 163.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 163.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 166.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 166.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 166.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 166.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 166.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 166.
+
+[43]
+Overfull \hbox (73.33838pt too wide) in paragraph at lines 209--292
+  [] 
  []
 
-[43] [44]
-Missing character: There is no , in font nullfont!
-)
-Overfull \hbox (111.82535pt too wide) in paragraph at lines 235--165
-[]|  [] 
+[44] [45])
+Overfull \hbox (46.9948pt too wide) in paragraph at lines 293--167
+[]  [] 
  []
 
-[45]
+[46]
 \openout2 = `chap7.aux'.
 
- (./chap7.tex [46
+ (./chap7.tex [47
 
 
 
 
-] [47]
+] [48]
 Underfull \hbox (badness 2150) in paragraph at lines 107--108
 []\T1/lmss/m/n/12 (+20) Sun, Youcheng, et al. "Test-ing deep neu-ral net-works." arXiv preprint
  []
 
-[48]) [49]
+[49]) [50]
 \openout2 = `Appendix_A.aux'.
 
  (./Appendix_A.tex
@@ -2799,12 +2902,12 @@ Appendix A.
  A 
 ------------------------------------------------------------------------------
 
-LaTeX Warning: Hyper reference `systematic' on page 50 undefined on input line 45.
+LaTeX Warning: Hyper reference `systematic' on page 51 undefined on input line 45.
 
 
-LaTeX Warning: Reference `systematic' on page 50 undefined on input line 45.
+LaTeX Warning: Reference `systematic' on page 51 undefined on input line 45.
 
-) [50
+) [51
 
 
 
@@ -2823,18 +2926,18 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 46632 strings out of 474181
- 910506 string characters out of 5745948
- 2008457 words of memory out of 5000000
- 67291 multiletter control sequences out of 15000+600000
+ 47010 strings out of 474181
+ 918179 string characters out of 5745948
+ 2026457 words of memory out of 5000000
+ 67655 multiletter control sequences out of 15000+600000
  712335 words of font info for 300 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  81i,13n,96p,2070b,888s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbo10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsso12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsso8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Arooj_Thesis.pdf (59 pages, 1747214 bytes).
+Output written on Arooj_Thesis.pdf (60 pages, 1755107 bytes).
 PDF statistics:
- 1635 PDF objects out of 1728 (max. 8388607)
- 1114 compressed objects within 12 object streams
- 275 named destinations out of 1000 (max. 500000)
- 88982 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 1714 PDF objects out of 1728 (max. 8388607)
+ 1192 compressed objects within 12 object streams
+ 289 named destinations out of 1000 (max. 500000)
+ 89086 words of extra memory for PDF output out of 89155 (max. 10000000)
 
