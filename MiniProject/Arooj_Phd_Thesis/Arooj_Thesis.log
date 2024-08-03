@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.6)  3 AUG 2024 20:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.6)  3 AUG 2024 20:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1417,11 +1417,11 @@ Package csquotes Info: ... found 'babel' package.
 LaTeX Font Info:    Trying to load font information for T1+lmss on input line 130.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) (./Arooj_Thesis.aux (./macros.aux) (./cover1.aux) (./abstract.aux) (./contents.aux) (./figures.aux) (./tables.aux) (./algos.aux) (./How to read this document.aux) (./chap1.aux) (./chap2.aux) (./chap3.aux) (./chap4.aux) (./chap9.aux
+) (./Arooj_Thesis.aux (./macros.aux) (./cover1.aux) (./abstract.aux) (./contents.aux) (./figures.aux) (./tables.aux) (./algos.aux) (./How to read this document.aux) (./chap1.aux) (./chap2.aux) (./chap3.aux) (./chap4.aux) (./chap5.aux
 
 LaTeX Warning: Label `fig:no_publish' multiply defined.
 
-) (./chap7.aux) (./Appendix_A.aux))
+) (./chap6.aux) (./Appendix_A.aux))
 \openout1 = `Arooj_Thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 130.
@@ -1976,9 +1976,9 @@ File: figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf Graphic f
 Package pdftex.def Info: figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf  used on input line 164.
 (pdftex.def)             Requested size: 333.97972pt x 167.17992pt.
  [36 <./figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf>] [37])
-\openout2 = `chap9.aux'.
+\openout2 = `chap5.aux'.
 
- (./chap9.tex
+ (./chap5.tex
 Chapter 5.
 ------------------------------------------------------------------------------
  5 PhD Two-Year Plan
@@ -2871,19 +2871,19 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `subscript' on input line 166.
 
 [43]
-Overfull \hbox (73.33838pt too wide) in paragraph at lines 209--292
+Overfull \hbox (51.10132pt too wide) in paragraph at lines 209--292
   [] 
  []
 
 [44] [45])
-Overfull \hbox (46.9948pt too wide) in paragraph at lines 293--167
+Overfull \hbox (46.9948pt too wide) in paragraph at lines 293--161
 []  [] 
  []
 
 [46]
-\openout2 = `chap7.aux'.
+\openout2 = `chap6.aux'.
 
- (./chap7.tex [47
+ (./chap6.tex [47
 
 
 
@@ -2912,7 +2912,7 @@ LaTeX Warning: Reference `systematic' on page 51 undefined on input line 45.
 
 
 
-] (./Arooj_Thesis.aux (./macros.aux) (./cover1.aux) (./abstract.aux) (./contents.aux) (./figures.aux) (./tables.aux) (./algos.aux) (./How to read this document.aux) (./chap1.aux) (./chap2.aux) (./chap3.aux) (./chap4.aux) (./chap9.aux) (./chap7.aux) (./Appendix_A.aux))
+] (./Arooj_Thesis.aux (./macros.aux) (./cover1.aux) (./abstract.aux) (./contents.aux) (./figures.aux) (./tables.aux) (./algos.aux) (./How to read this document.aux) (./chap1.aux) (./chap2.aux) (./chap3.aux) (./chap4.aux) (./chap5.aux) (./chap6.aux) (./Appendix_A.aux))
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-12-11>
@@ -2926,15 +2926,15 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 47010 strings out of 474181
- 918179 string characters out of 5745948
- 2026457 words of memory out of 5000000
- 67655 multiletter control sequences out of 15000+600000
+ 46893 strings out of 474181
+ 915530 string characters out of 5745948
+ 2025457 words of memory out of 5000000
+ 67538 multiletter control sequences out of 15000+600000
  712335 words of font info for 300 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  81i,13n,96p,2070b,888s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbo10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsso12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsso8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Arooj_Thesis.pdf (60 pages, 1755107 bytes).
+Output written on Arooj_Thesis.pdf (60 pages, 1755766 bytes).
 PDF statistics:
  1714 PDF objects out of 1728 (max. 8388607)
  1192 compressed objects within 12 object streams
