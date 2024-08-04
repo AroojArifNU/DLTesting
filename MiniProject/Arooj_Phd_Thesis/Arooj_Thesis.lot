@@ -2,11 +2,11 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Specification Probabilities for MNIST 2-Digit Addition Under Different Transformations}}{24}{table.47}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces Specification Probabilities (AND) for Vehicle Detection Under Different Weather Conditions \( P(A \cap B \cap C) = P(A) \times P(B) \times P(C) \)}}{26}{table.51}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces Specification Probabilities (OR) for Vehicle Detection Under Different Weather Conditions \( P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C) \)}}{26}{table.52}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Specification Probabilities for MNIST 2-Digit Addition Under Different Transformations}}{25}{table.48}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Specification Probabilities (AND) for Vehicle Detection Under Different Weather Conditions \( P(A \cap B \cap C) = P(A) \times P(B) \times P(C) \)}}{27}{table.52}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Specification Probabilities (OR) for Vehicle Detection Under Different Weather Conditions \( P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C) \)}}{27}{table.53}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Mapping of Research Modules to Objectives}}{39}{table.121}%
-\contentsline {table}{\numberline {5.2}{\ignorespaces Mapping of Research Milestones to Objectives}}{47}{table.130}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Mapping of Research Modules to Objectives}}{40}{table.122}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Mapping of Research Milestones to Objectives}}{48}{table.131}%
 \addvspace {10\p@ }
