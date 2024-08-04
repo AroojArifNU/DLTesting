@@ -50,7 +50,7 @@
 \contentsline {subsection}{\numberline {5.2.4}Interpretability (Module 4, M\textsubscript {Oct24} - M\textsubscript {Dec24}, 42\% completion)}{42}{subsection.125}%
 \contentsline {subsection}{\numberline {5.2.5}Testcase Generation (Module 5, M\textsubscript {Dec24} - M\textsubscript {Mar25}, 42\% completion)}{43}{subsection.126}%
 \contentsline {subsection}{\numberline {5.2.6}Coverage Criteria (Module 6, M\textsubscript {Nov24} - M\textsubscript {Jan25}, 40\% completion)}{44}{subsection.127}%
-\contentsline {subsection}{\numberline {5.2.7}Error Summarization (Module 7, M\textsubscript {Jun25} - M\textsubscript {Aug25}, 0\% completion)}{45}{subsection.128}%
+\contentsline {subsection}{\numberline {5.2.7}Error Summarisation (Module 7, M\textsubscript {Jun25} - M\textsubscript {Aug25}, 0\% completion)}{45}{subsection.128}%
 \contentsline {section}{\numberline {5.3}Mapping of Research Milestones to Objectives}{46}{section.129}%
 \contentsline {section}{\numberline {5.4}Gantt Chart for Task-Wise Completion}{47}{section.131}%
-\contentsline {chapter}{\numberline {A}}{54}{appendix.133}%
+\contentsline {chapter}{\numberline {A}}{54}{appendix.134}%
