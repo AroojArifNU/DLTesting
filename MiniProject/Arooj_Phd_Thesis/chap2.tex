@@ -28,11 +28,11 @@ To develop a comprehensive testing framework for DNNs, it is crucial to explore 
 
 \section{Deep Neural Networks and AI Systems}
 
-Deep neural networks (DNNs) mimic the structure of the human brain, consisting of millions of interconnected neurons. They extract high-level features from raw input using labeled training data without human interference.
+DNNs mimic the structure of the human brain, consisting of millions of interconnected neurons. They extract high-level features from raw input using labeled training data without human interference.
 
 Formally, a DNN is a function $f\colon\mathbb{R}^{s_0}\mapsto \mathbb{R}^{s_k}$ that takes as input a vector of size $s_0$ and produces a vector of size $s_k$. The function $f$ is computed by composing $k$ layers $L_1\colon\mathbb{R}^{s_0} \mapsto\mathbb{R}^{s_1}, \dots, L_k\colon\mathbb{R}^{s_{k-1}}\mapsto\mathbb{R}^{s_k}$ as $f(x) = L_k(\cdots L_2(L_1(x))\cdots)$.
 
-Each layer~$L_i$ typically implements a non-linear function. For instance, a \emph{fully-connected} layer linearly transforms its input $x_{i-1}$ as $W x_{i-1} + b$, where $W\in\mathbb{R}^{s_{i} \times s_{i-1}}$ is the matrix of weights and $b\in\mathbb{R}^{s_i}$ is the bias vector. Then, it applies a non-linear activation function (e.g., sigmoid or Rectified Linear Unit (ReLU)) component-wise, generating the output vector $x_i$. The weights specify how its input neurons are connected to its output neurons and are known as \emph{DNN parameters}. For more information about DNNs, we refer the reader to \cite{dnn_archi, Hassija, Liang}.
+Each layer~$L_i$ typically implements a non-linear function. For instance, a \emph{fully-connected} layer linearly transforms its input $x_{i-1}$ as $W x_{i-1} + b$, where $W\in\mathbb{R}^{s_{i} \times s_{i-1}}$ is the matrix of weights and $b\in\mathbb{R}^{s_i}$ is the bias vector. Then, it applies a non-linear activation function (e.g., sigmoid or rectified linear unit (ReLU)) component-wise, generating the output vector $x_i$. The weights specify how its input neurons are connected to its output neurons and are known as \emph{DNN parameters}. For more information about DNNs, we refer the reader to \cite{dnn_archi, Hassija, Liang}.
 
 The objective of DNN training is to learn parameters during training to make accurate predictions on unseen data during real-world deployment.
 
@@ -40,12 +40,12 @@ When the prediction task is classification, then $s_k$ represents the number of 
 
 By an \emph{AI system}, we refer to any software system capable of performing complex tasks through the use of data, algorithms, and high computational power, which typically require human intelligence. These tasks include problem-solving, reasoning, decision-making, and natural language understanding.
 
-Deep learning is a subset of AI that utilizes deep neural networks (DNNs) for complex pattern recognition. Some AI systems are solely based on DNN components, whereas \emph{hybrid} AI systems combine DNNs with traditional software to produce the final output.
+Deep learning is a subset of AI that utilizes DNNs for complex pattern recognition. Some AI systems are solely based on DNN components, whereas \emph{hybrid} AI systems combine DNNs with traditional software to produce the final output.
 
 
 \section{Robustness of Deep Neural Networks}
 
-Deep neural networks (DNNs) are known for their lack of robustness. Research has shown DNNs to be vulnerable to two main categories of adversaries \cite{Hosseini}: \emph{adversarial examples}~\cite{adv_attacks} and \emph{semantic adversarial examples}~\cite{deeptest}.
+DNNs are known for their lack of robustness. Research has shown DNNs to be vulnerable to two main categories of adversaries \cite{Hosseini}: \emph{adversarial examples}~\cite{adv_attacks} and \emph{semantic adversarial examples}~\cite{deeptest}.
 
 Let $\mathcal{A}$ denote an adversary. Each category can be described formally as follows:
 
