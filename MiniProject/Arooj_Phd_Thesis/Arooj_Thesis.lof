@@ -1,11 +1,11 @@
 \babel@toc {english}{}\relax 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Number of Published Papers on DNN Safety}}{3}{figure.5}%
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Number of Published Papers on DNN Safety}}{2}{figure.4}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Comparison between program flows of a traditional program (left) and a neural network (right). The nodes in gray denote the corresponding basic blocks or neurons that participated while processing an input.}}{3}{figure.6}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Thematic Wheel Diagram of Research Modules for DNN Testing Framework}}{8}{figure.18}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Comparison between program flows of a traditional program (left) and a neural network (right). The nodes in gray denote the corresponding basic blocks or neurons that participated while processing an input.}}{10}{figure.20}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Image transformations for ...}}{11}{figure.22}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Comparison of Testing and Verification Processes}}{14}{figure.25}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Thematic Wheel Diagram of Research Modules for DNN Testing Framework}}{9}{figure.19}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Image transformations for ...}}{11}{figure.22}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Comparison of Testing and Verification Processes}}{13}{figure.25}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Overview of the Proposed Framework}}{19}{figure.34}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Problog code snippet for evaluating handwritten digit recognition under noise, brightness, and rotation transformations.}}{26}{figure.49}%

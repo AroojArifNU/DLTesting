@@ -6,16 +6,16 @@
 \contentsline {chapter}{Abstract}{1}{chapter*.1}%
 \contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.2}%
 \contentsline {section}{\numberline {1.1}Background and Motivation}{2}{section.3}%
-\contentsline {section}{\numberline {1.2}Research Goal}{4}{section.6}%
-\contentsline {section}{\numberline {1.3}Research Questions and Objectives}{5}{section.7}%
-\contentsline {section}{\numberline {1.4}Contribution of this Report}{6}{section.15}%
-\contentsline {section}{\numberline {1.5}Organization of the Thesis}{7}{section.16}%
-\contentsline {chapter}{\numberline {2}Literature Review}{8}{chapter.17}%
-\contentsline {section}{\numberline {2.1}Deep Neural Networks and AI Systems}{9}{section.19}%
-\contentsline {section}{\numberline {2.2}Robustness of Deep Neural Networks}{9}{section.21}%
+\contentsline {section}{\numberline {1.2}Research Goal}{4}{section.7}%
+\contentsline {section}{\numberline {1.3}Research Questions and Objectives}{6}{section.8}%
+\contentsline {section}{\numberline {1.4}Contribution of this Report}{7}{section.16}%
+\contentsline {section}{\numberline {1.5}Organization of the Thesis}{7}{section.17}%
+\contentsline {chapter}{\numberline {2}Literature Review}{8}{chapter.18}%
+\contentsline {section}{\numberline {2.1}Deep Neural Networks and AI Systems}{8}{section.20}%
+\contentsline {section}{\numberline {2.2}Robustness of Deep Neural Networks}{10}{section.21}%
 \contentsline {section}{\numberline {2.3}Sampling Techniques}{11}{section.23}%
 \contentsline {section}{\numberline {2.4}Testing and Formal Verification}{12}{section.24}%
-\contentsline {section}{\numberline {2.5}DNN Testing Techniques}{13}{section.26}%
+\contentsline {section}{\numberline {2.5}DNN Testing Techniques}{14}{section.26}%
 \contentsline {section}{\numberline {2.6}Probabilistic Logic Programming (PLP)}{16}{section.27}%
 \contentsline {chapter}{\numberline {3}Proposed Framework}{18}{chapter.28}%
 \contentsline {section}{\numberline {3.1}Proposed Approach}{18}{section.29}%

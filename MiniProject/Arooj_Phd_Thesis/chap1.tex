@@ -14,21 +14,29 @@
 
 Deep Neural Networks (DNNs) are increasingly being used in diverse applications due to their ability to match or exceed human-level performance. With the broader deployment of DNNs in various safety-critical systems like autonomous vehicles, healthcare, and avionics, concerns over their safety and trustworthiness have been raised \cite{ZhaoXBanks}. The availability of large datasets, fast computing methods, and their high performance has enabled the use of DNNs in safety-critical applications \cite{LeCun}. The critical nature of such applications makes it essential to thoroughly evaluate these DNNs before deployment to guarentee their reliability and safety.
 
-
-In recent years, there has been significant amount of publications focused on tackling this concern. Figure. \ref*{fig:no_publish} visualizes the significant growth in the number of published papers related to DNNs safety from 2008 to 2023\footnote{The data is gathered using a comprehensive set of relevant keywords. The keywords used for data extraction include: 'deep neural network safety,' 'DNN verification,' 'DNN testing,' 'deep learning robustness,' 'neural network adversarial attacks,' 'DNN defense mechanisms,' 'DNN interpretability,' 'deep learning certification,' 'neural network validation,' and 'machine learning security.'}.
-
-\begin{figure*}
+\begin{figure}
   \centering
-  \includegraphics[width=\linewidth]{Number of Published Papers on DNN Safety.png}
+  \includegraphics[width=0.65\textwidth]{Number of Published Papers on DNN Safety.png}
   \caption{Number of Published Papers on DNN Safety}
   \label{fig:no_publish}
-\end{figure*}
+\end{figure}
+
+In recent years, there has been significant amount of publications focused on tackling this concern. Figure. \ref{fig:no_publish} visualizes the significant growth in the number of published papers related to DNNs safety from 2008 to 2023\footnote{The data is gathered using a comprehensive set of relevant keywords. The keywords used for data extraction include: 'deep neural network safety,' 'DNN verification,' 'DNN testing,' 'deep learning robustness,' 'neural network adversarial attacks,' 'DNN defense mechanisms,' 'DNN interpretability,' 'deep learning certification,' 'neural network validation,' and 'machine learning security.'}.
+
 
 An important requirement for DNNs is that they are robust against input perturbations \cite{HuangX}. 
-DNNs have shown a lack of robustness due to their vulnerability to adversarial examples, where even minor modifications to an input, sometimes imperceptible to humans, can destabilize the neural network \cite{Goodfellow,Carlini}. Unlike traditional software, DNNs do not have a clear control-flow structure. They learn their decision policy through training on large datasets, adjusting parameters gradually using various methods to achieve the desired accuracy. Consequently, traditional software testing methods like functional coverage and branch coverage  cannot be applied to DNNs, thus challenging their use in safety-critical applications. This is because DNNs lack explicit paths and branches that can be directly tested; their behavior emerges from complex interactions within their learned parameters, making it difficult to apply traditional coverage metrics that rely on predefined control flows \cite{Sekhon}.
+DNNs have shown a lack of robustness due to their vulnerability to adversarial examples, where even minor modifications to an input, sometimes imperceptible to humans, can destabilize the neural network \cite{Goodfellow,Carlini}. Unlike traditional software, DNNs do not have a clear control-flow structure. They learn their decision policy through training on large datasets, adjusting parameters gradually using various methods to achieve the desired accuracy. Figure. \ref{fig:Comparison} illustrates the flow of traditional software compared to neural network models. Consequently, traditional software testing methods like functional coverage and branch coverage  cannot be applied to DNNs, thus challenging their use in safety-critical applications. This is because DNNs lack explicit paths and branches that can be directly tested; their behavior emerges from complex interactions within their learned parameters, making it difficult to apply traditional coverage metrics that rely on predefined control flows \cite{Sekhon}.
 
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{traditionalandDNN.pdf}
+  \caption{Comparison between program flows of a traditional program (left) and a neural network (right). The nodes in gray denote the corresponding basic blocks or neurons that participated while processing an input.}
+  \label{fig:Comparison}
+\end{figure}
 
 In the past, researchers have extensively discussed both verification and testing techniques, which are useful for evaluating the DNNs. Verification involves proving the property (e.g. adversarial examples (noise, rotation, brightness, etc.)) of a system through mathematical proof. This approach ensures that certain property is met by the system based on a formal analysis. However,DNN verification techniques are promising, they suffer from a scalability problem, due to the high computational complexity and the large size of DNNs. Up to now, DNN verification techniques either work with small scale DNNs or with approximate methods with convergence guarantees on the bounds \cite{HuangX}. This limitation impacts the ability to achieve high coverage, which means to cover all input scenarios and conditions to ensure that all potential issues are identified.
+
+
 
 On the other hand, testing focuses on identifying defects (i.e, counter example to a property) or provide assurance cases \cite {Rushby}, by evaluating the behavior of system through empirical methods. As a result, they can achieve high coverage, which suggests that more of a DNN's behavior has been tested and therefore the DNN has a lower chance of containing undetected bugs \cite{HuangX}. While these coverage metrics are useful, they often fall short in providing \hyperref[gloss]{\textsc{comprehensive}}\label{comprehensive} evaluations. This is because they primarily focus on the internal structure of the deep models, such as neuron activation patterns, rather than evaluating the DNNs behavior on a diverse set of inputs. This internal focus can miss identifying specific inputs that cause failures or unexpected behavior.
 
