@@ -11,19 +11,7 @@
 \chapter{Literature Review}
 \label{chp:2}
 
-To develop a comprehensive testing framework, it is crucial to explore various domains that collectively contribute to this goal. The literature review is categorized into seven themes, each playing a vital role in the framework. Figure. \ref{fig:thematic_wheel} illustrates the interconnected modules essential for framework development. Each module highlights a key area of focus, demonstrating the comprehensive approach needed to ensure the robustness of DNNs in safety-critical applications.
-
-To develop a comprehensive testing framework for DNNs, it is crucial to explore various domains that collectively contribute to this goal. This literature review aims to discuss the foundational concepts of DNNs and their significance in AI systems, followed by an examination of the robustness of DNNs. Subsequently, the review will be categorized into seven themes, each playing a vital role in the framework. Figure \ref{fig:thematic_wheel} illustrates the interconnected modules essential for framework development. Each module highlights a key area of focus, demonstrating the comprehensive approach needed to ensure the robustness of DNNs in safety-critical applications.
-
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{literaturedomains.png}
-  \caption{Thematic Wheel Diagram of Research Modules for DNN Testing Framework}
-  \label{fig:thematic_wheel}
-\end{figure}
-
-
+To develop a comprehensive testing framework for DNNs, it is crucial to explore various domains that collectively contribute to this goal. This literature review aims to discuss the foundational concepts of DNNs and AI systems, followed by an examination of the robustness of DNNs. Subsequently, the literature will be categorized into seven themes DNN testing framework, Specification, Sampling, Interpretability, Testcase Generation, Coverage Criteria and Error Summarization, each playing a vital role in the framework. 
 
 
 \section{Deep Neural Networks and AI Systems}
@@ -42,53 +30,110 @@ By an \emph{AI system}, we refer to any software system capable of performing co
 
 Deep learning is a subset of AI that utilizes DNNs for complex pattern recognition. Some AI systems are solely based on DNN components, whereas \emph{hybrid} AI systems combine DNNs with traditional software to produce the final output.
 
-
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{adv_threats.png}
+  \caption{Adversarial Threats}
+  \label{fig:adv_threats}
+\end{figure}
 \section{Robustness of Deep Neural Networks}
 
-DNNs are known for their lack of robustness. Research has shown DNNs to be vulnerable to two main categories of adversaries \cite{Hosseini}: \emph{adversarial examples}~\cite{adv_attacks} and \emph{semantic adversarial examples}~\cite{deeptest}.
+DNNs are known for their lack of robustness, which makes them vulnerable to adversarial attacks. Researchers have developed various attack techniques to expose these vulnerabilities by creating adversarial examples, which highlight the weaknesses of a DNN without providing a formal proof of robustness \cite{HuangX}. Fig. \ref{fig:adv_threats}  illustrates the different types of adversarial threats, emphasizing the complexity and variety of these attacks. Adversarial threats to DNNs can be understood through three main components: attacker's knowledge, attacker's goals, and attacker's capabilities \cite{Biggio}. Attackers can have different levels of knowledge: white-box attacks have full knowledge of the DNN's architecture and parameters, gray-box attacks have partial knowledge, and black-box attacks have no knowledge and rely on input-output queries. The attackers' goals might include compromising the system's integrity, availability, or privacy, with attacks being either targeted (misclassifying specific inputs) or untargeted (causing general misclassification). Attackers can influence the model by poison attack during training or evasion attack during testing, and these manipulations are often constrained by application-specific data alteration limits.\cite{Chakraborty}.
 
-Let $\mathcal{A}$ denote an adversary. Each category can be described formally as follows:
 
-\smallskip\noindent%
-\textbf{Adversarial Examples $\mathcal{A}_{\text{adv}}$}
 
-(\adv) This involves the generation of perturbations $\delta$ such that $x' = x + \delta$ misleads the DNN $f$ into making incorrect predictions, where $x$ is the original input and $x'$ is the perturbed input. Various methods under this category include:
+In the context of attacker's knowledge, different techniques are employed to create \emph{adversarial examples}. White-box attacks, such as Fast Gradient Sign Method (FGSM) \cite{FGSM}, Basic Iterative Method (BIM) \cite{BIM}, Carlini and Wagner (C\&W) Attack \cite{Carlini}, DeepFool \cite{deepfool}, and Jacobian-based Saliency Map Attack (JSMA) \cite{JSMA}. These techniques specifically manipulate input data to create slight perturbations that maximize the network prediction error, causing the DNN to make incorrect predictions \cite{Hosseini}.
 
-\begin{itemize}
-    \item \emph{Fast Gradient Sign Method (FGSM)}: For an input~$x$ and its true label $y$, FGSM generates $x' = x + \epsilon \cdot \text{sign}(\nabla_x J(x, y))$, where $J$ is the loss function and $\epsilon$ is a small perturbation factor.
-    \item \emph{Basic Iterative Method (BIM)}: This extends FGSM by iteratively applying small perturbations: $x'^{(i+1)} = x'^{(i)} + \alpha \cdot \text{sign}(\nabla_x J(x'^{(i)}, y))$.
-    \item \emph{Carlini and Wagner (C\&W) Attack}: Utilizes optimization to find $\delta$ that minimizes the $L_p$-norm while ensuring $f(x + \delta) \neq y$.
-    \item \emph{DeepFool}: Iteratively perturbs $x$ by $\delta$ to move it across decision boundaries.
-    \item \emph{Jacobian-based Saliency Map Attack (JSMA)}: Manipulates specific features of $x$ to achieve targeted misclassifications.
-\end{itemize}
-
-\smallskip\noindent%
-\textbf{Semantic Adversarial Examples $\mathcal{A}_{\text{trans}}$}
-
-This involves modifying the input images in a manner that exploits the model's sensitivity to variations, potentially causing misclassifications. Various methods under this category include:
-
-\begin{itemize}
-    \item \emph{Noise Addition}: Introducing noise $\eta$ such that $x' = x + \eta$. We consider \emph{Gaussian} noise and \emph{salt-and-pepper} noise.
-    \item \emph{Translation}: Shifting the image $x$ by a vector $t$ to obtain $x' = \text{translate}(x, t)$.
-    \item \emph{Scaling}: Resizing the image $x$ by a factor $s$ to get $x' = \text{scale}(x, s)$.
-    \item \emph{Shearing}: Applying a shear transformation to $x$ resulting in $x' = \text{shear}(x, \theta)$.
-    \item \emph{Rotation}: Rotating the image $x$ by an angle $\theta$ to produce $x' = \text{rotate}(x, \theta)$.
-    \item \emph{Contrast Adjustment}: Modifying the contrast of $x$, represented as $x' = \text{adjust\_contrast}(x, \alpha)$.
-    \item \emph{Brightness Change}: Altering the brightness of $x$, yielding $x' = \text{change\_brightness}(x, \beta)$.
-    \item \emph{Blurring}: Applying a blur effect to $x$, giving $x' = \text{blur}(x, k)$, where $k$ is the kernel size.
-    \item \emph{Occlusion}: Partially hiding regions of $x$, leading to $x' = \text{occlude}(x, m)$, where $m$ denotes the mask.
-\end{itemize}
+Conversely, black-box attacks often involve \emph{semantic adversarial examples} \cite{HuangX,deeptest,Engstrom,Pei}, which are not limited to slight modifications of the image. These attacks can involve any transformation that preserves the semantics of the image, such as changes in brightness, contrast, shear, translation, scale, and rotations. These modifications, illustrated in Fig. \ref{fig:image-trans}, can significantly affect the DNN's performance. 
 
 \begin{figure*}
-    \centering
-    \includegraphics[width=\linewidth]{figures/output_update.png}
-    \caption{Image transformations for ...}
-    \label{fig:image-trans}
+  \centering
+  \includegraphics[width=\linewidth]{figures/output_update.png}
+  \caption{Semantic Adversarial Examples}
+  \label{fig:image-trans}
 \end{figure*}
 
-By analyzing various types of adversaries, our proposed comprehensive testing framework evaluates model robustness, providing probabilities of model effectiveness against each adversary and assessing accuracy under adversarial conditions across different classes within any dataset.
+\begin{center}
+  \fcolorbox{gray}{lightgray}{
+  \parbox{0.95\linewidth}{
+  \textbf{Note:} Currently, I have explored both black-box and white-box techniques to understand the differences between these adversarial examples. Further exploration is needed for grey-box techniques.
+
+  }
+  }
+  \end{center}
 
 
+% Research has shown DNNs to be vulnerable to two main categories of adversaries \cite{Hosseini}: \emph{adversarial examples}~\cite{HuangX,adv_attacks} and \emph{semantic adversarial examples}~\cite{HuangX,deeptest,Engstrom,Pei}.
+
+
+
+
+
+% Let $\mathcal{A}$ denote an adversary. Each category can be described formally as follows:
+
+% \smallskip\noindent%
+% \textbf{Adversarial Examples $\mathcal{A}_{\text{adv}}$}
+
+% (\adv) This involves the generation of perturbations $\delta$ such that $x' = x + \delta$ misleads the DNN $f$ into making incorrect predictions, where $x$ is the original input and $x'$ is the perturbed input. Various methods under this category include:
+
+% \begin{itemize}
+%     \item \emph{Fast Gradient Sign Method (FGSM)}: For an input~$x$ and its true label $y$, FGSM generates $x' = x + \epsilon \cdot \text{sign}(\nabla_x J(x, y))$, where $J$ is the loss function and $\epsilon$ is a small perturbation factor.
+%     \item \emph{Basic Iterative Method (BIM)}: This extends FGSM by iteratively applying small perturbations: $x'^{(i+1)} = x'^{(i)} + \alpha \cdot \text{sign}(\nabla_x J(x'^{(i)}, y))$.
+%     \item \emph{Carlini and Wagner (C\&W) Attack}: Utilizes optimization to find $\delta$ that minimizes the $L_p$-norm while ensuring $f(x + \delta) \neq y$.
+%     \item \emph{DeepFool}: Iteratively perturbs $x$ by $\delta$ to move it across decision boundaries.
+%     \item \emph{Jacobian-based Saliency Map Attack (JSMA)}: Manipulates specific features of $x$ to achieve targeted misclassifications.
+% \end{itemize}
+
+% \smallskip\noindent%
+% \textbf{Semantic Adversarial Examples $\mathcal{A}_{\text{trans}}$}
+
+% This involves modifying the input images in a manner that exploits the model's sensitivity to variations, potentially causing misclassifications. Various methods under this category include:
+
+% \begin{itemize}
+%     \item \emph{Noise Addition}: Introducing noise $\eta$ such that $x' = x + \eta$. We consider \emph{Gaussian} noise and \emph{salt-and-pepper} noise.
+%     \item \emph{Translation}: Shifting the image $x$ by a vector $t$ to obtain $x' = \text{translate}(x, t)$.
+%     \item \emph{Scaling}: Resizing the image $x$ by a factor $s$ to get $x' = \text{scale}(x, s)$.
+%     \item \emph{Shearing}: Applying a shear transformation to $x$ resulting in $x' = \text{shear}(x, \theta)$.
+%     \item \emph{Rotation}: Rotating the image $x$ by an angle $\theta$ to produce $x' = \text{rotate}(x, \theta)$.
+%     \item \emph{Contrast Adjustment}: Modifying the contrast of $x$, represented as $x' = \text{adjust\_contrast}(x, \alpha)$.
+%     \item \emph{Brightness Change}: Altering the brightness of $x$, yielding $x' = \text{change\_brightness}(x, \beta)$.
+%     \item \emph{Blurring}: Applying a blur effect to $x$, giving $x' = \text{blur}(x, k)$, where $k$ is the kernel size.
+%     \item \emph{Occlusion}: Partially hiding regions of $x$, leading to $x' = \text{occlude}(x, m)$, where $m$ denotes the mask.
+% \end{itemize}
+
+
+% By analyzing various types of adversaries, our proposed comprehensive testing framework evaluates model robustness, providing probabilities of model effectiveness against each adversary and assessing accuracy under adversarial conditions across different classes within any dataset.
+
+\section{Research Themes}
+In developing a comprehensive testing framework, it is essential to explore various domains that collectively contribute to this goal. The literature review is categorized into seven themes, each playing a vital role in the framework. Some modules, such as sampling techniques and interpretability analysis, are established in existing literature but are being explored for new purposes. For example, sampling techniques are traditionally used to balance data for better classification accuracy, but I am investigating their use in identifying corner cases. Interpretability analysis is often applied to detect adversarial examples, but I am focusing on extracting influential pixels to create more effective test cases. Other areas, like specification, error summarization, are less covered in literature and will be developed further. Figure \ref{fig:thematic_wheel} illustrates these interconnected modules, emphasizing the comprehensive approach necessary for ensuring the robustness of DNNs in safety-critical applications. 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{literaturedomains.png}
+  \caption{Thematic Wheel Diagram of Research Modules for DNN Testing Framework}
+  \label{fig:thematic_wheel}
+\end{figure}
+
+\subsection{DNN Testing Framework}
+% Detailed literature review for DNN Testing Framework
+
+\subsection{Specification}
+% Detailed literature review for Specification
+
+\subsection{Sampling}
+% Detailed literature review for Sampling
+
+\subsection{Interpretability}
+% Detailed literature review for Interpretability
+
+\subsection{Testcase Generation}
+% Detailed literature review for Testcase Generation
+
+\subsection{Coverage Criteria}
+% Detailed literature review for Coverage Criteria
+
+\subsection{Error Summarization}
+% Detailed literature review for Error Summarization
 
 \section{Sampling Techniques}
 \textcolor{blue}{
