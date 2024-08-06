@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.6)  6 AUG 2024 08:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.6)  6 AUG 2024 10:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1414,30 +1414,30 @@ File: tikzlibraryfit.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
-LaTeX Font Info:    Trying to load font information for T1+lmss on input line 130.
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 133.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (./Arooj_Thesis.aux (./macros.aux) (./cover1.aux) (./abstract.aux) (./contents.aux) (./figures.aux) (./tables.aux) (./algos.aux) (./How to read this document.aux) (./chap1.aux) (./chap2.aux) (./chap3.aux) (./chap4.aux) (./chap5.aux) (./chap6.aux) (./Appendix_A.aux))
 \openout1 = `Arooj_Thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
@@ -1464,20 +1464,20 @@ Package caption Info: End \AtBeginDocument code.
 \everyMPtoPDFconversion=\toks76
 )
 \c@lstlisting=\count473
-Package hyperref Info: Link coloring ON on input line 130.
-LaTeX Info: Redefining \microtypecontext on input line 130.
-Package microtype Info: Applying patch `item' on input line 130.
-Package microtype Info: Applying patch `toc' on input line 130.
-Package microtype Info: Applying patch `eqnum' on input line 130.
-Package microtype Info: Applying patch `footnote' on input line 130.
-Package microtype Info: Applying patch `verbatim' on input line 130.
+Package hyperref Info: Link coloring ON on input line 133.
+LaTeX Info: Redefining \microtypecontext on input line 133.
+Package microtype Info: Applying patch `item' on input line 133.
+Package microtype Info: Applying patch `toc' on input line 133.
+Package microtype Info: Applying patch `eqnum' on input line 133.
+Package microtype Info: Applying patch `footnote' on input line 133.
+Package microtype Info: Applying patch `verbatim' on input line 133.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 130.
+LaTeX Info: Redefining \showhyphens on input line 133.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1639,7 +1639,7 @@ Chapter 1.
 ------------------------------------------------------------------------------
  1 Introduction
 ------------------------------------------------------------------------------
-<figures/Number of Published Papers on DNN Safety.png, id=282, 722.7pt x 433.62pt>
+<figures/Number of Published Papers on DNN Safety.png, id=284, 722.7pt x 433.62pt>
 File: figures/Number of Published Papers on DNN Safety.png Graphic file (type png)
 <use figures/Number of Published Papers on DNN Safety.png>
 Package pdftex.def Info: figures/Number of Published Papers on DNN Safety.png  used on input line 19.
@@ -1666,7 +1666,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
  <./figures/Number of Published Papers on DNN Safety.png>]
 
 pdfTeX warning: pdflatex (file ./figures/traditionalandDNN.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/traditionalandDNN.pdf, id=299, 1191.7022pt x 660.21657pt>
+<figures/traditionalandDNN.pdf, id=301, 1191.7022pt x 660.21657pt>
 File: figures/traditionalandDNN.pdf Graphic file (type pdf)
 <use figures/traditionalandDNN.pdf>
 Package pdftex.def Info: figures/traditionalandDNN.pdf  used on input line 32.
@@ -1695,24 +1695,94 @@ Chapter 2.
 
 
 ]
-<figures/attackclassification.png, id=384, 814.04124pt x 471.7625pt>
+<figures/attackclassification.png, id=386, 814.04124pt x 471.7625pt>
 File: figures/attackclassification.png Graphic file (type png)
 <use figures/attackclassification.png>
-Package pdftex.def Info: figures/attackclassification.png  used on input line 35.
+Package pdftex.def Info: figures/attackclassification.png  used on input line 36.
 (pdftex.def)             Requested size: 417.47307pt x 241.9346pt.
  [9 <./figures/attackclassification.png>]
-<figures/output_update.png, id=408, 2160.51164pt x 268.1217pt>
+<figures/output_update.png, id=410, 2160.51164pt x 268.1217pt>
 File: figures/output_update.png Graphic file (type png)
 <use figures/output_update.png>
-Package pdftex.def Info: figures/output_update.png  used on input line 51.
+Package pdftex.def Info: figures/output_update.png  used on input line 65.
 (pdftex.def)             Requested size: 417.47307pt x 51.80688pt.
  [10 <./figures/output_update.png>]
-<figures/literaturedomains.png, id=428, 770.88pt x 578.16pt>
+<figures/literaturedomains.png, id=430, 770.88pt x 578.16pt>
 File: figures/literaturedomains.png Graphic file (type png)
 <use figures/literaturedomains.png>
-Package pdftex.def Info: figures/literaturedomains.png  used on input line 112.
+Package pdftex.def Info: figures/literaturedomains.png  used on input line 76.
 (pdftex.def)             Requested size: 417.47307pt x 313.1016pt.
- [11 <./figures/literaturedomains.png (PNG copy)>] [12] [13] [14] [15] [16]) [17]
+
+
+Package natbib Warning: Citation `Wicker et al.' on page 11 undefined on input line 127.
+
+
+Package natbib Warning: Citation `2018' on page 11 undefined on input line 127.
+
+
+Package natbib Warning: Citation `Ma et al.' on page 11 undefined on input line 127.
+
+
+Package natbib Warning: Citation `2018' on page 11 undefined on input line 127.
+
+
+Package natbib Warning: Citation `Sun et al.' on page 11 undefined on input line 127.
+
+
+Package natbib Warning: Citation `2019' on page 11 undefined on input line 127.
+
+
+Package natbib Warning: Citation `Sun et al.' on page 11 undefined on input line 127.
+
+
+Package natbib Warning: Citation `2019' on page 11 undefined on input line 127.
+
+
+Package natbib Warning: Citation `Cheng et al.' on page 11 undefined on input line 127.
+
+
+Package natbib Warning: Citation `2018' on page 11 undefined on input line 127.
+
+
+Package natbib Warning: Citation `Kim et al.' on page 11 undefined on input line 127.
+
+
+Package natbib Warning: Citation `2018' on page 11 undefined on input line 127.
+
+
+Package natbib Warning: Citation `deepconcolic' on page 11 undefined on input line 127.
+
+
+Package natbib Warning: Citation `Gopinath et al.' on page 11 undefined on input line 127.
+
+
+Package natbib Warning: Citation `2018' on page 11 undefined on input line 127.
+
+
+Package natbib Warning: Citation `Agarwal et al.' on page 11 undefined on input line 127.
+
+
+Package natbib Warning: Citation `2018' on page 11 undefined on input line 127.
+
+
+Package natbib Warning: Citation `Zhang et al.' on page 11 undefined on input line 127.
+
+
+Package natbib Warning: Citation `2018' on page 11 undefined on input line 127.
+
+[11 <./figures/literaturedomains.png (PNG copy)>] [12] [13]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[14]
+
+Package natbib Warning: Citation `deepguage' on page 15 undefined on input line 244.
+
+[15]
+
+Package natbib Warning: Citation `deepconcolic' on page 16 undefined on input line 261.
+
+[16] [17]) [18]
 \openout2 = `chap3.aux'.
 
  (./chap3.tex
@@ -1720,7 +1790,7 @@ Chapter 3.
 ------------------------------------------------------------------------------
  3 Proposed Framework
 ------------------------------------------------------------------------------
-[18
+[19
 
 
 
@@ -1739,7 +1809,7 @@ LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <8> not available
 (Font)              Font shape `T1/lmss/m/sl' tried instead on input line 130.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <6> not available
 (Font)              Font shape `T1/lmss/m/sl' tried instead on input line 130.
-[19]
+[20]
 
 LaTeX Font Warning: Font shape `T1/lmss/m/scit' undefined
 (Font)              using `T1/lmss/m/sc' instead on input line 136.
@@ -1764,7 +1834,7 @@ LaTeX Font Warning: Font shape `T1/lmss/m/scit' undefined
 LaTeX Font Warning: Font shape `T1/lmss/m/scit' undefined
 (Font)              using `T1/lmss/m/sc' instead on input line 136.
 
-[20{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
+[21{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
 LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <12> not available
 (Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 212.
 
@@ -1772,16 +1842,16 @@ Overfull \hbox (40.25783pt too wide) in paragraph at lines 212--214
 \T1/lmss/m/sl/12 (-20) and $\OML/lmm/m/it/12 x[] \OT1/lmr/m/n/12 (-20) = [](\OML/lmm/m/it/12 x[]; ^^R\OT1/lmr/m/n/12 (-20) )$\T1/lmss/m/sl/12 (-20) . The test case is then: $\OMS/lmsy/m/n/12 T[] \OT1/lmr/m/n/12 (-20) = []$ 
  []
 
-[21] [22]
+[22] [23]
 Overfull \hbox (18.1366pt too wide) detected at line 289
 \OML/lmm/m/it/12 P\OT1/lmr/m/n/12 ([] \OMS/lmsy/m/n/12 [ []\OT1/lmr/m/n/12 ) = \OML/lmm/m/it/12 P\OT1/lmr/m/n/12 ([]) + \OML/lmm/m/it/12 P\OT1/lmr/m/n/12 ([]) \OMS/lmsy/m/n/12 ^^@ \OML/lmm/m/it/12 P\OT1/lmr/m/n/12 ([] \OMS/lmsy/m/n/12 \ []\OT1/lmr/m/n/12 )
  []
 
-[23]
+[24]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[24]
+[25]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 351.
@@ -1793,7 +1863,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [25]
+ [26]
 
 Package caption Warning: \setcaptiontype
 (caption)                outside box or environment on input line 396.
@@ -1814,17 +1884,17 @@ Overfull \hbox (19.02693pt too wide) in paragraph at lines 430--430
 
 Package mdframed Info: mdframed inside float 
  mdframed uses option nobreak mdframed on input line 437.
-[26]
+[27]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 445.
- [27]
+ [28]
 
-LaTeX Warning: Reference `Coverage' on page 28 undefined on input line 910.
+LaTeX Warning: Reference `Coverage' on page 29 undefined on input line 910.
 
 
 
 pdfTeX warning: pdflatex (file ./figures/step5.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/step5.pdf, id=582, 1416.79312pt x 707.64375pt>
+<figures/step5.pdf, id=597, 1416.79312pt x 707.64375pt>
 File: figures/step5.pdf Graphic file (type pdf)
 <use figures/step5.pdf>
 Package pdftex.def Info: figures/step5.pdf  used on input line 914.
@@ -1833,7 +1903,7 @@ Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on inp
 
 LaTeX Warning: Float too large for page by 29.82689pt on input line 986.
 
-) [28 <./figures/step5.pdf>] [29]
+) [29 <./figures/step5.pdf>] [30]
 \openout2 = `chap4.aux'.
 
  (./chap4.tex
@@ -1841,12 +1911,12 @@ Chapter 4.
 ------------------------------------------------------------------------------
  4 Simulations and Results
 ------------------------------------------------------------------------------
-[30
+[31
 
 
 
 
-] [31]
+] [32]
 Package epstopdf Info: Source file: <figures/local_correctness.eps>
 (epstopdf)                    date: 2024-07-09 22:53:28
 (epstopdf)                    size: 87426 bytes
@@ -1856,7 +1926,7 @@ Package epstopdf Info: Source file: <figures/local_correctness.eps>
 (epstopdf)             Command: <repstopdf --outfile=figures/local_correctness-eps-converted-to.pdf figures/local_correctness.eps>
 (epstopdf)             \includegraphics on input line 47.
 Package epstopdf Info: Output file is already uptodate.
-<figures/local_correctness-eps-converted-to.pdf, id=654, 1445.4pt x 722.7pt>
+<figures/local_correctness-eps-converted-to.pdf, id=669, 1445.4pt x 722.7pt>
 File: figures/local_correctness-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/local_correctness-eps-converted-to.pdf>
 Package pdftex.def Info: figures/local_correctness-eps-converted-to.pdf  used on input line 47.
@@ -1870,12 +1940,12 @@ Package epstopdf Info: Source file: <figures/local_correctness_shap.eps>
 (epstopdf)             Command: <repstopdf --outfile=figures/local_correctness_shap-eps-converted-to.pdf figures/local_correctness_shap.eps>
 (epstopdf)             \includegraphics on input line 54.
 Package epstopdf Info: Output file is already uptodate.
-<figures/local_correctness_shap-eps-converted-to.pdf, id=655, 1445.4pt x 722.7pt>
+<figures/local_correctness_shap-eps-converted-to.pdf, id=670, 1445.4pt x 722.7pt>
 File: figures/local_correctness_shap-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/local_correctness_shap-eps-converted-to.pdf>
 Package pdftex.def Info: figures/local_correctness_shap-eps-converted-to.pdf  used on input line 54.
 (pdftex.def)             Requested size: 417.47307pt x 208.73953pt.
- [32 <./figures/local_correctness-eps-converted-to.pdf> <./figures/local_correctness_shap-eps-converted-to.pdf>]
+ [33 <./figures/local_correctness-eps-converted-to.pdf> <./figures/local_correctness_shap-eps-converted-to.pdf>]
 Overfull \hbox (100.82109pt too wide) detected at line 74
 []
  []
@@ -1894,12 +1964,12 @@ Package epstopdf Info: Source file: <figures/global_correctness.eps>
 (epstopdf)             Command: <repstopdf --outfile=figures/global_correctness-eps-converted-to.pdf figures/global_correctness.eps>
 (epstopdf)             \includegraphics on input line 80.
 Package epstopdf Info: Output file is already uptodate.
-<figures/global_correctness-eps-converted-to.pdf, id=774, 2168.1pt x 1011.78pt>
+<figures/global_correctness-eps-converted-to.pdf, id=789, 2168.1pt x 1011.78pt>
 File: figures/global_correctness-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/global_correctness-eps-converted-to.pdf>
 Package pdftex.def Info: figures/global_correctness-eps-converted-to.pdf  used on input line 80.
 (pdftex.def)             Requested size: 417.47307pt x 194.81842pt.
-[33]
+[34]
 Package epstopdf Info: Source file: <figures/global_correctness_combine.eps>
 (epstopdf)                    date: 2024-07-10 00:07:45
 (epstopdf)                    size: 26272 bytes
@@ -1909,12 +1979,12 @@ Package epstopdf Info: Source file: <figures/global_correctness_combine.eps>
 (epstopdf)             Command: <repstopdf --outfile=figures/global_correctness_combine-eps-converted-to.pdf figures/global_correctness_combine.eps>
 (epstopdf)             \includegraphics on input line 87.
 Package epstopdf Info: Output file is already uptodate.
-<figures/global_correctness_combine-eps-converted-to.pdf, id=779, 722.7pt x 433.62pt>
+<figures/global_correctness_combine-eps-converted-to.pdf, id=794, 722.7pt x 433.62pt>
 File: figures/global_correctness_combine-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/global_correctness_combine-eps-converted-to.pdf>
 Package pdftex.def Info: figures/global_correctness_combine-eps-converted-to.pdf  used on input line 87.
 (pdftex.def)             Requested size: 333.97972pt x 200.38731pt.
- [34 <./figures/global_correctness-eps-converted-to.pdf> <./figures/global_correctness_combine-eps-converted-to.pdf>]
+ [35 <./figures/global_correctness-eps-converted-to.pdf> <./figures/global_correctness_combine-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <figures/global_correctness_noise_comparison.eps>
 (epstopdf)                    date: 2024-07-16 23:53:41
 (epstopdf)                    size: 61790 bytes
@@ -1924,12 +1994,12 @@ Package epstopdf Info: Source file: <figures/global_correctness_noise_comparison
 (epstopdf)             Command: <repstopdf --outfile=figures/global_correctness_noise_comparison-eps-converted-to.pdf figures/global_correctness_noise_comparison.eps>
 (epstopdf)             \includegraphics on input line 120.
 Package epstopdf Info: Output file is already uptodate.
-<figures/global_correctness_noise_comparison-eps-converted-to.pdf, id=860, 722.7pt x 361.35pt>
+<figures/global_correctness_noise_comparison-eps-converted-to.pdf, id=876, 722.7pt x 361.35pt>
 File: figures/global_correctness_noise_comparison-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/global_correctness_noise_comparison-eps-converted-to.pdf>
 Package pdftex.def Info: figures/global_correctness_noise_comparison-eps-converted-to.pdf  used on input line 120.
 (pdftex.def)             Requested size: 413.30063pt x 206.64983pt.
- [35]
+ [36]
 Package epstopdf Info: Source file: <figures/combined_global_correctness.eps>
 (epstopdf)                    date: 2024-07-16 23:36:34
 (epstopdf)                    size: 43900 bytes
@@ -1939,12 +2009,12 @@ Package epstopdf Info: Source file: <figures/combined_global_correctness.eps>
 (epstopdf)             Command: <repstopdf --outfile=figures/combined_global_correctness-eps-converted-to.pdf figures/combined_global_correctness.eps>
 (epstopdf)             \includegraphics on input line 128.
 Package epstopdf Info: Output file is already uptodate.
-<figures/combined_global_correctness-eps-converted-to.pdf, id=866, 722.7pt x 433.62pt>
+<figures/combined_global_correctness-eps-converted-to.pdf, id=882, 722.7pt x 433.62pt>
 File: figures/combined_global_correctness-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/combined_global_correctness-eps-converted-to.pdf>
 Package pdftex.def Info: figures/combined_global_correctness-eps-converted-to.pdf  used on input line 128.
 (pdftex.def)             Requested size: 333.97972pt x 200.38731pt.
- [36 <./figures/global_correctness_noise_comparison-eps-converted-to.pdf> <./figures/combined_global_correctness-eps-converted-to.pdf>]
+ [37 <./figures/global_correctness_noise_comparison-eps-converted-to.pdf> <./figures/combined_global_correctness-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <figures/globalcorrectness_vehicle_detection.eps>
 (epstopdf)                    date: 2024-07-10 02:28:29
 (epstopdf)                    size: 32290 bytes
@@ -1954,12 +2024,12 @@ Package epstopdf Info: Source file: <figures/globalcorrectness_vehicle_detection
 (epstopdf)             Command: <repstopdf --outfile=figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf figures/globalcorrectness_vehicle_detection.eps>
 (epstopdf)             \includegraphics on input line 164.
 Package epstopdf Info: Output file is already uptodate.
-<figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf, id=1024, 854.19125pt x 427.5975pt>
+<figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf, id=1039, 854.19125pt x 427.5975pt>
 File: figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf>
 Package pdftex.def Info: figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf  used on input line 164.
 (pdftex.def)             Requested size: 333.97972pt x 167.17992pt.
- [37 <./figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf>] [38])
+ [38 <./figures/globalcorrectness_vehicle_detection-eps-converted-to.pdf>] [39])
 \openout2 = `chap5.aux'.
 
  (./chap5.tex
@@ -1967,12 +2037,12 @@ Chapter 5.
 ------------------------------------------------------------------------------
  5 PhD Two-Year Plan
 ------------------------------------------------------------------------------
-<figures/researchareas.png, id=1085, 1445.4pt x 813.0375pt>
+<figures/researchareas.png, id=1100, 1445.4pt x 813.0375pt>
 File: figures/researchareas.png Graphic file (type png)
 <use figures/researchareas.png>
 Package pdftex.def Info: figures/researchareas.png  used on input line 22.
 (pdftex.def)             Requested size: 417.47307pt x 234.83199pt.
-[39
+[40
 
 
 
@@ -2005,7 +2075,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `subscript' on input line 51.
 
-[40] [41]
+[41] [42]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\mathsurround' on input line 83.
@@ -2029,109 +2099,109 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `subscript' on input line 83.
-
-[42]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 96.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 96.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 96.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 96.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 96.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 96.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 106.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 106.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 106.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 106.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 106.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 106.
 
 [43]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 120.
+(hyperref)                removing `\mathsurround' on input line 96.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 120.
+(hyperref)                removing `\z@' on input line 96.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 120.
+(hyperref)                removing `subscript' on input line 96.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 120.
+(hyperref)                removing `\mathsurround' on input line 96.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 120.
+(hyperref)                removing `\z@' on input line 96.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 120.
+(hyperref)                removing `subscript' on input line 96.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 106.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 106.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 106.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 106.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 106.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 106.
 
 [44]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 132.
+(hyperref)                removing `\mathsurround' on input line 120.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 132.
+(hyperref)                removing `\z@' on input line 120.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 132.
+(hyperref)                removing `subscript' on input line 120.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 132.
+(hyperref)                removing `\mathsurround' on input line 120.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 132.
+(hyperref)                removing `\z@' on input line 120.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 132.
+(hyperref)                removing `subscript' on input line 120.
 
 [45]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 132.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 132.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 132.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 132.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 132.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 132.
+
+[46]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\mathsurround' on input line 150.
 
 
@@ -2154,30 +2224,30 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `subscript' on input line 150.
 
-[46] [47]
+[47] [48]
 Overfull \hbox (51.10132pt too wide) in paragraph at lines 216--313
 []  [] 
  []
 
-[48] [49]
+[49] [50]
 Overfull \hbox (46.9948pt too wide) in paragraph at lines 316--415
 []  [] 
  []
 
-) [50]
+) [51]
 \openout2 = `chap6.aux'.
 
- (./chap6.tex [51
+ (./chap6.tex [52
 
 
 
 
-] [52] [53]
-Underfull \hbox (badness 2150) in paragraph at lines 141--142
+] [53] [54] [55]
+Underfull \hbox (badness 2150) in paragraph at lines 165--166
 []\T1/lmss/m/n/12 (+20) Sun, Youcheng, et al. "Test-ing deep neu-ral net-works." arXiv preprint
  []
 
-[54]) [55]
+[56]) [57]
 \openout2 = `Appendix_A.aux'.
 
  (./Appendix_A.tex
@@ -2186,17 +2256,21 @@ Appendix A.
  A 
 ------------------------------------------------------------------------------
 
-LaTeX Warning: Hyper reference `systematic' on page 56 undefined on input line 45.
+LaTeX Warning: Hyper reference `systematic' on page 58 undefined on input line 45.
 
 
-LaTeX Warning: Reference `systematic' on page 56 undefined on input line 45.
+LaTeX Warning: Reference `systematic' on page 58 undefined on input line 45.
 
-) [56
-
-
+) [58
 
 
-] (./Arooj_Thesis.aux (./macros.aux) (./cover1.aux) (./abstract.aux) (./contents.aux) (./figures.aux) (./tables.aux) (./algos.aux) (./How to read this document.aux) (./chap1.aux) (./chap2.aux) (./chap3.aux) (./chap4.aux) (./chap5.aux) (./chap6.aux) (./Appendix_A.aux))
+
+
+]
+
+Package natbib Warning: There were undefined citations.
+
+(./Arooj_Thesis.aux (./macros.aux) (./cover1.aux) (./abstract.aux) (./contents.aux) (./figures.aux) (./tables.aux) (./algos.aux) (./How to read this document.aux) (./chap1.aux) (./chap2.aux) (./chap3.aux) (./chap4.aux) (./chap5.aux) (./chap6.aux) (./Appendix_A.aux))
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-12-11>
@@ -2207,18 +2281,18 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 46887 strings out of 474181
- 915859 string characters out of 5745948
- 2018457 words of memory out of 5000000
- 67532 multiletter control sequences out of 15000+600000
- 728131 words of font info for 319 fonts, out of 8000000 for 9000
+ 46940 strings out of 474181
+ 916991 string characters out of 5745948
+ 2016457 words of memory out of 5000000
+ 67569 multiletter control sequences out of 15000+600000
+ 728232 words of font info for 320 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 81i,13n,96p,2070b,980s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbo10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsso12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsso8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Arooj_Thesis.pdf (64 pages, 2050031 bytes).
+ 81i,15n,96p,2070b,980s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbo10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsso12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsso8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on Arooj_Thesis.pdf (66 pages, 2062728 bytes).
 PDF statistics:
- 1550 PDF objects out of 1728 (max. 8388607)
- 1022 compressed objects within 11 object streams
- 271 named destinations out of 1000 (max. 500000)
+ 1584 PDF objects out of 1728 (max. 8388607)
+ 1052 compressed objects within 11 object streams
+ 285 named destinations out of 1000 (max. 500000)
  95456 words of extra memory for PDF output out of 106986 (max. 10000000)
 
