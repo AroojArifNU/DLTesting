@@ -3,7 +3,7 @@
 \contentsline {figure}{\numberline {1.1}{\ignorespaces Number of Published Papers on DNN Safety}}{2}{figure.4}%
 \contentsline {figure}{\numberline {1.2}{\ignorespaces Comparison between program flows of a traditional program (left) and a neural network (right). The nodes in gray denote the corresponding basic blocks or neurons that participated while processing an input.}}{3}{figure.6}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Adversarial Threats}}{9}{figure.20}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Attack classification}}{9}{figure.20}%
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Semantic Adversarial Examples}}{10}{figure.22}%
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Thematic Wheel Diagram of Research Modules for DNN Testing Framework}}{11}{figure.24}%
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Comparison of Testing and Verification Processes}}{14}{figure.34}%

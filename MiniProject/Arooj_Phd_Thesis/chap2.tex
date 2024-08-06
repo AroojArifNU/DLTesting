@@ -32,13 +32,13 @@ Deep learning is a subset of AI that utilizes DNNs for complex pattern recogniti
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=\linewidth]{adv_threats.png}
-  \caption{Adversarial Threats}
+  \includegraphics[width=\linewidth]{attackclassification.png}
+  \caption{Attack classification}
   \label{fig:adv_threats}
 \end{figure}
 \section{Robustness of Deep Neural Networks}
 
-DNNs are known for their lack of robustness, which makes them vulnerable to adversarial attacks. Researchers have developed various attack techniques to expose these vulnerabilities by creating adversarial examples, which highlight the weaknesses of a DNN without providing a formal proof of robustness \cite{HuangX}. Fig. \ref{fig:adv_threats}  illustrates the different types of adversarial threats, emphasizing the complexity and variety of these attacks. Adversarial threats to DNNs can be understood through three main components: attacker's knowledge, attacker's goals, and attacker's capabilities \cite{Biggio}. Attackers can have different levels of knowledge: white-box attacks have full knowledge of the DNN's architecture and parameters, gray-box attacks have partial knowledge, and black-box attacks have no knowledge and rely on input-output queries. The attackers' goals might include compromising the system's integrity, availability, or privacy, with attacks being either targeted (misclassifying specific inputs) or untargeted (causing general misclassification). Attackers can influence the model by poison attack during training or evasion attack during testing, and these manipulations are often constrained by application-specific data alteration limits.\cite{Chakraborty}.
+DNNs are known for their lack of robustness, which makes them vulnerable to adversarial attacks. Researchers have developed various attack techniques to expose these vulnerabilities by creating adversarial examples, which highlight the weaknesses of a DNN without providing a formal proof of robustness \cite{HuangX}. Fig. \ref{fig:adv_threats}  illustrates the different types of adversarial threats, emphasizing the complexity and variety of these attacks. Adversarial threats to DNNs can be understood through three main components: attacker's knowledge, attacker's goals, and attacker's capabilities \cite{Biggio}. Attackers can have different levels of knowledge: white-box attacks have full knowledge of the DNN's architecture and parameters, gray-box attacks have partial knowledge, and black-box attacks have no knowledge and rely on input-output queries. The attackers' goals might include compromising the system's integrity, availability, or privacy, with attacks being either targeted (misclassifying specific inputs) or untargeted (causing general misclassification). Attackers can influence the model by poison attack \cite{poisonattack,Badnets} during training or evasion attack \cite{evasion} during testing, and these manipulations are often constrained by application-specific data alteration limits.\cite{Chakraborty}.
 
 
 
