@@ -69,8 +69,8 @@ Conversely, black-box attacks often involve \emph{semantic adversarial examples}
 
 
 \section{Research Areas}
- This literature is categorized into seven areas, each playing a vital role in the framework. Some modules, such as sampling techniques and interpretability analysis, are established in existing literature but are now being explored for different purposes. For example, sampling techniques are traditionally used to balance data for better classification accuracy, but I am investigating their use in identifying corner cases. Interpretability analysis is often applied to detect adversarial examples, but I am focusing on extracting influential pixels to create more effective test cases. Other areas, like specification, error summarization, are less covered in literature and will be developed further. Figure \ref{fig:thematic_wheel} illustrates these interconnected modules, emphasizing the comprehensive approach necessary for ensuring the robustness of DNNs in safety-critical applications. 
-
+%  This literature is categorized into seven areas, each playing a vital role in the framework. Some modules, such as sampling techniques and interpretability analysis, are established in existing literature but are now being explored for different purposes. For example, sampling techniques are traditionally used to balance data for better classification accuracy, but I am investigating their use in identifying corner cases. Interpretability analysis is often applied to detect adversarial examples, but I am focusing on extracting influential pixels to create more effective test cases. Other areas, like specification, error summarization, are less covered in literature and will be developed further. 
+I have categorized the literature work into seven research areas as shown in Figure \ref{fig:thematic_wheel}. 
 \begin{figure*}[h]
   \centering
   \includegraphics[width=\linewidth]{literaturedomains.png}
@@ -79,7 +79,7 @@ Conversely, black-box attacks often involve \emph{semantic adversarial examples}
 \end{figure*}
 
 \subsection{DNN Testing Framework}
- Various frameworks have been proposed in the literature, each incorporating different methodologies and components to address specific aspects of DNN testing. Table \ref{tab:Comprison of different DNNs testing framework} provides a comparison of several DNN testing frameworks based on their inclusion of key components such as specification, sampling, interpretability, testcase generation, coverage criteria, and error summarization.
+ Various frameworks have been proposed in the literature, each incorporating different methodologies and components to address specific aspects of DNN testing. Table \ref{tab:Comprison of different DNNs testing framework} provides a comparison of several DNN testing frameworks based on their inclusion of key components such as specification, sampling, interpretability, testcase generation, coverage criteria, and error summarization. It indicates that no single paper comprehensively addresses all the modules necessary for a robust DNN testing framework. Most research, such as \cite{deepxplore} and \cite{deeptest}, focuses on testcase generation and coverage criteria, providing methods to generate effective test cases and evaluate DNNs. However, areas like formal specification of testing requirements and interpretability are rarely addressed, with \cite{Braiek} being a notable exception that discusses all modules but primarily focuses on the challenges rather than solutions. Sampling techniques are explored in a few papers, including \cite{Sekhon} and \cite{Dola}, to identify representative input scenarios, while error summarization is covered by even fewer papers like \cite{ChenJ} and \cite{Deepmutation}.
 
 \begin{table}[ht]
   \centering
@@ -90,6 +90,8 @@ Conversely, black-box attacks often involve \emph{semantic adversarial examples}
   \hline
   \rowcolor[gray]{0.9} \textbf{Paper} & \textbf{Specification} & \textbf{Sampling} & \textbf{Interpretability} & \textbf{Testcase Generation} & \textbf{Coverage Criteria} & \textbf{Error Summarization} \\
   \hline
+  \cite{Sekhon} & \tickNo & \tickYes & \tickNo & \tickNo & \tickYes & \tickNo \\
+\hline
 \cite{deepxplore} & \tickNo & \tickNo & \tickNo & \tickYes & \tickYes & \tickNo \\
   \hline
 \cite{deeptest} & \tickNo & \tickNo & \tickNo & \tickYes & \tickYes & \tickNo \\
@@ -130,6 +132,10 @@ Conversely, black-box attacks often involve \emph{semantic adversarial examples}
 \hline
 \cite{Dola} & \tickNo & \tickYes & \tickNo & \tickYes & \tickYes & \tickNo \\
 \hline
+\cite{Sayah} & \tickNo & \tickNo & \tickNo & \tickYes & \tickYes & \tickNo \\
+\hline
+\cite{ChenJ} & \tickNo & \tickNo & \tickNo & \tickYes & \tickYes & \tickYes \\
+\hline
   \end{tabular}
   }
   \caption{Comprison of different DNNs testing framework}
@@ -145,10 +151,19 @@ Conversely, black-box attacks often involve \emph{semantic adversarial examples}
 % Detailed literature review for Interpretability
 
 \subsection{Testcase Generation}
-% Detailed literature review for Testcase Generation
+Test-case generation methods are influenced by traditional software testing methods like fuzz testing, metamorphic testing, and symbolic execution. In the following sections, we will explore the current state of the art in DNN test generation. DeepXplore \cite{deepxplore} is a whitebox test-case generation method that checks how different DNNs behave using domain-specific rules on inputs. It uses multiple models trained on the same data to find differences in their prediction. It aims to jointly optimize neuron coverage and different predictions between models, using gradient ascent for test generation. DeepTest \cite{deeptest} focuses on generating test inputs for autonomous cars by applying domain-specific rules on seed inputs. It uses a greedy search method based on the NC metric to create effective test cases. Adapting traditional fuzzing techniques for DNN test-case generation includes methods like DLFuzz \cite{DLFuzz} and TensorFuzz \cite{tensorfuzz}. DLFuzz generates adversarial inputs based on neuron coverage, akin to DeepXplore, but does not require multiple models and uses constraints to keep new inputs similar to originals. TensorFuzz employs coverage-guided testing to uncover numerical issues and discrepancies in DNNs and their quantized versions. DeepConcolic \cite{Deepconcolic} employs a concolic testing approach to generate adversarial inputs for DNN testing. It combines symbolic execution with concrete execution path information to meet coverage criteria, supporting both NC and MC/DC criteria.
+
 
 \subsection{Coverage Criteria}
-% Detailed literature review for Coverage Criteria
+In traditional software testing, coverage criteria measure how thoroughly software is tested. In DNNs, coverage might not directly apply to lines of code but rather to the input space or the variety of data the model can effectively handle or provide predictions for.
+
+Neuron coverage (NC) \cite{deepxplore} is the first coverage metric proposed in the literature to test DNNs. It is defined as the ratio of neurons activated by a test input to the total number of neurons in the model, where a neuron is activated when its activation value exceeds a predefined threshold.
+
+Ma et al. \cite{Ma} proposed a variety of coverage metrics, including K-multisection neuron coverage (KMNC), Neuron boundary coverage (NBC), and Strong neuron activation coverage (SNAC). KMNC calculates coverage by dividing the interval between lower and upper bounds into k-bins and measuring the number of bins activated by the test inputs. NBC measures the ratio of corner case regions covered by test inputs, with corner cases defined as activation values below or above those observed during training. SNAC similarly measures how many upper corner cases, defined as activation values above the training range, are covered by test inputs.
+
+Modified Condition/Decision Coverage (MC/DC) \cite{SunY} captures causal changes in test inputs based on the sign and value change of a neuron's activation.
+
+Likelihood-based Surprise Adequacy (LSA) uses Kernel Density Estimation (KDE) to estimate the likelihood of a test input during the training phase, prioritizing inputs with higher LSA scores as they are closer to classification boundaries. Distance-based Surprise Adequacy (DSA) is an alternative to LSA that uses the distance between activation traces of new test inputs and those observed during training \cite{Kim}.
 
 \subsection{Error Summarization}
 % Detailed literature review for Error Summarization
@@ -165,111 +180,22 @@ Sampling is a crucial step in the testing of DNNs, as it involves selecting a re
   
   \end{tcolorbox}
 
-%   \begin{figure*}
-%     \centering
-%     \includegraphics[width=\linewidth]{borderlineSmote.jpeg}
-%     \caption{Borderline-Smote}
-%     \label{fig:image-trans}
-% \end{figure*}
-% \begin{figure*}
-%   \centering
-%   \includegraphics[width=\linewidth]{adasynexample.jpeg}
-%   \caption{Adasyn}
-%   \label{fig:image-trans}
-% \end{figure*}
-
-% \section{Testing and Formal Verification}
-% \textcolor{blue}{
-% Testing (t) and formal verification (v) are two distinct approaches used to ensure the reliability and correctness of DNNs. Testing is an empirical process that involves executing a system with a variety of inputs to identify defects or bugs. For example, to verify the detection of stop signs in an autonomous vehicle's neural network, testing would involve generating a set of images with variations in brightness, rotation, and noise. These images are then fed into the neural network, and the outputs are analyzed to check if the stop sign is correctly detected. Specific test cases might include images taken in different lighting conditions (daylight, twilight, night), with stop signs at various angles (0°, 15°, 30°, 45°), and with added Gaussian noise. The main advantage of testing is its practicality, providing immediate feedback on the neural network’s performance under these conditions \cite{Albarghouthi}.}
-
-% \textcolor{blue}{In contrast, formal verification uses mathematical and logical reasoning to prove that a system meets its specifications under all possible conditions. This involves formalizing the properties of the system and using formal methods such as model checking or theorem proving to verify these properties. For instance, the property that the neural network must detect stop signs correctly under different brightness levels, rotations, and noise can be formalized as follows: for any input image containing a stop sign, regardless of these variations, the network should output a correct detection. Tools like SMT solvers are then used to verify this property. Unlike testing, formal verification aims to provide rigorous guarantees of correctness, ensuring that the system adheres to its specifications in all cases \cite{DeepMind2023, Albarghouthi}.}
-
-% \textcolor{blue}{A key difference between the two approaches is the scope of their validation. Testing is limited to the specific cases generated, which may not cover all possible scenarios. Formal verification, however, aims to cover all possible scenarios within the defined properties, offering stronger guarantees. For example, while testing might reveal that the neural network fails to detect a stop sign under very dim lighting, formal verification would mathematically prove whether such failures can occur under any possible input within the specified range. This makes formal verification particularly valuable in safety-critical applications where ensuring the absence of errors is crucial \cite{Urban2021}.}
-
-
-  
-% \begin{figure}[h]
-%     \centering
-%     \begin{tikzpicture}[node distance=2cm]
-
-
-%         % Testing Process
-%         \node (start1) [fill=gray!80,rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black] {Input Data};
-%         \node (process1) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=start1] {Generate Test Cases};
-%         \node (process2) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=process1] {Execute Test Cases};
-%         \node (process3) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=process2] {Analyze Outputs};
-%         \node (process4) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=process3] {Identify Bugs};
-
-%         \draw [thick,->,>=stealth] (start1) -- (process1);
-%         \draw [thick,->,>=stealth] (process1) -- (process2);
-%         \draw [thick,->,>=stealth] (process2) -- (process3);
-%         \draw [thick,->,>=stealth] (process3) -- (process4);
-
-%         % Verification Process
-%         \node (start2) [rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!80, right of=start1, xshift=6cm] {Input Model Specifications};
-%         \node (process5) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=start2] {Formalize Specifications};
-%         \node (process6) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=process5] {Apply Formal Methods};
-%         \node (process7) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=process6] {Verify Against Specifications};
-%         \node (process8) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=process7] {Prove Correctness};
-
-%         \draw [thick,->,>=stealth] (start2) -- (process5);
-%         \draw [thick,->,>=stealth] (process5) -- (process6);
-%         \draw [thick,->,>=stealth] (process6) -- (process7);
-%         \draw [thick,->,>=stealth] (process7) -- (process8);
-%     \end{tikzpicture}
-%     \caption{Comparison of Testing and Verification Processes}
-%     \label{fig:testing_verification}
-% \end{figure}
-
-% \begin{tcolorbox}[colback=purple!2!white, colframe=purple]
-
-%   Currently, my work focuses on \textbf{testing}, generating diverse test cases to identify defects and improve the robustness of Deep Neural Networks (DNNs). This approach is effective in providing immediate feedback and uncovering a wide range of issues.
-  
-%   \textbf{Challenge 1}: Testing may not cover all possible scenarios and can miss critical edge cases. In the future, I plan to extend this work to \textbf{formal verification}, using mathematical methods to rigorously prove the system meets specifications under all conditions, thereby providing stronger guarantees of correctness.
-  
-%   \textbf{Challenge 2}: Verifiers can take an extensive amount of time to check the robustness of inputs, which can delay the verification process and impact the overall efficiency of the system evaluation.
-  
-% \end{tcolorbox}
 
 
 
 
+% \section{DNN Testing Techniques}
 
-\section{DNN Testing Techniques}
+% The development of DNNs is significantly different from traditional software. While developers explicitly define logic in traditional software, DNNs learn logic rules from raw data. Developers shape these rules by modifying the training data, selecting features, and designing the DNN architecture, such as the number of neurons and layers.
 
-The development of DNNs is significantly different from traditional software. While developers explicitly define logic in traditional software, DNNs learn logic rules from raw data. Developers shape these rules by modifying the training data, selecting features, and designing the DNN architecture, such as the number of neurons and layers.
+% Since the logic of a DNN is non-transparent \cite{deepxplore}, identifying the reasons behind its erroneous behavior is challenging. Therefore, testing and correcting its errors are crucial, particularly in safety-critical systems. Next, we briefly introduce two major DNN testing techniques: coverage criteria and test-case generation.
 
-Since the logic of a DNN is non-transparent \cite{deepxplore}, identifying the reasons behind its erroneous behavior is challenging. Therefore, testing and correcting its errors are crucial, particularly in safety-critical systems. Next, we briefly introduce two major DNN testing techniques: coverage criteria and test-case generation.
+% \smallskip\noindent%
+% \textbf{Coverage Criteria}
 
-\smallskip\noindent%
-\textbf{Coverage Criteria}
 
-In traditional software testing, coverage criteria measure how thoroughly software is tested. In DNNs, coverage might not directly apply to lines of code but rather to the input space or the variety of data the model can effectively handle or provide predictions for.
-
-Neuron coverage (NC) \cite{deepxplore} is the first coverage metric proposed in the literature to test DNNs. It is defined as the ratio of neurons activated by a test input to the total number of neurons in the model, where a neuron is activated when its activation value exceeds a predefined threshold.
-
-Ma et al. \cite{deepguage} proposed a variety of coverage metrics, including K-multisection neuron coverage (KMNC), Neuron boundary coverage (NBC), and Strong neuron activation coverage (SNAC). KMNC calculates coverage by dividing the interval between lower and upper bounds into k-bins and measuring the number of bins activated by the test inputs. NBC measures the ratio of corner case regions covered by test inputs, with corner cases defined as activation values below or above those observed during training. SNAC similarly measures how many upper corner cases, defined as activation values above the training range, are covered by test inputs.
-
-Modified Condition/Decision Coverage (MC/DC) \cite{SunY} captures causal changes in test inputs based on the sign and value change of a neuron's activation.
-
-Likelihood-based Surprise Adequacy (LSA) uses Kernel Density Estimation (KDE) to estimate the likelihood of a test input during the training phase, prioritizing inputs with higher LSA scores as they are closer to classification boundaries. Distance-based Surprise Adequacy (DSA) is an alternative to LSA that uses the distance between activation traces of new test inputs and those observed during training \cite{KimJ}.
-
-\smallskip\noindent%
-\textbf{DNN Test-case Generation}
-
-Test-case generation methods are influenced by traditional software testing methods like fuzz testing, metamorphic testing, and symbolic execution. In the following sections, we will explore the current state of the art in DNN test generation.
-
-DeepXplore \cite{deepxplore} is a whitebox test-case generation method that checks how different DNNs behave using domain-specific rules on inputs. It uses multiple models trained on the same data to find differences in their prediction. It aims to jointly optimize neuron coverage and different predictions between models, using gradient ascent for test generation.
-
-DeepTest \cite{deeptest} focuses on generating test inputs for autonomous cars by applying domain-specific rules on seed inputs. It uses a greedy search method based on the NC metric to create effective test cases.
-
-Adapting traditional fuzzing techniques for DNN test-case generation includes methods like DLFuzz \cite{dlfuzz} and TensorFuzz \cite{tensorfuzz}. DLFuzz generates adversarial inputs based on NC, akin to DeepXplore, but does not require multiple models and uses constraints to keep new inputs similar to originals. TensorFuzz employs coverage-guided testing to uncover numerical issues and discrepancies in DNNs and their quantized versions.
-
-DeepConcolic \cite{deepconcolic} employs a concolic testing approach to generate adversarial inputs for DNN testing. It combines symbolic execution with concrete execution path information to meet coverage criteria, supporting both NC and MC/DC criteria.
-
-Traditional techniques are simple, failing to capture the full complexity and precision of model behaviors. Exploring all possible behaviors of a model is nearly impossible due to the vast number of paths to consider. These metrics also often overlook the detailed interactions within and between layers of the model. Defining and testing all necessary decision boundaries, especially in complex models, is a daunting task. Many existing metrics do not provide clear directions for improving the model, leaving you without actionable insights. Scalability and adaptability are other major issues. Many criteria are not scalable or adaptable across diverse model architectures.
-
-In this thesis, we address these issues and design a systematic testing framework for DNNs.
+% \smallskip\noindent%
+% \textbf{DNN Test-case Generation}
 
 
 
