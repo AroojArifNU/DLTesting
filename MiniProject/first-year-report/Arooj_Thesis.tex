@@ -126,9 +126,51 @@
 {1ex}
 {\bfseries\Large\centering}
 
+% Use of colour
+\usepackage{xcolor}
 
+% Use of URL
+\usepackage{url}
 
+\definecolor{myRoyalBlue}{HTML}{4169E1}
+\definecolor{myMagenta}{HTML}{FF00FF}
+\definecolor{myAquaMarine}{HTML}{7FFFD4}
+\definecolor{myPurple}{HTML}{A020F0}
+\definecolor{myCoral}{HTML}{FF7F50}
+\definecolor{SeaGreen}{HTML}{2E8B57}
 
+% Added by Alex: BEGIN
+
+\usepackage{enumitem}
+
+\newenvironment{structure}[1]
+    {\color{blue}
+    \noindent
+    \S~#1
+    \begin{itemize}[leftmargin=1em,
+        itemsep=.1em,
+        parsep=.1em,
+        topsep=.1em,
+        partopsep=.1em]}
+    {\end{itemize}\vspace{0.5em}}
+
+\usepackage{soul} % For underlining
+\soulregister\cite7
+\soulregister\ref7
+
+% TODO items, notes, and comments
+%
+% NOTE Alexandros Koliousis
+\newcommand{\alex}[1]{{\color{myRoyalBlue}[\textsc{Alex:} {#1}]}}
+
+% COMMENT Alexandros Koliousis
+\newcommand{\alexcomment}[2]{\ul{#1}~{\color{myRoyalBlue}[\textsc{Alex:}] {#2}}}
+
+\usepackage{xspace}
+
+\newcommand{\gap}{\textcolor{red}{\textbf{[...]}}\xspace}
+
+% END
 
 \begin{document}
 \pagenumbering{roman}
