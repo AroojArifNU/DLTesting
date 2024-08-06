@@ -68,8 +68,8 @@ Conversely, black-box attacks often involve \emph{semantic adversarial examples}
   \end{figure*}
 
 
-\section{Research Themes}
- This literature is categorized into seven themes, each playing a vital role in the framework. Some modules, such as sampling techniques and interpretability analysis, are established in existing literature but are now being explored for different purposes. For example, sampling techniques are traditionally used to balance data for better classification accuracy, but I am investigating their use in identifying corner cases. Interpretability analysis is often applied to detect adversarial examples, but I am focusing on extracting influential pixels to create more effective test cases. Other areas, like specification, error summarization, are less covered in literature and will be developed further. Figure \ref{fig:thematic_wheel} illustrates these interconnected modules, emphasizing the comprehensive approach necessary for ensuring the robustness of DNNs in safety-critical applications. 
+\section{Research Areas}
+ This literature is categorized into seven areas, each playing a vital role in the framework. Some modules, such as sampling techniques and interpretability analysis, are established in existing literature but are now being explored for different purposes. For example, sampling techniques are traditionally used to balance data for better classification accuracy, but I am investigating their use in identifying corner cases. Interpretability analysis is often applied to detect adversarial examples, but I am focusing on extracting influential pixels to create more effective test cases. Other areas, like specification, error summarization, are less covered in literature and will be developed further. Figure \ref{fig:thematic_wheel} illustrates these interconnected modules, emphasizing the comprehensive approach necessary for ensuring the robustness of DNNs in safety-critical applications. 
 
 \begin{figure*}[h]
   \centering
@@ -79,6 +79,7 @@ Conversely, black-box attacks often involve \emph{semantic adversarial examples}
 \end{figure*}
 
 \subsection{DNN Testing Framework}
+ Various frameworks have been proposed in the literature, each incorporating different methodologies and components to address specific aspects of DNN testing. Table \ref{tab:Comprison of different DNNs testing framework} provides a comparison of several DNN testing frameworks based on their inclusion of key components such as specification, sampling, interpretability, testcase generation, coverage criteria, and error summarization.
 
 \begin{table}[ht]
   \centering
@@ -93,21 +94,21 @@ Conversely, black-box attacks often involve \emph{semantic adversarial examples}
   \hline
 \cite{deeptest} & \tickNo & \tickNo & \tickNo & \tickYes & \tickYes & \tickNo \\
   \hline
-\cite{Wicker et al., 2018}& \tickNo & \tickNo & \tickNo & \tickYes & \tickYes & \tickNo \\
-\cite{Ma et al., 2018}& \tickNo & \tickNo & \tickNo & \tickYes & \tickYes & \tickNo \\
+\cite{Wicker}& \tickNo & \tickNo & \tickNo & \tickYes & \tickYes & \tickNo \\
+\cite{Ma}& \tickNo & \tickNo & \tickNo & \tickYes & \tickYes & \tickNo \\
   \hline
-\cite{SunY,Sun et al., 2019}& \tickNo & \tickNo & \tickNo & \tickYes & \tickYes & \tickNo \\
+\cite{SunY}& \tickNo & \tickNo & \tickNo & \tickYes & \tickYes & \tickNo \\
 \hline
-\cite{Sun et al., 2019}& \tickNo & \tickNo & \tickNo & \tickYes & \tickYes & \tickNo \\
+\cite{Sun}& \tickNo & \tickNo & \tickNo & \tickYes & \tickYes & \tickNo \\
 \hline
 
-\cite{Cheng et al., 2018} & \tickNo & \tickNo & \tickNo & \tickYes & \tickYes & \tickNo \\
+\cite{Cheng} & \tickNo & \tickNo & \tickNo & \tickYes & \tickYes & \tickNo \\
 \hline
-\cite{Kim et al., 2018} & \tickNo & \tickNo & \tickNo & \tickYes & \tickYes & \tickNo \\
+\cite{Kim} & \tickNo & \tickNo & \tickNo & \tickYes & \tickYes & \tickNo \\
 \hline
 \cite{Concolic} & \tickNo & \tickNo & \tickNo & \tickYes & \tickYes & \tickNo \\
 \hline
-\cite{deepconcolic} & \tickNo & \tickNo & \tickNo & \tickYes & \tickYes & \tickNo \\
+\cite{Deepconcolic} & \tickNo & \tickNo & \tickNo & \tickYes & \tickYes & \tickNo \\
 \hline
 \cite{tensorfuzz} & \tickNo & \tickNo & \tickNo & \tickYes & \tickYes & \tickNo \\
 \hline
@@ -115,18 +116,24 @@ Conversely, black-box attacks often involve \emph{semantic adversarial examples}
 \hline
 \cite{DLFuzz} & \tickNo & \tickNo & \tickNo & \tickYes & \tickYes & \tickNo \\
 \hline
-\cite{Gopinath et al., 2018} & \tickNo & \tickNo & \tickNo & \tickYes & \tickNo & \tickNo \\
+\cite{Gopinath} & \tickNo & \tickNo & \tickNo & \tickYes & \tickNo & \tickNo \\
 \hline
-\cite{Agarwal et al., 2018} & \tickNo & \tickNo & \tickNo & \tickYes & \tickNo & \tickNo \\
+\cite{Agarwal} & \tickNo & \tickNo & \tickNo & \tickYes & \tickNo & \tickNo \\
 \hline
-\cite{Zhang et al., 2018} & \tickNo & \tickNo & \tickNo & \tickYes & \tickNo & \tickNo \\
+\cite{Zhang} & \tickNo & \tickNo & \tickNo & \tickYes & \tickNo & \tickNo \\
 \hline
 \cite{MODE} & \tickNo & \tickNo & \tickNo & \tickYes & \tickNo & \tickNo \\
+\hline
+\cite{Deepmutation} & \tickNo & \tickNo & \tickNo & \tickYes & \tickYes & \tickYes \\
+\hline
+\cite{Braiek} & \tickYes & \tickYes & \tickYes & \tickYes & \tickYes & \tickYes \\
+\hline
+\cite{Dola} & \tickNo & \tickYes & \tickNo & \tickYes & \tickYes & \tickNo \\
 \hline
   \end{tabular}
   }
   \caption{Comprison of different DNNs testing framework}
-  \label{tab:dummy_table}
+  \label{tab:Comprison of different DNNs testing framework}
   \end{table}
 \subsection{Specification}
 % Detailed literature review for Specification
@@ -171,48 +178,48 @@ Sampling is a crucial step in the testing of DNNs, as it involves selecting a re
 %   \label{fig:image-trans}
 % \end{figure*}
 
-\section{Testing and Formal Verification}
-\textcolor{blue}{
-Testing (t) and formal verification (v) are two distinct approaches used to ensure the reliability and correctness of DNNs. Testing is an empirical process that involves executing a system with a variety of inputs to identify defects or bugs. For example, to verify the detection of stop signs in an autonomous vehicle's neural network, testing would involve generating a set of images with variations in brightness, rotation, and noise. These images are then fed into the neural network, and the outputs are analyzed to check if the stop sign is correctly detected. Specific test cases might include images taken in different lighting conditions (daylight, twilight, night), with stop signs at various angles (0°, 15°, 30°, 45°), and with added Gaussian noise. The main advantage of testing is its practicality, providing immediate feedback on the neural network’s performance under these conditions \cite{Albarghouthi}.}
+% \section{Testing and Formal Verification}
+% \textcolor{blue}{
+% Testing (t) and formal verification (v) are two distinct approaches used to ensure the reliability and correctness of DNNs. Testing is an empirical process that involves executing a system with a variety of inputs to identify defects or bugs. For example, to verify the detection of stop signs in an autonomous vehicle's neural network, testing would involve generating a set of images with variations in brightness, rotation, and noise. These images are then fed into the neural network, and the outputs are analyzed to check if the stop sign is correctly detected. Specific test cases might include images taken in different lighting conditions (daylight, twilight, night), with stop signs at various angles (0°, 15°, 30°, 45°), and with added Gaussian noise. The main advantage of testing is its practicality, providing immediate feedback on the neural network’s performance under these conditions \cite{Albarghouthi}.}
 
-\textcolor{blue}{In contrast, formal verification uses mathematical and logical reasoning to prove that a system meets its specifications under all possible conditions. This involves formalizing the properties of the system and using formal methods such as model checking or theorem proving to verify these properties. For instance, the property that the neural network must detect stop signs correctly under different brightness levels, rotations, and noise can be formalized as follows: for any input image containing a stop sign, regardless of these variations, the network should output a correct detection. Tools like SMT solvers are then used to verify this property. Unlike testing, formal verification aims to provide rigorous guarantees of correctness, ensuring that the system adheres to its specifications in all cases \cite{DeepMind2023, Albarghouthi}.}
+% \textcolor{blue}{In contrast, formal verification uses mathematical and logical reasoning to prove that a system meets its specifications under all possible conditions. This involves formalizing the properties of the system and using formal methods such as model checking or theorem proving to verify these properties. For instance, the property that the neural network must detect stop signs correctly under different brightness levels, rotations, and noise can be formalized as follows: for any input image containing a stop sign, regardless of these variations, the network should output a correct detection. Tools like SMT solvers are then used to verify this property. Unlike testing, formal verification aims to provide rigorous guarantees of correctness, ensuring that the system adheres to its specifications in all cases \cite{DeepMind2023, Albarghouthi}.}
 
-\textcolor{blue}{A key difference between the two approaches is the scope of their validation. Testing is limited to the specific cases generated, which may not cover all possible scenarios. Formal verification, however, aims to cover all possible scenarios within the defined properties, offering stronger guarantees. For example, while testing might reveal that the neural network fails to detect a stop sign under very dim lighting, formal verification would mathematically prove whether such failures can occur under any possible input within the specified range. This makes formal verification particularly valuable in safety-critical applications where ensuring the absence of errors is crucial \cite{Urban2021}.}
+% \textcolor{blue}{A key difference between the two approaches is the scope of their validation. Testing is limited to the specific cases generated, which may not cover all possible scenarios. Formal verification, however, aims to cover all possible scenarios within the defined properties, offering stronger guarantees. For example, while testing might reveal that the neural network fails to detect a stop sign under very dim lighting, formal verification would mathematically prove whether such failures can occur under any possible input within the specified range. This makes formal verification particularly valuable in safety-critical applications where ensuring the absence of errors is crucial \cite{Urban2021}.}
 
 
   
-\begin{figure}[h]
-    \centering
-    \begin{tikzpicture}[node distance=2cm]
+% \begin{figure}[h]
+%     \centering
+%     \begin{tikzpicture}[node distance=2cm]
 
 
-        % Testing Process
-        \node (start1) [fill=gray!80,rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black] {Input Data};
-        \node (process1) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=start1] {Generate Test Cases};
-        \node (process2) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=process1] {Execute Test Cases};
-        \node (process3) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=process2] {Analyze Outputs};
-        \node (process4) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=process3] {Identify Bugs};
+%         % Testing Process
+%         \node (start1) [fill=gray!80,rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black] {Input Data};
+%         \node (process1) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=start1] {Generate Test Cases};
+%         \node (process2) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=process1] {Execute Test Cases};
+%         \node (process3) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=process2] {Analyze Outputs};
+%         \node (process4) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=process3] {Identify Bugs};
 
-        \draw [thick,->,>=stealth] (start1) -- (process1);
-        \draw [thick,->,>=stealth] (process1) -- (process2);
-        \draw [thick,->,>=stealth] (process2) -- (process3);
-        \draw [thick,->,>=stealth] (process3) -- (process4);
+%         \draw [thick,->,>=stealth] (start1) -- (process1);
+%         \draw [thick,->,>=stealth] (process1) -- (process2);
+%         \draw [thick,->,>=stealth] (process2) -- (process3);
+%         \draw [thick,->,>=stealth] (process3) -- (process4);
 
-        % Verification Process
-        \node (start2) [rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!80, right of=start1, xshift=6cm] {Input Model Specifications};
-        \node (process5) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=start2] {Formalize Specifications};
-        \node (process6) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=process5] {Apply Formal Methods};
-        \node (process7) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=process6] {Verify Against Specifications};
-        \node (process8) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=process7] {Prove Correctness};
+%         % Verification Process
+%         \node (start2) [rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!80, right of=start1, xshift=6cm] {Input Model Specifications};
+%         \node (process5) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=start2] {Formalize Specifications};
+%         \node (process6) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=process5] {Apply Formal Methods};
+%         \node (process7) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=process6] {Verify Against Specifications};
+%         \node (process8) [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=gray!30, below of=process7] {Prove Correctness};
 
-        \draw [thick,->,>=stealth] (start2) -- (process5);
-        \draw [thick,->,>=stealth] (process5) -- (process6);
-        \draw [thick,->,>=stealth] (process6) -- (process7);
-        \draw [thick,->,>=stealth] (process7) -- (process8);
-    \end{tikzpicture}
-    \caption{Comparison of Testing and Verification Processes}
-    \label{fig:testing_verification}
-\end{figure}
+%         \draw [thick,->,>=stealth] (start2) -- (process5);
+%         \draw [thick,->,>=stealth] (process5) -- (process6);
+%         \draw [thick,->,>=stealth] (process6) -- (process7);
+%         \draw [thick,->,>=stealth] (process7) -- (process8);
+%     \end{tikzpicture}
+%     \caption{Comparison of Testing and Verification Processes}
+%     \label{fig:testing_verification}
+% \end{figure}
 
 % \begin{tcolorbox}[colback=purple!2!white, colframe=purple]
 
