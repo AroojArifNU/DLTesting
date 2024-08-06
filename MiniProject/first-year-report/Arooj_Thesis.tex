@@ -1,7 +1,7 @@
 \documentclass[12pt, a4paper, oneside]{CIITThesissV1}
-\usepackage{helvet} % Use Helvetica font as the sans-serif font
-\renewcommand{\familydefault}{\sfdefault} % Set the default font family to sans-serif
-
+% \usepackage{helvet} % Use Helvetica font as the sans-serif font
+% \renewcommand{\familydefault}{\sfdefault} % Set the default font family to sans-serif
+\usepackage{times}
 \usepackage{mdframed} 
 \usepackage{algorithm}
 \usepackage{algorithmic}
@@ -20,9 +20,9 @@
 \usepackage{parskip}
 \usepackage[export]{adjustbox}
 \usepackage{pbox}
-
+\usepackage{adjustbox}
 \usepackage{afterpage}  % For better page handling
-
+\usepackage{graphicx} % Needed for \rotatebox
 \usepackage{threeparttable}  
 \usepackage{booktabs}
 \usepackage{multirow}
@@ -195,9 +195,9 @@
 \pagestyle{fancy}
 \fancyhead[LO]{\slshape \leftmark}
 
-\rfoot{\emph{Thesis by: Arooj Arif}}
+% \rfoot{\emph{Thesis by: Arooj Arif}}
 
-\include{How to read this document}
+% \include{How to read this document}
 \include{chap1}
 \include{chap2}
 \include{chap3}
