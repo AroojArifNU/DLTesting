@@ -13,7 +13,6 @@
 
 To develop a comprehensive testing framework for DNNs, it is essential to explore various domains that collectively will contribute to this goal. This literature review will cover the concept of DNN and AI systems, and then examine the robustness of DNNs, including a classification of different types of attacks. Subsequently, the literature will be organized into seven research modules: DNN testing framework, specification, sampling, interpretability, testcase generation, coverage criteria, and error summarization. These modules are not stages of the framework but different areas of research to be explored. Each module will be examined to understand current methods and identifies gaps to develop a comprehensive testing solution.
 
-
 \section{Deep Neural Networks and AI Systems}
 
 DNNs mimic the structure of the human brain, consisting of millions of interconnected neurons. They extract high-level features from raw input using labeled training data without human interference.
@@ -48,10 +47,6 @@ Error specificity refers to whether the attacker aims for misclassification as a
 In the context of attacker's knowledge, different techniques are proposed in literature to create \emph{adversarial examples}. White-box attacks, such as the Fast Gradient Sign Method (FGSM) \cite{FGSM}, Basic Iterative Method (BIM) \cite{BIM}, Carlini and Wagner (C\&W) Attack \cite{Carlini}, DeepFool \cite{deepfool}, and Jacobian-based Saliency Map Attack (JSMA) \cite{JSMA}, use different internal information of the DNN. These techniques use gradients (FGSM, BIM, C\&W), decision boundaries (DeepFool), and the Jacobian matrix of the output with respect to the input (JSMA) to generate effective adversarial examples. They specifically manipulate input data to create slight perturbations that maximize the network prediction error, causing the DNN to make incorrect predictions \cite{Hosseini}.
 
 Conversely, black-box attacks do not rely on internal information of the DNN to craft adversarial examples. These attacks often involve \emph{semantic adversarial examples} \cite{HuangX,deeptest,Engstrom,Pei}, which are not limited to slight modifications of the image. These attacks can involve any transformation that preserves the semantics of the image, such as shear, translation, scale, rotations, etc., as illustrated in Fig. \ref{fig:image-trans}.
-
-
-
-
 
 
 \begin{center}
@@ -182,6 +177,7 @@ Near-Miss\cite{near-miss} & \tickNo & \tickYes & \tickNo & \tickNo & \tickNo & \
 
 
 
+% [Comment for Alex]  I will revisit and complete this PLP section at the end of the document. Currently, I am unable to integrate it smoothly into the flow of the literature review.
 
 
 % \section{Probabilistic Logic Programming (PLP)}
