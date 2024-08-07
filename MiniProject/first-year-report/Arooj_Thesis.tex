@@ -109,8 +109,27 @@
 \newcommand{\tickYes}{\checkmark}
 \newcommand{\tickNo}{\texttimes}
 \usetikzlibrary{fit}
+\usepackage{listings}
+\usepackage{xcolor}
 
-
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\tiny, % Smaller font size
+    keywordstyle=\color{blue},
+    stringstyle=\color{red},
+    commentstyle=\color{gray},
+    showstringspaces=false,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=5pt,
+    breaklines=true,
+    frame=single,
+    captionpos=b,
+    tabsize=2, % Smaller tab size
+    breakatwhitespace=true, % Allow breaking at whitespace
+    columns=flexible, % Allow flexible column width
+}
 \makeatletter
 \def\BState{\State\hskip-\ALG@thistlm}
 \graphicspath{{figures/}}
@@ -207,6 +226,6 @@
 \include{chap6}
 
 \include{Appendix_A}
-
+\include{Appendix_B}
 
 \end{document} 
