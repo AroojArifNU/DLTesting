@@ -11,7 +11,7 @@
 \chapter{Literature Review}
 \label{chp:2}
 
-To develop a comprehensive testing framework for DNNs, it is crucial to explore various domains that collectively contribute to this goal. This literature review aims to discuss the concepts of DNNs and AI systems, followed by an examination of the robustness of DNNs. Subsequently, the literature will be categorized into seven research modules: DNN testing framework, Specification, Sampling, Interpretability, Testcase Generation, Coverage Criteria and Error Summarization, each playing a vital role in the framework. 
+To develop a comprehensive testing framework for DNNs, it is essential to explore various domains that collectively will contribute to this goal. This literature review will cover the concept of DNN and AI systems, and then examine the robustness of DNNs, including a classification of different types of attacks. Subsequently, the literature will be organized into seven research modules: DNN testing framework, specification, sampling, interpretability, testcase generation, coverage criteria, and error summarization. These modules are not stages of the framework but different areas of research to be explored. Each module will be examined to understand current methods and identifies gaps to develop a comprehensive testing solution.
 
 
 \section{Deep Neural Networks and AI Systems}
@@ -26,24 +26,24 @@ The objective of DNN training is to learn parameters during training to make acc
 
 When the prediction task is classification, then $s_k$ represents the number of classes. Assuming that $f(x) = (y_1,\dots,y_{s_k})$, the \emph{classification result} is $\displaystyle\mathop{\text{argmax}}_{i=1}^{s_k} y_i$, which is the index of the component with the highest probability $y_i$. By abuse of notation, sometimes we write $f(x)=c$ to denote the fact that $x$ was classified as $c$. We also write $f(x)_c$ to refer to $y_c$ which represents the probability of $x$ being in class $c$.
 
-By an \emph{AI system}, we refer to any software system capable of performing complex tasks through the use of data, algorithms, and high computational power, which typically require human intelligence. These tasks include problem-solving, reasoning, decision-making, and natural language understanding.
+By an \emph{AI system}, we refer to any software system capable of performing complex tasks through the use of data, algorithms, and high computational power, which typically require human intelligence. These tasks include problem-solving, reasoning, decision-making, and natural language understanding \cite{Illinois}.
 
-Deep learning is a subset of AI that utilizes DNNs for complex pattern recognition. Some AI systems are solely based on DNN components, whereas \emph{hybrid} AI systems combine DNNs with traditional software to produce the final output.
+Deep learning, a part of AI, uses deep neural networks (DNNs) to recognize complex patterns. Some AI systems are solely based on DNN components, whereas \emph{hybrid} AI systems combine DNNs with traditional software to produce the final output.
 
 \section{Robustness of Deep Neural Networks}
 
-\begin{figure}[h]
+\begin{figure*}[h]
   \centering
   \includegraphics[width=\linewidth]{attackclassification.png}
   \caption{Attack classification}
   \label{fig:adv_threats}
-\end{figure}
+\end{figure*}
 
 
-DNNs are known for their lack of robustness, which makes them vulnerable to adversarial attacks. Researchers have developed various attack techniques to expose these vulnerabilities by creating adversarial examples, which highlight the weaknesses of a DNN without providing any provable guarentee \cite{HuangX}. Fig. \ref{fig:adv_threats}  illustrates the different types of attack threats, emphasizing the complexity and variety of these attacks. Adversarial threats to DNNs can be understood through three main components: attacker's knowledge, attacker's goals, and attacker's capabilities \cite{Biggio}.
-Attackers can have different levels of knowledge: white-box attacks have full knowledge of the DNN's architecture and parameters, gray-box attacks have partial knowledge, and black-box attacks have no knowledge and rely on input-output queries. The attacker's goals might include compromising the system's integrity, availability, or privacy, with attacks being either targeted (misclassifying specific inputs) or untargeted (causing general misclassification). Attackers can influence the model by poison attack \cite{poisonattack,Badnets} during training or evasion attack \cite{evasion} during testing, and these manipulations are often constrained by application-specific data alteration limits.\cite{Chakraborty}.
+DNNs are known for their lack of robustness, which makes them vulnerable to adversarial attacks. Researchers have developed various attack techniques to expose these vulnerabilities by creating adversarial examples, which highlight the weaknesses of a DNN without providing any provable guarentee \cite{HuangX}. Fig. \ref{fig:adv_threats}  illustrates the different types of attack threats, emphasizing the complexity and variety of these attacks. Adversarial attacks can be categorized through three main components: attacker's knowledge, attacker's goals, and attacker's capabilities \cite{Biggio}.
 
-
+Attackers can have different levels of knowledge about DNN: white-box attacks have full knowledge of the architecture and parameters, gray-box attacks have partial knowledge, and black-box attacks have no knowledge and rely  on input-output queries. Their goals might include compromising system integrity, availability, or privacy. Attack specificity can be targeted, aiming to misclassify a specific set of samples, or untargeted, causing any sample to be misclassified. 
+Error specificity refers to whether the attacker aims for misclassification as a specific class or any incorrect class. Attackers can influence the model by poison attack \cite{poisonattack,Badnets} during training or evasion attack \cite{evasion} during testing, and these manipulations are often constrained by application-specific data alteration limits.\cite{Chakraborty}.
 
 In the context of attacker's knowledge, different techniques are employed to create \emph{adversarial examples}. White-box attacks, such as Fast Gradient Sign Method (FGSM) \cite{FGSM}, Basic Iterative Method (BIM) \cite{BIM}, Carlini and Wagner (C\&W) Attack \cite{Carlini}, DeepFool \cite{deepfool}, and Jacobian-based Saliency Map Attack (JSMA) \cite{JSMA}. These techniques specifically manipulate input data to create slight perturbations that maximize the network prediction error, causing the DNN to make incorrect predictions \cite{Hosseini}.
 
