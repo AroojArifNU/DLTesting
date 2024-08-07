@@ -73,11 +73,21 @@
 This section introduces our comprehensive approach to evaluating AI system performance, summarized in Figure~\ref{fig:framework}. It takes as input the description of an AI system and a set of relevant specifications against which the AI system should be checked. The framework itself has four main components:
 
 \begin{enumerate}
-    \item \emph{Sampling}: Choosing the original inputs for the AI system.
-    \item \emph{Testcase Generation}: Generating specific test cases from the sampled inputs according to the specifications.
-    \item \emph{Validation}: Checking the behavior of the AI system on the generated test cases, which can be fully-fledged \emph{verification} or more lightweight \emph{testing}.
-    \item \emph{Error Summarization}: Quantifying the performance of the AI system in terms of its global/local robustness/correctness.
+  \item \emph{Specification}: Specification defines key properties to guide testing. It includes details about the DNN architecture, environmental properties, and input data, like data type, sample size, and number of classes. This helps test the model thoroughly under different conditions.
+    \item \emph{Sampling}: Sampling involves selecting a representative subset of inputs from a potentially vast input space. Depending on the testing objectives, this subset helps ensure that the tests are meaningful and cover various scenarios effectively.
+    \item \emph{Testcase Generation}: This process uses the sampled inputs according to specifications.
+    \item \emph{Testing Graph Analysis}: This method conducts both local and global robustness assessments. Locally, it focuses on an individual property to check its ccorrectness. Globally, it examines multiple properties to understand their interdependencies and overall system behavior. By modeling these dependencies probabilistically, testing graph analysis provides a comprehensive view of AI system.
+    \item \emph{Error Summarisation}: Quantifying the performance of the AI system by compiling and analyzing recorded errors. This analysis generates graphical reports and recommendations, helping to refine and improve the models.
 \end{enumerate}
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=\linewidth]{figures/fivesteps.png}
+  \caption{Overview of the Proposed Framework}
+  \label{fig:framework}
+\end{figure*}
+
+
 
 We focus on AI systems with DNN components performing classification tasks. We assume that an AI system $\S$ is a pair $(\F,\D)$ where:
 \begin{itemize}
@@ -95,35 +105,37 @@ To handle user-defined specifications and provide default behaviors when specifi
 \textcolor{blue}{If the user does not specify which classes to test or which properties to evaluate, our framework defaults to testing all classes in the dataset and evaluating all possible properties. Formally, let $\mathcal{C}$ be the set of all classes in the dataset $\D$ and $\mathcal{P}$ be the set of all possible properties. If the user does not define a subset $\mathcal{C}_u \subseteq \mathcal{C}$ or $\mathcal{P}_u \subseteq \mathcal{P}$, then $\mathcal{C}_u = \mathcal{C}$ and $\mathcal{P}_u = \mathcal{P}$, respectively.
 }
 
-\begin{figure*}[h]
-  \centering
-  \begin{tikzpicture}[component/.style={fill=gray!80, text=white,
-      rounded corners, outer sep=1mm, text width=2.6cm, align=flush
-      center, minimum height=1.2cm, scale=0.8},
-    input/.style={draw, scale=0.8,  inner sep=2mm, outer sep=1mm}]\sf
+% \begin{figure*}[h]
+%   \centering
+%   \begin{tikzpicture}[component/.style={fill=gray!80, text=white,
+%       rounded corners, outer sep=1mm, text width=2.6cm, align=flush
+%       center, minimum height=1.2cm, scale=0.8},
+%     input/.style={draw, scale=0.8,  inner sep=2mm, outer sep=1mm}]\sf
     
-    \foreach \x/\al/\lab in {%
-      1/sampl/Sampling,%
-      2/gener/Testcase Generation,%
-      3/testing/Validation,%
-      4/summary/{Error\\ Summarisation}%
-    }{ \node[component] (\al) at (3.5*\x,0) {\textbf{\lab}}; }
+%     \foreach \x/\al/\lab in {%
+%       1/sampl/Sampling,%
+%       2/gener/Testcase Generation,%
+%       3/testing/Validation,%
+%       4/summary/{Error\\ Summarisation}%
+%     }{ \node[component] (\al) at (3.5*\x,0) {\textbf{\lab}}; }
 
-    \node[fit=(sampl)(summary), draw=gray, ultra thick] (approach) {};
+%     \node[fit=(sampl)(summary), draw=gray, ultra thick] (approach) {};
 
-    \node[input] (aisystem) at (0.2, 0.5) {AI System $\S$};
-    \node[input] (spec)     at (0.2, -0.5) {Specifications $\Sigma$};
+%     \node[input] (aisystem) at (0.2, 0.5) {AI System $\S$};
+%     \node[input] (spec)     at (0.2, -0.5) {Specifications $\Sigma$};
 
-    \foreach/\from/\to in {%
-      sampl/gener, gener/testing, testing/summary%
-    }{ \draw[-stealth, very thick] (\from) -- (\to); }
+%     \foreach/\from/\to in {%
+%       sampl/gener, gener/testing, testing/summary%
+%     }{ \draw[-stealth, very thick] (\from) -- (\to); }
 
-    \draw[-latex, thick] (aisystem) -- (approach.179);
-    \draw[-latex, thick] (spec) -- (approach.181);
-  \end{tikzpicture}
-  \caption{Overview of the Proposed Framework}
-  \label{fig:framework}
-\end{figure*}
+%     \draw[-latex, thick] (aisystem) -- (approach.179);
+%     \draw[-latex, thick] (spec) -- (approach.181);
+%   \end{tikzpicture}
+%   \caption{Overview of the Proposed Framework}
+%   \label{fig:framework}
+% \end{figure*}
+
+
 
 \begin{example}
   \label{ex:mnist-adder}
