@@ -86,129 +86,35 @@ This chapter presents a comprehensive approach for AI systems, which may consist
   \caption{Overview of the Proposed Framework}
   \label{fig:framework}
 \end{figure*}
-I focus on AI systems with DNN components performing various tasks, which may include classification, regression, clustering and more. Each DNN within the system has unique specifications. Formally, we define an AI system $ \mathcal{S} $ as follows:
 
- $\mathcal{F}$ is the functional unit comprises $ n $ DNN components $ f_1, \dots, f_n $, each handling different tasks, and a symbolic (software) component $ \omega $ that integrates the outputs of these DNNs. Given an input $\vec{x} = (x_1, \dots, x_n)$, where each $x_i$ represents an input from the respective dataset of $f_i$, the output $\mathcal{F}(\vec{x})$ is defined as $\omega(f_1(x_1), \dots, f_n(x_n))$. Each DNN component $f_i$ processes its input $x_i$ according to its specific dataset, ensuring that the diverse datasets are appropriately utilized for their respective tasks.
+My research focus on AI systems with DNN components performing various tasks, which may include classification, regression, clustering and more. Each DNN within the system has unique specifications. Formally, we define an AI system $ \mathcal{S} $ as follows:
 
-%  \begin{example}
-%   \label{ex:mnist-adder}
-%   An instance of a simple AI system is an \emph{MNIST Digit Adder} $\mathcal{S}_{\text{CNN}} = (\mathcal{F}, \mathcal{D})$, where $\mathcal{F} = (\{f_{\text{CNN}}\}, +)$. Here, $f_{\text{CNN}}$ is an MNIST digit classifier, and $\mathcal{F}$ takes as input two MNIST digit images, recognizes the digits in the images, and computes their sum. Specifically, $\mathcal{F}(x_1, x_2) = f_{\text{CNN}}(x_1) + f_{\text{CNN}}(x_2)$. The dataset $\mathcal{D} = \{ \mathcal{D}_{\text{mnist}} \}$ is the testing dataset for digits, consisting of 10,000 labeled images (0-9), where $\mathcal{D}_{\text{mnist}}$ is associated with the classifier $f_{\text{CNN}}$.
-% \end{example}
+$\mathcal{F}$ is the functional unit comprises $ n $ DNN components $ f_1, \dots, f_n $, each handling different tasks, and a symbolic (software) component $ \omega $ that integrates the outputs of these DNNs. Given an input $\vec{x} = (x_1, \dots, x_n)$, where each $x_i$ represents an input from the respective dataset of $f_i$, the output $\mathcal{F}(\vec{x})$ is defined as $\omega(f_1(x_1), \dots, f_n(x_n))$. Each DNN component $f_i$ processes its input $x_i$ according to its specific dataset.
+
+
+\section{Specification}
+The first component of this framework is formalized to specify model architecture $\mathcal{M}$, environmental properties, and input data characteristics $\mathcal{D}$. A pre-trained Convolutional Neural Network (CNN) $\mathcal{M}_{\text{CNN}}$ is  used, featuring a convolutional layer (32 filters, kernel size 3x3, ReLU activation function), a MaxPooling layer (2x2), followed by a flattened layer, a fully connected layer (128 neurons, ReLU), and an output layer with 10 neurons using softmax. The input data $\mathcal{D}$ consists of 10,000 test samples of MNIST images. The output labels are 10 classes representing digits from 0 to 9. Currently, specifications $\mathcal{S}$ are structured according to the experimental setup, which includes evaluating the model’s robustness under various conditions. Our specifications test all classes by default, but users can customize the classes to be tested based on their specific requirements.
+
+For testing, different methods are employed based on the type of testing $\mathcal{T}$. In black-box testing $\mathcal{T}_{\text{black}}$, semantic adversarial properties $\mathcal{P}_{\text{sem}}$ such as rotation, brightness adjustment, blur, shear, and contrast modification are made using Python libraries like cv2 and ImageDataGenerator, are applied by adjusting the input data $\mathcal{D}$ without knowledge of the model's internal details. In white-box testing $\mathcal{T}_{\text{white}}$, adversarial attacks $\mathcal{P}_{\text{adv}}$ are used by accessing the model's internal structure and parameters. Adversarial examples are generated using the Foolbox library with methods like the Fast Gradient Sign Method (FGSM), Projected Gradient Descent (PGD), AdamPGD, and Deepfool are used to create these examples by computing gradients
+
+
+
+\textbf{Note:} Grey-box testing $\mathcal{T}_{\text{grey}}$, involving partial model access, will be explored in future work.
 
 \begin{example}
   \label{ex:mnist-adder}
-  An instance of a simple AI system is an \emph{MNIST Digit Adder} $\mathcal{S} = (\mathcal{F})$. In this system, $\mathcal{F}$ consists of a DNN component $f_{\text{CNN}}$, which recognizes MNIST digits (0 to 9), and a software component $\omega$ that performs the addition.
+  An instance of a simple AI system is an \emph{MNIST Digit Adder} $\mathcal{S}_{\text{adder}} = (\mathcal{F}, \mathcal{D})$. In this system, $\mathcal{F}$ consists of a DNN component $\mathcal{M}_{\text{CNN}}$, which recognizes MNIST digits (0 to 9), and a software component $\omega$ that performs the addition.
 
-  Formally, we define $\mathcal{F} = (\{f_{\text{CNN}}\}, \omega)$, where $\omega$ integrates the output of the DNN. The function $f_{\text{CNN}}$ takes single MNIST digit images as input and recognizes the digits. The software component $\omega$ can then pick any two recognized digits and compute their sum.
+  Formally, we define $\mathcal{F} = (\{\mathcal{M}_{\text{CNN}}\}, \omega)$, where $\omega$ integrates the output of the DNN. The function $\mathcal{M}_{\text{CNN}}$ takes single MNIST digit images as input and recognizes the digits. The software component $\omega$ can then pick any two recognized digits and compute their sum.
 
-  For example, $\mathcal{F}$ can perform the task of digit addition:
+  For example, $\mathcal{S}_{\text{adder}}$ can perform the task of digit addition:
   \begin{equation}
-    \mathcal{F}(x_1, x_2) = \omega(f_{\text{CNN}}(x_1), f_{\text{CNN}}(x_2)),
+    \mathcal{S}_{\text{adder}}(x_1, x_2) = \omega(\mathcal{M}_{\text{CNN}}(x_1), \mathcal{M}_{\text{CNN}}(x_2)),
   \end{equation}
   where $\omega(a, b) = a + b$.
 
-  Given two MNIST digit images $x_1$ and $x_2$, $\mathcal{F}$ recognizes the digits and computes their sum.
+  Given two MNIST digit images $x_1$ and $x_2$, $\mathcal{S}_{\text{adder}}$ recognizes the digits and computes their sum.
 \end{example}
-
-
-
-
-
-
-
-
-
-
-
-% We focus on AI systems with DNN components performing classification tasks. We assume that an AI system $\S$ is a pair $(\F,\D)$ where:
-% \begin{itemize}
-%     \item $\F$ is the functional unit consisting of $n$ DNN \emph{classifiers} $f_1,\dots,f_n$ and a symbolic (software) component~$\omega$ such that given an input $\avec{x}=(x_1,\dots,x_n)$, the \emph{output}~$\F(\avec{x})$ is defined as $\omega(f_1(x_1),\dots,f_n(x_n))$.
-%     \item \textcolor{blue}{ $\D$ (for dataset) is a structure that describes valid inputs and the corresponding correct outputs (i.e., labels). In particular, $\D.\mathit{next}(c)$ returns a valid input $\avec{x}$, given the parameter $c$, which represents the number of classes in the dataset. Moreover, $\D.N$ is the total number of distinct class labels.}
-% \end{itemize}
-
-% \textcolor{blue}{
-% To ensure clarity in cases where multiple functional units are present, it is essential to specify which dataset belongs to which functional unit. Formally, let $\F = \{f_1, \dots, f_n\}$ represent the set of functional units and $\D = \{\D_1, \dots, \D_m\}$ represent the set of datasets. Each dataset $\D_j$ is associated with one or more functional units $\{f_{i_1}, \dots, f_{i_k}\} \subseteq \F$. This means that each $\D_j$ provides valid inputs and corresponding correct outputs specifically for the classifiers $f_{i_1}, \dots, f_{i_k}$. In this framework, each dataset $\D_j$ must clearly define its scope of association with the functional units. For instance, if $\D_1$ is associated with $f_1$ and $f_3$, then $\D_1$ provides valid inputs and correct outputs for both $f_1$ and $f_3$. This explicit association ensures that datasets are correctly utilized for their respective functional units, avoiding any ambiguity in the evaluation process.}
-
-
-% \textcolor{blue}{
-% To handle user-defined specifications and provide default behaviors when specifications are not explicitly defined, we assume that \emph{specifications} $\Sigma$ is a pair $(P, V)$, where $P$ is a set of perturbations against which we are characterizing the behavior of $\S$. Each perturbation comes with parameters to instantiate the set of all possible perturbations. $V$ is a validation flag, where if $V=t$, then we do testing, and if $V=v$, we do verification.}
-
-% \textcolor{blue}{If the user does not specify which classes to test or which properties to evaluate, our framework defaults to testing all classes in the dataset and evaluating all possible properties. Formally, let $\mathcal{C}$ be the set of all classes in the dataset $\D$ and $\mathcal{P}$ be the set of all possible properties. If the user does not define a subset $\mathcal{C}_u \subseteq \mathcal{C}$ or $\mathcal{P}_u \subseteq \mathcal{P}$, then $\mathcal{C}_u = \mathcal{C}$ and $\mathcal{P}_u = \mathcal{P}$, respectively.
-% }
-
-% \begin{figure*}[h]
-%   \centering
-%   \begin{tikzpicture}[component/.style={fill=gray!80, text=white,
-%       rounded corners, outer sep=1mm, text width=2.6cm, align=flush
-%       center, minimum height=1.2cm, scale=0.8},
-%     input/.style={draw, scale=0.8,  inner sep=2mm, outer sep=1mm}]\sf
-    
-%     \foreach \x/\al/\lab in {%
-%       1/sampl/Sampling,%
-%       2/gener/Testcase Generation,%
-%       3/testing/Validation,%
-%       4/summary/{Error\\ Summarisation}%
-%     }{ \node[component] (\al) at (3.5*\x,0) {\textbf{\lab}}; }
-
-%     \node[fit=(sampl)(summary), draw=gray, ultra thick] (approach) {};
-
-%     \node[input] (aisystem) at (0.2, 0.5) {AI System $\S$};
-%     \node[input] (spec)     at (0.2, -0.5) {Specifications $\Sigma$};
-
-%     \foreach/\from/\to in {%
-%       sampl/gener, gener/testing, testing/summary%
-%     }{ \draw[-stealth, very thick] (\from) -- (\to); }
-
-%     \draw[-latex, thick] (aisystem) -- (approach.179);
-%     \draw[-latex, thick] (spec) -- (approach.181);
-%   \end{tikzpicture}
-%   \caption{Overview of the Proposed Framework}
-%   \label{fig:framework}
-% \end{figure*}
-
-
-
-% \begin{example}
-%   \label{ex:mnist-adder}
-%   An instance of a simple AI system is an \emph{MNIST Digit Adder} $\S_{\text{CNN}} = (\F,\D)$, where $\F = (\{f_{\text{CNN}}\}, +)$, $f_{\text{CNN}}$ is an MNIST Digit classifier and $\F$ takes as input two MNIST Digit images, recognizes the digits in the images, and computes their sum, i.e., $\F(x_1,x_2) = f_{\text{CNN}}(x_1) + f_{\text{CNN}}(x_2)$. $\D = \{ \D_{\text{mnist}} \}$ is the testing dataset for digits consisting of 10,000 labeled images (0-9), where $\D_{\text{mnist}}$ is associated with the classifier $f_{\text{CNN}}$.
-%   \end{example}
-  
-%   We assume that \emph{specifications} $\Sigma$ is a pair $(P, V)$, where $P$ is a set of perturbations against which we are characterizing the behavior of $\S$. Each perturbation comes with parameters to instantiate the set of all possible perturbations. $V$ is a validation flag, where if $V=t$, then we do testing, and if $V=v$, we do verification.
-  
-%   \begin{example}
-%   To evaluate the correctness of the  $\S_{\text{MNIST}}$, we define the specifications $\Sigma = (P, V)$ as follows: $P = \{\gaussian(0,0.1), \saltpepper(200:255, 0:5, 0.2), \rotation(3,30,3)\}$ and $V=t$. Here, $\gaussian(0,0.1)$ specifies Gaussian noise with a mean of $0$ and standard deviation of $0.1$, $\saltpepper(200:255,0:5,0.2)$ specifies salt and pepper noise, where 10\% of pixels are bleached up to values 200 to 255 and 10\% of pixels are darkened to values between 0 and 5, and $\rotation(3,30,3)$ specifies the set of rotations with the minimum rotation angle of 3, maximum of 30, and the step size of 3.
-%   \end{example}
-  
-
-\smallskip\noindent%
-% Let's look into every component in detail.
-% \section{Sampling}
-
-% The sampling process involves a random but balanced choice of samples from each class, focusing exclusively on instances that the model has correctly predicted. Sampling happens independently for each classifier $f_i$. To ensure a representative and fair distribution of data across all classes, we sample the same number of instances from each class. The full sample $S_i$ for classifier $f_i$, $i=1,\dots,n$, is computed as:
-
-% \begin{equation}
-% S_i = \bigcup_{c=1}^{\D.N_i} S_i^c
-% \end{equation}
-
-% where $S_i^c$ is a subset of the correctly classified samples for a class $c$ consisting of $M_i$ (the number of samples for each class specific to $f_i$) elements:
-% \[S_i^c = \big\{x = \D.next_i(class=c)\mid f_i(x)=c\big\}|_{M_i}\] 
-% Note that each sample is obtained by a call to the method $\D.next_i$.
-
-% \begin{example}
-% Recall the MNIST Digit Adder system $\S_{\text{MNIST}}$ from Example~\ref{ex:mnist-adder}. When sampling, we make sure to select only correctly classified samples. For each digit $c$ (0 to 9), we randomly sample 100 images, i.e., $samp_1(\D,c,100)$ contains 100 inputs $x$ such that $f_{\text{CNN}}(x) = c$. In total, $S_1$ contains 1000 samples for all 10 classes.
-% \end{example}
-\section{Specification}
-
-The first component of this framework is formalized to specify model architecture, environmental properties, and input data characteristics. The specifications include a pre-trained Convolutional Neural Network (CNN) with the following architecture: a convolutional layer with 32 filters and a kernel size of (3, 3) using ReLU activation, followed by a MaxPooling layer with a pool size of (2, 2). This is then flattened and connected to a fully connected layer with 128 neurons using ReLU activation, and finally, an output layer with 10 neurons using softmax activation. The input data consists of 10,000 test samples of MNIST images, each reshaped to (28, 28, 1) and normalized to a range of [0, 1]. There are 10 classes representing digits from 0 to 9. Currently, specifications are structured according to the experimental setup that has been conducted, including environmental conditions under which the model is expected to operate. 
-
-For testing, we assume adversarial and semantic adversarial properties. Adversarial examples are generated using the Foolbox library, which requires access to the model architecture. Specific methods such as the Fast Gradient Sign Method (FGSM), Projected Gradient Descent (PGD), AdamPGD AND Deepfool are used to create these examples by computing gradients from the loss function. Semantic adversarial examples are created by applying transformations such as rotation, brightness adjustment, blur, shear, and contrast modification using Python libraries like cv2 and ImageDataGenerator. 
-
-In our specifications, we use different methods for different types of testing. For black-box testing , we apply semantic adversarial properties, where we adjust the input data without knowing the internal details of the model. We assess how changes in the input affect the model's behavior based on its responses to these changes. On the other hand, for white-box testing, we use adversarial attacks. This involves having access to the model's internal structure and parameters. We use this detailed knowledge to generate adversarial examples and evaluate how the model handles these specific cases. 
-
-\textbf{Note:} Grey-box testing will be explored in future work, focusing on scenarios where we have limited access to model details compared to full white-box testing.
-
-User requirements, such as specific modules to test and critical scenarios, as well as evaluation metrics like accuracy, precision, and recall, are also incorporated. If no specific requirements are provided, default parameters ensure thorough assessment. However, the framework can be customized for specific cases or multiple cases based on user specifications, such as focusing on a particular class or scenario that is critical. This flexible and detailed approach aims to provide a robust method for testing DNNs in safety-critical environments.
-
 
 \section{Sampling}
 
