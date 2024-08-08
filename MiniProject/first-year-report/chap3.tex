@@ -68,9 +68,13 @@
 % \begin{example}
 % To evaluate the correctness of the MNIST Digit Adder $\S_{\text{MNIST}}$, we define the specifications $\Sigma = (P, V)$ as follows: $P = \{\gaussian(0,0.1), \saltpepper(200:255, 0:5, 0.2), \rotation(3,30,3)\}$ and $V=t$. Here, $\gaussian(0,0.1)$ specifies Gaussian noise with a mean of $0$ and standard deviation of $0.1$, $\saltpepper(200:255,0:5,0.2)$ specifies salt and pepper noise, where 10\% of pixels are bleached up to values 200 to 255 and 10\% of pixels are darkened to values between 0 and 5, and $\rotation(3,30,3)$ specifies the set of rotations with the minimum rotation angle of 3, maximum of 30, and the step size of 3.
 % \end{example}
-\section{Proposed Approach}
+% \section{Proposed Approach}
 
-This section introduces our comprehensive approach to evaluating AI system performance, summarized in Figure~\ref{fig:framework}. It takes as input the description of an AI system and a set of relevant specifications against which the AI system should be checked. The framework itself has four main components:
+This chapter presents a comprehensive approach for AI systems, which may consist of one or multiple DNN components, each handling different tasks. Our framework addresses each DNN separately, recognizing that each has unique specifications, e.g., consider an AI system using the MNIST dataset for different purposes. One DNN might classify handwritten digits (0-9), while another might analyze pairs of digits to predict their sum or product. Although both DNNs work with digit images in this case, their properties and specifications differ due to their distinct tasks, even when using the same dataset. In other cases, such as an autonomous car, different DNNs might use different datasets designed for their specific tasks. One DNN might use labeled images for object detection (e.g., identifying pedestrians, vehicles, and road signs), while another DNN might use driving trajectories for path planning (e.g., predicting optimal routes). These diverse datasets ensure each DNN is tested according to its specific role within the AI system.
+
+To address these diverse tasks and specifications, our framework comprises five components, summarized in Figure~\ref{fig:framework}.
+
+
 
 \begin{enumerate}
   \item \emph{Specification}: Specification defines key properties to guide testing. It includes details about the DNN architecture, environmental properties, and input data, like data type, sample size, and number of classes. This helps test the model thoroughly under different conditions.
