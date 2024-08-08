@@ -103,7 +103,7 @@ For testing, different methods are employed based on the type of testing $\mathc
 
 \begin{example}
   \label{ex:mnist-adder}
-  An instance of a simple AI system is an \emph{MNIST Digit Adder} $\mathcal{S}_{\text{adder}} = (\mathcal{F}, \mathcal{D})$. In this system, $\mathcal{F}$ consists of a DNN component $\mathcal{M}_{\text{CNN}}$, which recognizes MNIST digits (0 to 9), and a software component $\omega$ that performs the addition.
+  An instance of a simple AI system is an \emph{MNIST Digit Adder} $\mathcal{S}_{\text{adder}} = (\mathcal{F}, \mathcal{D})$. In this system, $\mathcal{F}$ consists of a DNN component $\mathcal{M}_{\text{CNN}}$, The dataset $\mathcal{D}$ contains MNIST digits (0 to 9), and a software component $\omega$ that performs the addition.
 
   Formally, we define $\mathcal{F} = (\{\mathcal{M}_{\text{CNN}}\}, \omega)$, where $\omega$ integrates the output of the DNN. The function $\mathcal{M}_{\text{CNN}}$ takes single MNIST digit images as input and recognizes the digits. The software component $\omega$ can then pick any two recognized digits and compute their sum.
 
@@ -117,47 +117,69 @@ For testing, different methods are employed based on the type of testing $\mathc
 \end{example}
 
 \section{Sampling}
+The sampling process is designed to identify efficient and corner cases by employing a hybrid approach that combines Borderline-SMOTE and ADASYN using a Scikit-learn pipeline. This method generates synthetic examples, enhancing class balance and model robustness. Borderline-SMOTE focuses on creating samples near decision boundaries, while ADASYN targets hard-to-learn examples, ensuring that both typical and challenging cases are effectively covered.
 
-The sampling process is designed to identify efficient and corner cases by employing a hybrid approach that combines Borderline-SMOTE and ADASYN. This combined method generates synthetic examples, enhancing class balance and model robustness. Borderline-SMOTE focuses on creating samples near decision boundaries, while ADASYN targets hard-to-learn examples, ensuring that both typical and challenging cases are effectively covered. It is important to note that this sampling process is used solely for testing purposes, not for training the model.
+Data is sampled according to the requirements specified in the specifications. By default, all classes are tested, but users can customize the classes to be sampled based on specific requirements. The hybrid approach is applied as follows for each classifier $f_i$ independently:
 
-\textcolor{blue}{To ensure a balanced and representative dataset for testing, we perform the following steps for each classifier $f_i$ independently:}
-\begin{itemize}
-    % \item Randomly sample an equal number of correctly classified instances from each class.
-    \item Apply Borderline-SMOTE to generate synthetic samples near decision boundaries to enhance class balance.
-    \item Use ADASYN to adjust the number of synthetic samples for each minority class example based on its difficulty level.
-\end{itemize}
 
-The full sample $S_i$ for classifier $f_i$, $i=1,\dots,n$, is computed as:
+The full sample $\mathcal{S}_i$ for classifier $f_i$, $i=1,\dots,n$, is computed by directly applying the hybrid sampling method to the initial dataset $\mathcal{D}$:
 
 \begin{equation}
-S_i = \bigcup_{c=1}^{\D.N_i} S_i^c
+\mathcal{S}_i = \text{HybridSampling}(\mathcal{D})
 \end{equation}
 
-where $S_i^c$ is a subset of the correctly classified samples for a class $c$ consisting of $M_i$ (the number of samples for each class specific to $f_i$) elements:
-\[S_i^c = \big\{x = \D.next_i(class=c)\mid f_i(x)=c\big\}|_{M_i}\]
+where the HybridSampling method is defined as the combination of Borderline-SMOTE and ADASYN:
 
-\textcolor{blue}{After the initial sampling, we enhance $S_i^c$ by applying Borderline-SMOTE and ADASYN as follows:}
-\[
-S_i^c = S_i^c \cup \text{Borderline-SMOTE}(S_i^c) \cup \text{ADASYN}(S_i^c)
-\]
-Note that each sample is obtained by a call to the method $\D.next_i$.
 
-% \begin{example}
-% Recall the $\S_{\text{MNIST}}$ from Example~\ref{ex:mnist-adder}. When sampling, we make sure to select only correctly classified samples. For each digit $c$ (0 to 9), we randomly sample 100 images, i.e., $samp_1(\D,c,100)$ contains 100 inputs $x$ such that $f_{\text{CNN}}(x) = c$. After initial sampling, we apply Borderline-SMOTE to generate synthetic samples near the decision boundaries and ADASYN to further adjust the number of synthetic samples for challenging examples. In total, $S_1$ contains the original 1000 samples plus the additional synthetic samples for all 10 classes.
-% \end{example}
+\begin{example}
+  \label{ex:sampling}
+  To further illustrate the sampling process, consider the classifier $\mathcal{M}_{\text{CNN}}$ and $\mathcal{D}$ from Example.\ref{ex:mnist-adder}. For each class $c$, we randomly sample an equal number of correctly classified instances to form the initial subset $\mathcal{S}_{\text{CNN}}^c$. This subset is then enhanced by applying the hybrid method using a Scikit-learn pipeline, which combines Borderline-SMOTE and ADASYN to generate synthetic samples. The final sample $\mathcal{S}_{\text{CNN}}$ for testing is obtained as:
+
+  \begin{equation}
+    \mathcal{S}_{\text{CNN}} = \text{HybridSampling}(\mathcal{S}_{\text{CNN}}^c)
+  \end{equation}
+
+  where the HybridSampling method is defined as the combination of Borderline-SMOTE and ADASYN:
+
+%  $\mathcal{S}_{\text{CNN}}^c = \mathcal{S}_{\text{CNN}}^c \cup \text{Borderline-SMOTE}(\mathcal{S}_{\text{CNN}}^c) \cup \text{ADASYN}(\mathcal{S}_{\text{CNN}}^c)$
+
+%   This process ensures a balanced and comprehensive set of test samples, covering both typical and challenging cases.
+\end{example}
+
+
+% The sampling process is designed to identify efficient and corner cases by employing a hybrid approach that combines Borderline-SMOTE and ADASYN. This combined method generates synthetic examples, enhancing class balance and model robustness. Borderline-SMOTE focuses on creating samples near decision boundaries, while ADASYN targets hard-to-learn examples, ensuring that both typical and challenging cases are effectively covered. It is important to note that this sampling process is used solely for testing purposes, not for training the model.
+
+% \textcolor{blue}{To ensure a balanced and representative dataset for testing, we perform the following steps for each classifier $f_i$ independently:}
+% \begin{itemize}
+%     % \item Randomly sample an equal number of correctly classified instances from each class.
+%     \item Apply Borderline-SMOTE to generate synthetic samples near decision boundaries to enhance class balance.
+%     \item Use ADASYN to adjust the number of synthetic samples for each minority class example based on its difficulty level.
+% \end{itemize}
+
+% The full sample $S_i$ for classifier $f_i$, $i=1,\dots,n$, is computed as:
+
+% \begin{equation}
+% S_i = \bigcup_{c=1}^{\D.N_i} S_i^c
+% \end{equation}
+
+% where $S_i^c$ is a subset of the correctly classified samples for a class $c$ consisting of $M_i$ (the number of samples for each class specific to $f_i$) elements:
+% \[S_i^c = \big\{x = \D.next_i(class=c)\mid f_i(x)=c\big\}|_{M_i}\]
+
+% \textcolor{blue}{After the initial sampling, we enhance $S_i^c$ by applying Borderline-SMOTE and ADASYN as follows:}
+% \[
+% S_i^c = S_i^c \cup \text{Borderline-SMOTE}(S_i^c) \cup \text{ADASYN}(S_i^c)
+% \]
+% Note that each sample is obtained by a call to the method $\D.next_i$.
+
+
 
 \begin{tcolorbox}[colback=purple!2!white, colframe=purple, title=Challenges in Sampling]
   \begin{itemize}
     \item \textbf{Synthetic Sample Quality:} Ensuring generated samples represent true corner cases, not noise.
     \item \textbf{Computational Overhead:} Managing the intensive computation required for hybrid sampling.
-    % \item \textbf{Parameter Tuning:} Finding optimal settings for Borderline-SMOTE and ADASYN to prevent ineffective sampling.
+ 
   \end{itemize}
-  % \textbf{Mitigation Strategies:}
-  % \begin{itemize}
-  %   \item Use empirical evaluation to find optimal parameters for both techniques.
-  %   \item Monitor the quality of synthetic samples to ensure they improve test coverage without adding noise.
-  %   \item Limit the number of synthetic samples to balance computational efficiency and test coverage.
-  % \end{itemize}
+
 \end{tcolorbox}
 
 
