@@ -70,17 +70,17 @@
 % \end{example}
 % \section{Proposed Approach}
 
-This chapter presents a comprehensive approach for AI systems, which may consist of one or multiple DNN components, each handling different tasks. Our framework addresses each DNN separately, recognizing that each has unique specifications, e.g., consider an AI system using the MNIST dataset for different purposes. One DNN might classify handwritten digits (0-9), while another might analyze pairs of digits to predict their sum or product. Although both DNNs work with digit images in this case, their properties and specifications differ due to their distinct tasks, even when using the same dataset. In other cases, such as an autonomous car, different DNNs might use different datasets designed for their specific tasks. One DNN might use labeled images for object detection (e.g., identifying pedestrians, vehicles, and road signs), while another DNN might use driving trajectories for path planning (e.g., predicting optimal routes). These diverse datasets ensure each DNN is tested according to its specific role within the AI system.
+This chapter presents a comprehensive approach for AI systems, which may consist of one or multiple DNN components, each handling different tasks. Our framework addresses each DNN separately, recognizing that each has unique specifications, e.g., consider an AI system using the MNIST dataset for different purposes. One DNN might classify handwritten digits (0-9), while another might analyze pairs of digits to predict their sum or product. Although both DNNs work with digit images in this case, their properties in specifications differ due to their distinct tasks, even when using the same dataset. In other cases, such as an autonomous car, different DNNs might use different datasets designed for their specific tasks. One DNN might use labeled images for object detection (e.g., identifying pedestrians, vehicles, and road signs), while another DNN might use driving trajectories for path planning (e.g., predicting optimal routes). These diverse datasets ensure each DNN is tested according to its specific role within the AI system.
 
 To address these diverse tasks and specifications, our framework comprises five components, summarized in Figure~\ref{fig:framework}.
 
 
 
 \begin{enumerate}
-  \item \emph{Specification}: Specification defines key properties to guide testing. It includes details about the DNN architecture, environmental properties, and input data, like data type, sample size, and number of classes. This helps test the model thoroughly under different conditions.
-    \item \emph{Sampling}: Sampling involves selecting a representative subset of inputs from a potentially vast input space. Depending on the testing objectives, this subset helps ensure that the tests are meaningful and cover various scenarios effectively.
-    \item \emph{Testcase Generation}: This process uses the sampled inputs according to specifications.
-    \item \emph{Testing Graph Analysis}: This method conducts both local and global robustness assessments. Locally, it focuses on an individual property to check its ccorrectness. Globally, it examines multiple properties to understand their interdependencies and overall system behavior. By modeling these dependencies probabilistically, testing graph analysis provides a comprehensive view of AI system.
+  \item \emph{Specification}: defines key properties to guide testing. It includes details about the DNN architecture, environmental properties, and input data, like data type, sample size, and number of classes. This helps test the model thoroughly under different conditions.
+    \item \emph{Sampling}: involves selecting a representative subset of inputs from a potentially vast input space. Depending on the testing objectives, this subset helps ensure that the tests are meaningful and cover various scenarios effectively.
+    \item \emph{Testcase Generation}: applies the properties mentioned in the specifications to the sampled data to generate test cases.
+    \item \emph{Testing Graph Analysis}: conducts both local and global coverage assessments. Locally, it focuses on an individual property to check its correctness. Globally, it examines multiple properties to understand their interdependencies and overall system behavior. By modeling these dependencies probabilistically, testing graph analysis provides a comprehensive view of AI system.
     \item \emph{Error Summarisation}: Quantifying the performance of the AI system by compiling and analyzing recorded errors. This analysis generates graphical reports and recommendations, helping to refine and improve the models.
 \end{enumerate}
 
@@ -90,14 +90,45 @@ To address these diverse tasks and specifications, our framework comprises five 
   \caption{Overview of the Proposed Framework}
   \label{fig:framework}
 \end{figure*}
+We focus on AI systems with DNN components performing various tasks, which may include classification, regression, clustering and more. Each DNN within the system has unique specifications. Formally, we define an AI system $ \mathcal{S} $ as follows:
+
+ $\mathcal{F}$ is the functional unit comprises $ n $ DNN components $ f_1, \dots, f_n $, each handling different tasks, and a symbolic (software) component $ \omega $ that integrates the outputs of these DNNs. Given an input $ \vec{x} = (x_1, \dots, x_n) $, the output $ \mathcal{F}(\vec{x}) $ is defined as $ \omega(f_1(x_1), \dots, f_n(x_n)) $.
+
+%  \begin{example}
+%   \label{ex:mnist-adder}
+%   An instance of a simple AI system is an \emph{MNIST Digit Adder} $\mathcal{S}_{\text{CNN}} = (\mathcal{F}, \mathcal{D})$, where $\mathcal{F} = (\{f_{\text{CNN}}\}, +)$. Here, $f_{\text{CNN}}$ is an MNIST digit classifier, and $\mathcal{F}$ takes as input two MNIST digit images, recognizes the digits in the images, and computes their sum. Specifically, $\mathcal{F}(x_1, x_2) = f_{\text{CNN}}(x_1) + f_{\text{CNN}}(x_2)$. The dataset $\mathcal{D} = \{ \mathcal{D}_{\text{mnist}} \}$ is the testing dataset for digits, consisting of 10,000 labeled images (0-9), where $\mathcal{D}_{\text{mnist}}$ is associated with the classifier $f_{\text{CNN}}$.
+% \end{example}
+
+\begin{example}
+  \label{ex:mnist-adder}
+  An instance of a simple AI system is an \emph{MNIST Digit Adder} $\mathcal{S} = (\mathcal{F})$. In this system, $\mathcal{F}$ consists of a DNN component $f_{\text{CNN}}$, which recognizes MNIST digits (0 to 9), and a software component $\omega$ that performs the addition.
+
+  Formally, we define $\mathcal{F} = (\{f_{\text{CNN}}\}, \omega)$, where $\omega$ integrates the output of the DNN. The function $f_{\text{CNN}}$ takes single MNIST digit images as input and recognizes the digits. The software component $\omega$ can then pick any two recognized digits and compute their sum.
+
+  For example, $\mathcal{F}$ can perform the task of digit addition:
+  \begin{equation}
+    \mathcal{F}(x_1, x_2) = \omega(f_{\text{CNN}}(x_1), f_{\text{CNN}}(x_2)),
+  \end{equation}
+  where $\omega(a, b) = a + b$.
+
+  Given two MNIST digit images $x_1$ and $x_2$, $\mathcal{F}$ recognizes the digits and computes their sum.
+\end{example}
 
 
 
-We focus on AI systems with DNN components performing classification tasks. We assume that an AI system $\S$ is a pair $(\F,\D)$ where:
-\begin{itemize}
-    \item $\F$ is the functional unit consisting of $n$ DNN \emph{classifiers} $f_1,\dots,f_n$ and a symbolic (software) component~$\omega$ such that given an input $\avec{x}=(x_1,\dots,x_n)$, the \emph{output}~$\F(\avec{x})$ is defined as $\omega(f_1(x_1),\dots,f_n(x_n))$.
-    \item \textcolor{blue}{ $\D$ (for dataset) is a structure that describes valid inputs and the corresponding correct outputs (i.e., labels). In particular, $\D.\mathit{next}(c)$ returns a valid input $\avec{x}$, given the parameter $c$, which represents the number of classes in the dataset. Moreover, $\D.N$ is the total number of distinct class labels.}
-\end{itemize}
+
+
+
+
+
+
+
+
+% We focus on AI systems with DNN components performing classification tasks. We assume that an AI system $\S$ is a pair $(\F,\D)$ where:
+% \begin{itemize}
+%     \item $\F$ is the functional unit consisting of $n$ DNN \emph{classifiers} $f_1,\dots,f_n$ and a symbolic (software) component~$\omega$ such that given an input $\avec{x}=(x_1,\dots,x_n)$, the \emph{output}~$\F(\avec{x})$ is defined as $\omega(f_1(x_1),\dots,f_n(x_n))$.
+%     \item \textcolor{blue}{ $\D$ (for dataset) is a structure that describes valid inputs and the corresponding correct outputs (i.e., labels). In particular, $\D.\mathit{next}(c)$ returns a valid input $\avec{x}$, given the parameter $c$, which represents the number of classes in the dataset. Moreover, $\D.N$ is the total number of distinct class labels.}
+% \end{itemize}
 
 \textcolor{blue}{
 To ensure clarity in cases where multiple functional units are present, it is essential to specify which dataset belongs to which functional unit. Formally, let $\F = \{f_1, \dots, f_n\}$ represent the set of functional units and $\D = \{\D_1, \dots, \D_m\}$ represent the set of datasets. Each dataset $\D_j$ is associated with one or more functional units $\{f_{i_1}, \dots, f_{i_k}\} \subseteq \F$. This means that each $\D_j$ provides valid inputs and corresponding correct outputs specifically for the classifiers $f_{i_1}, \dots, f_{i_k}$. In this framework, each dataset $\D_j$ must clearly define its scope of association with the functional units. For instance, if $\D_1$ is associated with $f_1$ and $f_3$, then $\D_1$ provides valid inputs and correct outputs for both $f_1$ and $f_3$. This explicit association ensures that datasets are correctly utilized for their respective functional units, avoiding any ambiguity in the evaluation process.}

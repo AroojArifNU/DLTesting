@@ -12,14 +12,14 @@
 \label{chp:1}
 \section{Background and Motivation}
 
-Deep Neural Networks (DNNs) are increasingly being used in diverse applications due to their ability to match or exceed human-level performance. With the broader deployment of DNNs in various safety-critical systems like autonomous vehicles, healthcare, and avionics, concerns over their safety and trustworthiness have been raised \cite{ZhaoXBanks}. \alexcomment{The availability of large datasets, fast computing methods, and their high performance has enabled the use of DNNs in safety-critical applications \cite{LeCun}. The critical nature of such applications makes it essential to thoroughly evaluate these DNNs before deployment to guarantee their reliability and safety.}{This is a repetition.} In recent years, there has been significant amount of publications focused on tackling this concern. Figure~\ref{fig:publish} shows the significant growth in the number of published papers related to DNNs safety from 2008 to 2023.\footnote{Data was gathered using a set of relevant keywords including ["deep neural network safety", "DNN verification", "DNN testing", "deep learning robustness", "neural network adversarial attacks", "DNN defense mechanisms", "DNN interpretability", "deep learning certification", "neural network validation", and "machine learning security"]. For each keyword, a search query was performed using the CrossRef API. The API request filtered papers by publication year, ranging from 2008 to 2024, and retrieved the number of published papers matching each keyword for each year. See code in \textbf{Appendix B}
+Deep Neural Networks (DNNs) are increasingly being used in diverse applications due to their ability to match or exceed human-level performance. With the broader deployment of DNNs in various safety-critical systems like autonomous vehicles, healthcare, and avionics, concerns over their safety and trustworthiness have been raised \cite{ZhaoXBanks,LeCun}. The critical nature of such applications makes it essential to thoroughly evaluate these DNNs before deployment to guarantee their reliability and safety. In recent years, there has been significant amount of publications focused on tackling this concern. Figure~\ref{fig:publish} shows the significant growth in the number of published papers related to DNNs safety from 2008 to 2023.\footnote{Data was gathered using a set of relevant keywords including ["deep neural network safety", "DNN verification", "DNN testing", "deep learning robustness", "neural network adversarial attacks", "DNN defense mechanisms", "DNN interpretability", "deep learning certification", "neural network validation", and "machine learning security"]. For each keyword, a search query was performed using the CrossRef API. The API request filtered papers by publication year, ranging from 2008 to 2024, and retrieved the number of published papers matching each keyword for each year. See code in \textbf{Appendix B}
 
 }
 
 \begin{figure}[tb]
   \centering
   \includegraphics[width=0.75\textwidth]{pub.png}
-  \caption{Number of published papers on DNN safety \alex{Increase fonts.}}
+  \caption{Number of published papers on DNN safety }
   \label{fig:publish}
 \end{figure}
 
@@ -33,7 +33,7 @@ DNNs have shown a lack of robustness due to their vulnerability to adversarial e
   \label{fig:Comparison}
 \end{figure}
 
-\alex{Missing references} In the past, researchers have extensively discussed both verification and testing techniques, which are useful for evaluating the DNNs. Verification involves proving the property of a model through mathematical proof. For example, if you change the input slightly, the model should still provide an accurate prediction. 
+ In the past, researchers have extensively discussed both verification \cite{Beta-crown,verification} and testing techniques, which are useful for evaluating the DNNs. Verification involves using a verifier to check if a model satisfies a specific property, e.g., slight changes in the input still lead to accurate prediction.
 % % Verification involves proving 
 % % \alexcomment{the}{a} 
 % \alexcomment{}{unclear what you say here; parenthesis within a parenthesis}
@@ -42,7 +42,7 @@ DNNs have shown a lack of robustness due to their vulnerability to adversarial e
 % \alexcomment{}{Repetition} 
 However, DNN verification techniques are promising, they suffer from a scalability problem, due to the high computational complexity and the large size of DNNs. Up to now, DNN verification techniques either work with small scale DNNs or with approximate methods with convergence guarantees on the bounds \cite{HuangX}. This limitation impacts the ability to achieve high coverage, which means to cover all input scenarios and conditions to ensure that all potential issues are identified.
 
-On the other hand, \alexcomment{testing focuses on identifying defects (i.e., counterexample to a property) or provide assurance cases \cite{Rushby}}{To discuss; cannot see the difference between the two} by evaluating the behavior of system through empirical methods. As a result, they can achieve high coverage, which suggests that more of a DNN's behaviour has been tested and therefore the DNN has a lower chance of containing undetected bugs \cite{HuangX}. While these coverage metrics are useful, they often fall short in providing \hyperref[gloss]{\text{comprehensive}}\label{comprehensive} evaluations. This is because they primarily focus on the internal structure of the deep models, such as neuron activation patterns, rather than evaluating the DNNs behaviour on a diverse set of inputs. This internal focus can miss identifying specific inputs that cause failures or unexpected behaviour.
+On the other hand, testing involves modifying the inputs according to specific properties and then passing these inputs to the model to check if it still classifies each one correctly. The goal is to identify counterexamples where the model fails to meet expected behavior \cite{Rushby}. As a result, they can achieve high coverage, which suggests that more of a DNN's behaviour has been tested and therefore the DNN has a lower chance of containing undetected bugs \cite{HuangX}. While these coverage metrics are useful, they often fall short in providing \hyperref[gloss]{\text{comprehensive}}\label{comprehensive} evaluations. This is because they primarily focus on the internal structure of the deep models, such as neuron activation patterns, rather than evaluating the DNNs behaviour on a diverse set of inputs. This internal focus can miss identifying specific inputs that cause failures or unexpected behaviour.
 
 
 \begin{tcolorbox}[colback=purple!2!white, colframe=purple,title= 10\textsuperscript{th} Month Report Goal]
@@ -98,7 +98,6 @@ This section outlines the research questions and corresponding objectives of my 
 
 \section{Contribution of this Report}
 
-\alex{Missing references}
 
 This report makes the following key contributions: %  to the field of deep learning correctness evaluation:
 
@@ -108,7 +107,7 @@ This report makes the following key contributions: %  to the field of deep learn
     \item A \textit{\textcolor{blue}{conceptual framework}} is proposed that quantifies both local and global robustness. This framework uses Problog, a probabilistic logic programming language, to verify system global robustness.
     \item An \textit{\textcolor{blue}{interpretability-driven test case generation}} approach is employed to pinpoint critical input features, which are then used to create test cases with a higher probability of inducing mispredictions, thus effectively evaluating and enhancing model robustness.
     % \item A novel \textit{error summarization} approach is introduced, which helps in better identifying where model makes mistakes, especially in relation to specific classes and property.
-    \item All \textit{\textcolor{blue}{experiments}} are conducted using publicly available datasets, including DAWN, CIFAR, and MNIST.
+    \item All \textit{\textcolor{blue}{experiments}} are conducted using publicly available datasets, including DAWN \cite{DAWN}, CIFAR \cite{CIFAR10}, and MNIST \cite{MNIST}.
 \end{itemize}
 
 \begin{center}
