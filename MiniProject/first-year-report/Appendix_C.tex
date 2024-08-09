@@ -1,470 +1,202 @@
-\newpage
-\subsection{Python Codes for Subproblem 2}\label{implementation_2}
-
-
-Appendix B contains the details for the implementation of the Python files used in implementation for the sub-problem 2 in \ref{prob2}. The details of this scheme is discussed in \ref{System Model2}. Each of these .py files should be run in a separate terminal. Before running this code, make sure the Ganache is running on http://localhost:8545 
-\par
-
-\begin{linenumbers}
-\begin{lstlisting}
-
-\end{lstlisting}
-\resetlinenumber[1]
-\hypertarget{milp_code}{}
-\hyperlink{milp_text}{CA.py}
-\begin{lstlisting}
-import os
-import requests
-from flask import Flask, jsonify, request
-from flask.helpers import total_seconds
-
-import json
-from uuid import uuid4
-from urllib.parse import urlparse
-
-from web3 import Web3
-from abiBytecode import abi , bytecode
-
-from ecdsa import SigningKey
-import sys
-
-# Connect to local Ganche and check if it is connected
-w3 = Web3(Web3.HTTPProvider('http://127.0.0.1:8545'))
-print(w3.isConnected())
-ExampleContract = w3.eth.contract(abi=abi, bytecode=bytecode)
-tx_hash = ExampleContract.constructor().transact({'from': w3.eth.accounts[0]})
-tx_receipt = w3.eth.waitForTransactionReceipt(tx_hash)
-contract_address = tx_receipt.contractAddress
-
-deployed_contract = w3.eth.contract(address=contract_address, abi=abi)
-
-CASigKey = SigningKey.generate()
-CAVerKey = CASigKey.verifying_key
-
-# This is a CA for the project
-# Vehicles can send registration and pseudonym update requests to CA.
-# For registration, the vehicles will send realID which contains Name, CarRegistration, Date, etc
-# When CA receives this information, it will:
-#           - generate a pseudonym for the vehicle and send it to the vehicle
-#           - create  a linkability between the real-ID and the pseudonym and then store it with itself after encrypting it
-#           - it will update the the valid pseudolist and share it with RSUs
-
-# Create an object of Flask 
-app = Flask(__name__)
-app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
-
-existingUsers = ['user1', 'user2']
-revocationList= ['user3','user4']
-
-linkabilityDict = {'pid':{'rid':'', 'w3Account':''}}
-pidCount= 1
-
-#This function creates a mapping between real ID and the pseudo-ID of the user. Pseudo ID is the w3 account in this case
-def createLinkability(realID,web3Account):
-    realID = realID
-    web3Account = web3Account
-    #pid = 11 # add a function to append to it
-    global pidCount
-    pidCount = pidCount+1
-    linkabilityDict[f'{pidCount}'] = {}
-    linkabilityDict[f'{pidCount}']['rid'] = realID
-    linkabilityDict[f'{pidCount}']['w3Account'] = web3Account
-
-# To check whether the user already exists in the cert or revocation list
-def isNewUserValid(realID):
-    if realID in existingUsers:
-        print('This user already exists. Do you want to update pseduonym?')
-        return False
-    elif realID in revocationList:
-        print('This user cannot be registered')
-        return False
-    else:
-        print('User is valid, starting the registration process')
-        return True
-
-# Create a function to register users based on their given information
-# This function will do the following:
-#       - Get the real ID and ts from the POST req of the vehicle
-#       - First it will verify whether the real-ID already exists in the certificate list or revocation list
-#                   - If it  already exists, it will simply be discarded
-#       - Use Openssl to generate the Certificate and keys for the vehicle
-#       - Send the certificate back to the user using a POST (or some other) request
-#       - Create a linkability between 
-
-def registerUser(realID,ts):
-    sk = SigningKey.generate() # uses NIST192p
-    vk = sk.verifying_key
-    print(f'Hi {realID}, here is ur sk: {sk} ---and your vk: {vk}') # Add the open SSL registation function here
-    return sk.to_string(), vk.to_string()
-
-'''
-@app.route('/request_reg', methods = ['GET'])
-def request_reg():
-    registerUser(21,33)
-    if (a==2):
-        response  = {'message':'The user is registered '+str(a)}
-        return jsonify(response), 200
-
-
-@app.route('/verify_something', methods = ['POST'])
-def verify_something():
-    json = request.get_json()
-    transaction_keys = ['realID', 'timestamp']
-    if not all(key in json for key in transaction_keys):
-        return 'Some elements of the transaction are missing', 400
-
-    realID1 = json['realID']
-    ts = json['timestamp']
-    response = {'message': f'This data was received {realID1}'}
-    return jsonify(response), 201
-'''
-
-@app.route('/check_user', methods = ['POST'])
-def check_user():
-    json = request.get_json()
-    transaction_keys = ['pid']
-    if not all(key in json for key in transaction_keys):
-        return 'Some elements of the transaction are missing', 400
-    
-    pid = json['pid']
-    print('pid here  ',str(pid))
-    print('pid type', type(str(pid)))
-    if str(pid) in linkabilityDict:
-        response = {'message': f'User {pid} , exits'}
-        return jsonify(response), 201
-    else:
-        response = {'message': f'User {pid} not found'}
-        return jsonify(response),400
-
-@app.route('/req_registration' , methods = ['POST'])
-def req_registration():
-    json = request.get_json()
-    transaction_keys = ['realID', 'date']
-    if not all(key in json for key in transaction_keys):
-        return 'Some elements of the transaction are missing', 400
-
-    #Size of packet from veh to CA
-    vehPacketSize = sys.getsizeof(json)
-    print(f'Content of packet sent from veh {json}')
-    print(f'Size of packet received from veh: {vehPacketSize}')
-
-    #Get the real information from the POST request
-    realID = json['realID']
-    ts = json['date']
-    
-    if isNewUserValid(realID) is True:
-        existingUsers.append(realID)
-        userW3account = w3.eth.accounts[3]
-
-        # To create mapping
-        createLinkability(realID,userW3account) 
-        # To call web3 eth for adding user
-        deployed_contract.functions.newUser(realID).transact({'from':w3.eth.accounts[0]}) 
-        
-        #Create Dig Signature
-        skVeh, vkVeh = registerUser(realID,ts)
-
-        response = {'message': f'User {realID} , has been registered. Here is your account {userW3account} \n Signing key: {skVeh} \n verifying key: {vkVeh}'}
-        print(f'Size of the response: {sys.getsizeof(response)}')
-        return jsonify(response), 201
-    '''
-    # Use the register function to create certificate for the user
-    if registerUser(realID,ts) is False: 
-        response = {'message': f'User {realID} , has been registered'}
-        return jsonify(response), 201
-    else:
-        response = {'Something went wrong'}
-        return jsonify(response), 501
-'''
-'''
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    if request.method == 'POST':
-        model.save()
-        # Failure to return a redirect or render_template
-    else:
-        return render_template('index.html')
-    '''
-
-app.run(host='0.0.0.0', port=5000)
-\end{lstlisting}
-\end{linenumbers} 
-
-
-% The following is the RSU code
-
-\begin{linenumbers}
-\begin{lstlisting}
-
-\end{lstlisting}
-\resetlinenumber[1]
-\hypertarget{milp_code}{}
-\hyperlink{milp_text}{RSU.py}
-\begin{lstlisting}
-from web3 import Web3
-
-import json
-import time
-
-import os
-import requests
-from flask import Flask, jsonify, request
-from flask.helpers import total_seconds
-
-from abiBytecode import abi , bytecode
-
-#Connect To Local IPFS node
-import ipfsApi
-IPFSapi = ipfsApi.Client('127.0.0.1', 5001)
-
-
-# Create an object of Flask 
-app = Flask(__name__)
-app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
-
-# Connect to local Ganche and check if it is connected
-w3 = Web3(Web3.HTTPProvider('http://127.0.0.1:8545'))
-print(w3.isConnected())
-
-
-
-# Creating an instance of the contract
-ExampleContract = w3.eth.contract(abi=abi, bytecode=bytecode)
-tx_hash = ExampleContract.constructor().transact({'from': w3.eth.accounts[0]})
-tx_receipt = w3.eth.waitForTransactionReceipt(tx_hash)
-contract_address = tx_receipt.contractAddress
-
-
-deployed_contract = w3.eth.contract(address=contract_address, abi=abi)
-
-
-
-def findReputation(userID):
-    result = deployed_contract.functions.getUserReputation(userID).call()
-    return result
-
-
-def addNewUser(userID):
-    deployed_contract.functions.newUser(userID).transact({'from':w3.eth.accounts[0]})
-
-def getAllUsers():
-     result = deployed_contract.functions.getAllUserIDs().call()
-     return result
-
-def isUserMal(userID):
-    result = deployed_contract.functions.isUserMal(userID).call()
-    return result
-
-def getNumberOfUsers():
-    result = deployed_contract.functions.noOfUsers().call()
-    return result
-
-def increaseRep(userID, repVal):
-    deployed_contract.functions.increaseReputation(userID,repVal).transact({'from':w3.eth.accounts[0]})
-
-def decreaseRep(userID, repVal):
-    deployed_contract.functions.decreaseReputation(userID,repVal).transact({'from':w3.eth.accounts[0]})
-
-
-# IPFS function, Stores data on IPFS and then stores the hash on the BC
-def storeDataOnIPFS(dataToStore):
-    res = IPFSapi.add(dataToStore)
-    print(res)
-    # Add the storeIPFSHash Function inside the smart contract.
-    
-    #deployed_contract.functions.storeIPFSHash(res).transact({'from':w3.eth.accounts[0]})
-
-
-
-# Add user in eth
-addNewUser(21)
-
-
-@app.route('/service_req', methods = ['POST'])
-def service_req():
-    json = request.get_json()
-    transaction_keys = ['user_id', 'service', 'port']
-    if not all(key in json for key in transaction_keys):
-         return 'Some elements of the transaction are missing', 400
-    user_id = json['user_id']
-    service = json['service']
-    u_port = json['port']
-    print(f'The user id variable ------>>{user_id}')
-    print('Type of user id variable')
-    print(type(user_id))
-#    if isUserMal(userID) == True:
-    if user_id not in getAllUsers():
-        response = {'message': 'User does not exist'}
-        return jsonify(response),200
-    # Will check the EthBC to see if the  user is malicious.
-    elif isUserMal(user_id) ==True:
-        response  = {'message':f'User {user_id} has been banned'}
-        return jsonify(response), 200
-    else:
-        response = {'message': f'Service has been provided to {user_id}'}
-        return jsonify(response), 200
-
-
-@app.route('/verify_vehicle', methods = ['POST'])
-def verify_vehicle():
-    json = request.get_json()
-    transaction_keys = ['user_id', 'port']
-    if not all(key in json for key in transaction_keys):
-         return 'Some elements of the transaction are missing', 400
-    user_id = json['user_id']
-    src_port = json['port']
-
-    if isUserMal(user_id) ==True:
-        response  = {'message':f'User {user_id} has been banned'}
-        return jsonify(response), 202
-    elif isUserMal(user_id) ==False:
-        response = {'message':f'User {user_id} is valid'}
-        return jsonify(response),200
-
-app.run(host='0.0.0.0', port=5000)
-\end{lstlisting}
-\end{linenumbers} 
-
-\newpage
-
-\begin{linenumbers}
-\begin{lstlisting}
-
-\end{lstlisting}
-\resetlinenumber[1]
-\hypertarget{milp_code}{}
-\hyperlink{milp_text}{Vehicle.py}
-\begin{lstlisting}
-
-import os
-import requests
-from flask import Flask, jsonify, request
-from flask.helpers import total_seconds
-import json
-import sys
-
-
-# Create an object of Flask 
-app = Flask(__name__)
-#app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
-
-# Create real ID for the vehicle 1
-
-realID = "Somebody"
-
-
-def send_CoRequest_v(ps_id,cert,ts,B_index,sig, port):
-    data = {"p_id":ps_id, "cert":cert, "ts":ts, "B_index":B_index, "sig":sig}
-    url = f"http://127.0.0.1:{port}/send_Crequest"
-    response = requests.post(url,json=data)
-    print(response)
-    return response
-
-def service_Request_RSU(user_id,service,sPort,dPort):
-    data = {"user_id":user_id, "service":service, "port":sPort}
-    url = f"http://127.0.0.1:{dPort}/service_req"
-    response = requests.post(url,json=data)
-    print(response)
-    return response
-@app.route('/send_Crequest', methods = ['POST'])
-def send_Crequest():
-    json = request.get_json()
-    transaction_keys = ['p_id', 'cert', 'ts', 'B_index', 'sig']
-    if not all(key in json for key in transaction_keys):
-         return 'Some elements of the transaction are missing', 400
-    p_id = json['p_id']
-    cert = json['cert']
-    ts = json['ts']
-    B_index = json['B_index']
-    sig = json['sig']
-    print(f'Size of packet received from vehicle= {sys.getsizeof(json)}')
-    response  = {'message':f'The message is from {p_id}'}
-    print(f'Size of response packet = {sys.getsizeof(response)}')
-    return jsonify(response), 201
-
-
-app.run(host='0.0.0.0', port=5002)
-
-\end{lstlisting}
-\end{linenumbers} 
-
-\newpage
-
-\begin{linenumbers}
-\begin{lstlisting}
-
-\end{lstlisting}
-\resetlinenumber[1]
-\hypertarget{milp_code}{}
-\hyperlink{milp_text}{DistributedRevocation.py}
-\begin{lstlisting}
-
-#Shamir Secret Sharing based distributed revocation
-
-#For Distributed revocation, we use Shamir Secret Sharing technique
-
-#- First a signing and verifying revocation keys are generated 
-#- This signing key is divided into 'n' number of shares, and these shares #are distributed among the RSUs
-#- The verifying key is made public so that anyone can verify that a vehicle #is revoked
-#- The ID of the malicious vehicle is signed by the revocation key before #adding it to CRL 
-
-#Please install this package --> pip install starkbank-ecdsa
-
-from ellipticcurve.ecdsa import Ecdsa
-from ellipticcurve.privateKey import PrivateKey
-from secretsharing import PlaintextToHexSecretSharer
-
-# The sign and ver Rev key generated by the CA
-signRevKey = PrivateKey()
-verRevKey = signRevKey.publicKey()
-
-#Some parameters before dividing the key
-before_part_signKey = signRevKey.toPem()[0:31]
-endOfFile = len(signRevKey.toPem())
-after_part_signKey = signRevKey.toPem()[-32:endOfFile]
-additional_param =""" -----BEGIN EC PARAMETERS-----
-    BgUrgQQACg==
-    -----END EC PARAMETERS-----"""
-
-# Now this key is divided into n shares and threshold is set
-shares = PlaintextToHexSecretSharer.split_secret(signRevKey.toPem()[31:-32], 2, 3)
-
-#Shares provided to each RSU
-rsu_shares = [shares[0],shares[1]]
-
-# CRL is generated and an example list of malicious vehicles is initiated
-CRL = []
-mal_vehIDs = ['11','22','223','asca2']
-
-# When a certain numbe of malicious vehicles are detected, the RevKey is recovered as following
-recovered_RevKey = PlaintextToHexSecretSharer.recover_secret(rsu_shares[0:1])
-
-#Now put recovered key back into the format
-revKeyFinal = additional_param+before_part_signKey+recovered_RevKey+after_part_signKey 
-
-#print(revKeyFinal)
-# The revKey string is converted into the private key object
-RecoveredPrivateKey = PrivateKey.fromPem(revKeyFinal)
-
-message = 'hello'
-#The message is signed with the revKey
-signature = Ecdsa.sign(message, RecoveredPrivateKey)
-#The verification is performed
-#print(Ecdsa.verify(message, signature, verRevKey))
-
-
-#Now lets sign a mal veh ID and add it to the CRL and then verify it with the Rev Ver Key
-
-# The ID of the malicious vehicle is signed
-signedMalVeh = Ecdsa.sign(mal_vehIDs[0], RecoveredPrivateKey)
-
-# The signed malicious vehicle ID is added to the CRL
-CRL.append(signedMalVeh)
-
-#The signed mal veh ID is verified with the Verifying Rev Key
-print(' The signature verification result is  ---> ',Ecdsa.verify(mal_vehIDs[0], CRL[0], verRevKey))
-
-
-
-\end{lstlisting}
-\end{linenumbers} 
+Adjusting chapter title format for regular (numbered) chapters
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\centering}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+% Using similar styling for unnumbered chapters but without "Chapter" prefix
+\titleformat{name=\chapter,numberless}
+  {\normalfont\huge\bfseries\centering}{}{0pt}{\Huge}
+
+\titlespacing*{\chapter}{0pt}{50pt}{40pt} % Adjust vertical spacing before and after the title
+
+\appendix
+\chapter{Useacases}
+\label{code}
+
+\section{Use Cases and Examples}
+To illustrate the application of ProbLog for global robustness in real-world scenarios, we present the following use cases:
+
+\subsection{Use Case 1: Handwritten Digit Recognition}
+\textbf{Scenario:} Consider an AI system designed to recognize handwritten digits, such as the MNIST dataset. The system is evaluated under various transformations, including noise addition, rotation, and brightness adjustment. The goal is to determine the global robustness of the system in recognizing digit pairs correctly under these properties.
+
+The tables below provide the probabilities for correctly recognizing digit pairs under different conditions (AND and OR relationships) for an MNIST 2-digit addition system. Each world represents a different combination of transformations applied to the digits.
+
+\begin{table}[h]
+    \centering
+    \caption{Specification Probabilities for MNIST 2-Digit Addition Under Different Transformations}
+    \label{tab:mnist_prob_and_or}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    \textbf{World} & \textbf{Conditions} & \textbf{Probability Expression (AND)} & \textbf{Probability (AND)} & \textbf{Probability Expression (OR)} & \textbf{Probability (OR)} \\
+    \hline
+    $w_1$ & \{noise(0), noise(1)\} & $0.85 \cdot 0.8$ & $0.68$ & $0.85 + 0.8 - (0.85 \cdot 0.8)$ & $0.97$ \\
+    $w_2$ & \{noise(0), correct(1)\} & $0.85 \cdot 0.9$ & $0.765$ & $0.85 + 0.9 - (0.85 \cdot 0.9)$ & $0.985$ \\
+    $w_3$ & \{correct(0), noise(1)\} & $0.9 \cdot 0.8$ & $0.72$ & $0.9 + 0.8 - (0.9 \cdot 0.8)$ & $0.98$ \\
+    $w_4$ & \{rotation(0), correct(1)\} & $0.88 \cdot 0.9$ & $0.792$ & $0.88 + 0.9 - (0.88 \cdot 0.9)$ & $0.992$ \\
+    $w_5$ & \{correct(0), rotation(1)\} & $0.9 \cdot 0.77$ & $0.693$ & $0.9 + 0.77 - (0.9 \cdot 0.77)$ & $0.977$ \\
+    $w_6$ & \{rotation(0), rotation(1)\} & $0.88 \cdot 0.77$ & $0.6776$ & $0.88 + 0.77 - (0.88 \cdot 0.77)$ & $0.9696$ \\
+    $w_7$ & \{noise(0), rotation(1)\} & $0.85 \cdot 0.77$ & $0.6545$ & $0.85 + 0.77 - (0.85 \cdot 0.77)$ & $0.9655$ \\
+    $w_8$ & \{rotation(0), noise(1)\} & $0.88 \cdot 0.8$ & $0.704$ & $0.88 + 0.8 - (0.88 \cdot 0.8)$ & $0.976$ \\
+    $w_9$ & \{correct(0), correct(1)\} & $0.9 \cdot 0.9$ & $0.81$ & $0.9 + 0.9 - (0.9 \cdot 0.9)$ & $0.99$ \\
+    \hline
+    \end{tabular}
+    }
+\end{table}
+
+\textbf{Explanation:} The table shows the global correctness probabilities for pairs of digits under various transformation conditions. Each row represents a different combination of transformations applied to the two digits in the pair:
+- AND Probability: The probability that both digits are correctly recognized under the specified transformations.
+- OR Probability: The probability that at least one of the digits is correctly recognized under the specified transformations.
+
+For example, in world $w_1$, both digits are subjected to noise, leading to an AND probability of $0.68$ and an OR probability of $0.97$.
+
+\textbf{Problog Code:}
+\begin{mdframed}[leftline=false, rightline=false, topline=true, bottomline=true]
+\scriptsize
+\begin{verbatim}
+% Define probabilities for digit 0 under different transformations
+0.9::noise_0. % Digit 0 correctly predicted with 90% probability under noise
+0.85::brightness_0. % Digit 0 correctly predicted with 85% probability under brightness
+0.88::rotation_0. % Digit 0 correctly predicted with 88% probability under rotation
+
+% Define probabilities for digit 1 under different transformations
+0.8::noise_1. % Digit 1 correctly predicted with 80% probability under noise
+0.75::brightness_1. % Digit 1 correctly predicted with 75% probability under brightness
+0.77::rotation_1. % Digit 1 correctly predicted with 77% probability under rotation
+
+% Define rules for correct prediction under each transformation for digit 0
+correct_noise_0 :- noise_0.
+correct_brightness_0 :- brightness_0.
+correct_rotation_0 :- rotation_0.
+
+% Define rules for correct prediction under each transformation for digit 1
+correct_noise_1 :- noise_1.
+correct_brightness_1 :- brightness_1.
+correct_rotation_1 :- rotation_1.
+
+% Define rules for incorrect prediction under each transformation for digit 0
+wrong_noise_0 :- +correct_noise_0.
+wrong_brightness_0 :- +correct_brightness_0.
+wrong_rotation_0 :- +correct_rotation_0.
+
+% Define rules for incorrect prediction under each transformation for digit 1
+wrong_noise_1 :- +correct_noise_1.
+wrong_brightness_1 :- +correct_brightness_1.
+wrong_rotation_1 :- +correct_rotation_1.
+
+% Define rules for correct prediction of both digits under noise
+pair_correct_noise_0_1 :- correct_noise_0, correct_noise_1.
+% Define rules for incorrect prediction of both digits under noise
+pair_wrong_noise_0_1 :- wrong_noise_0, wrong_noise_1.
+
+% Define global correctness based on either both correct or both incorrect under noise
+global_correct_noise_0_1 :- pair_correct_noise_0_1; pair_wrong_noise_0_1.
+
+% Query the global correctness under noise
+query(global_correct_noise_0_1).
+\end{verbatim}
+\end{mdframed}
+\captionof{figure}{Problog code snippet for evaluating handwritten digit recognition under noise, brightness, and rotation transformations.}
+
+\textbf{Explanation:} In this scenario, we are interested in the global correctness of recognizing pairs of digits (0 and 1) under different transformations. The ProbLog code models the local robustness probabilities for each transformation and combines them to evaluate the global correctness.
+
+\subsection{Use Case 2: Autonomous Vehicle Perception}
+
+\textbf{Scenario:} An AI system used in autonomous vehicles must reliably detect objects such as vehicles under various weather conditions (rain, sand, fog, and snow). The goal is to evaluate the system's robustness in identifying these objects correctly under these weather conditions.
+
+\begin{mdframed}[leftline=false, rightline=false, topline=true, bottomline=true]
+  \scriptsize
+  \begin{verbatim}
+
+% Probabilities for Vehicle Detection under Different Weather Conditions
+0.75::rain_vehicle. % Vehicle correctly detected with 75% probability under rain
+0.55::fog_vehicle. % Vehicle correctly detected with 55% probability under fog
+0.7::snow_vehicle. % Vehicle correctly detected with 70% probability under snow
+
+% Correct Detection Rules for Vehicle
+correct_rain_vehicle :- rain_vehicle.
+correct_fog_vehicle :- fog_vehicle.
+correct_snow_vehicle :- snow_vehicle.
+
+% Incorrect Detection Rules for Vehicle
+wrong_rain_vehicle :- +correct_rain_vehicle.
+wrong_fog_vehicle :- +correct_fog_vehicle.
+wrong_snow_vehicle :- +correct_snow_vehicle.
+
+% AND conditions for Vehicle Detection under all weather conditions
+global_correct_vehicle_and :- correct_rain_vehicle, correct_fog_vehicle, correct_snow_vehicle.
+
+% OR conditions for Vehicle Detection under any weather condition
+global_correct_vehicle_or :- correct_rain_vehicle; correct_fog_vehicle; correct_snow_vehicle.
+
+% Mixed conditions (AND & OR) for Vehicle Detection
+global_correct_mixed_vehicle :- correct_rain_vehicle, (correct_fog_vehicle; correct_snow_vehicle).
+
+% Queries for Global Correctness
+query(global_correct_vehicle_and).
+query(global_correct_vehicle_or).
+query(global_correct_mixed_vehicle).
+\end{verbatim}
+\end{mdframed}
+\captionof{figure}{Problog code snippet for evaluating vehicle detection under different weather conditions.}
+
+\textbf{Explanation:} The ProbLog code assesses the global robustness of the AI system in detecting objects (vehicles) under individual and combined weather conditions. This ensures that the system can reliably perform in diverse environmental scenarios.
+
+\begin{table}[h]
+  \centering
+  \caption{Specification Probabilities (AND) for Vehicle Detection Under Different Weather Conditions \\
+  \( P(A \cap B \cap C) = P(A) \times P(B) \times P(C) \)}
+  \label{tab:veh_prob_and}
+  \resizebox{\textwidth}{!}{%
+  \begin{tabular}{|c|c|c|c|}
+  \hline
+  \textbf{World} & \textbf{Conditions} & \textbf{Probability Expression (AND)} & \textbf{Probability (AND)} \\
+  \hline
+  $w_1$ & \{rain, fog\} & $0.75 \times 0.55$ & $0.4125$ \\
+  $w_2$ & \{rain, snow\} & $0.75 \times 0.7$ & $0.525$ \\
+  $w_3$ & \{rain, sand\} & $0.75 \times 0.6$ & $0.45$ \\
+  $w_4$ & \{fog, snow\} & $0.55 \times 0.7$ & $0.385$ \\
+  $w_5$ & \{fog, sand\} & $0.55 \times 0.6$ & $0.33$ \\
+  $w_6$ & \{snow, sand\} & $0.7 \times 0.6$ & $0.42$ \\
+  $w_7$ & \{rain, fog, snow\} & $0.75 \times 0.55 \times 0.7$ & $0.28875$ \\
+  $w_8$ & \{rain, fog, sand\} & $0.75 \times 0.55 \times 0.6$ & $0.2475$ \\
+  $w_9$ & \{rain, snow, sand\} & $0.75 \times 0.7 \times 0.6$ & $0.315$ \\
+  $w_{10}$ & \{fog, snow, sand\} & $0.55 \times 0.7 \times 0.6$ & $0.231$ \\
+  \hline
+  \end{tabular}
+  }
+\end{table}
+
+\textbf{Explanation:} This table shows the global correctness probabilities for detecting vehicles under different combinations of weather conditions using AND relationships. Each row represents a different combination of weather conditions applied to the detection scenario:
+- AND Probability: The probability that the vehicle is correctly detected under all specified weather conditions.
+
+For example, in world $w_1$, the vehicle detection system is subjected to rain and fog, leading to an AND probability of $0.4125$.
+
+\begin{table}[h]
+  \centering
+  \caption{Specification Probabilities (OR) for Vehicle Detection Under Different Weather Conditions \\
+  \( P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C) \)}
+  \label{tab:veh_prob_or}
+  \resizebox{\textwidth}{!}{%
+  \begin{tabular}{|c|c|c|c|}
+  \hline
+  \textbf{World} & \textbf{Conditions} & \textbf{Probability Expression (OR)} & \textbf{Probability (OR)} \\
+  \hline
+  $w_1$ & \{rain; fog\} & $0.75 + 0.55 - (0.75 \times 0.55)$ & $0.8875$ \\
+  $w_2$ & \{rain; snow\} & $0.75 + 0.7 - (0.75 \times 0.7)$ & $0.925$ \\
+  $w_3$ & \{rain; sand\} & $0.75 + 0.6 - (0.75 \times 0.6)$ & $0.9$ \\
+  $w_4$ & \{fog; snow\} & $0.55 + 0.7 - (0.55 \times 0.7)$ & $0.835$ \\
+  $w_5$ & \{fog; sand\} & $0.55 + 0.6 - (0.55 \times 0.6)$ & $0.82$ \\
+  $w_6$ & \{snow; sand\} & $0.7 + 0.6 - (0.7 \times 0.6)$ & $0.88$ \\
+  $w_7$ & \{rain; fog; snow\} & $0.75 + 0.55 + 0.7 - (0.75 \times 0.55) - (0.75 \times 0.7) - (0.55 \times 0.7) + (0.75 \times 0.55 \times 0.7)$ & $0.966625$ \\
+  $w_8$ & \{rain; fog; sand\} & $0.75 + 0.55 + 0.6 - (0.75 \times 0.55) - (0.75 \times 0.6) - (0.55 \times 0.6) + (0.75 \times 0.55 \times 0.6)$ & $0.95125$ \\
+  $w_9$ & \{rain; snow; sand\} & $0.75 + 0.7 + 0.6 - (0.75 \times 0.7) - (0.75 \times 0.6) - (0.7 \times 0.6) + (0.75 \times 0.7 \times 0.6)$ & $0.967$ \\
+  $w_{10}$ & \{fog; snow; sand\} & $0.55 + 0.7 + 0.6 - (0.55 \times 0.7) - (0.55 \times 0.6) - (0.7 \times 0.6) + (0.55 \times 0.7 \times 0.6)$ & $0.938$ \\
+  \hline
+  \end{tabular}
+  }
+\end{table}
+
+\textbf{Explanation:} This table shows the global correctness probabilities for detecting vehicles under different combinations of weather conditions using OR relationships. Each row represents a different combination of weather conditions applied to the detection scenario:
+- OR Probability: The probability that the vehicle is correctly detected under at least one of the specified weather conditions.
+
+For example, in world $w_1$, the vehicle detection system is subjected to rain and fog, leading to an OR probability of $0.8875$.

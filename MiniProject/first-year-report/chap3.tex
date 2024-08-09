@@ -12,10 +12,10 @@
 \label{chp:3}
 
 
-This chapter presents a comprehensive approach for AI systems, which may consist of one or multiple DNN components, each component handle different task. My research introduces a framework that addresses each DNN separately, recognising that each has unique specifications, e.g., consider an AI system using the MNIST dataset for different purposes. One DNN might classify handwritten digits (0-9), while another might analyse pairs of digits to predict their sum or product. Although both DNNs work with digit images in this case, their properties in specifications differ due to their distinct tasks, even when using the same dataset. In other cases, such as an autonomous car, different DNNs might use different datasets designed for their specific tasks. One DNN might use labeled images for object detection (e.g., identifying pedestrians, vehicles, and road signs), while another DNN might use data on driving paths and movement for path planning to predict optimal routes. This framework provides end-to-end testing for each DNN. It consists of five components, summarized in Figure~\ref{fig:framework}.
+This chapter presents a comprehensive approach for AI systems, which may consist of one or multiple DNN components, each component handle different task. My research introduces a framework that addresses each DNN separately, recognising that each has unique specifications, e.g., consider an AI system using the MNIST dataset for different purposes. One DNN might classify handwritten digits (0-9), while another might analyse pairs of digits to predict their sum or product. Although both DNNs work with digit images in this case, their properties in specifications differ due to their distinct tasks, even when using the same dataset. In other cases, such as an autonomous car, different DNNs might use different datasets designed for their specific tasks. One DNN might use labeled images for object detection (e.g., identifying pedestrians, vehicles, and road signs), while another DNN might use data on driving paths and movement for path planning to predict optimal routes. This framework provides end-to-end testing for each DNN. It consists of five components, summarized in Figure~\ref{fig:framework} and Algorithm. \ref{alg:model_robustness}
 
 \begin{enumerate}
-  \item \emph{Specification} defines key properties to guide testing. It includes details about the DNN architecture, environmental properties, and input data, like data type, sample size, and number of classes. 
+  \item \emph{Specification} defines key properties to guide testing. It includes details about the DNN architecture, environmental properties, testing type, and input data, like data type, sample size, and number of classes. 
     \item \emph{Sampling} involves selecting a representative subset of inputs from a potentially vast input space. Depending on the testing objectives, this subset helps ensure that the tests are meaningful and cover various scenarios effectively.
     \item \emph{Testcase Generation} applies the properties mentioned in the specifications to the sampled data to generate test cases.
     \item \emph{Testing Graph Analysis} conducts both local and global coverage assessments. Locally, it focuses on an individual property to check its correctness. Globally, it examines multiple properties to understand their interdependencies and overall system behavior. By modeling these dependencies probabilistically, testing graph analysis provides a comprehensive view of AI system.
@@ -35,7 +35,7 @@ $\mathcal{F}$ is the functional unit comprises $n$ DNN components $ f_1, \dots, 
 
 
 \section{Specification}
-The first component of this framework is formalized to specify model architecture $\mathcal{M}$, environmental properties, testing type, and input data characteristics $\mathcal{D}$. 
+The first component of this framework is formalized to specify model architecture $\mathcal{M}$, properties, testing type, and input data characteristics $\mathcal{D}$. 
 
 The specifications $\mathcal{S}_{\text{specs}}$ include all classes (classification task) by default, but users can adjust this to test specific classes based on their needs.
 
@@ -135,696 +135,105 @@ Here, $\mathcal{X}_i$ represents the sampled data for classifier $f_i$, and $\ma
 \end{example}
 
 
-\section{Validation}
+\section{Testing Graph Analysis}
 
-The validation process aims to evaluate the correctness and robustness of the AI system under various perturbations.
+This component helps to evaluate the coverage of the AI system under various properties given in specification. This analysis is conducted into two main aspects: \emph{Local Coverage} and \emph{Global Coverage}.
 
-Fix a perturbation \( p \in P \) and a class \( c \). For every test case in \( \mathcal{T}_p^c \), we store the results in the form:
-\[ \text{Raw}_{p, c} = \Big\{\big(\text{query}(f_i, x, c), f_i(x)_c\big) \mid x \in \mathcal{T}_p^c \Big\} \]
+\subsection{Local Coverage}
 
-After generating test cases, measure the AI subsystem's confidence for each class under each type of property.
+Local coverage evaluates the correctness of the system for each individual class. For each class $c$ the local coverage is assessed by passing testcases to the system and check its correctness. The system is then tested with these perturbed samples to check if it predicts the correct class. If the system fails to predict correctly, this indicates the presence of counterexamples for that specific class.
 
-\subsection{Local Robustness}
-
-Local robustness involves evaluating the AI subsystem's performance on individual images subjected to various transformations. For each image \( x \) from a set of samples \( S_i^c \), the AI subsystem produces a confidence score \( f_i(x) \) representing its certainty in recognizing the class \( c \). The local robustness for a transformation \( T \) applied to an image \( x \) is defined as:
-
-\[ \text{Local Robustness}(x, T) = f_i(T(x)) \]
-
-where \( T \) can be any transformation such as noise addition, rotation, brightness adjustment, occlusion, or scaling. Each transformation is evaluated to determine its impact on the confidence score.
-
-To quantify local robustness, we compute the accuracy for each transformation applied to the images of a specific class:
+The local coverage for a class $c$ under perturbation $p$ is defined as:
 
 \[
-\text{Local Robustness}(c, T) = \frac{1}{|S_i^c|} \sum_{x \in S_i^c} \mathbb{I}[f_i(T(x)) = c]
+\text{Local Coverage}(c, p) = \frac{1}{|\mathcal{X}_i^c|} \sum_{x \in \mathcal{X}_i^c} \mathbb{I}[f_i(p(x)) = c]
 \]
 
 where:
-- \(\text{Local Robustness}(c, T)\) is the accuracy of the classifier \( f_i \) for class \( c \) under transformation \( T \).
-- \( \mathbb{I}[f_i(T(x)) = c] \) is an indicator function that is 1 if the classifier correctly predicts the class \( c \) for the transformed image \( T(x) \), and 0 otherwise.
-- \(|S_i^c|\) is the number of correctly classified images in class \( c \).
+\begin{itemize}
+  \item $\mathbb{I}[f_i(p(x)) = c]$ is an indicator function that equals 1 if the classifier $f_i$ correctly predicts class $c$ for the perturbed input $p(x)$, and 0 otherwise.
+  \item $|\mathcal{X}_i^c|$ represents the number of samples in class $c$.
+\end{itemize}
+
 
 \begin{example}
-Consider the class \( c = 3 \) and the transformation \( T \) being a rotation by 25 degrees. If we have three images \( x_1, x_2, x_3 \) from class \( c \), and the model correctly classifies \( x_1 \) and \( x_2 \) but misclassifies \( x_3 \), the local robustness is computed as follows:
+  \label{ex:local-robustness}
+  Consider the class $c = 3 $ and the perturbation $p $ being a rotation by 25 degrees. For a set of three images $x_1, x_2, x_3 $ from class $c $, suppose the classifier correctly predicts the class for $x_1$ and $x_2$ but misclassifies $x_3$. The local robustness for this rotation perturbation is calculated as:
 
 \[
-\text{Local Robustness}(3, \text{rotation}) = \frac{1}{3} (\mathbb{I}[f_i(\text{rotate}(x_1, 25)) = 3] + 
+  \text{Local Coverage}(3, \text{rotation}) = \frac{1}{3} \left( \mathbb{I}[f_i(\text{rotate}(x_1, 25^\circ)) = 3] + \mathbb{I}[f_i(\text{rotate}(x_2, 25^\circ)) = 3] \right.
 \]
 \[
-\mathbb{I}[f_i(\text{rotate}(x_2, 25)) = 3] + \mathbb{I}[f_i(\text{rotate}(x_3, 25)) = 3])
+  \left. + \mathbb{I}[f_i(\text{rotate}(x_3, 25^\circ)) = 3] \right)
 \]
 
 
-If the indicator values are 1, 1, and 0 respectively, the local robustness would be:
+  If the indicator values are 1, 1, and 0 respectively, the local robustness would be:
 
-\[
-\text{Local Robustness}(3, \text{rotation}) = \frac{1}{3} (1 + 1 + 0) = \frac{2}{3} \approx 0.67
-\]
+  \begin{equation}
+  \text{Local Coverage}(3, \text{rotation}) = \frac{2}{3} \approx 0.67
+\end{equation}
+
 \end{example}
+\begin{figure*}[h]
+  \centering
+  \includegraphics[width=\textwidth]{figures/noise_rotation_localcal_global.pdf}
+  \caption{Global Coverage}
+  \label{global}
+\end{figure*}
 
-\subsection{Global Robustness}
+\subsection{Global Coverage}
 
-Global robustness evaluates the AI subsystem's performance across multiple images and transformations. It is an aggregate measure of how well the AI system performs under various properties on a set of images $S_i^c$.
+Global coverage evaluates the correctness across multiple classes and perturbations. It provides an aggregate measure of how well AI system performs under various properties as shown in Figure. \ref {global}.
 
-For a given transformation $T$ and a set of images $S_i^c$, the global robustness is defined as:
+For a given set of perturbations \( \mathcal{P} \) and class \( c \), global coverage is defined as:
 
-$$ \text{Global Robustness}(S_i^c, T) = \frac{1}{|S_i^c|} \sum_{x \in S_i^c} \mathbb{I}[f_i(T(x)) = c] $$
+\begin{equation}
+\text{Global Coverage}(c, \mathcal{P}) = \frac{1}{|\mathcal{P}|} \sum_{p \in \mathcal{P}} \text{Local Coverage}(c, p)
+\end{equation}
 
-This measures the average confidence score for the AI subsystem over the entire dataset when subjected to a particular transformation.
+Additionally, global coverage can be evaluated for combined properties using logical relationships (AND/OR) between them:
 
-To quantify global robustness, we compute the expected confidence score over all transformations and images. Depending on whether the relationship is AND or OR, the formulas vary:
-
-\textbf{AND Relationship:}
-
-For an AND relationship between transformations, the global robustness is calculated as:
-
-$$ P(\text{Property 1} \cap \text{Property 2}) = P(\text{Property 1}) \times P(\text{Property 2}) $$
+\textbf{AND Relationship:} 
+\begin{equation}
+\text{Global Coverage}_{\text{AND}} = \prod_{p \in \mathcal{P}} \text{Local Coverage}(c, p)
+\end{equation}
 
 \textbf{OR Relationship:}
-
-For an OR relationship between transformations, the global robustness is calculated as:
-
-$$ P(\text{Property 1} \cup \text{Property 2}) = P(\text{Property 1}) + P(\text{Property 2}) - P(\text{Property 1} \cap \text{Property 2}) $$
+\begin{equation}
+\text{Global Coverage}_{\text{OR}} = \sum_{p \in \mathcal{P}} \text{Local Coverage}(c, p) - \prod_{p \in \mathcal{P}} \text{Local Coverage}(c, p)
+\end{equation}
 
 \begin{example}
-Consider a pair of images $(x_1, x_2)$ representing the digits '3' and '5'. Let the transformation $T$ be rotation. If the model's confidence scores for these transformations are as follows:
+Consider a pair of images \( (x_1, x_2) \) representing the digits '3' and '5'. Let the transformation \( T \) be rotation. If the model's confidence scores for these transformations are as follows:
 
-$$
+\begin{equation}
 \begin{aligned}
 &f_i(\text{rotation}(x_1)) = 0.78, \\
 &f_i(\text{rotation}(x_2)) = 0.85,
 \end{aligned}
-$$
+\end{equation}
 
-For the AND relationship, the global correctness for the pair is computed as follows:
+For the AND relationship, the global robustness for the pair is computed as follows:
 
-$$P(\text{Global Robustness}_{\text{AND}}) = 0.78 \times 0.85$$
+\begin{equation}
+\text{Global Robustness}_{\text{AND}} = 0.78 \times 0.85 \approx 0.663
+\end{equation}
 
-For the OR relationship, the global correctness for the pair is computed as follows:
+For the OR relationship, the global coverage for the pair is computed as follows:
 
-$$P(\text{Global Robustness}_{\text{OR}}) = 0.78 + 0.85 - (0.78 \times 0.85)$$
+\begin{equation}
+\text{Global Robustness}_{\text{OR}} = 0.78 + 0.85 - (0.78 \times 0.85) \approx 0.967
+\end{equation}
 
-(Note: The complete OR relationship formula requires including all images and transformations as per the OR formula.)
+These probabilities are calculated by Problog.
 
 \end{example}
 
-\subsection{Use Cases and Examples}
-To illustrate the application of ProbLog for global robustness in real-world scenarios, we present the following use cases:
 
-\subsubsection{Use Case 1: Handwritten Digit Recognition}
-\textbf{Scenario:} Consider an AI system designed to recognize handwritten digits, such as the MNIST dataset. The system is evaluated under various transformations, including noise addition, rotation, and brightness adjustment. The goal is to determine the global robustness of the system in recognizing digit pairs correctly under these properties.
-
-The tables below provide the probabilities for correctly recognizing digit pairs under different conditions (AND and OR relationships) for an MNIST 2-digit addition system. Each world represents a different combination of transformations applied to the digits.
-
-\begin{table}[h]
-    \centering
-    \caption{Specification Probabilities for MNIST 2-Digit Addition Under Different Transformations}
-    \label{tab:mnist_prob_and_or}
-    \resizebox{\textwidth}{!}{%
-    \begin{tabular}{|c|c|c|c|c|c|}
-    \hline
-    \textbf{World} & \textbf{Conditions} & \textbf{Probability Expression (AND)} & \textbf{Probability (AND)} & \textbf{Probability Expression (OR)} & \textbf{Probability (OR)} \\
-    \hline
-    $w_1$ & \{noise(0), noise(1)\} & $0.85 \cdot 0.8$ & $0.68$ & $0.85 + 0.8 - (0.85 \cdot 0.8)$ & $0.97$ \\
-    $w_2$ & \{noise(0), correct(1)\} & $0.85 \cdot 0.9$ & $0.765$ & $0.85 + 0.9 - (0.85 \cdot 0.9)$ & $0.985$ \\
-    $w_3$ & \{correct(0), noise(1)\} & $0.9 \cdot 0.8$ & $0.72$ & $0.9 + 0.8 - (0.9 \cdot 0.8)$ & $0.98$ \\
-    $w_4$ & \{rotation(0), correct(1)\} & $0.88 \cdot 0.9$ & $0.792$ & $0.88 + 0.9 - (0.88 \cdot 0.9)$ & $0.992$ \\
-    $w_5$ & \{correct(0), rotation(1)\} & $0.9 \cdot 0.77$ & $0.693$ & $0.9 + 0.77 - (0.9 \cdot 0.77)$ & $0.977$ \\
-    $w_6$ & \{rotation(0), rotation(1)\} & $0.88 \cdot 0.77$ & $0.6776$ & $0.88 + 0.77 - (0.88 \cdot 0.77)$ & $0.9696$ \\
-    $w_7$ & \{noise(0), rotation(1)\} & $0.85 \cdot 0.77$ & $0.6545$ & $0.85 + 0.77 - (0.85 \cdot 0.77)$ & $0.9655$ \\
-    $w_8$ & \{rotation(0), noise(1)\} & $0.88 \cdot 0.8$ & $0.704$ & $0.88 + 0.8 - (0.88 \cdot 0.8)$ & $0.976$ \\
-    $w_9$ & \{correct(0), correct(1)\} & $0.9 \cdot 0.9$ & $0.81$ & $0.9 + 0.9 - (0.9 \cdot 0.9)$ & $0.99$ \\
-    \hline
-    \end{tabular}
-    }
-\end{table}
-
-\textbf{Explanation:} The table shows the global correctness probabilities for pairs of digits under various transformation conditions. Each row represents a different combination of transformations applied to the two digits in the pair:
-- AND Probability: The probability that both digits are correctly recognized under the specified transformations.
-- OR Probability: The probability that at least one of the digits is correctly recognized under the specified transformations.
-
-For example, in world $w_1$, both digits are subjected to noise, leading to an AND probability of $0.68$ and an OR probability of $0.97$.
-
-\textbf{Problog Code:}
-\begin{mdframed}[leftline=false, rightline=false, topline=true, bottomline=true]
-\scriptsize
-\begin{verbatim}
-% Define probabilities for digit 0 under different transformations
-0.9::noise_0. % Digit 0 correctly predicted with 90% probability under noise
-0.85::brightness_0. % Digit 0 correctly predicted with 85% probability under brightness
-0.88::rotation_0. % Digit 0 correctly predicted with 88% probability under rotation
-
-% Define probabilities for digit 1 under different transformations
-0.8::noise_1. % Digit 1 correctly predicted with 80% probability under noise
-0.75::brightness_1. % Digit 1 correctly predicted with 75% probability under brightness
-0.77::rotation_1. % Digit 1 correctly predicted with 77% probability under rotation
-
-% Define rules for correct prediction under each transformation for digit 0
-correct_noise_0 :- noise_0.
-correct_brightness_0 :- brightness_0.
-correct_rotation_0 :- rotation_0.
-
-% Define rules for correct prediction under each transformation for digit 1
-correct_noise_1 :- noise_1.
-correct_brightness_1 :- brightness_1.
-correct_rotation_1 :- rotation_1.
-
-% Define rules for incorrect prediction under each transformation for digit 0
-wrong_noise_0 :- +correct_noise_0.
-wrong_brightness_0 :- +correct_brightness_0.
-wrong_rotation_0 :- +correct_rotation_0.
-
-% Define rules for incorrect prediction under each transformation for digit 1
-wrong_noise_1 :- +correct_noise_1.
-wrong_brightness_1 :- +correct_brightness_1.
-wrong_rotation_1 :- +correct_rotation_1.
-
-% Define rules for correct prediction of both digits under noise
-pair_correct_noise_0_1 :- correct_noise_0, correct_noise_1.
-% Define rules for incorrect prediction of both digits under noise
-pair_wrong_noise_0_1 :- wrong_noise_0, wrong_noise_1.
-
-% Define global correctness based on either both correct or both incorrect under noise
-global_correct_noise_0_1 :- pair_correct_noise_0_1; pair_wrong_noise_0_1.
-
-% Query the global correctness under noise
-query(global_correct_noise_0_1).
-\end{verbatim}
-\end{mdframed}
-\captionof{figure}{Problog code snippet for evaluating handwritten digit recognition under noise, brightness, and rotation transformations.}
-
-\textbf{Explanation:} In this scenario, we are interested in the global correctness of recognizing pairs of digits (0 and 1) under different transformations. The ProbLog code models the local robustness probabilities for each transformation and combines them to evaluate the global correctness.
-
-\subsubsection{Use Case 2: Autonomous Vehicle Perception}
-
-\textbf{Scenario:} An AI system used in autonomous vehicles must reliably detect objects such as vehicles under various weather conditions (rain, sand, fog, and snow). The goal is to evaluate the system's robustness in identifying these objects correctly under these weather conditions.
-
-\begin{mdframed}[leftline=false, rightline=false, topline=true, bottomline=true]
-  \scriptsize
-  \begin{verbatim}
-
-% Probabilities for Vehicle Detection under Different Weather Conditions
-0.75::rain_vehicle. % Vehicle correctly detected with 75% probability under rain
-0.55::fog_vehicle. % Vehicle correctly detected with 55% probability under fog
-0.7::snow_vehicle. % Vehicle correctly detected with 70% probability under snow
-
-% Correct Detection Rules for Vehicle
-correct_rain_vehicle :- rain_vehicle.
-correct_fog_vehicle :- fog_vehicle.
-correct_snow_vehicle :- snow_vehicle.
-
-% Incorrect Detection Rules for Vehicle
-wrong_rain_vehicle :- +correct_rain_vehicle.
-wrong_fog_vehicle :- +correct_fog_vehicle.
-wrong_snow_vehicle :- +correct_snow_vehicle.
-
-% AND conditions for Vehicle Detection under all weather conditions
-global_correct_vehicle_and :- correct_rain_vehicle, correct_fog_vehicle, correct_snow_vehicle.
-
-% OR conditions for Vehicle Detection under any weather condition
-global_correct_vehicle_or :- correct_rain_vehicle; correct_fog_vehicle; correct_snow_vehicle.
-
-% Mixed conditions (AND & OR) for Vehicle Detection
-global_correct_mixed_vehicle :- correct_rain_vehicle, (correct_fog_vehicle; correct_snow_vehicle).
-
-% Queries for Global Correctness
-query(global_correct_vehicle_and).
-query(global_correct_vehicle_or).
-query(global_correct_mixed_vehicle).
-\end{verbatim}
-\end{mdframed}
-\captionof{figure}{Problog code snippet for evaluating vehicle detection under different weather conditions.}
-
-\textbf{Explanation:} The ProbLog code assesses the global robustness of the AI system in detecting objects (vehicles) under individual and combined weather conditions. This ensures that the system can reliably perform in diverse environmental scenarios.
-
-\begin{table}[h]
-  \centering
-  \caption{Specification Probabilities (AND) for Vehicle Detection Under Different Weather Conditions \\
-  \( P(A \cap B \cap C) = P(A) \times P(B) \times P(C) \)}
-  \label{tab:veh_prob_and}
-  \resizebox{\textwidth}{!}{%
-  \begin{tabular}{|c|c|c|c|}
-  \hline
-  \textbf{World} & \textbf{Conditions} & \textbf{Probability Expression (AND)} & \textbf{Probability (AND)} \\
-  \hline
-  $w_1$ & \{rain, fog\} & $0.75 \times 0.55$ & $0.4125$ \\
-  $w_2$ & \{rain, snow\} & $0.75 \times 0.7$ & $0.525$ \\
-  $w_3$ & \{rain, sand\} & $0.75 \times 0.6$ & $0.45$ \\
-  $w_4$ & \{fog, snow\} & $0.55 \times 0.7$ & $0.385$ \\
-  $w_5$ & \{fog, sand\} & $0.55 \times 0.6$ & $0.33$ \\
-  $w_6$ & \{snow, sand\} & $0.7 \times 0.6$ & $0.42$ \\
-  $w_7$ & \{rain, fog, snow\} & $0.75 \times 0.55 \times 0.7$ & $0.28875$ \\
-  $w_8$ & \{rain, fog, sand\} & $0.75 \times 0.55 \times 0.6$ & $0.2475$ \\
-  $w_9$ & \{rain, snow, sand\} & $0.75 \times 0.7 \times 0.6$ & $0.315$ \\
-  $w_{10}$ & \{fog, snow, sand\} & $0.55 \times 0.7 \times 0.6$ & $0.231$ \\
-  \hline
-  \end{tabular}
-  }
-\end{table}
-
-\textbf{Explanation:} This table shows the global correctness probabilities for detecting vehicles under different combinations of weather conditions using AND relationships. Each row represents a different combination of weather conditions applied to the detection scenario:
-- AND Probability: The probability that the vehicle is correctly detected under all specified weather conditions.
-
-For example, in world $w_1$, the vehicle detection system is subjected to rain and fog, leading to an AND probability of $0.4125$.
-
-\begin{table}[h]
-  \centering
-  \caption{Specification Probabilities (OR) for Vehicle Detection Under Different Weather Conditions \\
-  \( P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C) \)}
-  \label{tab:veh_prob_or}
-  \resizebox{\textwidth}{!}{%
-  \begin{tabular}{|c|c|c|c|}
-  \hline
-  \textbf{World} & \textbf{Conditions} & \textbf{Probability Expression (OR)} & \textbf{Probability (OR)} \\
-  \hline
-  $w_1$ & \{rain; fog\} & $0.75 + 0.55 - (0.75 \times 0.55)$ & $0.8875$ \\
-  $w_2$ & \{rain; snow\} & $0.75 + 0.7 - (0.75 \times 0.7)$ & $0.925$ \\
-  $w_3$ & \{rain; sand\} & $0.75 + 0.6 - (0.75 \times 0.6)$ & $0.9$ \\
-  $w_4$ & \{fog; snow\} & $0.55 + 0.7 - (0.55 \times 0.7)$ & $0.835$ \\
-  $w_5$ & \{fog; sand\} & $0.55 + 0.6 - (0.55 \times 0.6)$ & $0.82$ \\
-  $w_6$ & \{snow; sand\} & $0.7 + 0.6 - (0.7 \times 0.6)$ & $0.88$ \\
-  $w_7$ & \{rain; fog; snow\} & $0.75 + 0.55 + 0.7 - (0.75 \times 0.55) - (0.75 \times 0.7) - (0.55 \times 0.7) + (0.75 \times 0.55 \times 0.7)$ & $0.966625$ \\
-  $w_8$ & \{rain; fog; sand\} & $0.75 + 0.55 + 0.6 - (0.75 \times 0.55) - (0.75 \times 0.6) - (0.55 \times 0.6) + (0.75 \times 0.55 \times 0.6)$ & $0.95125$ \\
-  $w_9$ & \{rain; snow; sand\} & $0.75 + 0.7 + 0.6 - (0.75 \times 0.7) - (0.75 \times 0.6) - (0.7 \times 0.6) + (0.75 \times 0.7 \times 0.6)$ & $0.967$ \\
-  $w_{10}$ & \{fog; snow; sand\} & $0.55 + 0.7 + 0.6 - (0.55 \times 0.7) - (0.55 \times 0.6) - (0.7 \times 0.6) + (0.55 \times 0.7 \times 0.6)$ & $0.938$ \\
-  \hline
-  \end{tabular}
-  }
-\end{table}
-
-\textbf{Explanation:} This table shows the global correctness probabilities for detecting vehicles under different combinations of weather conditions using OR relationships. Each row represents a different combination of weather conditions applied to the detection scenario:
-- OR Probability: The probability that the vehicle is correctly detected under at least one of the specified weather conditions.
-
-For example, in world $w_1$, the vehicle detection system is subjected to rain and fog, leading to an OR probability of $0.8875$.
-
-
-
-
-% \subsection{Use Cases and Examples}
-
-% To illustrate the application of Problog for global robustness in real-world scenarios, we present the following use cases:
-
-% \subsection{Use Case 1: Handwritten Digit Recognition}
-
-% \textbf{Scenario:} Consider an AI system designed to recognize handwritten digits, such as the MNIST dataset. The system is evaluated under various transformations, including noise addition, rotation, and brightness adjustment. The goal is to determine the global robustness of the system in recognizing digit pairs correctly under these properties.
-
-
-  
-%   \begin{table}[h]
-%     \centering
-  
-%     \caption{Specification Probabilities for MNIST 2-Digit Addition Under Different Transformations}
-%     \label{tab:mnist_prob_and_or}
-  
-%     \resizebox{\textwidth}{!}{%
-%     \begin{tabular}{|c|c|c|c|c|c|}
-%     \hline
-%     \textbf{World} & \textbf{Conditions} & \textbf{Probability Expression (AND)} & \textbf{Probability (AND)} & \textbf{Probability Expression (OR)} & \textbf{Probability (OR)} \\
-%     \hline
-%     $w_1$ & \{noise(0), noise(1)\} & $0.85 \cdot 0.8$ & $0.68$ & $0.85 + 0.8 - (0.85 \cdot 0.8)$ & $0.97$ \\
-%     $w_2$ & \{noise(0), correct(1)\} & $0.85 \cdot 0.9$ & $0.765$ & $0.85 + 0.9 - (0.85 \cdot 0.9)$ & $0.985$ \\
-%     $w_3$ & \{correct(0), noise(1)\} & $0.9 \cdot 0.8$ & $0.72$ & $0.9 + 0.8 - (0.9 \cdot 0.8)$ & $0.98$ \\
-%     $w_4$ & \{rotation(0), correct(1)\} & $0.88 \cdot 0.9$ & $0.792$ & $0.88 + 0.9 - (0.88 \cdot 0.9)$ & $0.992$ \\
-%     $w_5$ & \{correct(0), rotation(1)\} & $0.9 \cdot 0.77$ & $0.693$ & $0.9 + 0.77 - (0.9 \cdot 0.77)$ & $0.977$ \\
-%     $w_6$ & \{rotation(0), rotation(1)\} & $0.88 \cdot 0.77$ & $0.6776$ & $0.88 + 0.77 - (0.88 \cdot 0.77)$ & $0.9696$ \\
-%     $w_7$ & \{noise(0), rotation(1)\} & $0.85 \cdot 0.77$ & $0.6545$ & $0.85 + 0.77 - (0.85 \cdot 0.77)$ & $0.9655$ \\
-%     $w_8$ & \{rotation(0), noise(1)\} & $0.88 \cdot 0.8$ & $0.704$ & $0.88 + 0.8 - (0.88 \cdot 0.8)$ & $0.976$ \\
-%     $w_9$ & \{correct(0), correct(1)\} & $0.9 \cdot 0.9$ & $0.81$ & $0.9 + 0.9 - (0.9 \cdot 0.9)$ & $0.99$ \\
-%     \hline
-%     \end{tabular}
-%     }
-%     \end{table}
-  
-
-
-
-% \textbf{Problog Code:}
-% \begin{mdframed}[leftline=false, rightline=false, topline=true, bottomline=true]
-% \scriptsize
-% \begin{verbatim}
-% % Define probabilities for digit 0 under different transformations
-% 0.9::noise_0. % Digit 0 correctly predicted with 90% probability under noise
-% 0.85::brightness_0. % Digit 0 correctly predicted with 85% probability under brightness
-% 0.88::rotation_0. % Digit 0 correctly predicted with 88% probability under rotation
-
-% % Define probabilities for digit 1 under different transformations
-% 0.8::noise_1. % Digit 1 correctly predicted with 80% probability under noise
-% 0.75::brightness_1. % Digit 1 correctly predicted with 75% probability under brightness
-% 0.77::rotation_1. % Digit 1 correctly predicted with 77% probability under rotation
-
-% % Define rules for correct prediction under each transformation for digit 0
-% correct_noise_0 :- noise_0.
-% correct_brightness_0 :- brightness_0.
-% correct_rotation_0 :- rotation_0.
-
-% % Define rules for correct prediction under each transformation for digit 1
-% correct_noise_1 :- noise_1.
-% correct_brightness_1 :- brightness_1.
-% correct_rotation_1 :- rotation_1.
-
-% % Define rules for incorrect prediction under each transformation for digit 0
-% wrong_noise_0 :- +correct_noise_0.
-% wrong_brightness_0 :- +correct_brightness_0.
-% wrong_rotation_0 :- +correct_rotation_0.
-
-% % Define rules for incorrect prediction under each transformation for digit 1
-% wrong_noise_1 :- +correct_noise_1.
-% wrong_brightness_1 :- +correct_brightness_1.
-% wrong_rotation_1 :- +correct_rotation_1.
-
-% % Define rules for correct prediction of both digits under noise
-% pair_correct_noise_0_1 :- correct_noise_0, correct_noise_1.
-% % Define rules for incorrect prediction of both digits under noise
-% pair_wrong_noise_0_1 :- wrong_noise_0, wrong_noise_1.
-
-% % Define global correctness based on either both correct or both incorrect under noise
-% global_correct_noise_0_1 :- pair_correct_noise_0_1; pair_wrong_noise_0_1.
-
-% % Query the global correctness under noise
-% query(global_correct_noise_0_1).
-% \end{verbatim}
-% \end{mdframed}
-% \captionof{figure}{Problog code snippet for evaluating handwritten digit recognition under noise, brightness, and rotation transformations.}
-
-
-
-% \textbf{Explanation:} In this scenario, we are interested in the global correctness of recognizing pairs of digits (0 and 1) under different transformations. The Problog code models the local robustness probabilities for each transformation and combines them to evaluate the global correctness.
-
-
-%   \subsection{Use Case 2: Autonomous Vehicle Perception}
-
-% \textbf{Scenario:} An AI system used in autonomous vehicles must reliably detect objects such as pedestrians and vehicles under various weather conditions (rain, fog, and snow). The goal is to evaluate the system's robustness in identifying these objects correctly under these weather conditions.
-
-
-
-% \begin{mdframed}[leftline=false, rightline=false, topline=true, bottomline=true]
-%   \scriptsize
-%   \begin{verbatim}
-
-%   % Probabilities for Vehicle Detection under Different Weather Conditions
-%   0.75::rain_vehicle. % Vehicle correctly detected with 75% probability under rain
-%   0.55::fog_vehicle. % Vehicle correctly detected with 55% probability under fog
-%   0.7::snow_vehicle. % Vehicle correctly detected with 70% probability under snow
-
-  
-%   % Correct Detection Rules for Vehicle
-%   correct_rain_vehicle :- rain_vehicle.
-%   correct_fog_vehicle :- fog_vehicle.
-%   correct_snow_vehicle :- snow_vehicle.
-  
-%   % Incorrect Detection Rules for Vehicle
-%   wrong_rain_vehicle :- +correct_rain_vehicle.
-%   wrong_fog_vehicle :- +correct_fog_vehicle.
-%   wrong_snow_vehicle :- +correct_snow_vehicle.
-  
-
-%   % AND conditions for Vehicle Detection under all weather conditions
-%   global_correct_vehicle_and :- correct_rain_vehicle, correct_fog_vehicle, correct_snow_vehicle.
-  
-%   % OR conditions for Vehicle Detection under any weather condition
-%   global_correct_vehicle_or :- correct_rain_vehicle; correct_fog_vehicle; correct_snow_vehicle.
-  
-%   % Mixed conditions (AND & OR) for Vehicle Detection
-%   global_correct_mixed_vehicle :- correct_rain_vehicle, (correct_fog_vehicle; correct_snow_vehicle).
-  
-%   % Queries for Global Correctness
-
-%   query(global_correct_vehicle_and).
-%   query(global_correct_vehicle_or).
-%   query(global_correct_mixed_vehicle).
-%   \end{verbatim}
-%   \end{mdframed}
-%   \captionof{figure}{Problog code snippet for evaluating  vehicle detection under different weather conditions.}
-  
-  
-
-% \textbf{Explanation:} he Problog code assesses the global robustness of the AI system in detecting objects (pedestrians and vehicles) under individual and combined weather conditions. This ensures that the system can reliably perform in diverse environmental scenarios.
-
-% \begin{table}[h]
-%   \centering
-%   \caption{Specification Probabilities (AND) for Vehicle Detection Under Different Weather Conditions \\
-%   \( P(A \cap B \cap C) = P(A) \times P(B) \times P(C) \)}
-%   \label{tab:veh_prob_and}
-%   \resizebox{\textwidth}{!}{%
-%   \begin{tabular}{|c|c|c|c|}
-%   \hline
-% \textbf{World} & \textbf{Conditions} & \textbf{Probability Expression (AND)} & \textbf{Probability (AND)} \\
-%   \hline
-%   $w_1$ & \{rain, fog\} & $0.75 \times 0.55$ & $0.4125$ \\
-%   $w_2$ & \{rain, snow\} & $0.75 \times 0.7$ & $0.525$ \\
-%   $w_3$ & \{rain, sand\} & $0.75 \times 0.6$ & $0.45$ \\
-%   $w_4$ & \{fog, snow\} & $0.55 \times 0.7$ & $0.385$ \\
-%   $w_5$ & \{fog, sand\} & $0.55 \times 0.6$ & $0.33$ \\
-%   $w_6$ & \{snow, sand\} & $0.7 \times 0.6$ & $0.42$ \\
-%   $w_7$ & \{rain, fog, snow\} & $0.75 \times 0.55 \times 0.7$ & $0.28875$ \\
-%   $w_8$ & \{rain, fog, sand\} & $0.75 \times 0.55 \times 0.6$ & $0.2475$ \\
-%   $w_9$ & \{rain, snow, sand\} & $0.75 \times 0.7 \times 0.6$ & $0.315$ \\
-%   $w_{10}$ & \{fog, snow, sand\} & $0.55 \times 0.7 \times 0.6$ & $0.231$ \\
-%   \hline
-%   \end{tabular}
-%   }
-% \end{table}
-
-
-% \begin{table}[h]
-%   \centering
-%   \caption{Specification Probabilities (OR) for Vehicle Detection Under Different Weather Conditions \\
-%   \( P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C) \)}
-%   \label{tab:veh_prob_or}
-%   \resizebox{\textwidth}{!}{%
-%   \begin{tabular}{|c|c|c|c|}
-%   \hline
-% \textbf{World} & \textbf{Conditions} & \textbf{Probability Expression (OR)} & \textbf{Probability (OR)} \\
-%   \hline
-%   $w_1$ & \{rain; fog\} & $0.75 + 0.55 - (0.75 \times 0.55)$ & $0.8875$ \\
-%   $w_2$ & \{rain; snow\} & $0.75 + 0.7 - (0.75 \times 0.7)$ & $0.925$ \\
-%   $w_3$ & \{rain; sand\} & $0.75 + 0.6 - (0.75 \times 0.6)$ & $0.9$ \\
-%   $w_4$ & \{fog; snow\} & $0.55 + 0.7 - (0.55 \times 0.7)$ & $0.835$ \\
-%   $w_5$ & \{fog; sand\} & $0.55 + 0.6 - (0.55 \times 0.6)$ & $0.82$ \\
-%   $w_6$ & \{snow; sand\} & $0.7 + 0.6 - (0.7 \times 0.6)$ & $0.88$ \\
-%   $w_7$ & \{rain; fog; snow\} & $0.75 + 0.55 + 0.7 - (0.75 \times 0.55) - (0.75 \times 0.7) - (0.55 \times 0.7) + (0.75 \times 0.55 \times 0.7)$ & $0.966625$ \\
-%   $w_8$ & \{rain; fog; sand\} & $0.75 + 0.55 + 0.6 - (0.75 \times 0.55) - (0.75 \times 0.6) - (0.55 \times 0.6) + (0.75 \times 0.55 \times 0.6)$ & $0.95125$ \\
-%   $w_9$ & \{rain; snow; sand\} & $0.75 + 0.7 + 0.6 - (0.75 \times 0.7) - (0.75 \times 0.6) - (0.7 \times 0.6) + (0.75 \times 0.7 \times 0.6)$ & $0.967$ \\
-%   $w_{10}$ & \{fog; snow; sand\} & $0.55 + 0.7 + 0.6 - (0.55 \times 0.7) - (0.55 \times 0.6) - (0.7 \times 0.6) + (0.55 \times 0.7 \times 0.6)$ & $0.938$ \\
-%   \hline
-%   \end{tabular}
-%   }
-% \end{table}
-
-% \section{Error Summarization}
-
-% Error summarization involves evaluating the performance of the AI system by identifying and quantifying errors. We use Bayesian Network-based Coverage Metrics to assess both local and global coverage. Two testing coverage metrics are defined in Figure~\ref{Coverage}: local coverage (LC) and global coverage (GC).
-
-% \begin{figure*}[h]
-%     \centering
-%     \includegraphics[width=1\textwidth]{figures/step5.pdf}
-%     \caption{Error Summarization}
-%     \label{Summarization}
-% \end{figure*}
-
-% \subsection{Use Cases and Examples}
-
-% To illustrate the application of ProbLog for global robustness in real-world scenarios, we present the following use cases:
-
-% \subsubsection{Use Case 1: Handwritten Digit Recognition}
-
-% \textbf{Scenario:} Consider an AI system designed to recognize handwritten digits, such as the MNIST dataset. The system is evaluated under various transformations, including noise addition, rotation, and brightness adjustment. The goal is to determine the global robustness of the system in recognizing digit pairs correctly under these properties.
-
-% The tables below provide the probabilities for correctly recognizing digit pairs under different conditions (AND and OR relationships) for an MNIST 2-digit addition system. Each world represents a different combination of transformations applied to the digits.
-
-% \begin{table}[h]
-%     \centering
-%     \caption{Specification Probabilities for MNIST 2-Digit Addition Under Different Transformations}
-%     \label{tab:mnist_prob_and_or}
-%     \resizebox{\textwidth}{!}{%
-%     \begin{tabular}{|c|c|c|c|c|c|}
-%     \hline
-%     \textbf{World} & \textbf{Conditions} & \textbf{Probability Expression (AND)} & \textbf{Probability (AND)} & \textbf{Probability Expression (OR)} & \textbf{Probability (OR)} \\
-%     \hline
-%     $w_1$ & \{noise(0), noise(1)\} & $0.85 \cdot 0.8$ & $0.68$ & $0.85 + 0.8 - (0.85 \cdot 0.8)$ & $0.97$ \\
-%     $w_2$ & \{noise(0), correct(1)\} & $0.85 \cdot 0.9$ & $0.765$ & $0.85 + 0.9 - (0.85 \cdot 0.9)$ & $0.985$ \\
-%     $w_3$ & \{correct(0), noise(1)\} & $0.9 \cdot 0.8$ & $0.72$ & $0.9 + 0.8 - (0.9 \cdot 0.8)$ & $0.98$ \\
-%     $w_4$ & \{rotation(0), correct(1)\} & $0.88 \cdot 0.9$ & $0.792$ & $0.88 + 0.9 - (0.88 \cdot 0.9)$ & $0.992$ \\
-%     $w_5$ & \{correct(0), rotation(1)\} & $0.9 \cdot 0.77$ & $0.693$ & $0.9 + 0.77 - (0.9 \cdot 0.77)$ & $0.977$ \\
-%     $w_6$ & \{rotation(0), rotation(1)\} & $0.88 \cdot 0.77$ & $0.6776$ & $0.88 + 0.77 - (0.88 \cdot 0.77)$ & $0.9696$ \\
-%     $w_7$ & \{noise(0), rotation(1)\} & $0.85 \cdot 0.77$ & $0.6545$ & $0.85 + 0.77 - (0.85 \cdot 0.77)$ & $0.9655$ \\
-%     $w_8$ & \{rotation(0), noise(1)\} & $0.88 \cdot 0.8$ & $0.704$ & $0.88 + 0.8 - (0.88 \cdot 0.8)$ & $0.976$ \\
-%     $w_9$ & \{correct(0), correct(1)\} & $0.9 \cdot 0.9$ & $0.81$ & $0.9 + 0.9 - (0.9 \cdot 0.9)$ & $0.99$ \\
-%     \hline
-%     \end{tabular}
-%     }
-% \end{table}
-
-% \textbf{Explanation:} The table shows the global correctness probabilities for pairs of digits under various transformation conditions. Each row represents a different combination of transformations applied to the two digits in the pair:
-% - AND Probability: The probability that both digits are correctly recognized under the specified transformations.
-% - OR Probability: The probability that at least one of the digits is correctly recognized under the specified transformations.
-
-% For example, in world $w_1$, both digits are subjected to noise, leading to an AND probability of $0.68$ and an OR probability of $0.97$.
-
-% \textbf{Problog Code:}
-% \begin{mdframed}[leftline=false, rightline=false, topline=true, bottomline=true]
-% \scriptsize
-% \begin{verbatim}
-% % Define probabilities for digit 0 under different transformations
-% 0.9::noise_0. % Digit 0 correctly predicted with 90% probability under noise
-% 0.85::brightness_0. % Digit 0 correctly predicted with 85% probability under brightness
-% 0.88::rotation_0. % Digit 0 correctly predicted with 88% probability under rotation
-
-% % Define probabilities for digit 1 under different transformations
-% 0.8::noise_1. % Digit 1 correctly predicted with 80% probability under noise
-% 0.75::brightness_1. % Digit 1 correctly predicted with 75% probability under brightness
-% 0.77::rotation_1. % Digit 1 correctly predicted with 77% probability under rotation
-
-% % Define rules for correct prediction under each transformation for digit 0
-% correct_noise_0 :- noise_0.
-% correct_brightness_0 :- brightness_0.
-% correct_rotation_0 :- rotation_0.
-
-% % Define rules for correct prediction under each transformation for digit 1
-% correct_noise_1 :- noise_1.
-% correct_brightness_1 :- brightness_1.
-% correct_rotation_1 :- rotation_1.
-
-% % Define rules for incorrect prediction under each transformation for digit 0
-% wrong_noise_0 :- +correct_noise_0.
-% wrong_brightness_0 :- +correct_brightness_0.
-% wrong_rotation_0 :- +correct_rotation_0.
-
-% % Define rules for incorrect prediction under each transformation for digit 1
-% wrong_noise_1 :- +correct_noise_1.
-% wrong_brightness_1 :- +correct_brightness_1.
-% wrong_rotation_1 :- +correct_rotation_1.
-
-% % Define rules for correct prediction of both digits under noise
-% pair_correct_noise_0_1 :- correct_noise_0, correct_noise_1.
-% % Define rules for incorrect prediction of both digits under noise
-% pair_wrong_noise_0_1 :- wrong_noise_0, wrong_noise_1.
-
-% % Define global correctness based on either both correct or both incorrect under noise
-% global_correct_noise_0_1 :- pair_correct_noise_0_1; pair_wrong_noise_0_1.
-
-% % Query the global correctness under noise
-% query(global_correct_noise_0_1).
-% \end{verbatim}
-% \end{mdframed}
-% \captionof{figure}{Problog code snippet for evaluating handwritten digit recognition under noise, brightness, and rotation transformations.}
-
-% \textbf{Explanation:} In this scenario, we are interested in the global correctness of recognizing pairs of digits (0 and 1) under different transformations. The ProbLog code models the local robustness probabilities for each transformation and combines them to evaluate the global correctness.
-
-% \subsubsection{Use Case 2: Autonomous Vehicle Perception}
-
-% \textbf{Scenario:} An AI system used in autonomous vehicles must reliably detect objects such as pedestrians and vehicles under various weather conditions (rain, fog, and snow). The goal is to evaluate the system's robustness in identifying these objects correctly under these weather conditions.
-
-% \begin{mdframed}[leftline=false, rightline=false, topline=true, bottomline=true]
-%   \scriptsize
-%   \begin{verbatim}
-
-% % Probabilities for Vehicle Detection under Different Weather Conditions
-% 0.75::rain_vehicle. % Vehicle correctly detected with 75% probability under rain
-% 0.55::fog_vehicle. % Vehicle correctly detected with 55% probability under fog
-% 0.7::snow_vehicle. % Vehicle correctly detected with 70% probability under snow
-
-% % Correct Detection Rules for Vehicle
-% correct_rain_vehicle :- rain_vehicle.
-% correct_fog_vehicle :- fog_vehicle.
-% correct_snow_vehicle :- snow_vehicle.
-
-% % Incorrect Detection Rules for Vehicle
-% wrong_rain_vehicle :- +correct_rain_vehicle.
-% wrong_fog_vehicle :- +correct_fog_vehicle.
-% wrong_snow_vehicle :- +correct_snow_vehicle.
-
-% % AND conditions for Vehicle Detection under all weather conditions
-% global_correct_vehicle_and :- correct_rain_vehicle, correct_fog_vehicle, correct_snow_vehicle.
-
-% % OR conditions for Vehicle Detection under any weather condition
-% global_correct_vehicle_or :- correct_rain_vehicle; correct_fog_vehicle; correct_snow_vehicle.
-
-% % Mixed conditions (AND & OR) for Vehicle Detection
-% global_correct_mixed_vehicle :- correct_rain_vehicle, (correct_fog_vehicle; correct_snow_vehicle).
-
-% % Queries for Global Correctness
-% query(global_correct_vehicle_and).
-% query(global_correct_vehicle_or).
-% query(global_correct_mixed_vehicle).
-% \end{verbatim}
-% \end{mdframed}
-% \captionof{figure}{Problog code snippet for evaluating vehicle detection under different weather conditions.}
-
-% \textbf{Explanation:} The ProbLog code assesses the global robustness of the AI system in detecting objects (vehicles) under individual and combined weather conditions. This ensures that the system can reliably perform in diverse environmental scenarios.
-
-% \begin{table}[h]
-%   \centering
-%   \caption{Specification Probabilities (AND) for Vehicle Detection Under Different Weather Conditions \\
-%   \( P(A \cap B \cap C) = P(A) \times P(B) \times P(C) \)}
-%   \label{tab:veh_prob_and}
-%   \resizebox{\textwidth}{!}{%
-%   \begin{tabular}{|c|c|c|c|}
-%   \hline
-%   \textbf{World} & \textbf{Conditions} & \textbf{Probability Expression (AND)} & \textbf{Probability (AND)} \\
-%   \hline
-%   $w_1$ & \{rain, fog\} & $0.75 \times 0.55$ & $0.4125$ \\
-%   $w_2$ & \{rain, snow\} & $0.75 \times 0.7$ & $0.525$ \\
-%   $w_3$ & \{rain, sand\} & $0.75 \times 0.6$ & $0.45$ \\
-%   $w_4$ & \{fog, snow\} & $0.55 \times 0.7$ & $0.385$ \\
-%   $w_5$ & \{fog, sand\} & $0.55 \times 0.6$ & $0.33$ \\
-%   $w_6$ & \{snow, sand\} & $0.7 \times 0.6$ & $0.42$ \\
-%   $w_7$ & \{rain, fog, snow\} & $0.75 \times 0.55 \times 0.7$ & $0.28875$ \\
-%   $w_8$ & \{rain, fog, sand\} & $0.75 \times 0.55 \times 0.6$ & $0.2475$ \\
-%   $w_9$ & \{rain, snow, sand\} & $0.75 \times 0.7 \times 0.6$ & $0.315$ \\
-%   $w_{10}$ & \{fog, snow, sand\} & $0.55 \times 0.7 \times 0.6$ & $0.231$ \\
-%   \hline
-%   \end{tabular}
-%   }
-% \end{table}
-
-% \textbf{Explanation:} This table shows the global correctness probabilities for detecting vehicles under different combinations of weather conditions using AND relationships. Each row represents a different combination of weather conditions applied to the detection scenario:
-% - AND Probability: The probability that the vehicle is correctly detected under all specified weather conditions.
-
-% For example, in world $w_1$, the vehicle detection system is subjected to rain and fog, leading to an AND probability of $0.4125$.
-
-% \begin{table}[h]
-%   \centering
-%   \caption{Specification Probabilities (OR) for Vehicle Detection Under Different Weather Conditions \\
-%   \( P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C) \)}
-%   \label{tab:veh_prob_or}
-%   \resizebox{\textwidth}{!}{%
-%   \begin{tabular}{|c|c|c|c|}
-%   \hline
-%   \textbf{World} & \textbf{Conditions} & \textbf{Probability Expression (OR)} & \textbf{Probability (OR)} \\
-%   \hline
-%   $w_1$ & \{rain; fog\} & $0.75 + 0.55 - (0.75 \times 0.55)$ & $0.8875$ \\
-%   $w_2$ & \{rain; snow\} & $0.75 + 0.7 - (0.75 \times 0.7)$ & $0.925$ \\
-%   $w_3$ & \{rain; sand\} & $0.75 + 0.6 - (0.75 \times 0.6)$ & $0.9$ \\
-%   $w_4$ & \{fog; snow\} & $0.55 + 0.7 - (0.55 \times 0.7)$ & $0.835$ \\
-%   $w_5$ & \{fog; sand\} & $0.55 + 0.6 - (0.55 \times 0.6)$ & $0.82$ \\
-%   $w_6$ & \{snow; sand\} & $0.7 + 0.6 - (0.7 \times 0.6)$ & $0.88$ \\
-%   $w_7$ & \{rain; fog; snow\} & $0.75 + 0.55 + 0.7 - (0.75 \times 0.55) - (0.75 \times 0.7) - (0.55 \times 0.7) + (0.75 \times 0.55 \times 0.7)$ & $0.966625$ \\
-%   $w_8$ & \{rain; fog; sand\} & $0.75 + 0.55 + 0.6 - (0.75 \times 0.55) - (0.75 \times 0.6) - (0.55 \times 0.6) + (0.75 \times 0.55 \times 0.6)$ & $0.95125$ \\
-%   $w_9$ & \{rain; snow; sand\} & $0.75 + 0.7 + 0.6 - (0.75 \times 0.7) - (0.75 \times 0.6) - (0.7 \times 0.6) + (0.75 \times 0.7 \times 0.6)$ & $0.967$ \\
-%   $w_{10}$ & \{fog; snow; sand\} & $0.55 + 0.7 + 0.6 - (0.55 \times 0.7) - (0.55 \times 0.6) - (0.7 \times 0.6) + (0.55 \times 0.7 \times 0.6)$ & $0.938$ \\
-%   \hline
-%   \end{tabular}
-%   }
-% \end{table}
-
-% \textbf{Explanation:} This table shows the global correctness probabilities for detecting vehicles under different combinations of weather conditions using OR relationships. Each row represents a different combination of weather conditions applied to the detection scenario:
-% - OR Probability: The probability that the vehicle is correctly detected under at least one of the specified weather conditions.
-
-% For example, in world $w_1$, the vehicle detection system is subjected to rain and fog, leading to an OR probability of $0.8875$.
-
-% \section{Error Summarization}
-
-% Error summarization involves evaluating the performance of the AI system by identifying and quantifying errors. We use Bayesian Network-based Coverage Metrics to assess both local and global coverage. Two testing coverage metrics are defined in Figure~\ref{Coverage}: local coverage (LC) and global coverage (GC).
-
-% \begin{figure*}[h]
-%     \centering
-%     \includegraphics[width=\textwidth]{figures/step5.pdf}
-%     \caption{Error Summarization}
-%     \label{Summarization}
-% \end{figure*}
 \section{Error Summarization}
 
-Error summarization involves evaluating the performance of the AI system by identifying and quantifying errors. We use Bayesian Network-based Coverage Metrics to assess both local and global coverage. Two testing coverage metrics are defined in Figure~\ref{Coverage}: local coverage (LC) and global coverage (GC).
+Error summarization involves evaluating the performance of the AI system by quantifying errors as shown in Figure~\ref{Summarization}.
 
 \begin{figure*}[h]
     \centering
