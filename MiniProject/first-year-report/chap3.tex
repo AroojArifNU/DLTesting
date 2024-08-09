@@ -11,64 +11,6 @@
 \chapter{Proposed Framework} % Ensures chapter numbering starts correctly
 \label{chp:3}
 
-% \section{Proposed Approach}
-
-% This section introduces our comprehensive approach to evaluating AI system performance, summarized in Figure~\ref{fig:framework}. It takes as input the description of an AI system and a set of relevant specifications against which the AI system should be checked. The framework itself has four main components:
-
-% \begin{enumerate}[\it (i)]
-%     \item \emph{Sampling}: Choosing the original inputs for the AI system.
-%     \item \emph{Testcase Generation}: Generating specific test cases from the sampled inputs according to the specifications.
-%     \item \emph{Validation}: Checking the behavior of the AI system on the generated test cases, which can be fully-fledged \emph{verification} or more lightweight \emph{testing}.
-%     \item \emph{Error Summarization}: Quantifying the performance of the AI system in terms of its global/local robustness/correctness.
-% \end{enumerate}
-
-% We focus on AI systems with DNN components performing classification tasks. We assume that an AI system $\S$ is a pair $(\F,\D)$ where:
-% \begin{itemize}
-%     \item $\F$ is the functional unit consisting of $n$ DNN \emph{classifiers} $f_1,\dots,f_n$ and a symbolic (software) component~$\omega$ such that given an input $\avec{x}=(x_1,\dots,x_n)$, the \emph{output}~$\F(\avec{x})$ is defined as $\omega(f_1(x_1),\dots,f_n(x_n))$.
-%     \item $\D$ (for dataset) is a structure that describes valid inputs for each classifier $f_i$ and the corresponding correct outputs (i.e., labels). In particular, $\D.\mathit{next}_i(\mathit{param})$ returns a valid input $x_i$ for $f_i$, given the parameter $\mathit{param}$. Moreover, $\D.N_i$ is the number of distinct class labels for each classifier~$f_i$.
-% \end{itemize}
-
-% \begin{figure*}[h]
-%   \centering
-%   \begin{tikzpicture}[component/.style={fill=gray!80, text=white,
-%       rounded corners, outer sep=1mm, text width=2.6cm, align=flush
-%       center, minimum height=1.2cm, scale=0.8},
-%     input/.style={draw, scale=0.8,  inner sep=2mm, outer sep=1mm}]\sf
-    
-%     \foreach \x/\al/\lab in {%
-%       1/sampl/Sampling,%
-%       2/gener/Testcase Generation,%
-%       3/testing/Validation,%
-%       4/summary/{Error\\ Summarisation}%
-%     }{ \node[component] (\al) at (3.5*\x,0) {\textbf{\lab}}; }
-
-%     \node[fit=(sampl)(summary), draw=gray, ultra thick] (approach) {};
-
-%     \node[input] (aisystem) at (0.2, 0.5) {AI System $\S$};
-%     \node[input] (spec)     at (0.2, -0.5) {Specifications $\Sigma$};
-
-%     \foreach/\from/\to in {%
-%       sampl/gener, gener/testing, testing/summary%
-%     }{ \draw[-stealth, very thick] (\from) -- (\to); }
-
-%     \draw[-latex, thick] (aisystem) -- (approach.179);
-%     \draw[-latex, thick] (spec) -- (approach.181);
-%   \end{tikzpicture}
-%   \caption{Overview of the Proposed Framework}
-%   \label{fig:framework}
-% \end{figure*}
-
-% \begin{example}
-% \label{ex:mnist-adder}
-% An instance of a simple AI system is an \emph{MNIST Digit Adder} $\S_{\text{MNIST}} = (\F,\D)$, where $\F = (\{f_{\text{mnist}}\}, +)$, $f_{\text{mnist}}$ is an MNIST Digit classifier and $\F$ takes as input two MNIST Digit images, recognizes the digits in the images, and computes their sum, i.e., $\F(x_1,x_2) = f_{\text{mnist}}(x_1) + f_{\text{mnist}}(x_2)$. $\D$ is the testing dataset for MNIST Digit consisting of 10,000 labeled images.
-% \end{example}
-
-% We assume that \emph{specifications} $\Sigma$ is a pair $(P, V)$, where $P$ is a set of perturbations against which we are characterizing the behavior of $\S$. Each perturbation comes with parameters to instantiate the set of all possible perturbations. $V$ is a validation flag, where if $V=t$, then we do testing, and if $V=v$, we do verification.
-
-% \begin{example}
-% To evaluate the correctness of the MNIST Digit Adder $\S_{\text{MNIST}}$, we define the specifications $\Sigma = (P, V)$ as follows: $P = \{\gaussian(0,0.1), \saltpepper(200:255, 0:5, 0.2), \rotation(3,30,3)\}$ and $V=t$. Here, $\gaussian(0,0.1)$ specifies Gaussian noise with a mean of $0$ and standard deviation of $0.1$, $\saltpepper(200:255,0:5,0.2)$ specifies salt and pepper noise, where 10\% of pixels are bleached up to values 200 to 255 and 10\% of pixels are darkened to values between 0 and 5, and $\rotation(3,30,3)$ specifies the set of rotations with the minimum rotation angle of 3, maximum of 30, and the step size of 3.
-% \end{example}
-% \section{Proposed Approach}
 
 This chapter presents a comprehensive approach for AI systems, which may consist of one or multiple DNN components, each component handle different task. My research introduces a framework that addresses each DNN separately, recognising that each has unique specifications, e.g., consider an AI system using the MNIST dataset for different purposes. One DNN might classify handwritten digits (0-9), while another might analyse pairs of digits to predict their sum or product. Although both DNNs work with digit images in this case, their properties in specifications differ due to their distinct tasks, even when using the same dataset. In other cases, such as an autonomous car, different DNNs might use different datasets designed for their specific tasks. One DNN might use labeled images for object detection (e.g., identifying pedestrians, vehicles, and road signs), while another DNN might use data on driving paths and movement for path planning to predict optimal routes. This framework provides end-to-end testing for each DNN. It consists of five components, summarized in Figure~\ref{fig:framework}.
 
@@ -89,87 +31,63 @@ This chapter presents a comprehensive approach for AI systems, which may consist
 
 My research focus on AI systems with DNN components performing various tasks, which may include classification, regression, clustering and more. Each DNN within the system has unique specifications. Formally, we define an AI system $ \mathcal{S} $ as follows:
 
-$\mathcal{F}$ is the functional unit comprises $ n $ DNN components $ f_1, \dots, f_n $, each handling different tasks, and a symbolic (software) component $ \omega $ that integrates the outputs of these DNNs. Given an input $\vec{x} = (x_1, \dots, x_n)$, where each $x_i$ represents an input from the respective dataset of $f_i$, the output $\mathcal{F}(\vec{x})$ is defined as $\omega(f_1(x_1), \dots, f_n(x_n))$. Each DNN component $f_i$ processes its input $x_i$ according to its specific dataset.
+$\mathcal{F}$ is the functional unit comprises $n$ DNN components $ f_1, \dots, f_n $, each handling different tasks, and a symbolic (software) component $ \omega $ that integrates the outputs of these DNNs. Given an input $\vec{x} = (x_1, \dots, x_n)$, where each $x_i$ represents an input from the respective dataset of $f_i$, the output $\mathcal{F}(\vec{x})$ is defined as $\omega(f_1(x_1), \dots, f_n(x_n))$. Each DNN component $f_i$ processes its input $x_i$ according to its specific dataset.
 
 
 \section{Specification}
-The first component of this framework is formalized to specify model architecture $\mathcal{M}$, environmental properties, and input data characteristics $\mathcal{D}$. A pre-trained Convolutional Neural Network (CNN) $\mathcal{M}_{\text{CNN}}$ is  used, featuring a convolutional layer (32 filters, kernel size 3x3, ReLU activation function), a MaxPooling layer (2x2), followed by a flattened layer, a fully connected layer (128 neurons, ReLU), and an output layer with 10 neurons using softmax. The input data $\mathcal{D}$ consists of 10,000 test samples of MNIST images. The output labels are 10 classes representing digits from 0 to 9. Currently, specifications $\mathcal{S}$ are structured according to the experimental setup, which includes evaluating the model’s robustness under various conditions. Our specifications test all classes by default, but users can customize the classes to be tested based on their specific requirements.
+The first component of this framework is formalized to specify model architecture $\mathcal{M}$, environmental properties, testing type, and input data characteristics $\mathcal{D}$. 
 
-For testing, different methods are employed based on the type of testing $\mathcal{T}$. In black-box testing $\mathcal{T}_{\text{black}}$, semantic adversarial properties $\mathcal{P}_{\text{sem}}$ such as rotation, brightness adjustment, blur, shear, and contrast modification are made using Python libraries like cv2 and ImageDataGenerator, are applied by adjusting the input data $\mathcal{D}$ without knowledge of the model's internal details. In white-box testing $\mathcal{T}_{\text{white}}$, adversarial attacks $\mathcal{P}_{\text{adv}}$ are used by accessing the model's internal structure and parameters. Adversarial examples are generated using the Foolbox library with methods like the Fast Gradient Sign Method (FGSM), Projected Gradient Descent (PGD), AdamPGD, and Deepfool are used to create these examples by computing gradients
+The specifications $\mathcal{S}_{\text{specs}}$ include all classes (classification task) by default, but users can adjust this to test specific classes based on their needs.
+
+It is essential to specify the type of testing $\mathcal{T}$ within the $\mathcal{S}_{\text{specs}}$, as different methods are employed based on this choice. In black-box testing $\mathcal{T}_{\text{black}}$, semantic adversarial properties $\mathcal{P}_{\text{sem}}$ are applied by adjusting the input data $\mathcal{D}$ without any knowledge of the model's internal details. In white-box testing $\mathcal{T}_{\text{white}}$, adversarial attacks $\mathcal{P}_{\text{adv}}$ are used by accessing the model's internal structure and parameters. Grey-box testing $\mathcal{T}_{\text{grey}}$ combines aspects of both, utilizing partial knowledge of the model’s structure to inform the testing process. 
 
 
-
-\textbf{Note:} Grey-box testing $\mathcal{T}_{\text{grey}}$, involving partial model access, will be explored in future work.
 
 \begin{example}
-  \label{ex:mnist-adder}
-  An instance of a simple AI system is an \emph{MNIST Digit Adder} $\mathcal{S}_{\text{adder}} = (\mathcal{F}, \mathcal{D})$. In this system, $\mathcal{F}$ consists of a DNN component $\mathcal{M}_{\text{CNN}}$, The dataset $\mathcal{D}$ contains MNIST digits (0 to 9), and a software component $\omega$ that performs the addition.
+  \label{ex:mnist-adder-specification}
+  Consider the AI system $\mathcal{S}_{\text{adder}}$, an \emph{MNIST Digit Adder}, which is specified as $\mathcal{S}_{\text{adder}} = (\mathcal{F}, \mathcal{D})$. In this system, the functional unit $\mathcal{F}$ consists of a DNN component $\mathcal{M}_{\text{CNN}}$, which is a Convolutional Neural Network (CNN) designed to recognize digits ranging from 0 to 9. The dataset $\mathcal{D}$ provides input in the form of images, and a software component $\omega$ is used to perform the addition of the recognized digits. 
 
-  Formally, we define $\mathcal{F} = (\{\mathcal{M}_{\text{CNN}}\}, \omega)$, where $\omega$ integrates the output of the DNN. The function $\mathcal{M}_{\text{CNN}}$ takes single MNIST digit images as input and recognizes the digits. The software component $\omega$ can then pick any two recognized digits and compute their sum.
-
-  For example, $\mathcal{S}_{\text{adder}}$ can perform the task of digit addition:
+  Formally, we define $\mathcal{F} = (\{\mathcal{M}_{\text{CNN}}\}, \omega)$, where $\omega$ integrates the output of the DNN. The function $\mathcal{M}_{\text{CNN}}$ takes single digit as an input and recognizes the digits. The software component $\omega$ can then pick any two recognized digits and compute their sum. For example, $\mathcal{S}_{\text{adder}}$ can perform the task of digit addition:
   \begin{equation}
     \mathcal{S}_{\text{adder}}(x_1, x_2) = \omega(\mathcal{M}_{\text{CNN}}(x_1), \mathcal{M}_{\text{CNN}}(x_2)),
   \end{equation}
-  where $\omega(a, b) = a + b$.
+  where $\omega(a, b) = a + b$. Given two digits $x_1$ and $x_2$, $\mathcal{S}_{\text{adder}}$ recognizes the digits and computes their sum.
 
-  Given two MNIST digit images $x_1$ and $x_2$, $\mathcal{S}_{\text{adder}}$ recognizes the digits and computes their sum.
+  The specifications $\mathcal{S}_{\text{specs}}$ for this system include the following key elements: The DNN component $\mathcal{M}_{\text{CNN}}$ is a pre-trained CNN with a typical architecture involving a convolutional layer (32 filters, kernel size 3x3, ReLU activation), followed by a max pooling layer (2x2), a flattened layer, a fully connected layer with 128 neurons (ReLU), and an output layer with 10 neurons using softmax activation. The input data $\mathcal{D}$ consists of 10,000 test samples of digits, each labeled with one of 10 classes representing the digits 0 to 9. 
+
+  $\mathcal{S}_{\text{adder}}$ is evaluated using both black-box and white-box testing methods. In black-box testing $\mathcal{T}_{\text{black}}$, semantic adversarial properties such as rotation, brightness adjustment, blur, shear, and contrast modification are applied to the input data without accessing the internal structure of $\mathcal{M}_{\text{CNN}}$. Specifically, $\mathcal{S}_{\text{adder}}$ robustness is tested against rotations within a range of 3 to 30 degrees and brightness adjustments between 0.5 and 1.5. In white-box testing $\mathcal{T}_{\text{white}}$, adversarial examples are generated by utilizing the internal structure and parameters of $\mathcal{M}_{\text{CNN}}$, like Fast Gradient Sign Method (FGSM), Projected Gradient Descent (PGD), AdamPGD, and Deepfool.
 \end{example}
 
+
+\textbf{Note:} Grey-box testing, involving partial model access, will be explored in future work.
 \section{Sampling}
-The sampling process is designed to identify efficient and corner cases by employing a hybrid approach that combines Borderline-SMOTE and ADASYN using a Scikit-learn pipeline. This method generates synthetic examples, enhancing class balance and model robustness. Borderline-SMOTE focuses on creating samples near decision boundaries, while ADASYN targets hard-to-learn examples, ensuring that both typical and challenging cases are effectively covered.
+The sampling process is designed to identify both efficient and corner cases, focusing on hard-to-learn examples to enhance the robustness of the model. Data is sampled according to the requirements specified in the specifications. By default, all classes are tested, but users can customize the classes to be sampled based on specific requirements. The sampling approach is applied as follows for each classifier $f_i$ independently:
 
-Data is sampled according to the requirements specified in the specifications. By default, all classes are tested, but users can customize the classes to be sampled based on specific requirements. The hybrid approach is applied as follows for each classifier $f_i$ independently:
-
-
-The full sample $\mathcal{S}_i$ for classifier $f_i$, $i=1,\dots,n$, is computed by directly applying the hybrid sampling method to the initial dataset $\mathcal{D}$:
+The full sample $\mathcal{X}_i$ for classifier $f_i$, $i=1,\dots,n$, is computed by applying the sampling method directly to the dataset $\mathcal{D}_i$:
 
 \begin{equation}
-\mathcal{S}_i = \text{HybridSampling}(\mathcal{D})
+\mathcal{X}_i = \text{Sampling}(\mathcal{D}_i)
 \end{equation}
 
-where the HybridSampling method is defined as the combination of Borderline-SMOTE and ADASYN:
+Here, $\mathcal{D}_i$ represents the dataset associated with each classifier $f_i$. In cases where all classifiers share the same dataset, $\mathcal{D}_i$ may be identical across all $i$, denoted simply as $\mathcal{D}$. However, if the datasets differ for each classifier, they are represented individually as $\mathcal{D}_1, \mathcal{D}_2, \dots, \mathcal{D}_n$ to reflect the specific dataset for each $f_i$.
+
+
+
+This sampling method is designed to balance the dataset and ensure that both typical and challenging cases are adequately represented, thereby improving the evaluation of the model's performance across a variety of scenarios.
 
 
 \begin{example}
   \label{ex:sampling}
-  To further illustrate the sampling process, consider the classifier $\mathcal{M}_{\text{CNN}}$ and $\mathcal{D}$ from Example.\ref{ex:mnist-adder}. For each class $c$, we randomly sample an equal number of correctly classified instances to form the initial subset $\mathcal{S}_{\text{CNN}}^c$. This subset is then enhanced by applying the hybrid method using a Scikit-learn pipeline, which combines Borderline-SMOTE and ADASYN to generate synthetic samples. The final sample $\mathcal{S}_{\text{CNN}}$ for testing is obtained as:
+  To further illustrate the sampling process, consider the classifier $\mathcal{M}_{\text{CNN}}$ and $\mathcal{D}$ from Example~\ref{ex:mnist-adder-specification}. For each class $c$ in $\mathcal{D}$, we begin with the samples specified in specification, forming the initial subset $\mathcal{X}_{\text{mnist}}$. This subset is then enhanced by applying a hybrid sampling method, that combines Borderline-SMOTE focuses on creating samples near decision boundaries, while ADASYN targets hard-to-learn examples, ensuring that both typical and challenging cases are effectively covered. The final sample $\mathcal{S}_{\text{mnist}}$ for testing is obtained as:
+  
 
   \begin{equation}
-    \mathcal{S}_{\text{CNN}} = \text{HybridSampling}(\mathcal{S}_{\text{CNN}}^c)
+    \mathcal{X}_{\text{mnist}} = \text{HybridSampling}(\mathcal{X}_{\text{mnist}})
   \end{equation}
 
-  where the HybridSampling method is defined as the combination of Borderline-SMOTE and ADASYN:
-
-%  $\mathcal{S}_{\text{CNN}}^c = \mathcal{S}_{\text{CNN}}^c \cup \text{Borderline-SMOTE}(\mathcal{S}_{\text{CNN}}^c) \cup \text{ADASYN}(\mathcal{S}_{\text{CNN}}^c)$
-
-%   This process ensures a balanced and comprehensive set of test samples, covering both typical and challenging cases.
+  where the HybridSampling method combines Borderline-SMOTE and ADASYN. This process ensures a balanced and comprehensive set of test samples, covering both typical and challenging cases for robust evaluation of $\mathcal{M}_{\text{CNN}}$.
 \end{example}
 
-
-% The sampling process is designed to identify efficient and corner cases by employing a hybrid approach that combines Borderline-SMOTE and ADASYN. This combined method generates synthetic examples, enhancing class balance and model robustness. Borderline-SMOTE focuses on creating samples near decision boundaries, while ADASYN targets hard-to-learn examples, ensuring that both typical and challenging cases are effectively covered. It is important to note that this sampling process is used solely for testing purposes, not for training the model.
-
-% \textcolor{blue}{To ensure a balanced and representative dataset for testing, we perform the following steps for each classifier $f_i$ independently:}
-% \begin{itemize}
-%     % \item Randomly sample an equal number of correctly classified instances from each class.
-%     \item Apply Borderline-SMOTE to generate synthetic samples near decision boundaries to enhance class balance.
-%     \item Use ADASYN to adjust the number of synthetic samples for each minority class example based on its difficulty level.
-% \end{itemize}
-
-% The full sample $S_i$ for classifier $f_i$, $i=1,\dots,n$, is computed as:
-
-% \begin{equation}
-% S_i = \bigcup_{c=1}^{\D.N_i} S_i^c
-% \end{equation}
-
-% where $S_i^c$ is a subset of the correctly classified samples for a class $c$ consisting of $M_i$ (the number of samples for each class specific to $f_i$) elements:
-% \[S_i^c = \big\{x = \D.next_i(class=c)\mid f_i(x)=c\big\}|_{M_i}\]
-
-% \textcolor{blue}{After the initial sampling, we enhance $S_i^c$ by applying Borderline-SMOTE and ADASYN as follows:}
-% \[
-% S_i^c = S_i^c \cup \text{Borderline-SMOTE}(S_i^c) \cup \text{ADASYN}(S_i^c)
-% \]
-% Note that each sample is obtained by a call to the method $\D.next_i$.
 
 
 
